@@ -1,0 +1,105 @@
+{
+  "nroOperacion": "184249",
+  "AFP": "1010",
+  "CUSPP": "610281AVAEL1",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.85",
+  "fechaDevengue": "2023-12-04",
+  "fechaSuscripcionIII": "2024-04-12",
+  "devengueSolicitud": "2023-12-04",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.711",
+  "diaCita": "2024-04-22",
+  "horaCita": "15:00",
+  "lugarCita": "LA LIBERTAD-TRUJILLO-TRUJILLO. C.C. MALL AVENTURA PLAZA, LOCAL 103, AV. AMÉRICA OESTE N° 750, URB. EL INGENIO",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "42792938",
+    "apellidoPaterno": "VALENZUELA",
+    "apellidoMaterno": "AYALA",
+    "primerNombre": "ALONSO",
+    "segundoNombre": "ROBERTO",
+    "genero": "M",
+    "fechaNacimiento": "1984-12-14",
+    "estadoSobrevivencia": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "1414163.39",
+    "saldoCic": "164061.58",
+    "valorCuota": "14.3977221",
+    "saldoCuotas": "11394.9678193",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "1250101.81"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "MAURICIO",
+      "apellidoMaterno": "MUÑOZ",
+      "primerNombre": "GIANINA",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1984-09-23",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "VALENZUELA",
+      "apellidoMaterno": "MAURICIO",
+      "primerNombre": "VALENTINA",
+      "segundoNombre": "ABELINA",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2020-12-08",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "VALENZUELA",
+      "apellidoMaterno": "GONZALES",
+      "primerNombre": "ROBERTO",
+      "segundoNombre": "JOAQUIN",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1952-02-07",
+      "genero": "M"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

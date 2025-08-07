@@ -1,0 +1,466 @@
+<!-- Superintendencia de Banca, Seguros y AFP -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!-- LISTADO DE SOLICITUDES-->
+	<xs:element name="descargaSolicitudesEESS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="solicitudRecibidaEESS" type="solicitudRecibidaEESSType" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- TIPO COMPLEJO: SOLICITUD -->
+	<xs:complexType name="solicitudRecibidaEESSType">
+		<xs:sequence>
+			<xs:element name="nroOperacion" type="Numero10"/>
+			<xs:element name="AFP" type="AFPType"/>
+			<xs:element name="CUSPP" type="CUSPPType"/>
+			<xs:element name="tipoBeneficio" type="tipoBeneficioType"/>
+			<xs:element name="cambioModalidad" type="sinoType"/>
+			<xs:element name="pensionPreliminar" type="sinoType"/>
+			<xs:element name="tasaRPyRT" type="Numero3y2"/>
+			<xs:element name="fechaDevengue" type="xs:date"/>
+			<xs:element name="fechaSuscripcionIII" type="xs:date"/>
+			<xs:element name="devengueSolicitud" type="xs:date"/>
+			<xs:element name="fechaEnvio" type="xs:date"/>
+			<xs:element name="fechaCierre" type="xs:date"/>
+			<xs:element name="tipoCambio" type="Numero2y3"/>
+			<xs:element name="diaCita" type="xs:date"/>
+			<xs:element name="horaCita" type="horaType"/>
+			<xs:element name="lugarCita" type="lugarType"/>
+			<xs:element name="numeroMensualidad" type="mensualidadType" minOccurs="0"/>
+			<xs:element name="tipoFondo" type="tipoFondoType" minOccurs="0"/>
+			<xs:element name="afiliado" type="afiliadoType"/>
+			<xs:element name="fondo" type="fondoType"/>
+			<xs:element name="beneficiario" type="benefiType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="producto" type="productoType" minOccurs="2" maxOccurs="8"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- TIPO COMPLEJO: AFILIADO -->
+	<xs:complexType name="afiliadoType">
+		<xs:sequence>
+			<xs:element name="tipoDoc" type="tipoDocType"/>
+			<xs:element name="nroDoc" type="Char8"/>
+			<xs:element name="apellidoPaterno" type="Char20"/>
+			<xs:element name="apellidoMaterno" type="Char20" minOccurs="0"/>
+			<xs:element name="primerNombre" type="Char20"/>
+			<xs:element name="segundoNombre" type="Char20" minOccurs="0"/>
+			<xs:element name="genero" type="generoType"/>
+			<xs:element name="fechaNacimiento" type="xs:date"/>
+			<xs:element name="gradoInvalidez" type="gradoInvalidezType" minOccurs="0"/>
+			<xs:element name="condicionInvalidez" type="sinoType" minOccurs="0"/>
+			<xs:element name="estadoSobrevivencia" type="estadoSobrevivenciaType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- TIPO COMPLEJO: FONDO -->
+	<xs:complexType name="fondoType">
+		<xs:sequence>
+			<xs:element name="moneda" type="monedaType"/>
+			<xs:element name="capitalPension" type="Numero10y2"/>
+			<xs:element name="saldoCic" type="Numero10y2"/>
+			<xs:element name="valorCuota" type="Numero4y7"/>
+			<xs:element name="saldoCuotas" type="Numero8y7"/>
+			<xs:element name="bonoActualizado" type="Numero10y2" minOccurs="0"/>
+			<xs:element name="tieneCobertura" type="sinoType"/>
+			<xs:element name="tipoCambioCompraAA" type="Numero2y3" minOccurs="0"/>
+			<xs:element name="EESScobertura" type="EESSType" minOccurs="0"/>
+			<xs:element name="aporteAdicional" type="Numero10y2" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- TIPO COMPLEJO: BENEFICIARIO -->
+	<xs:complexType name="benefiType">
+		<xs:sequence>
+			<xs:element name="apellidoPaterno" type="Char20"/>
+			<xs:element name="apellidoMaterno" type="Char20" minOccurs="0"/>
+			<xs:element name="primerNombre" type="Char20"/>
+			<xs:element name="segundoNombre" type="Char20" minOccurs="0"/>
+			<xs:element name="parentesco" type="parentescoType"/>
+			<xs:element name="condicionInvalidez" type="sinoType"/>
+			<xs:element name="fechaNacimiento" type="xs:date"/>
+			<xs:element name="genero" type="generoType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- TIPO COMPLEJO: PRODUCTO -->
+	<xs:complexType name="productoType">
+		<xs:sequence>
+			<xs:element name="modalidad" type="modalidadType"/>
+			<xs:element name="moneda" type="monedaType"/>
+			<xs:element name="anosRT" type="Numero2" minOccurs="0"/>
+			<xs:element name="porcentajeRVD" type="Numero3y2" minOccurs="0"/>
+			<xs:element name="periodoGarantizado" type="periodoGarantizadoType" minOccurs="0"/>
+			<xs:element name="coberturaConyuge" type="coberturaConyugeType" minOccurs="0"/>
+			<xs:element name="derechoCrecer" type="sinoType"/>
+			<xs:element name="gratificacion" type="sinoType"/>
+			<xs:element name="particionCapital" type="particionCapitalType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- TIPO SIMPLE: GENERICOS -->
+	<xs:simpleType name="Char1">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPOS SIMPLES COMUNES -->
+	<xs:simpleType name="sinoType">
+		<xs:restriction base="Char1">
+			<xs:enumeration value="S"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char2">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char3">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char4">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char6">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="6"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char8">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char10">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char12">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char20">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numero2">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="2"/>
+			<xs:fractionDigits value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numero2y3">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="5"/>
+			<xs:fractionDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numero3y2">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="5"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numero10">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="10"/>
+			<xs:fractionDigits value="0"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numero10y2">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="12"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numero8y7">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="15"/>
+			<xs:fractionDigits value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numero4y7">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="11"/>
+			<xs:fractionDigits value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- horaType tiene el formato de 24 horas. Ejm: 15:30-->
+	<xs:simpleType name="horaType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="(([01][0-9])|(2[0-3])):[0-5][0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- lugarCitaType contiene la dirección de la cita: Dpto-Prov-Dist. Dirección -->
+	<!-- Ejm: LIMA-LIMA-SAN ISIDRO. AV. ABCD #215-->
+	<xs:simpleType name="lugarType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="4"/>
+			<xs:maxLength value="324"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: MONEDA -->
+	<xs:simpleType name="monedaType">
+		<xs:restriction base="Char6">
+			<xs:enumeration value="S/."/>
+			<xs:enumeration value="US$"/>
+			<xs:enumeration value="S/.Aj."/>
+			<xs:enumeration value="US$Aj."/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: GENERO -->
+	<xs:simpleType name="generoType">
+		<xs:annotation>
+			<xs:documentation>M - MASCULINO</xs:documentation>
+			<xs:documentation>F - FEMENINO</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char1">
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="F"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: GRADO DE INVALIDEZ DEL AFILIADO -->
+	<xs:simpleType name="gradoInvalidezType">
+		<xs:annotation>
+			<xs:documentation>P - PARCIAL</xs:documentation>
+			<xs:documentation>T - TOTAL</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char1">
+			<xs:enumeration value="P"/>
+			<xs:enumeration value="T"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: TIPO DE DOCUMENTO DE IDENTIDAD -->
+	<xs:simpleType name="tipoDocType">
+		<xs:annotation>
+			<xs:documentation>00 - LE/DNI</xs:documentation>
+			<xs:documentation>01 - CARNET DE EXTRANJERIA</xs:documentation>
+			<xs:documentation>02 - CARNET DE IDENTIFICACION MILITAR/POLICIAL</xs:documentation>
+			<xs:documentation>03 - CARNET DE AUTORIZACION DEL MINISTERIO DE TRABAJO</xs:documentation>
+			<xs:documentation>04 - PASAPORTE</xs:documentation>
+			<xs:documentation>05 - INEXISTENCIA DEL AFILIADO - NEA</xs:documentation>
+			<xs:documentation>06 - CARNET DEL PERMISO TEMPORAL DE PERMANENCIA - PTP</xs:documentation>
+			<xs:documentation>07 - CARNE DE IDENTIDAD DE RELACIONES EXTERIORES - CIRREE</xs:documentation>
+			<xs:documentation>08 - CEDULA  DE IDENTIDAD DE EXTRANJERO - CIE</xs:documentation>
+			<xs:documentation>09 - CARNE DE SOLICITANTE DE REFUGIO - CSREF</xs:documentation>
+			<xs:documentation>10 - CARNET DE PERMISO TEMPORAL DE PERMANENCIA - CPP</xs:documentation>
+			<xs:documentation>20 - RUC</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char2">
+			<xs:enumeration value="00"/>
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+			<xs:enumeration value="05"/>
+			<xs:enumeration value="06"/>
+			<xs:enumeration value="07"/>
+			<xs:enumeration value="08"/>
+			<xs:enumeration value="09"/>
+			<xs:enumeration value="10"/>
+			<xs:enumeration value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: ESTADO DEL AFILIADO - PENSION POR SOBREVIVENCIA -->
+	<xs:simpleType name="estadoSobrevivenciaType">
+		<xs:annotation>
+			<xs:documentation>A - ESTADO ACTIVO DEL AFILIADO</xs:documentation>
+			<xs:documentation>P - ESTADO PASIVO DEL AFILIADO</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char1">
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="P"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: EMPRESAS DE SEGUROS QUE PUEDEN DAR COBERTURA -->
+	<xs:simpleType name="EESSType">
+		<xs:annotation>
+			<xs:documentation>4151 - INVITA SEGUROS DE VIDA</xs:documentation>
+			<xs:documentation>4150 - MAPFRE PERU VIDA CIA. DE SEGUROS</xs:documentation>
+			<xs:documentation>4140 - INTERSEGURO CIA. DE SEGUROS</xs:documentation>
+			<xs:documentation>4120 - EL PACIFICO VIDA CIA. DE SEGUROS Y REASEGUROS</xs:documentation>
+			<xs:documentation>4153 - LA POSITIVA VIDA SEGUROS Y REASEGUROS</xs:documentation>
+			<xs:documentation>4040 - RIMAC INTERNACIONAL CIA. DE SEGUROS Y REASEGUROS</xs:documentation>
+			<xs:documentation>4154 - PROTECTA</xs:documentation>
+			<xs:documentation>4155 - RIGEL PERU</xs:documentation>
+			<xs:documentation>4160 - CRECER SEGUROS</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char4">
+			<xs:enumeration value="4151"/>
+			<xs:enumeration value="4150"/>
+			<xs:enumeration value="4140"/>
+			<xs:enumeration value="4120"/>
+			<xs:enumeration value="4153"/>
+			<xs:enumeration value="4040"/>
+			<xs:enumeration value="4154"/>
+			<xs:enumeration value="4155"/>
+			<xs:enumeration value="4160"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: COBERTURA AL CONYUGE -->
+	<xs:simpleType name="coberturaConyugeType">
+		<xs:annotation>
+			<xs:documentation>50 - 50% DE COBERTURA AL CONYUGE</xs:documentation>
+			<xs:documentation>70 - 70% DE COBERTURA AL CONYUGE</xs:documentation>
+			<xs:documentation>100 - 100% DE COBERTURA AL CONYUGE</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char3">
+			<xs:enumeration value="50"/>
+			<xs:enumeration value="70"/>
+			<xs:enumeration value="100"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: PARENTESCO DEL BENEFICIARIO -->
+	<xs:simpleType name="parentescoType">
+		<xs:annotation>
+			<xs:documentation>HI - HIJO(A)</xs:documentation>
+			<xs:documentation>PA - P(M)ADRE</xs:documentation>
+			<xs:documentation>CY - CONYUGE</xs:documentation>
+			<xs:documentation>CB - CONCUBINO(A)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char2">
+			<xs:enumeration value="HI"/>
+			<xs:enumeration value="PA"/>
+			<xs:enumeration value="CY"/>
+			<xs:enumeration value="CB"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: PARTICION CAPITAL-->
+	<xs:simpleType name="particionCapitalType">
+		<xs:annotation>
+			<xs:documentation>01 - 70% $, 30% S/.</xs:documentation>
+			<xs:documentation>02 - 60% $, 40% S/.</xs:documentation>
+			<xs:documentation>03 - 50% $, 50% S/.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char2">
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: PERIODO GARANTIZADO - RTVD -->
+	<xs:simpleType name="periodoGarantizadoType">
+		<xs:annotation>
+			<xs:documentation>2 - 2 AÑOS DE PERIODO GARANTIZADO</xs:documentation>
+			<xs:documentation>5 - 5 AÑOS DE PERIODO GARANTIZADO</xs:documentation>
+			<xs:documentation>7 - 7 AÑOS DE PERIODO GARANTIZADO</xs:documentation>
+			<xs:documentation>10 - 10 AÑOS DE PERIODO GARANTIZADO</xs:documentation>
+			<xs:documentation>15 - 15 AÑOS DE PERIODO GARANTIZADO</xs:documentation>
+			<xs:documentation>20 - 20 AÑOS DE PERIODO GARANTIZADO - desde 30/11/2005</xs:documentation>
+			<xs:documentation>25 - 25 AÑOS DE PERIODO GARANTIZADO - desde 30/11/2005</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char2">
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="5"/>
+			<xs:enumeration value="7"/>
+			<xs:enumeration value="10"/>
+			<xs:enumeration value="15"/>
+			<xs:enumeration value="20"/>
+			<xs:enumeration value="25"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: MODALIDAD -->
+	<xs:simpleType name="modalidadType">
+		<xs:annotation>
+			<xs:documentation>RP - RETIRO PROGRAMADO</xs:documentation>
+			<xs:documentation>RV - RENTA VITALICIA</xs:documentation>
+			<xs:documentation>RTVD - RENTA TEMPORAL CON VITALICIA DIFERIDA</xs:documentation>
+			<xs:documentation>RM - RENTA MIXTA</xs:documentation>
+			<xs:documentation>RB - RENTA BIMONEDA</xs:documentation>
+			<xs:documentation>RC - RENTA COMBINADA</xs:documentation>
+			<xs:documentation>RVE - RENTA VITALICIA ESCALONADA</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char4">
+			<xs:enumeration value="RP"/>
+			<xs:enumeration value="RV"/>
+			<xs:enumeration value="RTVD"/>
+			<xs:enumeration value="RM"/>
+			<xs:enumeration value="RB"/>
+			<xs:enumeration value="RC"/>
+			<xs:enumeration value="RVE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: CUSPP -->
+	<xs:simpleType name="CUSPPType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{6}[A-ZÑ]{5}[0-9]{1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: TIPO BENEFICIO -->
+	<xs:simpleType name="tipoBeneficioType">
+		<xs:annotation>
+			<xs:documentation>A - JUBILACION LEGAL</xs:documentation>
+			<xs:documentation>B - JUBILACION ANTICIPADA</xs:documentation>
+			<xs:documentation>C - INVALIDEZ</xs:documentation>
+			<xs:documentation>D - SOBREVIVENCIA</xs:documentation>
+			<xs:documentation>F - JUBILACION ANTICIPADA POR RIESGO - REGIMEN EXTRAOR.</xs:documentation>
+			<xs:documentation>G - JUBILACION ANTICIPADA POR RIESGO - GENERICO</xs:documentation>
+			<xs:documentation>H - JUBILACION ANTICIPADA REG. ESPECIAL DESEMPLEADOS</xs:documentation>
+			<xs:documentation>I - JUBILACION ADELANTADA LEY Nro 19990</xs:documentation>
+			<xs:documentation>M - REGIMEN ESPECIAL JUBILACION ANTICIPADA DESEMPLEO 28991</xs:documentation>
+			<xs:documentation>N - JUBILACION ANTICIPADA - REG. ESPECIAL DESEMPLEADOS 29426</xs:documentation>
+			<xs:documentation>O - JUBILACION ANTICIPADA POR ENFERMEDAD TERMINAL O CANCER</xs:documentation>
+			<xs:documentation>P - JUBILACION ANTICIPADA - REG. ESPECIAL DESEMPLEADOS 30939</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char1">
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="B"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="D"/>
+			<xs:enumeration value="F"/>
+			<xs:enumeration value="G"/>
+			<xs:enumeration value="H"/>
+			<xs:enumeration value="I"/>
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="O"/>
+			<xs:enumeration value="P"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: NUMERO DE MENSUALIDADES -->
+	<xs:simpleType name="mensualidadType">
+		<xs:annotation>
+			<xs:documentation>12 - 12 mensualidades</xs:documentation>
+			<xs:documentation>14 - 14 mensualidades</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char2">
+			<xs:enumeration value="12"/>
+			<xs:enumeration value="14"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: TIPO DE FONDO -->
+	<xs:simpleType name="tipoFondoType">
+		<xs:annotation>
+			<xs:documentation>1 - Fondo de mantenimiento de capital</xs:documentation>
+			<xs:documentation>2 - Fondo balanceado o mixto</xs:documentation>
+			<xs:documentation>3 - Fondo de crecimiento</xs:documentation>
+			<xs:documentation>9 - Fondo de protección de capital</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char1">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="9"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TIPO SIMPLE: EMPRESAS DE SEGUROS QUE PUEDEN DAR COBERTURA -->
+	<xs:simpleType name="AFPType">
+		<xs:annotation>
+			<xs:documentation>1001 - PROFUTURO AFP</xs:documentation>
+			<xs:documentation>1002 - AFP INTEGRA</xs:documentation>
+			<xs:documentation>1004 - AFP HORIZONTE</xs:documentation>
+			<xs:documentation>1009 - PRIMA AFP</xs:documentation>
+			<xs:documentation>1010 - AFP HABITAT</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="Char4">
+			<xs:enumeration value="1001"/>
+			<xs:enumeration value="1002"/>
+			<xs:enumeration value="1004"/>
+			<xs:enumeration value="1009"/>
+			<xs:enumeration value="1010"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

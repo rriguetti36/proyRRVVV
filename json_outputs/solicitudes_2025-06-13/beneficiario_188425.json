@@ -1,0 +1,30 @@
+[
+  {
+    "apellidoPaterno": "RUIZ",
+    "apellidoMaterno": "GRANDEZ",
+    "primerNombre": "ELIZABETH",
+    "parentesco": "CB",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1982-06-06",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "PEREZ",
+    "apellidoMaterno": "RUIZ",
+    "primerNombre": "FREDY",
+    "segundoNombre": "STEPHANO OTONIEL",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2018-06-03",
+    "genero": "M"
+  },
+  {
+    "apellidoPaterno": "CARDENAS",
+    "apellidoMaterno": "SANCHEZ",
+    "primerNombre": "SONIA",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1959-07-18",
+    "genero": "F"
+  }
+]

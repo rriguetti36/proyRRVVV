@@ -1,0 +1,108 @@
+{
+  "nroOperacion": "183837",
+  "AFP": "1010",
+  "CUSPP": "328061PFHAA9",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.85",
+  "fechaDevengue": "2024-03-01",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2021-07-20",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-03",
+  "horaCita": "15:00",
+  "lugarCita": "LA LIBERTAD-TRUJILLO-TRUJILLO. C.C. MALL AVENTURA PLAZA, LOCAL 103, AV. AMÉRICA OESTE N° 750, URB. EL INGENIO",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "46117575",
+    "apellidoPaterno": "FURA",
+    "apellidoMaterno": "HILARI",
+    "primerNombre": "PAUL",
+    "segundoNombre": "JUNIOR CARLOS",
+    "genero": "M",
+    "fechaNacimiento": "1989-10-27",
+    "estadoSobrevivencia": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "382411.23",
+    "saldoCic": "524.95",
+    "valorCuota": "14.3417267",
+    "saldoCuotas": "36.6029845",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "381886.28"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "GAMERO",
+      "apellidoMaterno": "CAMPOS",
+      "primerNombre": "SUSAN",
+      "segundoNombre": "LIZBET",
+      "parentesco": "CB",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1991-12-06",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "FURA",
+      "apellidoMaterno": "GAMERO",
+      "primerNombre": "STEFANO",
+      "segundoNombre": "GAEL",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2018-10-17",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "FURA",
+      "apellidoMaterno": "GAMERO",
+      "primerNombre": "VALESKA",
+      "segundoNombre": "SUSET",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2014-04-29",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

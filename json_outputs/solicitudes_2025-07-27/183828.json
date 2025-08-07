@@ -1,0 +1,89 @@
+{
+  "nroOperacion": "183828",
+  "AFP": "1002",
+  "CUSPP": "539231PSSTO0",
+  "tipoBeneficio": "G",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-11-01",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2023-11-02",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-10",
+  "horaCita": "10:00",
+  "lugarCita": "ICA-CHINCHA-CHINCHA ALTA. CALLE LIMA N° 250 CERCADO CHINCHA ALTA - CHINCHA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "26730865",
+    "apellidoPaterno": "SANTANA",
+    "apellidoMaterno": "SOTO",
+    "primerNombre": "PERCY",
+    "segundoNombre": "MARIO",
+    "genero": "M",
+    "fechaNacimiento": "1965-07-02",
+    "condicionInvalidez": "S"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "4012.81",
+    "saldoCic": "4012.81",
+    "valorCuota": "13.9064157",
+    "saldoCuotas": "288.5586482",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "PE¥ARANDA",
+      "apellidoMaterno": "MEJIA DE SANTANA",
+      "primerNombre": "FABIOLA",
+      "segundoNombre": "MARGARITA",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1974-08-23",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "SANTANA",
+      "apellidoMaterno": "PE¥ARANDA",
+      "primerNombre": "CAMILA",
+      "segundoNombre": "NOHELY",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2006-12-26",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "SANTANA",
+      "apellidoMaterno": "PE¥ARANDA",
+      "primerNombre": "ALENA",
+      "segundoNombre": "FABIANA",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2009-09-08",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

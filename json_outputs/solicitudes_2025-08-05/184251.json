@@ -1,0 +1,84 @@
+{
+  "nroOperacion": "184251",
+  "AFP": "1001",
+  "CUSPP": "519691CSSUV0",
+  "tipoBeneficio": "C",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-02-27",
+  "fechaSuscripcionIII": "2024-04-12",
+  "devengueSolicitud": "2023-02-27",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.711",
+  "diaCita": "2024-04-23",
+  "horaCita": "11:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "07431871",
+    "apellidoPaterno": "SEGURA",
+    "apellidoMaterno": "SERVELEON",
+    "primerNombre": "CESAR",
+    "genero": "M",
+    "fechaNacimiento": "1960-02-25",
+    "gradoInvalidez": "T"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "984840.46",
+    "saldoCic": "241054.62",
+    "valorCuota": "14.1674779",
+    "saldoCuotas": "17014.6459167",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4120",
+    "aporteAdicional": "743785.84"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "MONTALVO",
+    "apellidoMaterno": "GONZALES",
+    "primerNombre": "BETTY",
+    "segundoNombre": "MARLENE",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1964-09-20",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

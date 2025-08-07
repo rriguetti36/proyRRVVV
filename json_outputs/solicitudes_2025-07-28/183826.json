@@ -1,0 +1,84 @@
+{
+  "nroOperacion": "183826",
+  "AFP": "1002",
+  "CUSPP": "216481ECCVP9",
+  "tipoBeneficio": "C",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2024-03-01",
+  "fechaSuscripcionIII": "2024-03-20",
+  "devengueSolicitud": "2023-10-11",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.703",
+  "diaCita": "2024-04-03",
+  "horaCita": "11:00",
+  "lugarCita": "CUSCO-CUSCO-CUSCO. AV. DE LA CULTURA N° 1907-C URB. MAGISTERIO",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "23815020",
+    "apellidoPaterno": "CHAVEZ",
+    "apellidoMaterno": "CARPIO",
+    "primerNombre": "EZEQUIEL",
+    "genero": "M",
+    "fechaNacimiento": "1959-04-09",
+    "gradoInvalidez": "T"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "213128.88",
+    "saldoCic": "86014.83",
+    "valorCuota": "13.9035173",
+    "saldoCuotas": "6186.5518016",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "127114.05"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "PUMA",
+    "apellidoMaterno": "HUA¥AC",
+    "primerNombre": "PRESENTACI",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1959-11-26",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

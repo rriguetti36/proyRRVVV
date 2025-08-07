@@ -1,0 +1,30 @@
+[
+  {
+    "apellidoPaterno": "SANCHEZ",
+    "apellidoMaterno": "BARDALES",
+    "primerNombre": "BRANCO",
+    "segundoNombre": "JUNIOR",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2009-12-06",
+    "genero": "M"
+  },
+  {
+    "apellidoPaterno": "CUMAPA",
+    "apellidoMaterno": "PICON",
+    "primerNombre": "NOEMI",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1952-11-01",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "BARDALES",
+    "apellidoMaterno": "PEREZ",
+    "primerNombre": "NILO",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1951-06-13",
+    "genero": "M"
+  }
+]

@@ -1,0 +1,85 @@
+{
+  "nroOperacion": "184269",
+  "AFP": "1002",
+  "CUSPP": "652680YMCCT7",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-08-19",
+  "fechaSuscripcionIII": "2024-04-15",
+  "devengueSolicitud": "2023-08-19",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.707",
+  "diaCita": "2024-04-29",
+  "horaCita": "10:00",
+  "lugarCita": "PUNO-PUNO-PUNO. JIRON AREQUIPA N? 382",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "71734761",
+    "apellidoPaterno": "MASCO",
+    "apellidoMaterno": "CASTRO",
+    "primerNombre": "YAMILETH",
+    "segundoNombre": "LEYDI DIANA",
+    "genero": "F",
+    "fechaNacimiento": "1996-07-24",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "48455.20",
+    "saldoCic": "4027.48",
+    "valorCuota": "13.9615179",
+    "saldoCuotas": "288.4700668",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "44427.72"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "CASTRO",
+    "apellidoMaterno": "QUISPE DE MASCO",
+    "primerNombre": "EUSEBIA",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1956-10-29",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "nroOperacion": "183811",
+  "AFP": "1002",
+  "CUSPP": "191681GABAG0",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2009-05-11",
+  "fechaSuscripcionIII": "2024-03-20",
+  "devengueSolicitud": "2009-05-11",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.703",
+  "diaCita": "2024-04-02",
+  "horaCita": "15:00",
+  "lugarCita": "PIURA-PIURA-PIURA. AV. RAMÓN MUJICA N° 124 URB. EL CHIPE",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "19215918",
+    "apellidoPaterno": "ALVAREZ",
+    "apellidoMaterno": "BURGOS",
+    "primerNombre": "GUILLERMO",
+    "genero": "M",
+    "fechaNacimiento": "1952-06-25",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "181960.15",
+    "saldoCic": "39759.41",
+    "valorCuota": "13.9064157",
+    "saldoCuotas": "2859.0695732",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4140",
+    "aporteAdicional": "142200.74"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "TAMBO",
+    "apellidoMaterno": "ABANTO",
+    "primerNombre": "MARIA",
+    "segundoNombre": "EIDUBIJES",
+    "parentesco": "CB",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1950-10-30",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

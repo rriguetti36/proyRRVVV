@@ -1,0 +1,84 @@
+{
+  "nroOperacion": "184254",
+  "AFP": "1009",
+  "CUSPP": "198811OMJQC0",
+  "tipoBeneficio": "G",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2020-03-01",
+  "fechaSuscripcionIII": "2024-04-12",
+  "devengueSolicitud": "2020-03-01",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.711",
+  "diaCita": "2024-04-26",
+  "horaCita": "10:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "19863705",
+    "apellidoPaterno": "MARQUINA",
+    "apellidoMaterno": "JULCA",
+    "primerNombre": "OSCAR",
+    "segundoNombre": "CECILIO",
+    "genero": "M",
+    "fechaNacimiento": "1954-06-08",
+    "condicionInvalidez": "S"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "88984.42",
+    "saldoCic": "61819.61",
+    "valorCuota": "14.0819334",
+    "saldoCuotas": "4389.9944876",
+    "bonoActualizado": "27164.81",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "LATOUR",
+    "apellidoMaterno": "DE MARQUINA",
+    "primerNombre": "CARMELA",
+    "segundoNombre": "RUTH",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1956-09-27",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

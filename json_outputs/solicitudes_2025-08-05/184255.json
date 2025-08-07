@@ -1,0 +1,97 @@
+{
+  "nroOperacion": "184255",
+  "AFP": "1009",
+  "CUSPP": "331551LTVLA0",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2024-03-01",
+  "fechaSuscripcionIII": "2024-04-12",
+  "devengueSolicitud": "2016-02-29",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.711",
+  "diaCita": "2024-04-23",
+  "horaCita": "11:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "46549302",
+    "apellidoPaterno": "TELLO",
+    "apellidoMaterno": "VELASQUEZ",
+    "primerNombre": "LEONARDO",
+    "genero": "M",
+    "fechaNacimiento": "1990-10-11",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "122660.30",
+    "saldoCic": "3752.84",
+    "valorCuota": "14.0819334",
+    "saldoCuotas": "266.5003373",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "118907.46"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "TELLO",
+      "apellidoMaterno": "POLANCO",
+      "primerNombre": "INDIRA",
+      "segundoNombre": "OLINDA VICTORIA",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2015-07-02",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "TELLO",
+      "apellidoMaterno": "POLANCO",
+      "primerNombre": "YADIRA",
+      "segundoNombre": "LIZETHY",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2011-04-29",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!-- LISTADO DE CONFIRMACIONES-->
+	<xs:element name="descargaConfirmaciones">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="confirmacionEESS" type="confirmacionEESSType" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- TIPO COMPLEJO: CONFIRMACION -->
+	<xs:complexType name="confirmacionEESSType">
+		<xs:sequence>
+			<xs:element name="operacion" type="Numero10"/>
+			<xs:element name="CUSPP" type="Char12"/>
+			<xs:element name="pensionEESS" type="pensionEESSType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- TIPO COMPLEJO: PENSION EESS-->
+	<xs:complexType name="pensionEESSType">
+		<xs:sequence>
+			<xs:element name="numeroPoliza" type="Char20"/>
+			<xs:element name="primeraPensionRV" type="Numero11y2" minOccurs="0"/>
+			<xs:element name="primeraPensionRT" type="Numero11y2" minOccurs="0"/>
+			<xs:element name="primeraPensionRVD" type="Numero11y2" minOccurs="0"/>
+			<xs:element name="primaUnicaAFPEESS" type="Numero11y2" minOccurs="0"/>
+			<xs:element name="primaUnicaEESS" type="Numero11y2"/>
+			<xs:element name="inicioVigencia" type="xs:date"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- TIPOS GENERICOS -->
+	<xs:simpleType name="Char1">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char2">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char3">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char4">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char8">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char10">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char12">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="12"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Char20">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="20"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numero3y2">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="5"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numero10">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numero10y2">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="12"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numero8y7">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="15"/>
+			<xs:fractionDigits value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numero4y7">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="11"/>
+			<xs:fractionDigits value="7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Numero11y2">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="11"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="monedaType">
+		<xs:restriction base="Char3">
+			<xs:enumeration value="S/."/>
+			<xs:enumeration value="US$"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="generoType">
+		<xs:restriction base="Char1">
+			<xs:enumeration value="M"/>
+			<xs:enumeration value="F"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="sinoType">
+		<xs:restriction base="Char1">
+			<xs:enumeration value="S"/>
+			<xs:enumeration value="N"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

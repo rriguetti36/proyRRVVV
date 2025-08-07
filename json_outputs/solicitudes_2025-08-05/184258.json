@@ -1,0 +1,78 @@
+{
+  "nroOperacion": "184258",
+  "AFP": "1009",
+  "CUSPP": "231761JGZIA5",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2023-09-15",
+  "fechaSuscripcionIII": "2024-04-12",
+  "devengueSolicitud": "2023-09-15",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.711",
+  "diaCita": "2024-04-23",
+  "horaCita": "11:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "09273025",
+    "apellidoPaterno": "GUTIERREZ",
+    "apellidoMaterno": "ZEGARRA",
+    "primerNombre": "JOSE",
+    "segundoNombre": "GUILLERMO",
+    "genero": "M",
+    "fechaNacimiento": "1963-06-16",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "854281.71",
+    "saldoCic": "854281.71",
+    "valorCuota": "14.0819334",
+    "saldoCuotas": "60665.0866564",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "ZARATE",
+      "apellidoMaterno": "PEREZ",
+      "primerNombre": "SANDRA",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1957-07-24",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "ZEGARRA",
+      "apellidoMaterno": "PEREZ",
+      "primerNombre": "NORMA",
+      "segundoNombre": "LUZ",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1938-05-20",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

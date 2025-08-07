@@ -1,0 +1,98 @@
+{
+  "nroOperacion": "188434",
+  "AFP": "1010",
+  "CUSPP": "652871MSMRT7",
+  "tipoBeneficio": "C",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.85",
+  "fechaDevengue": "2024-07-18",
+  "fechaSuscripcionIII": "2024-10-30",
+  "devengueSolicitud": "2024-07-18",
+  "fechaEnvio": "2024-10-31",
+  "fechaCierre": "2024-11-06",
+  "tipoCambio": "3.772",
+  "diaCita": "2024-11-11",
+  "horaCita": "15:30",
+  "lugarCita": "PIURA-PIURA-CASTILLA. CENTRO COMERCIAL OPEN PLAZA PIURA, LOCAL LC-109, AV. ANDRÉS AVELINO CÁCERES 147 ",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "70781517",
+    "apellidoPaterno": "SUAREZ",
+    "apellidoMaterno": "MANTARI",
+    "primerNombre": "MOISES",
+    "segundoNombre": "ALEJANDRO",
+    "genero": "M",
+    "fechaNacimiento": "1996-08-12",
+    "gradoInvalidez": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "604915.34",
+    "saldoCic": "1105.76",
+    "valorCuota": "14.9059137",
+    "saldoCuotas": "74.1826380",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "603809.58"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "MEDINA",
+      "apellidoMaterno": "PANCCA",
+      "primerNombre": "RUT",
+      "segundoNombre": "YENIFER",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1996-03-16",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "SUAREZ",
+      "apellidoMaterno": "MEDINA",
+      "primerNombre": "ALEJANDRO",
+      "segundoNombre": "SAIT",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2016-12-08",
+      "genero": "M"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}
