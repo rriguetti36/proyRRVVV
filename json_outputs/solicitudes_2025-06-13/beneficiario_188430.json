@@ -1,0 +1,21 @@
+[
+  {
+    "apellidoPaterno": "MONTOYA",
+    "apellidoMaterno": "LOPEZ",
+    "primerNombre": "LORENZA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1978-12-19",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "GARCIA",
+    "apellidoMaterno": "MONTOYA",
+    "primerNombre": "MAX",
+    "segundoNombre": "ALONSO",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2007-07-13",
+    "genero": "M"
+  }
+]

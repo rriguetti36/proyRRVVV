@@ -1,0 +1,75 @@
+{
+  "nroOperacion": "184257",
+  "AFP": "1009",
+  "CUSPP": "532780CHIMA7",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2023-11-01",
+  "fechaSuscripcionIII": "2024-04-12",
+  "devengueSolicitud": "2021-02-01",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.711",
+  "diaCita": "2024-04-23",
+  "horaCita": "14:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "21447445",
+    "apellidoPaterno": "HUAMANI",
+    "apellidoMaterno": "INCA",
+    "primerNombre": "CIPRIANA",
+    "genero": "F",
+    "fechaNacimiento": "1963-09-26",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "122611.65",
+    "saldoCic": "31388.95",
+    "valorCuota": "14.0819334",
+    "saldoCuotas": "2229.0227563",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4120",
+    "aporteAdicional": "91222.70"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "ROJAS",
+    "apellidoMaterno": "TITO",
+    "primerNombre": "RAUL",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1959-11-01",
+    "genero": "M"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

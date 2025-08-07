@@ -1,0 +1,21 @@
+[
+  {
+    "apellidoPaterno": "ESPINAL",
+    "apellidoMaterno": "CIPRIAN",
+    "primerNombre": "DOMINGA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1975-11-03",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "RAMIREZ",
+    "apellidoMaterno": "ESPINAL",
+    "primerNombre": "JAYCOB",
+    "segundoNombre": "GIAN FRANCO",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2015-10-17",
+    "genero": "M"
+  }
+]

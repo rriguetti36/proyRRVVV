@@ -1,0 +1,66 @@
+{
+  "nroOperacion": "184271",
+  "AFP": "1002",
+  "CUSPP": "521141TAGIN4",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-12-24",
+  "fechaSuscripcionIII": "2024-04-15",
+  "devengueSolicitud": "2023-12-24",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.707",
+  "diaCita": "2024-04-28",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. AV. CANAVAL Y MOREYRA 540",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "05239423",
+    "apellidoPaterno": "AGUILAR",
+    "apellidoMaterno": "GRANDEZ",
+    "primerNombre": "TULIO",
+    "genero": "M",
+    "fechaNacimiento": "1960-07-19",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "163002.89",
+    "saldoCic": "4776.46",
+    "valorCuota": "13.9615179",
+    "saldoCuotas": "342.1160962",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "158226.43"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "CORREA",
+    "apellidoMaterno": "SOSA",
+    "primerNombre": "EDITH",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1960-08-20",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

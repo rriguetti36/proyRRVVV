@@ -1,0 +1,955 @@
+[
+  {
+    "nroOperacion": "183799",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183799",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "1",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183799",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183799",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183800",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183800",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183800",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "5",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183800",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183801",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183801",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "1",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183801",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183801",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183802",
+    "modalidad": "RV",
+    "moneda": "S/.",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183802",
+    "modalidad": "RV",
+    "moneda": "S/.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183802",
+    "modalidad": "RTVD",
+    "moneda": "S/.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183803",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183803",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183803",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "5",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183803",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183804",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183804",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183804",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "5",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183804",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183805",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183805",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183805",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183805",
+    "modalidad": "RVE",
+    "moneda": "S/.Aj.",
+    "anosRT": "15",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183806",
+    "modalidad": "RV",
+    "moneda": "US$Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183806",
+    "modalidad": "RTVD",
+    "moneda": "US$Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183806",
+    "modalidad": "RTVD",
+    "moneda": "US$Aj.",
+    "anosRT": "5",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183806",
+    "modalidad": "RTVD",
+    "moneda": "US$Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183807",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183807",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183807",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "1",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183807",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183808",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183808",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "1",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183808",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183808",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183809",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183809",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183810",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183810",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183810",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "1",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183810",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183811",
+    "modalidad": "RV",
+    "moneda": "S/.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183811",
+    "modalidad": "RTVD",
+    "moneda": "S/.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183811",
+    "modalidad": "RTVD",
+    "moneda": "S/.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183811",
+    "modalidad": "RTVD",
+    "moneda": "S/.",
+    "anosRT": "5",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183812",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183812",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183813",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183813",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183814",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183814",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "1",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183814",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183814",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183815",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183815",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183815",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "5",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183815",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183816",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183816",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183816",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "5",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183816",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183817",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183817",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "1",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183817",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183817",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "5",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183818",
+    "modalidad": "RV",
+    "moneda": "S/.",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183818",
+    "modalidad": "RV",
+    "moneda": "S/.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183818",
+    "modalidad": "RTVD",
+    "moneda": "S/.",
+    "anosRT": "1",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183818",
+    "modalidad": "RTVD",
+    "moneda": "S/.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183819",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183819",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183819",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "5",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183819",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183820",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183820",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183820",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183821",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183821",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "1",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183821",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183821",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183822",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183822",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183822",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "5",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183822",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183823",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183823",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183823",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183824",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183824",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183824",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "5",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183824",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183825",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183825",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "1",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183825",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183825",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183826",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183826",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183826",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "5",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183826",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183827",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183827",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183827",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "1",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183827",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183828",
+    "modalidad": "RV",
+    "moneda": "S/.Aj.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "nroOperacion": "183828",
+    "modalidad": "RTVD",
+    "moneda": "S/.Aj.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  }
+]

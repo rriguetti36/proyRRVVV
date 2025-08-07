@@ -1,0 +1,32 @@
+[
+  {
+    "apellidoPaterno": "MOYA",
+    "apellidoMaterno": "ROJAS",
+    "primerNombre": "MAURICIO",
+    "segundoNombre": "FRANCESCO",
+    "parentesco": "HI",
+    "condicionInvalidez": "S",
+    "fechaNacimiento": "2006-06-03",
+    "genero": "M"
+  },
+  {
+    "apellidoPaterno": "MOYA",
+    "apellidoMaterno": "CUCHO",
+    "primerNombre": "GABRIEL",
+    "segundoNombre": "JOSE",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2015-07-02",
+    "genero": "M"
+  },
+  {
+    "apellidoPaterno": "MOYA",
+    "apellidoMaterno": "CUCHO",
+    "primerNombre": "RODRIGO",
+    "segundoNombre": "EMMANUEL",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2008-07-08",
+    "genero": "M"
+  }
+]

@@ -1,0 +1,75 @@
+{
+  "nroOperacion": "184268",
+  "AFP": "1002",
+  "CUSPP": "212831ECCIV0",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-12-01",
+  "fechaSuscripcionIII": "2024-04-15",
+  "devengueSolicitud": "2022-05-19",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.707",
+  "diaCita": "2024-04-24",
+  "horaCita": "16:00",
+  "lugarCita": "LAMBAYEQUE-CHICLAYO-CHICLAYO. AV. ANDRÉS AVELINO CÁCERES 238 URB. SANTA VICTORIA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "27693229",
+    "apellidoPaterno": "CUNIAS",
+    "apellidoMaterno": "CALVAY",
+    "primerNombre": "EXSEQUIEL",
+    "genero": "M",
+    "fechaNacimiento": "1958-04-10",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "96452.92",
+    "saldoCic": "55567.97",
+    "valorCuota": "13.9615179",
+    "saldoCuotas": "3980.0808478",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "40884.95"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "VASQUEZ",
+    "apellidoMaterno": "GONZALES",
+    "primerNombre": "BRIGIDA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1958-02-01",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

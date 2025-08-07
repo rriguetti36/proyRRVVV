@@ -1,0 +1,22 @@
+[
+  {
+    "apellidoPaterno": "MEDINA",
+    "apellidoMaterno": "PANCCA",
+    "primerNombre": "RUT",
+    "segundoNombre": "YENIFER",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1996-03-16",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "SUAREZ",
+    "apellidoMaterno": "MEDINA",
+    "primerNombre": "ALEJANDRO",
+    "segundoNombre": "SAIT",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2016-12-08",
+    "genero": "M"
+  }
+]

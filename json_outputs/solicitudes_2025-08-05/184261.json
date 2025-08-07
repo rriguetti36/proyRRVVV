@@ -1,0 +1,67 @@
+{
+  "nroOperacion": "184261",
+  "AFP": "1009",
+  "CUSPP": "573161DMMDI8",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2023-07-09",
+  "fechaSuscripcionIII": "2024-04-12",
+  "devengueSolicitud": "2023-07-09",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.711",
+  "diaCita": "2024-04-23",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "10705544",
+    "apellidoPaterno": "MONDALGO",
+    "apellidoMaterno": "MEDINA",
+    "primerNombre": "DANIEL",
+    "segundoNombre": "ROLANDO",
+    "genero": "M",
+    "fechaNacimiento": "1974-10-16",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "4719.45",
+    "saldoCic": "3857.45",
+    "valorCuota": "14.0819334",
+    "saldoCuotas": "273.9290047",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4120",
+    "aporteAdicional": "862.00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "MEDINA",
+    "apellidoMaterno": "MARTINEZ",
+    "primerNombre": "URCINA",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1947-07-24",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

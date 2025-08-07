@@ -1,0 +1,118 @@
+{
+  "nroOperacion": "183799",
+  "AFP": "1009",
+  "CUSPP": "258671DPZII5",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2023-11-07",
+  "fechaSuscripcionIII": "2024-03-20",
+  "devengueSolicitud": "2023-11-07",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.703",
+  "diaCita": "2024-04-01",
+  "horaCita": "11:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "18114133",
+    "apellidoPaterno": "PADILLA",
+    "apellidoMaterno": "ZUÑIGA",
+    "primerNombre": "DANTE",
+    "segundoNombre": "GIOVANI",
+    "genero": "M",
+    "fechaNacimiento": "1970-10-28",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "1691879.08",
+    "saldoCic": "624415.29",
+    "valorCuota": "14.0346380",
+    "saldoCuotas": "44491.0150159",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4120",
+    "aporteAdicional": "1067463.79"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "REYES",
+      "apellidoMaterno": "TINEDO",
+      "primerNombre": "CLAUDIA",
+      "segundoNombre": "PATRICIA",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1987-01-23",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "PADILLA",
+      "apellidoMaterno": "REYES",
+      "primerNombre": "MATEO",
+      "segundoNombre": "GIOVANI",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2010-04-18",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "PADILLA",
+      "apellidoMaterno": "REYES",
+      "primerNombre": "FLAVIO",
+      "segundoNombre": "ISRAEL",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2012-05-10",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "PADILLA",
+      "apellidoMaterno": "BECERRA",
+      "primerNombre": "DANTE",
+      "segundoNombre": "FABRITZIO",
+      "parentesco": "HI",
+      "condicionInvalidez": "S",
+      "fechaNacimiento": "2003-05-07",
+      "genero": "M"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

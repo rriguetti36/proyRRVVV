@@ -1,0 +1,82 @@
+{
+  "nroOperacion": "183805",
+  "AFP": "1009",
+  "CUSPP": "530421BCSIC6",
+  "tipoBeneficio": "G",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2023-11-01",
+  "fechaSuscripcionIII": "2024-03-20",
+  "devengueSolicitud": "2023-11-01",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.703",
+  "diaCita": "2024-04-17",
+  "horaCita": "11:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "24876685",
+    "apellidoPaterno": "CUTI",
+    "apellidoMaterno": "SAICO",
+    "primerNombre": "BACILIO",
+    "genero": "M",
+    "fechaNacimiento": "1963-02-02",
+    "condicionInvalidez": "S"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "319714.64",
+    "saldoCic": "182748.60",
+    "valorCuota": "14.0346380",
+    "saldoCuotas": "13021.2549836",
+    "bonoActualizado": "136966.04",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "CHUCTAYA",
+    "apellidoMaterno": "ALCCAMARI",
+    "primerNombre": "FELICITAS",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1967-11-20",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RVE",
+      "moneda": "S/.Aj.",
+      "anosRT": "15",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

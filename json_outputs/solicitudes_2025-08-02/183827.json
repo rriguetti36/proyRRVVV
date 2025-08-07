@@ -1,0 +1,84 @@
+{
+  "nroOperacion": "183827",
+  "AFP": "1002",
+  "CUSPP": "536691HMBTG2",
+  "tipoBeneficio": "C",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-11-14",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2023-11-14",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-03",
+  "horaCita": "16:00",
+  "lugarCita": "LA LIBERTAD-TRUJILLO-TRUJILLO. AV. FÁTIMA 551 LOTE 08 TERCERA ETAPA URB. LA MERCED",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "08279818",
+    "apellidoPaterno": "MONTOYA",
+    "apellidoMaterno": "BURGA",
+    "primerNombre": "HERNAN",
+    "segundoNombre": "SIMON",
+    "genero": "M",
+    "fechaNacimiento": "1964-10-21",
+    "gradoInvalidez": "T"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "230391.74",
+    "saldoCic": "66527.60",
+    "valorCuota": "13.9064157",
+    "saldoCuotas": "4783.9501879",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "163864.14"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "MEZA",
+    "apellidoMaterno": "VASQUEZ DE MONTOYA",
+    "primerNombre": "OLGA",
+    "segundoNombre": "SOFIA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1963-12-10",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

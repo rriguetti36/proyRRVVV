@@ -1,0 +1,67 @@
+{
+  "nroOperacion": "183813",
+  "AFP": "1002",
+  "CUSPP": "211911TNDAZ4",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2024-03-01",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2019-09-28",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-03",
+  "horaCita": "15:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. AV. CANAVAL Y MOREYRA 540",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "06062978",
+    "apellidoPaterno": "NAVARRETE",
+    "apellidoMaterno": "DIAZ",
+    "primerNombre": "TEOFILO",
+    "genero": "M",
+    "fechaNacimiento": "1958-01-08",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "188545.38",
+    "saldoCic": "84967.78",
+    "valorCuota": "13.9064157",
+    "saldoCuotas": "6109.9698034",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "103577.60"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "VILCA",
+    "apellidoMaterno": "MOLINA",
+    "primerNombre": "DORIS",
+    "segundoNombre": "MARTHA",
+    "parentesco": "CB",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1963-03-18",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "nroOperacion": "183819",
+  "AFP": "1002",
+  "CUSPP": "574421RCZRA9",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2024-03-01",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2023-02-11",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-05",
+  "horaCita": "11:00",
+  "lugarCita": "LA LIBERTAD-TRUJILLO-TRUJILLO. AV. FÁTIMA 551 LOTE 08 TERCERA ETAPA URB. LA MERCED",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "10661039",
+    "apellidoPaterno": "CARRION",
+    "apellidoMaterno": "ZAVALA",
+    "primerNombre": "ROLANDO",
+    "genero": "M",
+    "fechaNacimiento": "1975-02-19",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "329903.12",
+    "saldoCic": "44966.12",
+    "valorCuota": "13.9064157",
+    "saldoCuotas": "3233.4802131",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "284937.00"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "ALBITES",
+      "apellidoMaterno": "MEZA DE CARRION",
+      "primerNombre": "ROSA",
+      "segundoNombre": "ISABEL",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1974-06-22",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "CARRION",
+      "apellidoMaterno": "ALBITES",
+      "primerNombre": "VICTOR",
+      "segundoNombre": "ANTONIO AA",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2008-03-03",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "ZAVALA",
+      "apellidoMaterno": "TAPIA",
+      "primerNombre": "MARIA",
+      "segundoNombre": "AURORA",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1957-04-28",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

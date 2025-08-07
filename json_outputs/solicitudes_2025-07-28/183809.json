@@ -1,0 +1,79 @@
+{
+  "nroOperacion": "183809",
+  "AFP": "1001",
+  "CUSPP": "570971IGCAB6",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2017-11-18",
+  "fechaSuscripcionIII": "2024-03-20",
+  "devengueSolicitud": "2017-11-18",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.703",
+  "diaCita": "2024-04-01",
+  "horaCita": "14:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "22098676",
+    "apellidoPaterno": "GAMARRA",
+    "apellidoMaterno": "CARBAJAL",
+    "primerNombre": "INOCENCIO",
+    "segundoNombre": "JUAN",
+    "genero": "M",
+    "fechaNacimiento": "1974-03-11",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "9888.60",
+    "saldoCic": "9888.60",
+    "valorCuota": "14.1148014",
+    "saldoCuotas": "700.5837150",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "ROMAN",
+      "apellidoMaterno": "CHATE",
+      "primerNombre": "LUCILA",
+      "segundoNombre": "JOSEFINA",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1974-03-19",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "GAMARRA",
+      "apellidoMaterno": "ROMAN",
+      "primerNombre": "JOHANA",
+      "segundoNombre": "LIZETH",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2005-02-09",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

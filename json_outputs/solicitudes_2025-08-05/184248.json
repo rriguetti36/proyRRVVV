@@ -1,0 +1,83 @@
+{
+  "nroOperacion": "184248",
+  "AFP": "1010",
+  "CUSPP": "615611OTVAG7",
+  "tipoBeneficio": "C",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.85",
+  "fechaDevengue": "2023-10-12",
+  "fechaSuscripcionIII": "2024-04-12",
+  "devengueSolicitud": "2023-10-12",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.711",
+  "diaCita": "2024-04-23",
+  "horaCita": "11:30",
+  "lugarCita": "LA LIBERTAD-TRUJILLO-TRUJILLO. C.C. MALL AVENTURA PLAZA, LOCAL 103, AV. AMÉRICA OESTE N° 750, URB. EL INGENIO",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "43711557",
+    "apellidoPaterno": "TERAN",
+    "apellidoMaterno": "VARGAS",
+    "primerNombre": "OSCAR",
+    "segundoNombre": "ADONIS",
+    "genero": "M",
+    "fechaNacimiento": "1986-05-31",
+    "gradoInvalidez": "T"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "245713.30",
+    "saldoCic": "5079.04",
+    "valorCuota": "14.3977221",
+    "saldoCuotas": "352.7669145",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "240634.26"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "VARGAS",
+    "apellidoMaterno": "TERRONES",
+    "primerNombre": "DORILA",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1952-10-16",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

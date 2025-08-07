@@ -1,0 +1,31 @@
+[
+  {
+    "apellidoPaterno": "HINOSTROZA",
+    "apellidoMaterno": "HUAMAN",
+    "primerNombre": "ROBERTA",
+    "segundoNombre": "ADRIANA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1963-02-05",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "ARTEAGA",
+    "apellidoMaterno": "TORRES",
+    "primerNombre": "BERNARDINA",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1943-12-04",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "HERVACIO",
+    "apellidoMaterno": "CEBREROS",
+    "primerNombre": "DIEGO",
+    "segundoNombre": "DE ALCALA",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1937-11-13",
+    "genero": "M"
+  }
+]

@@ -1,0 +1,51 @@
+[
+  {
+    "apellidoPaterno": "ATAO",
+    "apellidoMaterno": "VARGAS",
+    "primerNombre": "WENDY",
+    "segundoNombre": "BLANCA",
+    "parentesco": "CB",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1991-03-01",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "GIRAO",
+    "apellidoMaterno": "ATAO",
+    "primerNombre": "LUCIANO",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2018-03-10",
+    "genero": "M"
+  },
+  {
+    "apellidoPaterno": "GIRAO",
+    "apellidoMaterno": "ATAO",
+    "primerNombre": "LUIS",
+    "segundoNombre": "MARIO",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2016-09-16",
+    "genero": "M"
+  },
+  {
+    "apellidoPaterno": "GIRAO",
+    "apellidoMaterno": "RODRIGUEZ",
+    "primerNombre": "FABRIZIO",
+    "segundoNombre": "ZHAID",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2008-07-11",
+    "genero": "M"
+  },
+  {
+    "apellidoPaterno": "GIRAO",
+    "apellidoMaterno": "RODRIGUEZ",
+    "primerNombre": "THIAGO",
+    "segundoNombre": "NICOLA",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2013-10-01",
+    "genero": "M"
+  }
+]

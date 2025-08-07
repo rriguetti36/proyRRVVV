@@ -1,0 +1,67 @@
+{
+  "nroOperacion": "183842",
+  "AFP": "1002",
+  "CUSPP": "512441LEPAA7",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-10-04",
+  "fechaSuscripcionIII": "2024-03-22",
+  "devengueSolicitud": "2023-10-04",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.701",
+  "diaCita": "2024-04-09",
+  "horaCita": "12:00",
+  "lugarCita": "ICA-CHINCHA-CHINCHA ALTA. CALLE LIMA N° 250 CERCADO CHINCHA ALTA - CHINCHA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "08369596",
+    "apellidoPaterno": "ESCALANTE",
+    "apellidoMaterno": "PACAYA",
+    "primerNombre": "LUIS",
+    "segundoNombre": "ENRIQUE",
+    "genero": "M",
+    "fechaNacimiento": "1958-03-02",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "286.19",
+    "saldoCic": "286.19",
+    "valorCuota": "13.9064157",
+    "saldoCuotas": "20.5802613",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "PECHO",
+    "apellidoMaterno": "ABURTO",
+    "primerNombre": "YSIDORA",
+    "segundoNombre": "NORI",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1960-12-14",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

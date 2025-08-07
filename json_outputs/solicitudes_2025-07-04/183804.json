@@ -1,0 +1,85 @@
+{
+  "nroOperacion": "183804",
+  "AFP": "1009",
+  "CUSPP": "542231VVMGI4",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2023-07-18",
+  "fechaSuscripcionIII": "2024-03-20",
+  "devengueSolicitud": "2023-07-18",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.703",
+  "diaCita": "2024-04-01",
+  "horaCita": "11:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "23855037",
+    "apellidoPaterno": "VARGAS",
+    "apellidoMaterno": "MUÑIZ",
+    "primerNombre": "VIDAL",
+    "genero": "M",
+    "fechaNacimiento": "1966-04-28",
+    "estadoSobrevivencia": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "103718.65",
+    "saldoCic": "464.48",
+    "valorCuota": "14.0346380",
+    "saldoCuotas": "33.0952605",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4120",
+    "aporteAdicional": "103254.17"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "VARGAS",
+    "apellidoMaterno": "GOMEZ",
+    "primerNombre": "SHADERLY",
+    "segundoNombre": "DANUSKA",
+    "parentesco": "HI",
+    "condicionInvalidez": "S",
+    "fechaNacimiento": "2012-06-04",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "nroOperacion": "183838",
+  "AFP": "1002",
+  "CUSPP": "581621ALPAD0",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2024-01-01",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2021-01-03",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-03",
+  "horaCita": "12:00",
+  "lugarCita": "ICA-CHINCHA-CHINCHA ALTA. CALLE LIMA N° 250 CERCADO CHINCHA ALTA - CHINCHA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "25852037",
+    "apellidoPaterno": "LINARES",
+    "apellidoMaterno": "PANDURO",
+    "primerNombre": "ALCALA",
+    "genero": "M",
+    "fechaNacimiento": "1977-02-08",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "861227.18",
+    "saldoCic": "66057.67",
+    "valorCuota": "13.9078956",
+    "saldoCuotas": "4749.6524205",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "795169.51"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "PANDURO",
+      "apellidoMaterno": "DE LINARES",
+      "primerNombre": "MARINA",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1940-05-01",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "LINARES",
+      "apellidoMaterno": "RUIZ",
+      "primerNombre": "WENDOR",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1937-10-08",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "ACHING",
+      "apellidoMaterno": "PISCO",
+      "primerNombre": "ALINA",
+      "segundoNombre": "ALLISSON",
+      "parentesco": "CB",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1981-08-16",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "apellidoPaterno": "MENDOZA",
+    "apellidoMaterno": "RAMIREZ",
+    "primerNombre": "LAURA",
+    "segundoNombre": "ESTEPHANY",
+    "parentesco": "CB",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1992-04-05",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "RUIZ",
+    "apellidoMaterno": "MENDOZA",
+    "primerNombre": "LUCIANA",
+    "segundoNombre": "ISABELLA",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2013-08-28",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "RUIZ",
+    "apellidoMaterno": "MENDOZA",
+    "primerNombre": "MÍLAN",
+    "segundoNombre": "ANDRÉ",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2017-03-01",
+    "genero": "M"
+  },
+  {
+    "apellidoPaterno": "RUIZ",
+    "apellidoMaterno": "MENDOZA",
+    "primerNombre": "ANA",
+    "segundoNombre": "CAMILA",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2007-09-10",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "HOLGUIN",
+    "apellidoMaterno": "MUÑOZ",
+    "primerNombre": "LIVIA",
+    "segundoNombre": "JUDY",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1966-11-28",
+    "genero": "F"
+  }
+]

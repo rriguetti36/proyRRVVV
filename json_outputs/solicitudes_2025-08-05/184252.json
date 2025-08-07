@@ -1,0 +1,85 @@
+{
+  "nroOperacion": "184252",
+  "AFP": "1001",
+  "CUSPP": "542381RBCAG3",
+  "tipoBeneficio": "G",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2024-03-01",
+  "fechaSuscripcionIII": "2024-04-12",
+  "devengueSolicitud": "2024-03-08",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.711",
+  "diaCita": "2024-04-23",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "2",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "21288374",
+    "apellidoPaterno": "BUJAICO",
+    "apellidoMaterno": "CONGORA",
+    "primerNombre": "ROBERTO",
+    "genero": "M",
+    "fechaNacimiento": "1966-05-13",
+    "condicionInvalidez": "S"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "133036.31",
+    "saldoCic": "133036.31",
+    "valorCuota": "219.3508047",
+    "saldoCuotas": "606.5002141",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "QUINTO",
+      "apellidoMaterno": "BERNARDO",
+      "primerNombre": "HILDA",
+      "segundoNombre": "ZENAIDA",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1967-10-31",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "BUJAICO",
+      "apellidoMaterno": "QUINTO",
+      "primerNombre": "GREYSS",
+      "segundoNombre": "KATZUMI",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2010-05-04",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "nroOperacion": "183801",
+  "AFP": "1009",
+  "CUSPP": "565671MBSVA8",
+  "tipoBeneficio": "G",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2024-02-01",
+  "fechaSuscripcionIII": "2024-03-20",
+  "devengueSolicitud": "2024-02-01",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.703",
+  "diaCita": "2024-04-02",
+  "horaCita": "16:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "29580111",
+    "apellidoPaterno": "BALVIN",
+    "apellidoMaterno": "SALAS",
+    "primerNombre": "MIGUEL",
+    "segundoNombre": "ANGEL",
+    "genero": "M",
+    "fechaNacimiento": "1972-09-27",
+    "condicionInvalidez": "S"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "157077.72",
+    "saldoCic": "157077.72",
+    "valorCuota": "14.0346380",
+    "saldoCuotas": "11192.1465055",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "JUAREZ",
+      "apellidoMaterno": "MACHACA DE BALVIN",
+      "primerNombre": "FLOR",
+      "segundoNombre": "MARIA",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1974-02-21",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "BALVIN",
+      "apellidoMaterno": "JUAREZ",
+      "primerNombre": "GABRIELA",
+      "segundoNombre": "MAYTE",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2008-12-11",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

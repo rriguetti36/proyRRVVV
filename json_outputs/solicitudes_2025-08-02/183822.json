@@ -1,0 +1,97 @@
+{
+  "nroOperacion": "183822",
+  "AFP": "1002",
+  "CUSPP": "534211ECRHA0",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2024-01-08",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2023-09-07",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-03",
+  "horaCita": "16:00",
+  "lugarCita": "LAMBAYEQUE-CHICLAYO-CHICLAYO. AV. ANDRÉS AVELINO CÁCERES 238 URB. SANTA VICTORIA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "16430346",
+    "apellidoPaterno": "CARHUAJULCA",
+    "apellidoMaterno": "RODAS",
+    "primerNombre": "ELMER",
+    "genero": "M",
+    "fechaNacimiento": "1964-02-16",
+    "estadoSobrevivencia": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "336311.98",
+    "saldoCic": "23422.45",
+    "valorCuota": "13.9064157",
+    "saldoCuotas": "1684.2909421",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "312889.53"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "CARHUAJULCA",
+      "apellidoMaterno": "PISCO",
+      "primerNombre": "CRUZ",
+      "segundoNombre": "DEL PILAR",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2008-08-26",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "CARHUAJULCA",
+      "apellidoMaterno": "GIL",
+      "primerNombre": "IRIS",
+      "segundoNombre": "DEL MILAGR",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2013-04-28",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

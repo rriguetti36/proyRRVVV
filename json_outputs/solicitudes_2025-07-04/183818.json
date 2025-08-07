@@ -1,0 +1,84 @@
+{
+  "nroOperacion": "183818",
+  "AFP": "1002",
+  "CUSPP": "573450PPGAI5",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-01-03",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2023-01-03",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-04",
+  "horaCita": "11:00",
+  "lugarCita": "ICA-CHINCHA-CHINCHA ALTA. CALLE LIMA N° 250 CERCADO CHINCHA ALTA - CHINCHA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "01127561",
+    "apellidoPaterno": "PEÑA",
+    "apellidoMaterno": "GUTIERREZ",
+    "primerNombre": "PERLA",
+    "segundoNombre": "MARIA",
+    "genero": "F",
+    "fechaNacimiento": "1974-11-14",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "64427.23",
+    "saldoCic": "894.91",
+    "valorCuota": "13.9064157",
+    "saldoCuotas": "64.3523119",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "63532.32"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "FLORES",
+    "apellidoMaterno": "PE¥A",
+    "primerNombre": "JUAN",
+    "segundoNombre": "CARLOS ROD",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2006-01-12",
+    "genero": "M"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

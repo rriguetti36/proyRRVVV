@@ -1,0 +1,22 @@
+[
+  {
+    "apellidoPaterno": "SANCHEZ",
+    "apellidoMaterno": "COZ DE MORALES",
+    "primerNombre": "CIRILA",
+    "segundoNombre": "JANNET",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1960-10-28",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "MORALES",
+    "apellidoMaterno": "SANCHEZ",
+    "primerNombre": "FIORELLA",
+    "segundoNombre": "VANESA",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2006-01-30",
+    "genero": "F"
+  }
+]

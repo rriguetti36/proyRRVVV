@@ -1,0 +1,67 @@
+{
+  "nroOperacion": "184253",
+  "AFP": "1001",
+  "CUSPP": "190871VRSAA1",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2019-03-04",
+  "fechaSuscripcionIII": "2024-04-12",
+  "devengueSolicitud": "2019-03-04",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.711",
+  "diaCita": "2024-04-24",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "08928454",
+    "apellidoPaterno": "ROJAS",
+    "apellidoMaterno": "SALAZAR",
+    "primerNombre": "VICENTE",
+    "genero": "M",
+    "fechaNacimiento": "1952-04-05",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "1201.47",
+    "saldoCic": ".00",
+    "valorCuota": "14.1674779",
+    "saldoCuotas": ".0000000",
+    "bonoActualizado": "1201.47",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "TORRES",
+    "apellidoMaterno": "VARGAS",
+    "primerNombre": "DILMA",
+    "segundoNombre": "MARIA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1953-01-28",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

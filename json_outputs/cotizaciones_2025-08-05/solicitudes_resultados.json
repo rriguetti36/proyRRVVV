@@ -1,0 +1,5277 @@
+[
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 3691.3010986155327,
+          "penafp": 0,
+          "pencia": 3691.3010986155327,
+          "primaafp": 0,
+          "primacia": 472907.5,
+          "tasavta": 6.410179800294813,
+          "tasaTci": 6.511118530314963,
+          "tasaTce": 6.25,
+          "tasaTir": 9.806207110629162,
+          "perdida": 0,
+          "operacion": "183829",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 1291.9553845154364
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 516.7821538061746
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 516.7821538061746
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 3857.509710067309,
+          "penafp": 7715.019420134618,
+          "pencia": 3857.509710067309,
+          "primaafp": 61720.15536107694,
+          "primacia": 411187.34463892307,
+          "tasavta": 6.486424499845711,
+          "tasaTci": 6.534766233695954,
+          "tasaTce": 6.25,
+          "tasaTir": 9.848757948856912,
+          "perdida": 0,
+          "operacion": "183829",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 1350.128398523558
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 540.0513594094233
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 540.0513594094233
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 4330.503962077336,
+          "penafp": 8661.007924154672,
+          "pencia": 4330.503962077336,
+          "primaafp": 69288.06339323737,
+          "primacia": 403619.43660676264,
+          "tasavta": 6.52456562590813,
+          "tasaTci": 6.586395201248019,
+          "tasaTce": 6.25,
+          "tasaTir": 9.840126049188601,
+          "perdida": 0,
+          "operacion": "183829",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 1515.6763867270674
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 606.2705546908271
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 606.2705546908271
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 3907.079541528778,
+          "penafp": 7814.159083057556,
+          "pencia": 3907.079541528778,
+          "primaafp": 62513.27266446045,
+          "primacia": 410394.22733553953,
+          "tasavta": 6.486424499845711,
+          "tasaTci": 6.535930039845561,
+          "tasaTce": 6.25,
+          "tasaTir": 9.826246120689607,
+          "perdida": 0,
+          "operacion": "183829",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 1367.4778395350722
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 546.991135814029
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 546.991135814029
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 4594.91847671984,
+          "penafp": 0,
+          "pencia": 4594.91847671984,
+          "primaafp": 0,
+          "primacia": 802661.56,
+          "tasavta": 6.534562804545496,
+          "tasaTci": 6.580392558459991,
+          "tasaTce": 6.25,
+          "tasaTir": 8.646912707820809,
+          "perdida": 0,
+          "operacion": "183830",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 1608.2214668519441
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 643.2885867407778
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 643.2885867407778
+            },
+            {
+              "id": 5,
+              "prc": 14,
+              "pension": 643.2885867407778
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 4741.181768108049,
+          "penafp": 9482.363536216099,
+          "pencia": 4741.181768108049,
+          "primaafp": 104305.99889837709,
+          "primacia": 698355.561101623,
+          "tasavta": 6.598164648521787,
+          "tasaTci": 6.594513111500766,
+          "tasaTce": 6.25,
+          "tasaTir": 8.626202508557412,
+          "perdida": 0,
+          "operacion": "183830",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 1659.4136188378172
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 663.765447535127
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 663.765447535127
+            },
+            {
+              "id": 5,
+              "prc": 14,
+              "pension": 663.765447535127
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 5259.443315332333,
+          "penafp": 10518.886630664667,
+          "pencia": 5259.443315332333,
+          "primaafp": 115707.75293731134,
+          "primacia": 686953.8070626887,
+          "tasavta": 6.623615130477667,
+          "tasaTci": 6.632081369149079,
+          "tasaTce": 6.25,
+          "tasaTir": 8.639936079502997,
+          "perdida": 0,
+          "operacion": "183830",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 1840.8051603663166
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 736.3220641465267
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 736.3220641465267
+            },
+            {
+              "id": 5,
+              "prc": 14,
+              "pension": 736.3220641465267
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 4776.971968566349,
+          "penafp": 9553.943937132697,
+          "pencia": 4776.971968566349,
+          "primaafp": 105093.38330845967,
+          "primacia": 697568.1766915404,
+          "tasavta": 6.598164648521787,
+          "tasaTci": 6.595593670824451,
+          "tasaTce": 6.25,
+          "tasaTir": 8.610708052578309,
+          "perdida": 0,
+          "operacion": "183830",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 1671.9401889982219
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 668.7760755992889
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 668.7760755992889
+            },
+            {
+              "id": 5,
+              "prc": 14,
+              "pension": 668.7760755992889
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 2016.4042409977726,
+          "penafp": 0,
+          "pencia": 545.5639180188779,
+          "primaafp": 0,
+          "primacia": 323774.24,
+          "tasavta": 4.787354959858803,
+          "tasaTci": 5.390400922397776,
+          "tasaTce": 4.787354959858803,
+          "tasaTir": 12.070199201839937,
+          "perdida": 0,
+          "operacion": "183831",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 282.2965937396882
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 282.2965937396882
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 282.2965937396882
+            },
+            {
+              "id": 5,
+              "prc": 35,
+              "pension": 705.7414843492204
+            }
+          ]
+        },
+        {
+          "idmod": 2,
+          "penref": 1744.7534206837583,
+          "penafp": 3489.5068413675167,
+          "pencia": 472.0653194490688,
+          "primaafp": 55832.10946188027,
+          "primacia": 267942.1305381197,
+          "tasavta": 4.85,
+          "tasaTci": 5.31300076798682,
+          "tasaTce": 4.85,
+          "tasaTir": 12.910504049031335,
+          "perdida": 0,
+          "operacion": "183831",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 244.2654788957262
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 244.2654788957262
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 244.2654788957262
+            },
+            {
+              "id": 5,
+              "prc": 35,
+              "pension": 610.6636972393154
+            }
+          ]
+        },
+        {
+          "idmod": 3,
+          "penref": 1855.303155129575,
+          "penafp": 3710.60631025915,
+          "pencia": 501.97596188570753,
+          "primaafp": 59369.7009641464,
+          "primacia": 264404.5390358536,
+          "tasavta": 4.85,
+          "tasaTci": 5.308350206859558,
+          "tasaTce": 4.85,
+          "tasaTir": 13.655208982508672,
+          "perdida": 0,
+          "operacion": "183831",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 259.7424417181405
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 259.7424417181405
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 259.7424417181405
+            },
+            {
+              "id": 5,
+              "prc": 35,
+              "pension": 649.3561042953512
+            }
+          ]
+        },
+        {
+          "idmod": 4,
+          "penref": 1978.0405292406351,
+          "penafp": 3956.0810584812702,
+          "pencia": 535.1841258767952,
+          "primaafp": 63297.296935700324,
+          "primacia": 260476.94306429967,
+          "tasavta": 4.85,
+          "tasaTci": 5.393374217746705,
+          "tasaTce": 4.85,
+          "tasaTir": 12.5886471550835,
+          "perdida": 0,
+          "operacion": "183831",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 276.92567409368894
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 276.92567409368894
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 276.92567409368894
+            },
+            {
+              "id": 5,
+              "prc": 35,
+              "pension": 692.3141852342222
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ko",
+          "idmod": 1,
+          "penref": null,
+          "penafp": 0,
+          "pencia": null,
+          "primaafp": null,
+          "primacia": null,
+          "tasavta": 0.005802094013884762,
+          "tasaTci": 0,
+          "tasaTce": 0,
+          "tasaTir": 0,
+          "perdida": null,
+          "operacion": "183832",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": null
+            },
+            {
+              "id": 2,
+              "prc": 0,
+              "pension": null
+            }
+          ]
+        },
+        {
+          "procede": "ko",
+          "idmod": 2,
+          "penref": 1998.2645238095238,
+          "penafp": 3996.5290476190476,
+          "pencia": 1998.2645238095238,
+          "primaafp": 167854.22,
+          "primacia": 0,
+          "tasavta": 0.005802094013884762,
+          "tasaTci": 0,
+          "tasaTce": 0,
+          "tasaTir": 0,
+          "perdida": null,
+          "operacion": "183832",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "procede": "ko",
+          "idmod": 3,
+          "penref": 2331.308611111111,
+          "penafp": 4662.617222222222,
+          "pencia": 2331.308611111111,
+          "primaafp": 167854.22,
+          "primacia": 0,
+          "tasavta": 0.005802094013884762,
+          "tasaTci": 0,
+          "tasaTce": 0,
+          "tasaTir": 0,
+          "perdida": null,
+          "operacion": "183832",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "procede": "ko",
+          "idmod": 4,
+          "penref": 1998.2645238095238,
+          "penafp": 3996.5290476190476,
+          "pencia": 1998.2645238095238,
+          "primaafp": 167854.22,
+          "primacia": 0,
+          "tasavta": 0.005802094013884762,
+          "tasaTci": 0,
+          "tasaTce": 0,
+          "tasaTir": 0,
+          "perdida": null,
+          "operacion": "183832",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": []
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 936.7270414348264,
+          "penafp": 0,
+          "pencia": 936.7270414348264,
+          "primaafp": 0,
+          "primacia": 76933.23,
+          "tasavta": 5.334440065072021,
+          "tasaTci": 6.414066054292822,
+          "tasaTce": 5.334440065072021,
+          "tasaTir": 11.473635856189258,
+          "perdida": 0,
+          "operacion": "183834",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 393.42535740262707
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 788.3086212512694,
+          "penafp": 1576.6172425025388,
+          "pencia": 788.3086212512694,
+          "primaafp": 18919.406910030466,
+          "primacia": 58013.82308996953,
+          "tasavta": 5.309271804514459,
+          "tasaTci": 6.438421718041942,
+          "tasaTce": 5.309271804514459,
+          "tasaTir": 11.43844542109056,
+          "perdida": 0,
+          "operacion": "183834",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 331.08962092553315
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 861.9840666951773,
+          "penafp": 1723.9681333903545,
+          "pencia": 861.9840666951773,
+          "primaafp": 20687.617600684254,
+          "primacia": 56245.61239931574,
+          "tasavta": 5.409977933294763,
+          "tasaTci": 6.5082396340379045,
+          "tasaTce": 5.409977933294763,
+          "tasaTir": 11.412585035907918,
+          "perdida": 0,
+          "operacion": "183834",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 362.03330801197444
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 838.6209606474938,
+          "penafp": 1677.2419212949876,
+          "pencia": 838.6209606474938,
+          "primaafp": 20126.90305553985,
+          "primacia": 56806.32694446015,
+          "tasavta": 5.258951820087376,
+          "tasaTci": 6.438214506550266,
+          "tasaTce": 5.258951820087376,
+          "tasaTir": 11.489211951041245,
+          "perdida": 0,
+          "operacion": "183834",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 352.22080347194736
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": []
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 689.3502672743969,
+          "penafp": 0,
+          "pencia": 689.3502672743969,
+          "primaafp": 0,
+          "primacia": 93896.99,
+          "tasavta": 5.548080681068934,
+          "tasaTci": 6.389944666393621,
+          "tasaTce": 5.548080681068934,
+          "tasaTir": 11.428637809618403,
+          "perdida": 0,
+          "operacion": "183836",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 482.54518709207775
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 758.661177730421,
+          "penafp": 0,
+          "pencia": 758.661177730421,
+          "primaafp": 0,
+          "primacia": 93896.99,
+          "tasavta": 5.522865631300311,
+          "tasaTci": 6.4052314300115265,
+          "tasaTce": 5.522865631300311,
+          "tasaTir": 11.434015429302779,
+          "perdida": 0,
+          "operacion": "183836",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 531.0628244112946
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 644.6517975567792,
+          "penafp": 1289.3035951135585,
+          "pencia": 644.6517975567792,
+          "primaafp": 10314.428760908468,
+          "primacia": 83582.56123909153,
+          "tasavta": 5.548080681068934,
+          "tasaTci": 6.395592079245094,
+          "tasaTce": 5.548080681068934,
+          "tasaTir": 11.40692338850453,
+          "perdida": 0,
+          "operacion": "183836",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 451.2562582897454
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 827.2024611082826,
+          "penafp": 1654.4049222165652,
+          "pencia": 827.2024611082826,
+          "primaafp": 13235.239377732521,
+          "primacia": 80661.75062226749,
+          "tasavta": 5.64899612124663,
+          "tasaTci": 6.439837230681866,
+          "tasaTce": 5.64899612124663,
+          "tasaTir": 11.448356185317365,
+          "perdida": 0,
+          "operacion": "183836",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 579.0417227757978
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 3195.911838158792,
+          "penafp": 0,
+          "pencia": 3195.911838158792,
+          "primaafp": 0,
+          "primacia": 382411.23,
+          "tasavta": 6.333985145943366,
+          "tasaTci": 6.291743430827368,
+          "tasaTce": 6.25,
+          "tasaTir": 9.90393418001343,
+          "perdida": 0,
+          "operacion": "183837",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 3,
+              "prc": 35,
+              "pension": 1118.5691433555771
+            },
+            {
+              "id": 4,
+              "prc": 35,
+              "pension": 1118.5691433555771
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 3475.2389306172217,
+          "penafp": 6950.4778612344435,
+          "pencia": 3475.2389306172217,
+          "primaafp": 55603.82288987555,
+          "primacia": 326807.4071101244,
+          "tasavta": 6.473713573291828,
+          "tasaTci": 6.327838392362262,
+          "tasaTce": 6.25,
+          "tasaTir": 9.859406344181586,
+          "perdida": 0,
+          "operacion": "183837",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 3,
+              "prc": 35,
+              "pension": 1216.3336257160274
+            },
+            {
+              "id": 4,
+              "prc": 35,
+              "pension": 1216.3336257160274
+            }
+          ]
+        },
+        {
+          "idmod": 3,
+          "penref": 3896.140612500311,
+          "penafp": 7792.281225000622,
+          "pencia": 1054.150598620214,
+          "primaafp": 62338.249800004975,
+          "primacia": 320072.980199995,
+          "tasavta": 6.550000000000001,
+          "tasaTci": 6.428656276536815,
+          "tasaTce": 6.25,
+          "tasaTir": 9.820531927531718,
+          "perdida": 0,
+          "operacion": "183837",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 3,
+              "prc": 35,
+              "pension": 1363.6492143751088
+            },
+            {
+              "id": 4,
+              "prc": 35,
+              "pension": 1363.6492143751088
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 3480.6752770060375,
+          "penafp": 6961.350554012075,
+          "pencia": 3480.6752770060375,
+          "primaafp": 55690.8044320966,
+          "primacia": 326720.4255679034,
+          "tasavta": 6.473713573291828,
+          "tasaTci": 6.327590339794442,
+          "tasaTce": 6.25,
+          "tasaTir": 9.856549030512252,
+          "perdida": 0,
+          "operacion": "183837",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 3,
+              "prc": 35,
+              "pension": 1218.236346952113
+            },
+            {
+              "id": 4,
+              "prc": 35,
+              "pension": 1218.236346952113
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 16473.194743662683,
+          "penafp": 0,
+          "pencia": 16473.194743662683,
+          "primaafp": 0,
+          "primacia": 861227.18,
+          "tasavta": 0.47836418513715895,
+          "tasaTci": 3.0093145968886237,
+          "tasaTce": 0.47836418513715895,
+          "tasaTir": 18.019573362621855,
+          "perdida": 0,
+          "operacion": "183838",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 2306.247264112776
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 2306.247264112776
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 26280.793897286036,
+          "penafp": 0,
+          "pencia": 26280.793897286036,
+          "primaafp": 0,
+          "primacia": 861227.18,
+          "tasavta": 0.09335848836269367,
+          "tasaTci": 2.9694469071017915,
+          "tasaTce": 0.09335848836269367,
+          "tasaTir": 18.045834041556,
+          "perdida": 0,
+          "operacion": "183838",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 3679.3111456200454
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 3679.3111456200454
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 20428.52423835322,
+          "penafp": 40857.04847670644,
+          "pencia": 20428.52423835322,
+          "primaafp": 408570.4847670644,
+          "primacia": 452656.69523293566,
+          "tasavta": 0.52658522699085,
+          "tasaTci": 3.0106784571017453,
+          "tasaTce": 0.52658522699085,
+          "tasaTir": 18.1042613211293,
+          "perdida": 0,
+          "operacion": "183838",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 2859.993393369451
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 2859.993393369451
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 12490.981093693901,
+          "penafp": 24981.962187387802,
+          "pencia": 12490.981093693901,
+          "primaafp": 249819.62187387803,
+          "primacia": 611407.558126122,
+          "tasavta": 0.8042681361557058,
+          "tasaTci": 3.0482375545691998,
+          "tasaTce": 0.8042681361557058,
+          "tasaTir": 18.060554999152203,
+          "perdida": 0,
+          "operacion": "183838",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 1748.7373531171463
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 1748.7373531171463
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 3657.7340888565736,
+          "penafp": 0,
+          "pencia": 3657.7340888565736,
+          "primaafp": 0,
+          "primacia": 495270.62,
+          "tasavta": 6.422883774052246,
+          "tasaTci": 6.389129146859029,
+          "tasaTce": 6.25,
+          "tasaTir": 9.841143225996095,
+          "perdida": 0,
+          "operacion": "183839",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 1280.2069310998006
+            },
+            {
+              "id": 3,
+              "prc": 35,
+              "pension": 1280.2069310998006
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 3422.3934409659637,
+          "penafp": 6844.786881931927,
+          "pencia": 3422.3934409659637,
+          "primaafp": 61603.081937387346,
+          "primacia": 433667.53806261264,
+          "tasavta": 6.448295892553202,
+          "tasaTci": 6.389210169596593,
+          "tasaTce": 6.25,
+          "tasaTir": 9.885651586908795,
+          "perdida": 0,
+          "operacion": "183839",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 1197.8377043380872
+            },
+            {
+              "id": 3,
+              "prc": 35,
+              "pension": 1197.8377043380872
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 3884.8271409950003,
+          "penafp": 7769.6542819900005,
+          "pencia": 3884.8271409950003,
+          "primaafp": 69926.88853791001,
+          "primacia": 425343.73146209,
+          "tasavta": 6.52456562590813,
+          "tasaTci": 6.417363225679074,
+          "tasaTce": 6.25,
+          "tasaTir": 9.89434456799061,
+          "perdida": 0,
+          "operacion": "183839",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 1359.68949934825
+            },
+            {
+              "id": 3,
+              "prc": 35,
+              "pension": 1359.68949934825
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 3888.5496291829645,
+          "penafp": 7777.099258365929,
+          "pencia": 3888.5496291829645,
+          "primaafp": 69993.89332529336,
+          "primacia": 425276.7266747066,
+          "tasavta": 6.52456562590813,
+          "tasaTci": 6.417403353833007,
+          "tasaTce": 6.25,
+          "tasaTir": 9.893408546199867,
+          "perdida": 0,
+          "operacion": "183839",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 1360.9923702140375
+            },
+            {
+              "id": 3,
+              "prc": 35,
+              "pension": 1360.9923702140375
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 1709.7361747090426,
+          "penafp": 0,
+          "pencia": 1709.7361747090426,
+          "primaafp": 0,
+          "primacia": 223762.09,
+          "tasavta": 0.3101582553602267,
+          "tasaTci": 3.0687511936116296,
+          "tasaTce": 0.3101582553602267,
+          "tasaTir": 19.03247352295643,
+          "perdida": 0,
+          "operacion": "183840",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 718.0891933777979
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 1528.8827221229278,
+          "penafp": 3057.7654442458556,
+          "pencia": 1528.8827221229278,
+          "primaafp": 48924.24710793369,
+          "primacia": 174837.8428920663,
+          "tasavta": 0.38238675954322954,
+          "tasaTci": 3.0763944126334097,
+          "tasaTce": 0.38238675954322954,
+          "tasaTir": 19.041448156583975,
+          "perdida": 0,
+          "operacion": "183840",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 642.1307432916296
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 1526.3056784296025,
+          "penafp": 3052.611356859205,
+          "pencia": 1526.3056784296025,
+          "primaafp": 48841.78170974728,
+          "primacia": 174920.30829025272,
+          "tasavta": 0.38238675954322954,
+          "tasaTci": 3.0763581241656013,
+          "tasaTce": 0.38238675954322954,
+          "tasaTir": 19.043151138370472,
+          "perdida": 0,
+          "operacion": "183840",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 641.048384940433
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 1654.3804004746871,
+          "penafp": 3308.7608009493742,
+          "pencia": 1654.3804004746871,
+          "primaafp": 52940.17281518999,
+          "primacia": 170821.91718481,
+          "tasavta": 0.45466293510423306,
+          "tasaTci": 3.0855003266337944,
+          "tasaTce": 0.45466293510423306,
+          "tasaTir": 19.068688401919708,
+          "perdida": 0,
+          "operacion": "183840",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 694.8397681993686
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 1327.154401546855,
+          "penafp": 0,
+          "pencia": 1327.154401546855,
+          "primaafp": 0,
+          "primacia": 165839.07,
+          "tasavta": 5.794211654165915,
+          "tasaTci": 6.472510864997449,
+          "tasaTce": 5.794211654165915,
+          "tasaTir": 10.752652060741429,
+          "perdida": 0,
+          "operacion": "183841",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 464.50404054139926
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 185.80161621655972
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 906.2678498236329,
+          "penafp": 1812.5356996472658,
+          "pencia": 906.2678498236329,
+          "primaafp": 65251.28518730157,
+          "primacia": 100587.78481269843,
+          "tasavta": 5.6931690660867895,
+          "tasaTci": 6.46970471694579,
+          "tasaTce": 5.6931690660867895,
+          "tasaTir": 10.779758399355455,
+          "perdida": 0,
+          "operacion": "183841",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 317.1937474382715
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 126.87749897530861
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 808.7370846958285,
+          "penafp": 1617.474169391657,
+          "pencia": 808.7370846958285,
+          "primaafp": 84108.65680836616,
+          "primacia": 81730.41319163385,
+          "tasavta": 5.6931690660867895,
+          "tasaTci": 6.477017280183017,
+          "tasaTce": 5.6931690660867895,
+          "tasaTir": 10.742221070208235,
+          "perdida": 0,
+          "operacion": "183841",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 283.05797964353997
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 113.223191857416
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 920.9927938720884,
+          "penafp": 1841.9855877441769,
+          "pencia": 920.9927938720884,
+          "primaafp": 66311.48115879037,
+          "primacia": 99527.58884120964,
+          "tasavta": 5.680544964525436,
+          "tasaTci": 6.472510864997449,
+          "tasaTce": 5.680544964525436,
+          "tasaTir": 10.727541645627081,
+          "perdida": 0,
+          "operacion": "183841",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 322.3474778552309
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 128.9389911420924
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": []
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 2207.6406231891838,
+          "penafp": 0,
+          "pencia": 2207.6406231891838,
+          "primaafp": 0,
+          "primacia": 295288.39,
+          "tasavta": 6.2197869338419975,
+          "tasaTci": 6.497536835973605,
+          "tasaTce": 6.2197869338419975,
+          "tasaTir": 9.872986196615742,
+          "perdida": 0,
+          "operacion": "183843",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 772.6742181162143
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 309.0696872464858
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 309.0696872464858
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 1742.4306772562172,
+          "penafp": 3484.8613545124344,
+          "pencia": 1742.4306772562172,
+          "primaafp": 90606.3952173233,
+          "primacia": 204681.99478267672,
+          "tasavta": 6.283216497849242,
+          "tasaTci": 6.4984585672057005,
+          "tasaTce": 6.25,
+          "tasaTir": 9.930926034562049,
+          "perdida": 0,
+          "operacion": "183843",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 609.850737039676
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 243.94029481587043
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 243.94029481587043
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 1876.2630687346684,
+          "penafp": 3752.526137469337,
+          "pencia": 1876.2630687346684,
+          "primaafp": 97565.67957420276,
+          "primacia": 197722.71042579727,
+          "tasavta": 6.346680780908542,
+          "tasaTci": 6.540527759637871,
+          "tasaTce": 6.25,
+          "tasaTir": 9.90440081808639,
+          "perdida": 0,
+          "operacion": "183843",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 656.6920740571339
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 262.67682962285363
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 262.67682962285363
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 1823.6424398459137,
+          "penafp": 3647.2848796918274,
+          "pencia": 1823.6424398459137,
+          "primaafp": 94829.4068719875,
+          "primacia": 200458.9831280125,
+          "tasavta": 6.270527808076487,
+          "tasaTci": 6.50059931439535,
+          "tasaTce": 6.25,
+          "tasaTir": 9.808373982261,
+          "perdida": 0,
+          "operacion": "183843",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 638.2748539460698
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 255.30994157842795
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 255.30994157842795
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": []
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 772.8334386714188,
+          "penafp": 0,
+          "pencia": 772.8334386714188,
+          "primaafp": 0,
+          "primacia": 142162.05,
+          "tasavta": 6.0591173485278205,
+          "tasaTci": 6.623710667921889,
+          "tasaTce": 6.0591173485278205,
+          "tasaTir": 10.711561599997799,
+          "perdida": 0,
+          "operacion": "183845",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 540.9834070699931
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 799.5430408728387,
+          "penafp": 1599.0860817456773,
+          "pencia": 799.5430408728387,
+          "primaafp": 14391.774735711097,
+          "primacia": 127770.2752642889,
+          "tasavta": 6.109787864293148,
+          "tasaTci": 6.636815448251965,
+          "tasaTce": 6.109787864293148,
+          "tasaTir": 10.744667071872982,
+          "perdida": 0,
+          "operacion": "183845",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 559.680128610987
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 876.7762178886178,
+          "penafp": 1753.5524357772356,
+          "pencia": 876.7762178886178,
+          "primaafp": 15781.97192199512,
+          "primacia": 126380.07807800487,
+          "tasavta": 6.147805312804877,
+          "tasaTci": 6.669225153831615,
+          "tasaTce": 6.147805312804877,
+          "tasaTir": 10.76978385887064,
+          "perdida": 0,
+          "operacion": "183845",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 613.7433525220324
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 808.6554401248703,
+          "penafp": 1617.3108802497406,
+          "pencia": 808.6554401248703,
+          "primaafp": 14555.797922247666,
+          "primacia": 127606.25207775232,
+          "tasavta": 6.109787864293148,
+          "tasaTci": 6.638589793397465,
+          "tasaTce": 6.109787864293148,
+          "tasaTir": 10.727572911965222,
+          "perdida": 0,
+          "operacion": "183845",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 566.0588080874091
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 238.47575944425205,
+          "penafp": 0,
+          "pencia": 238.47575944425205,
+          "primaafp": 0,
+          "primacia": 30314.78,
+          "tasavta": 4.120109690458573,
+          "tasaTci": 6.554452379650577,
+          "tasaTce": 4.120109690458573,
+          "tasaTir": 11.403087909385645,
+          "perdida": 0,
+          "operacion": "183846",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 100.15981896658586
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 242.96344321098954,
+          "penafp": 0,
+          "pencia": 242.96344321098954,
+          "primaafp": 0,
+          "primacia": 30314.78,
+          "tasavta": 4.120109690458573,
+          "tasaTci": 6.559399496933271,
+          "tasaTce": 4.120109690458573,
+          "tasaTir": 11.411039584815597,
+          "perdida": 0,
+          "operacion": "183846",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 102.0446461486156
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 209.10298581892866,
+          "penafp": 418.2059716378573,
+          "pencia": 209.10298581892866,
+          "primaafp": 3763.8537447407157,
+          "primacia": 26550.926255259285,
+          "tasavta": 3.871333635443408,
+          "tasaTci": 6.554920854234858,
+          "tasaTce": 3.871333635443408,
+          "tasaTir": 11.42175403124126,
+          "perdida": 0,
+          "operacion": "183846",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 87.82325404395003
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 233.1143433940845,
+          "penafp": 466.228686788169,
+          "pencia": 233.1143433940845,
+          "primaafp": 4196.058181093521,
+          "primacia": 26118.721818906477,
+          "tasavta": 3.983215353939018,
+          "tasaTci": 6.579898484091817,
+          "tasaTce": 3.983215353939018,
+          "tasaTir": 11.458739655547468,
+          "perdida": 0,
+          "operacion": "183846",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 97.90802422551549
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 415.021157237799,
+          "penafp": 0,
+          "pencia": 415.021157237799,
+          "primaafp": 0,
+          "primacia": 50105.2,
+          "tasavta": 5.0955640500411015,
+          "tasaTci": 6.5893294764559185,
+          "tasaTce": 5.0955640500411015,
+          "tasaTir": 11.434714114487843,
+          "perdida": 0,
+          "operacion": "183847",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 174.30888603987557
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 420.1514513440293,
+          "penafp": 0,
+          "pencia": 420.1514513440293,
+          "primaafp": 0,
+          "primacia": 50105.2,
+          "tasavta": 5.0955640500411015,
+          "tasaTci": 6.592616046976341,
+          "tasaTce": 5.0955640500411015,
+          "tasaTir": 11.437249309684038,
+          "perdida": 0,
+          "operacion": "183847",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 176.4636095644923
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 407.16118407531724,
+          "penafp": 814.3223681506345,
+          "pencia": 407.16118407531724,
+          "primaafp": 7328.90131335571,
+          "primacia": 42776.29868664429,
+          "tasavta": 5.045337681811435,
+          "tasaTci": 6.610534444653116,
+          "tasaTce": 5.045337681811435,
+          "tasaTir": 11.413646466032779,
+          "perdida": 0,
+          "operacion": "183847",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 171.00769731163322
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": []
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 3545.664809852995,
+          "penafp": 0,
+          "pencia": 3545.664809852995,
+          "primaafp": 0,
+          "primacia": 347986.34,
+          "tasavta": 6.321290900293053,
+          "tasaTci": 6.306288858341458,
+          "tasaTce": 6.25,
+          "tasaTir": 9.804381586194143,
+          "perdida": 0,
+          "operacion": "183849",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 1489.1792201382577
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 496.3930733794193
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 3410.6192619628687,
+          "penafp": 6821.238523925737,
+          "pencia": 3410.6192619628687,
+          "primaafp": 68212.38523925738,
+          "primacia": 279773.95476074266,
+          "tasavta": 6.448295892553202,
+          "tasaTci": 6.343071051991478,
+          "tasaTce": 6.25,
+          "tasaTir": 9.829633567680807,
+          "perdida": 0,
+          "operacion": "183849",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 1432.4600900244047
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 477.48669667480164
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 3847.7415922712075,
+          "penafp": 7695.483184542415,
+          "pencia": 3847.7415922712075,
+          "primaafp": 76954.83184542415,
+          "primacia": 271031.5081545759,
+          "tasavta": 6.511850526015639,
+          "tasaTci": 6.420481736227068,
+          "tasaTce": 6.25,
+          "tasaTir": 9.855809001734661,
+          "perdida": 0,
+          "operacion": "183849",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 1616.051468753907
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 538.6838229179691
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 3571.992271842578,
+          "penafp": 7143.984543685156,
+          "pencia": 3571.992271842578,
+          "primaafp": 71439.84543685155,
+          "primacia": 276546.4945631485,
+          "tasavta": 6.435589138092368,
+          "tasaTci": 6.336975608283768,
+          "tasaTce": 6.25,
+          "tasaTir": 9.844664413079606,
+          "perdida": 0,
+          "operacion": "183849",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 1500.2367541738827
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 500.07891805796095
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 2630.140448229334,
+          "penafp": 0,
+          "pencia": 2630.140448229334,
+          "primaafp": 0,
+          "primacia": 305142.4,
+          "tasavta": 6.244271853897199,
+          "tasaTci": 6.3908356651679155,
+          "tasaTce": 6.244271853897199,
+          "tasaTir": 9.898521413752048,
+          "perdida": 0,
+          "operacion": "183850",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 1841.0983137605338
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 2345.6777642834754,
+          "penafp": 4691.355528566951,
+          "pencia": 2345.6777642834754,
+          "primaafp": 56296.266342803414,
+          "primacia": 248846.1336571966,
+          "tasavta": 6.4092958031527925,
+          "tasaTci": 6.416190390052701,
+          "tasaTce": 6.309999999999999,
+          "tasaTir": 9.816168621556454,
+          "perdida": 0,
+          "operacion": "183850",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 1641.9744349984328
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 2591.979021926203,
+          "penafp": 5183.958043852406,
+          "pencia": 2591.979021926203,
+          "primaafp": 62207.496526228875,
+          "primacia": 242934.90347377115,
+          "tasavta": 6.472829092341725,
+          "tasaTci": 6.493957429035491,
+          "tasaTce": 6.309999999999999,
+          "tasaTir": 9.84099295394123,
+          "perdida": 0,
+          "operacion": "183850",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 1814.3853153483421
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 2675.2150336087243,
+          "penafp": 5350.430067217449,
+          "pencia": 2675.2150336087243,
+          "primaafp": 64205.16080660938,
+          "primacia": 240937.23919339065,
+          "tasavta": 6.371192512363377,
+          "tasaTci": 6.417535874444558,
+          "tasaTce": 6.309999999999999,
+          "tasaTir": 9.881616274239002,
+          "perdida": 0,
+          "operacion": "183850",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 1872.6505235261068
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 1369.7137954618577,
+          "penafp": 0,
+          "pencia": 1369.7137954618577,
+          "primaafp": 0,
+          "primacia": 245713.3,
+          "tasavta": 6.223877670315892,
+          "tasaTci": 6.613348547188735,
+          "tasaTce": 6.223877670315892,
+          "tasaTir": 10.821746541653665,
+          "perdida": 0,
+          "operacion": "184248",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 958.7996568233003
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 191.7599313646601
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 1380.723071269135,
+          "penafp": 0,
+          "pencia": 1380.723071269135,
+          "primaafp": 0,
+          "primacia": 245713.3,
+          "tasavta": 6.223877670315892,
+          "tasaTci": 6.615423106346929,
+          "tasaTce": 6.223877670315892,
+          "tasaTir": 10.814555653616553,
+          "perdida": 0,
+          "operacion": "184248",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 966.5061498883945
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 193.30122997767893
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 1259.0244317262113,
+          "penafp": 2518.0488634524227,
+          "pencia": 1259.0244317262113,
+          "primaafp": 30216.586361429072,
+          "primacia": 215496.71363857092,
+          "tasavta": 6.223877670315892,
+          "tasaTci": 6.613404539707335,
+          "tasaTce": 6.223877670315892,
+          "tasaTir": 10.825714389405295,
+          "perdida": 0,
+          "operacion": "184248",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 881.3171022083479
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 176.2634204416696
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 1400.619607788984,
+          "penafp": 2801.239215577968,
+          "pencia": 1400.619607788984,
+          "primaafp": 33614.87058693562,
+          "primacia": 212098.42941306438,
+          "tasavta": 6.287309473496627,
+          "tasaTci": 6.627875706552233,
+          "tasaTce": 6.287309473496627,
+          "tasaTir": 10.759456705040549,
+          "perdida": 0,
+          "operacion": "184248",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 980.4337254522887
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 196.08674509045778
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 10262.382144093935,
+          "penafp": 0,
+          "pencia": 10262.382144093935,
+          "primaafp": 0,
+          "primacia": 1414163.39,
+          "tasavta": 6.584491737251019,
+          "tasaTci": 6.564913283214602,
+          "tasaTce": 6.25,
+          "tasaTir": 8.528706249308682,
+          "perdida": 0,
+          "operacion": "184249",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 3591.833750432877
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 1436.733500173151
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 1436.733500173151
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 10418.991418673837,
+          "penafp": 0,
+          "pencia": 10418.991418673837,
+          "primaafp": 0,
+          "primacia": 1414163.39,
+          "tasavta": 6.584491737251019,
+          "tasaTci": 6.568523439159701,
+          "tasaTce": 6.25,
+          "tasaTir": 8.503255832930856,
+          "perdida": 0,
+          "operacion": "184249",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 3646.646996535843
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 1458.6587986143372
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 1458.6587986143372
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 9423.528490019567,
+          "penafp": 18847.056980039135,
+          "pencia": 9423.528490019567,
+          "primaafp": 188470.56980039136,
+          "primacia": 1225692.8201996086,
+          "tasavta": 6.609939226826778,
+          "tasaTci": 6.565141294293131,
+          "tasaTce": 6.25,
+          "tasaTir": 8.505136209576092,
+          "perdida": 0,
+          "operacion": "184249",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 3298.2349715068485
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 1319.2939886027395
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 1319.2939886027395
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 10671.990927888717,
+          "penafp": 21343.981855777434,
+          "pencia": 10671.990927888717,
+          "primaafp": 213439.81855777436,
+          "primacia": 1200723.5714422255,
+          "tasavta": 6.64812090392759,
+          "tasaTci": 6.586273775647933,
+          "tasaTce": 6.25,
+          "tasaTir": 8.530054315744518,
+          "perdida": 0,
+          "operacion": "184249",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 3735.1968247610507
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 1494.0787299044205
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 1494.0787299044205
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "idmod": 1,
+          "penref": 2034.1600245093912,
+          "penafp": 0,
+          "pencia": 548.1433641900812,
+          "primaafp": 0,
+          "primacia": 238491.65,
+          "tasavta": 4.6,
+          "tasaTci": 5.230040719150542,
+          "tasaTce": 4.6,
+          "tasaTir": 13.678452264214158,
+          "perdida": 0,
+          "operacion": "184250",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 711.9560085782869
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 284.7824034313148
+            }
+          ]
+        },
+        {
+          "idmod": 2,
+          "penref": 2186.279234428476,
+          "penafp": 0,
+          "pencia": 589.1347977441326,
+          "primaafp": 0,
+          "primacia": 238491.65,
+          "tasavta": 4.6,
+          "tasaTci": 5.268964495225137,
+          "tasaTce": 4.6,
+          "tasaTir": 13.494016357745853,
+          "perdida": 0,
+          "operacion": "184250",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 765.1977320499665
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 306.0790928199866
+            }
+          ]
+        },
+        {
+          "idmod": 3,
+          "penref": 1945.395333829422,
+          "penafp": 3890.790667658844,
+          "pencia": 524.2240188168747,
+          "primaafp": 35017.116008929595,
+          "primacia": 203474.5339910704,
+          "tasavta": 4.6,
+          "tasaTci": 5.214811910846362,
+          "tasaTce": 4.6,
+          "tasaTir": 14.699025171951764,
+          "perdida": 0,
+          "operacion": "184250",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 680.8883668402976
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 272.3553467361191
+            }
+          ]
+        },
+        {
+          "idmod": 4,
+          "penref": 2178.649892330867,
+          "penafp": 4357.299784661734,
+          "pencia": 587.0789254462051,
+          "primaafp": 39215.698061955605,
+          "primacia": 199275.9519380444,
+          "tasavta": 4.6,
+          "tasaTci": 5.273061382190236,
+          "tasaTce": 4.6,
+          "tasaTir": 14.427790100237292,
+          "perdida": 0,
+          "operacion": "184250",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 762.5274623158033
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 305.0109849263214
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 4459.908812145895,
+          "penafp": 0,
+          "pencia": 4459.908812145895,
+          "primaafp": 0,
+          "primacia": 984840.46,
+          "tasavta": 0.7691950087558075,
+          "tasaTci": 3.0802157000570984,
+          "tasaTce": 0.7691950087558075,
+          "tasaTir": 18.10803559009182,
+          "perdida": 0,
+          "operacion": "184251",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 3121.9361685021267
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 1873.1617011012759
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 4271.359124782711,
+          "penafp": 8542.718249565422,
+          "pencia": 4271.359124782711,
+          "primaafp": 170854.36499130842,
+          "primacia": 813986.0950086915,
+          "tasavta": 0.9143057087128037,
+          "tasaTci": 3.0855710399344316,
+          "tasaTce": 0.9143057087128037,
+          "tasaTir": 18.08613352717572,
+          "perdida": 0,
+          "operacion": "184251",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 2989.9513873478973
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 1793.9708324087385
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 4661.819117068656,
+          "penafp": 9323.638234137312,
+          "pencia": 4661.819117068656,
+          "primaafp": 186472.76468274623,
+          "primacia": 798367.6953172537,
+          "tasavta": 0.9869328670285782,
+          "tasaTci": 3.094175134623134,
+          "tasaTce": 0.9869328670285782,
+          "tasaTir": 18.078611490426177,
+          "perdida": 0,
+          "operacion": "184251",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 3263.273381948059
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 1957.9640291688354
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 4399.923014046025,
+          "penafp": 8799.84602809205,
+          "pencia": 4399.923014046025,
+          "primaafp": 175996.920561841,
+          "primacia": 808843.539438159,
+          "tasavta": 0.999042050604837,
+          "tasaTci": 3.093420032120875,
+          "tasaTce": 0.999042050604837,
+          "tasaTir": 18.00635552580485,
+          "perdida": 0,
+          "operacion": "184251",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 3079.946109832217
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 1847.9676658993303
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 1354.3947748722399,
+          "penafp": 0,
+          "pencia": 1354.3947748722399,
+          "primaafp": 0,
+          "primacia": 133036.31,
+          "tasavta": 5.933289796162988,
+          "tasaTci": 6.475735248483927,
+          "tasaTce": 5.933289796162988,
+          "tasaTir": 10.705957906923524,
+          "perdida": 0,
+          "operacion": "184252",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 474.0381712052839
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 189.6152684821136
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 1385.4078234829262,
+          "penafp": 0,
+          "pencia": 1385.4078234829262,
+          "primaafp": 0,
+          "primacia": 133036.31,
+          "tasavta": 5.9206394067113255,
+          "tasaTci": 6.477924875273611,
+          "tasaTce": 5.9206394067113255,
+          "tasaTir": 10.745864066766897,
+          "perdida": 0,
+          "operacion": "184252",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 484.8927382190241
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 193.9570952876097
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 1414.1951698530982,
+          "penafp": 2828.3903397061963,
+          "pencia": 1414.1951698530982,
+          "primaafp": 22627.12271764957,
+          "primacia": 110409.18728235042,
+          "tasavta": 5.996562520439874,
+          "tasaTci": 6.505930985517283,
+          "tasaTce": 5.996562520439874,
+          "tasaTir": 10.716591844674305,
+          "perdida": 0,
+          "operacion": "184252",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 494.9683094485843
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 197.98732377943375
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": []
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 824.224021484652,
+          "penafp": 0,
+          "pencia": 824.224021484652,
+          "primaafp": 0,
+          "primacia": 88984.42,
+          "tasavta": 5.120685488514787,
+          "tasaTci": 6.376418230527348,
+          "tasaTce": 5.120685488514787,
+          "tasaTir": 11.42609448148817,
+          "perdida": 0,
+          "operacion": "184254",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 346.17408902355385
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 848.42977198772,
+          "penafp": 0,
+          "pencia": 848.42977198772,
+          "primaafp": 0,
+          "primacia": 88984.42,
+          "tasavta": 5.108124081300547,
+          "tasaTci": 6.391446018751479,
+          "tasaTce": 5.108124081300547,
+          "tasaTir": 11.461268980541073,
+          "perdida": 0,
+          "operacion": "184254",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 356.34050423484234
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 539.2967111165949,
+          "penafp": 1078.5934222331898,
+          "pencia": 539.2967111165949,
+          "primaafp": 38829.36320039483,
+          "primacia": 50155.05679960517,
+          "tasavta": 4.65682874366129,
+          "tasaTci": 6.391446018751479,
+          "tasaTce": 4.65682874366129,
+          "tasaTir": 11.47458181848271,
+          "perdida": 0,
+          "operacion": "184254",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 226.50461866896984
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 438.0856310797608,
+          "penafp": 876.1712621595216,
+          "pencia": 438.0856310797608,
+          "primaafp": 49065.59068093321,
+          "primacia": 39918.82931906679,
+          "tasavta": 4.519287651756687,
+          "tasaTci": 6.385983012953922,
+          "tasaTce": 4.519287651756687,
+          "tasaTir": 11.47483209554423,
+          "perdida": 0,
+          "operacion": "184254",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 183.99596505349953
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ko",
+          "idmod": 1,
+          "penref": 822.1651296562785,
+          "penafp": 0,
+          "pencia": 822.1651296562785,
+          "primaafp": 0,
+          "primacia": 122660.3,
+          "tasavta": 0.009718651800061373,
+          "tasaTci": 3.0266691609663887,
+          "tasaTce": 0.009718651800061373,
+          "tasaTir": 16.574639699523996,
+          "perdida": 0,
+          "operacion": "184255",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 287.7577953796975
+            },
+            {
+              "id": 3,
+              "prc": 35,
+              "pension": 287.7577953796975
+            }
+          ]
+        },
+        {
+          "procede": "ko",
+          "idmod": 2,
+          "penref": 880.1171432909747,
+          "penafp": 1760.2342865819494,
+          "pencia": 880.1171432909747,
+          "primaafp": 14081.874292655595,
+          "primacia": 108578.4257073444,
+          "tasavta": 0.009718651800061373,
+          "tasaTci": 3.0463226284886513,
+          "tasaTce": 0.009718651800061373,
+          "tasaTir": 18.260066815707667,
+          "perdida": 0,
+          "operacion": "184255",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 308.0410001518411
+            },
+            {
+              "id": 3,
+              "prc": 35,
+              "pension": 308.0410001518411
+            }
+          ]
+        },
+        {
+          "procede": "ko",
+          "idmod": 3,
+          "penref": 807.0085433635821,
+          "penafp": 1614.0170867271643,
+          "pencia": 807.0085433635821,
+          "primaafp": 12912.136693817314,
+          "primacia": 109748.16330618269,
+          "tasavta": 0.009718651800061373,
+          "tasaTci": 3.053239639679073,
+          "tasaTce": 0.009718651800061373,
+          "tasaTir": 18.69068283919253,
+          "perdida": 0,
+          "operacion": "184255",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 282.45299017725375
+            },
+            {
+              "id": 3,
+              "prc": 35,
+              "pension": 282.45299017725375
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 849.3243955570582,
+          "penafp": 1698.6487911141164,
+          "pencia": 849.3243955570582,
+          "primaafp": 13589.190328912931,
+          "primacia": 109071.10967108708,
+          "tasavta": 0.10576945886664468,
+          "tasaTci": 3.0713833675607205,
+          "tasaTce": 0.10576945886664468,
+          "tasaTir": 19.054616820271917,
+          "perdida": 0,
+          "operacion": "184255",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 297.2635384449704
+            },
+            {
+              "id": 3,
+              "prc": 35,
+              "pension": 297.2635384449704
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 7042.524821577746,
+          "penafp": 0,
+          "pencia": 1897.7431478247765,
+          "primaafp": 0,
+          "primacia": 714127.58,
+          "tasavta": 5.024415733694609,
+          "tasaTci": 5.274505535065921,
+          "tasaTce": 5.024415733694609,
+          "tasaTir": 12.094718491621204,
+          "perdida": 0,
+          "operacion": "184256",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 2957.860425062653
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 7215.818651373574,
+          "penafp": 0,
+          "pencia": 1944.4404881092896,
+          "primaafp": 0,
+          "primacia": 714127.58,
+          "tasavta": 5.024415733694609,
+          "tasaTci": 5.2857758268358035,
+          "tasaTce": 5.024415733694609,
+          "tasaTir": 12.072789723147203,
+          "perdida": 0,
+          "operacion": "184256",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 3030.6438335769008
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 6134.254954790691,
+          "penafp": 12268.509909581382,
+          "pencia": 1652.9924426814043,
+          "primaafp": 122685.09909581381,
+          "primacia": 591442.4809041861,
+          "tasavta": 5.049521582239835,
+          "tasaTci": 5.27243327953173,
+          "tasaTce": 5.049521582239835,
+          "tasaTir": 12.090560452501563,
+          "perdida": 0,
+          "operacion": "184256",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 2576.38708101209
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 6941.305609652462,
+          "penafp": 13882.611219304925,
+          "pencia": 1870.4676932504615,
+          "primaafp": 138826.11219304925,
+          "primacia": 575301.4678069507,
+          "tasavta": 5.12487213983126,
+          "tasaTci": 5.289025798664193,
+          "tasaTce": 5.12487213983126,
+          "tasaTir": 12.041064674055901,
+          "perdida": 0,
+          "operacion": "184256",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 2915.348356054034
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ko",
+          "idmod": 1,
+          "penref": 860.3656756170535,
+          "penafp": 0,
+          "pencia": 860.3656756170535,
+          "primaafp": 0,
+          "primacia": 122611.65,
+          "tasavta": 0.009718651800061373,
+          "tasaTci": 3.0808307705206817,
+          "tasaTce": 0.009718651800061373,
+          "tasaTir": 18.98623831484847,
+          "perdida": 0,
+          "operacion": "184257",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 361.35358375916246
+            }
+          ]
+        },
+        {
+          "procede": "ko",
+          "idmod": 2,
+          "penref": 741.2661146327611,
+          "penafp": 1482.5322292655221,
+          "pencia": 741.2661146327611,
+          "primaafp": 17790.386751186266,
+          "primacia": 104821.26324881373,
+          "tasavta": 0.009718651800061373,
+          "tasaTci": 3.080299498323802,
+          "tasaTce": 0.009718651800061373,
+          "tasaTir": 18.496503743366777,
+          "perdida": 0,
+          "operacion": "184257",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 311.3317681457596
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 815.1576421698145,
+          "penafp": 1630.315284339629,
+          "pencia": 815.1576421698145,
+          "primaafp": 19563.783412075547,
+          "primacia": 103047.86658792445,
+          "tasavta": 0.045727800017303366,
+          "tasaTci": 3.08900970382211,
+          "tasaTce": 0.045727800017303366,
+          "tasaTir": 19.035411695100702,
+          "perdida": 0,
+          "operacion": "184257",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 342.3662097113221
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 7029.315370177918,
+          "penafp": 0,
+          "pencia": 7029.315370177918,
+          "primaafp": 0,
+          "primacia": 854281.71,
+          "tasavta": 0.6472306554762053,
+          "tasaTci": 3.0585042973874543,
+          "tasaTce": 0.6472306554762053,
+          "tasaTir": 18.062569626268,
+          "perdida": 0,
+          "operacion": "184258",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 2952.3124554747255
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 984.1041518249086
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 6846.4077289389725,
+          "penafp": 13692.815457877945,
+          "pencia": 6846.4077289389725,
+          "primaafp": 178006.60095241328,
+          "primacia": 676275.1090475867,
+          "tasavta": 0.8526325280349134,
+          "tasaTci": 3.0713713087634043,
+          "tasaTce": 0.8526325280349134,
+          "tasaTir": 18.062269426295252,
+          "perdida": 0,
+          "operacion": "184258",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 2875.491246154368
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 958.4970820514562
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 388.363668044059,
+          "penafp": 0,
+          "pencia": 388.363668044059,
+          "primaafp": 0,
+          "primacia": 70874.57,
+          "tasavta": 5.447253609063973,
+          "tasaTci": 6.571841500757802,
+          "tasaTce": 5.447253609063973,
+          "tasaTir": 11.439153864144158,
+          "perdida": 0,
+          "operacion": "184259",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 271.8545676308413
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 396.2858245145366,
+          "penafp": 0,
+          "pencia": 396.2858245145366,
+          "primaafp": 0,
+          "primacia": 70874.57,
+          "tasavta": 5.447253609063973,
+          "tasaTci": 6.577363402541092,
+          "tasaTce": 5.447253609063973,
+          "tasaTir": 11.435574126218363,
+          "perdida": 0,
+          "operacion": "184259",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 277.4000771601756
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 353.10732309828444,
+          "penafp": 706.2146461965689,
+          "pencia": 353.10732309828444,
+          "primaafp": 8474.575754358826,
+          "primacia": 62399.99424564118,
+          "tasavta": 5.37169125435093,
+          "tasaTci": 6.5723428210926915,
+          "tasaTce": 5.37169125435093,
+          "tasaTir": 11.485894821762944,
+          "perdida": 0,
+          "operacion": "184259",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 247.1751261687991
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 395.07736360348594,
+          "penafp": 790.1547272069719,
+          "pencia": 395.07736360348594,
+          "primaafp": 10272.011453690635,
+          "primacia": 60602.558546309374,
+          "tasavta": 5.459852162835288,
+          "tasaTci": 6.591492719286718,
+          "tasaTce": 5.459852162835288,
+          "tasaTir": 11.432092235427515,
+          "perdida": 0,
+          "operacion": "184259",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 276.5541545224401
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 1018.8308853458477,
+          "penafp": 0,
+          "pencia": 1018.8308853458477,
+          "primaafp": 0,
+          "primacia": 144495.86,
+          "tasavta": 5.971249274774371,
+          "tasaTci": 6.537330398601138,
+          "tasaTce": 5.971249274774371,
+          "tasaTir": 10.80467779945582,
+          "perdida": 0,
+          "operacion": "184260",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 356.5908098710467
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 142.6363239484187
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 142.6363239484187
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 1044.7386129573829,
+          "penafp": 0,
+          "pencia": 1044.7386129573829,
+          "primaafp": 0,
+          "primacia": 144495.86,
+          "tasavta": 5.971249274774371,
+          "tasaTci": 6.540660129197784,
+          "tasaTce": 5.971249274774371,
+          "tasaTir": 10.732183131039697,
+          "perdida": 0,
+          "operacion": "184260",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 365.658514535084
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 146.2634058140336
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 146.2634058140336
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 1009.7535799133603,
+          "penafp": 2019.5071598267207,
+          "pencia": 1009.7535799133603,
+          "primaafp": 28273.10023757409,
+          "primacia": 116222.75976242589,
+          "tasavta": 6.00922122166383,
+          "tasaTci": 6.554894791646104,
+          "tasaTce": 6.00922122166383,
+          "tasaTir": 10.776657966125525,
+          "perdida": 0,
+          "operacion": "184260",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 35,
+              "pension": 353.4137529696761
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 141.36550118787045
+            },
+            {
+              "id": 4,
+              "prc": 14,
+              "pension": 141.36550118787045
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": []
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 2624.014827944865,
+          "penafp": 0,
+          "pencia": 2624.014827944865,
+          "primaafp": 0,
+          "primacia": 335811.35,
+          "tasavta": 6.345797267334019,
+          "tasaTci": 6.463079712836306,
+          "tasaTce": 6.309999999999999,
+          "tasaTir": 9.919851333180564,
+          "perdida": 0,
+          "operacion": "184262",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 1836.8103795614054
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 1102.0862277368433
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 2699.7701424440766,
+          "penafp": 5399.540284888153,
+          "pencia": 2699.7701424440766,
+          "primaafp": 37796.781994217075,
+          "primacia": 298014.5680057829,
+          "tasavta": 6.46011965340445,
+          "tasaTci": 6.491526594478403,
+          "tasaTce": 6.309999999999999,
+          "tasaTir": 9.874039632184717,
+          "perdida": 0,
+          "operacion": "184262",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 1889.8390997108534
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 1133.903459826512
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 2886.9335837367744,
+          "penafp": 5773.867167473549,
+          "pencia": 2886.9335837367744,
+          "primaafp": 40417.07017231484,
+          "primacia": 295394.27982768515,
+          "tasavta": 6.447411605155495,
+          "tasaTci": 6.494762623449746,
+          "tasaTce": 6.309999999999999,
+          "tasaTir": 9.88952018999527,
+          "perdida": 0,
+          "operacion": "184262",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 2020.853508615742
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 1212.5121051694452
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 238.7040765094507,
+          "penafp": 0,
+          "pencia": 238.7040765094507,
+          "primaafp": 0,
+          "primacia": 30160.82,
+          "tasavta": 4.145017311705579,
+          "tasaTci": 6.569665687406934,
+          "tasaTce": 4.145017311705579,
+          "tasaTir": 11.413378445072354,
+          "perdida": 0,
+          "operacion": "184263",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 100.25571213396928
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 241.7178884645636,
+          "penafp": 0,
+          "pencia": 241.7178884645636,
+          "primaafp": 0,
+          "primacia": 30160.82,
+          "tasavta": 4.145017311705579,
+          "tasaTci": 6.573079714736463,
+          "tasaTce": 4.145017311705579,
+          "tasaTir": 11.421399936911403,
+          "perdida": 0,
+          "operacion": "184263",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 101.52151315511671
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 236.22171215237003,
+          "penafp": 472.44342430474006,
+          "pencia": 236.22171215237003,
+          "primaafp": 3779.5473944379205,
+          "primacia": 26381.27260556208,
+          "tasavta": 4.045419586397925,
+          "tasaTci": 6.594280075699199,
+          "tasaTce": 4.045419586397925,
+          "tasaTir": 11.44609704722317,
+          "perdida": 0,
+          "operacion": "184263",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 99.21311910399541
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 1559.2742385361646,
+          "penafp": 0,
+          "pencia": 1559.2742385361646,
+          "primaafp": 0,
+          "primacia": 423797.25,
+          "tasavta": 0.8151482066697691,
+          "tasaTci": 3.109254349346857,
+          "tasaTce": 0.8151482066697691,
+          "tasaTir": 18.10136159055913,
+          "perdida": 0,
+          "operacion": "184264",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 654.8951801851891
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 218.29839339506307
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 1572.6333466389292,
+          "penafp": 0,
+          "pencia": 1572.6333466389292,
+          "primaafp": 0,
+          "primacia": 423797.25,
+          "tasavta": 0.8151482066697691,
+          "tasaTci": 3.1095922296483725,
+          "tasaTce": 0.8151482066697691,
+          "tasaTir": 18.103640914610164,
+          "perdida": 0,
+          "operacion": "184264",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 660.5060055883503
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 220.16866852945012
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 1472.049913610532,
+          "penafp": 2944.099827221064,
+          "pencia": 1472.049913610532,
+          "primaafp": 35329.19792665277,
+          "primacia": 388468.0520733472,
+          "tasavta": 0.8393301366424355,
+          "tasaTci": 3.109232970025677,
+          "tasaTce": 0.8393301366424355,
+          "tasaTir": 18.00701599486738,
+          "perdida": 0,
+          "operacion": "184264",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 618.2609637164235
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 206.0869879054745
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 1566.7175467858594,
+          "penafp": 3133.435093571719,
+          "pencia": 1566.7175467858594,
+          "primaafp": 40734.65621643235,
+          "primacia": 383062.59378356766,
+          "tasavta": 0.8877099483651341,
+          "tasaTci": 3.113557414078705,
+          "tasaTce": 0.8877099483651341,
+          "tasaTir": 18.06593409586292,
+          "perdida": 0,
+          "operacion": "184264",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 658.0213696500609
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 219.34045655002035
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": []
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 7368.331154013313,
+          "penafp": 0,
+          "pencia": 7368.331154013313,
+          "primaafp": 0,
+          "primacia": 581553,
+          "tasavta": 6.34489230983728,
+          "tasaTci": 6.0858189659953155,
+          "tasaTce": 6.0858189659953155,
+          "tasaTir": 9.044923913620817,
+          "perdida": 0,
+          "operacion": "184266",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 3094.699084685591
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 1031.566361561864
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 6895.286406197934,
+          "penafp": 13790.572812395869,
+          "pencia": 6895.286406197934,
+          "primaafp": 110324.58249916695,
+          "primacia": 471228.41750083305,
+          "tasavta": 6.611817706207046,
+          "tasaTci": 6.238602533145832,
+          "tasaTce": 6.238602533145832,
+          "tasaTir": 9.053017732840996,
+          "perdida": 0,
+          "operacion": "184266",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 2896.0202906031323
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 965.3400968677109
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "idmod": 3,
+          "penref": 7458.944318102139,
+          "penafp": 14917.888636204278,
+          "pencia": 2012.124175371497,
+          "primaafp": 119343.10908963422,
+          "primacia": 462209.8909103658,
+          "tasavta": 6.65,
+          "tasaTci": 6.391072464069403,
+          "tasaTce": 6.25,
+          "tasaTir": 9.450378515499324,
+          "perdida": 0,
+          "operacion": "184266",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 3132.756613602898
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 1044.2522045342996
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 7812.172362923884,
+          "penafp": 15624.344725847768,
+          "pencia": 7812.172362923884,
+          "primaafp": 124994.75780678215,
+          "primacia": 456558.24219321785,
+          "tasavta": 6.548208394823396,
+          "tasaTci": 6.132583300675032,
+          "tasaTce": 6.132583300675032,
+          "tasaTir": 9.035778897699863,
+          "perdida": 0,
+          "operacion": "184266",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 3281.1123924280314
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 1093.704130809344
+            },
+            {
+              "id": 4,
+              "prc": 0,
+              "pension": 0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 1028.1659443948554,
+          "penafp": 0,
+          "pencia": 1028.1659443948554,
+          "primaafp": 0,
+          "primacia": 108087.81,
+          "tasavta": 5.592214947396212,
+          "tasaTci": 6.4071389546590085,
+          "tasaTce": 5.592214947396212,
+          "tasaTir": 10.710939505339878,
+          "perdida": 0,
+          "operacion": "184267",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 431.82969664583925
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 656.9456710680864,
+          "penafp": 1313.8913421361729,
+          "pencia": 656.9456710680864,
+          "primaafp": 47300.08831690222,
+          "primacia": 60787.72168309778,
+          "tasavta": 5.2521470185775465,
+          "tasaTci": 6.406957859277385,
+          "tasaTce": 5.2521470185775465,
+          "tasaTir": 10.755452350362882,
+          "perdida": 0,
+          "operacion": "184267",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 275.9171818485963
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 643.6818573374037,
+          "penafp": 1287.3637146748074,
+          "pencia": 643.6818573374037,
+          "primaafp": 55356.639731016716,
+          "primacia": 52731.17026898328,
+          "tasavta": 5.2521470185775465,
+          "tasaTci": 6.417955227440464,
+          "tasaTce": 5.2521470185775465,
+          "tasaTir": 10.703504125182484,
+          "perdida": 0,
+          "operacion": "184267",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 270.3463800817095
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 657.2310411158037,
+          "penafp": 1314.4620822316074,
+          "pencia": 657.2310411158037,
+          "primaafp": 47320.63496033786,
+          "primacia": 60767.175039662136,
+          "tasavta": 5.2521470185775465,
+          "tasaTci": 6.4071389546590085,
+          "tasaTce": 5.2521470185775465,
+          "tasaTir": 10.752598110352363,
+          "perdida": 0,
+          "operacion": "184267",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 276.03703726863756
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 1219.0596783389394,
+          "penafp": 0,
+          "pencia": 1219.0596783389394,
+          "primaafp": 0,
+          "primacia": 96452.92,
+          "tasavta": 5.548593006034608,
+          "tasaTci": 6.417729379492831,
+          "tasaTce": 5.548593006034608,
+          "tasaTir": 11.459741496564146,
+          "perdida": 0,
+          "operacion": "184268",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 512.0050649023545
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 1035.9319245445095,
+          "penafp": 2071.863849089019,
+          "pencia": 1035.9319245445095,
+          "primaafp": 22790.502339979208,
+          "primacia": 73662.41766002079,
+          "tasavta": 5.573813691030138,
+          "tasaTci": 6.443552774946171,
+          "tasaTce": 5.573813691030138,
+          "tasaTir": 11.494070702341075,
+          "perdida": 0,
+          "operacion": "184268",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 435.09140830869393
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 1117.2163555644443,
+          "penafp": 2234.4327111288885,
+          "pencia": 1117.2163555644443,
+          "primaafp": 24578.759822417775,
+          "primacia": 71874.16017758222,
+          "tasavta": 5.5359847347427715,
+          "tasaTci": 6.44413000440891,
+          "tasaTce": 5.5359847347427715,
+          "tasaTir": 11.460313291839164,
+          "perdida": 0,
+          "operacion": "184268",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 469.23086933706657
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 1722.9526197184996,
+          "penafp": 0,
+          "pencia": 1722.9526197184996,
+          "primaafp": 0,
+          "primacia": 48455.2,
+          "tasavta": 4.669340702736835,
+          "tasaTci": 6.392983790808926,
+          "tasaTce": 4.669340702736835,
+          "tasaTir": 11.422366868385803,
+          "perdida": 0,
+          "operacion": "184269",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 241.21336676058996
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 864.4930295677983,
+          "penafp": 1728.9860591355966,
+          "pencia": 864.4930295677983,
+          "primaafp": 20747.83270962716,
+          "primacia": 27707.367290372837,
+          "tasavta": 3.5735216473150144,
+          "tasaTci": 6.384721943149652,
+          "tasaTce": 3.5735216473150144,
+          "tasaTir": 11.468171334364662,
+          "perdida": 0,
+          "operacion": "184269",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 121.02902413949178
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 841.4514622820816,
+          "penafp": 1682.9029245641632,
+          "pencia": 841.4514622820816,
+          "primaafp": 23560.640943898285,
+          "primacia": 24894.559056101712,
+          "tasavta": 3.5487393465165162,
+          "tasaTci": 6.415253781782493,
+          "tasaTce": 3.5487393465165162,
+          "tasaTir": 11.432739931146108,
+          "perdida": 0,
+          "operacion": "184269",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 117.80320471949143
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 883.2911541915439,
+          "penafp": 1766.5823083830878,
+          "pencia": 883.2911541915439,
+          "primaafp": 24732.15231736323,
+          "primacia": 23723.047682636767,
+          "tasavta": 3.375415379535207,
+          "tasaTci": 6.414491680535761,
+          "tasaTce": 3.375415379535207,
+          "tasaTir": 11.413548110228454,
+          "perdida": 0,
+          "operacion": "184269",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 14,
+              "pension": 123.66076158681616
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 667.6393967614152,
+          "penafp": 0,
+          "pencia": 667.6393967614152,
+          "primaafp": 0,
+          "primacia": 82461.74,
+          "tasavta": 5.523377844071731,
+          "tasaTci": 6.517919218227464,
+          "tasaTce": 5.523377844071731,
+          "tasaTir": 11.406185685094549,
+          "perdida": 0,
+          "operacion": "184270",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 280.4085466397944
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 93.46951554659815
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 561.2892956783702,
+          "penafp": 1122.5785913567404,
+          "pencia": 561.2892956783702,
+          "primaafp": 13470.943096280884,
+          "primacia": 68990.79690371912,
+          "tasavta": 5.422572404562076,
+          "tasaTci": 6.510507407613053,
+          "tasaTce": 5.422572404562076,
+          "tasaTir": 11.468277885226442,
+          "perdida": 0,
+          "operacion": "184270",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 235.74150418491547
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 78.58050139497183
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 617.9944904710793,
+          "penafp": 1235.9889809421586,
+          "pencia": 617.9944904710793,
+          "primaafp": 14831.867771305904,
+          "primacia": 67629.8722286941,
+          "tasavta": 5.5359847347427715,
+          "tasaTci": 6.531696794934483,
+          "tasaTce": 5.5359847347427715,
+          "tasaTir": 11.479694139267217,
+          "perdida": 0,
+          "operacion": "184270",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 259.5576859978533
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 86.5192286659511
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 646.4634182027689,
+          "penafp": 1292.9268364055379,
+          "pencia": 646.4634182027689,
+          "primaafp": 15515.122036866454,
+          "primacia": 66946.61796313355,
+          "tasavta": 5.523377844071731,
+          "tasaTci": 6.536973633020748,
+          "tasaTce": 5.523377844071731,
+          "tasaTir": 11.454426119396555,
+          "perdida": 0,
+          "operacion": "184270",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 271.51463564516297
+            },
+            {
+              "id": 3,
+              "prc": 14,
+              "pension": 90.50487854838767
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 2033.563825846739,
+          "penafp": 0,
+          "pencia": 2033.563825846739,
+          "primaafp": 0,
+          "primacia": 163002.89,
+          "tasavta": 6.00922122166383,
+          "tasaTci": 6.460344295977638,
+          "tasaTce": 6.00922122166383,
+          "tasaTir": 10.755830271972155,
+          "perdida": 0,
+          "operacion": "184271",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 854.0968068556303
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 1918.3741254812508,
+          "penafp": 3836.7482509625015,
+          "pencia": 1918.3741254812508,
+          "primaafp": 38367.48250962501,
+          "primacia": 124635.407490375,
+          "tasavta": 6.059869885717406,
+          "tasaTci": 6.4862068111472215,
+          "tasaTce": 6.059869885717406,
+          "tasaTir": 10.777483084562455,
+          "perdida": 0,
+          "operacion": "184271",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 0,
+              "pension": 0
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 805.7171327021252
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  [
+    {
+      "Solicitud": [
+        {
+          "procede": "ok",
+          "idmod": 1,
+          "penref": 6694.384671877279,
+          "penafp": 0,
+          "pencia": 6694.384671877279,
+          "primaafp": 0,
+          "primacia": 1014197.05,
+          "tasavta": 6.608967826469825,
+          "tasaTci": 6.565087368277833,
+          "tasaTce": 6.309999999999999,
+          "tasaTir": 8.60378500613379,
+          "perdida": 0,
+          "operacion": "184272",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 4686.069270314095
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 2811.641562188457
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 2,
+          "penref": 6350.245590540002,
+          "penafp": 12700.491181080004,
+          "pencia": 6350.245590540002,
+          "primaafp": 88903.43826756004,
+          "primacia": 925293.6117324401,
+          "tasavta": 6.647149184666401,
+          "tasaTci": 6.561367742874635,
+          "tasaTce": 6.309999999999999,
+          "tasaTir": 8.51297308523824,
+          "perdida": 0,
+          "operacion": "184272",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 4445.171913378001
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 2667.1031480268007
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 3,
+          "penref": 7053.860163460215,
+          "penafp": 14107.72032692043,
+          "pencia": 7053.860163460215,
+          "primaafp": 98754.042288443,
+          "primacia": 915443.0077115571,
+          "tasavta": 6.685343077376316,
+          "tasaTci": 6.584898497528369,
+          "tasaTce": 6.309999999999999,
+          "tasaTir": 8.600276961475451,
+          "perdida": 0,
+          "operacion": "184272",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 4937.70211442215
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 2962.62126865329
+            }
+          ]
+        },
+        {
+          "procede": "ok",
+          "idmod": 4,
+          "penref": 7265.154574242828,
+          "penafp": 14530.309148485656,
+          "pencia": 7265.154574242828,
+          "primaafp": 101712.16403939959,
+          "primacia": 912484.8859606005,
+          "tasavta": 6.685343077376316,
+          "tasaTci": 6.588321930730667,
+          "tasaTce": 6.309999999999999,
+          "tasaTir": 8.548970621780327,
+          "perdida": 0,
+          "operacion": "184272",
+          "gastosep": 5448.54,
+          "idfiltro": 0,
+          "idrechazo": 0,
+          "rechazo": "",
+          "resultadospen": [
+            {
+              "id": 1,
+              "prc": 70,
+              "pension": 5085.608201969979
+            },
+            {
+              "id": 2,
+              "prc": 42,
+              "pension": 3051.3649211819875
+            }
+          ]
+        }
+      ]
+    }
+  ]
+]

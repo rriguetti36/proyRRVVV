@@ -1,0 +1,238 @@
+{
+  "Solicitudes": [
+    {
+      "IdoperacionSbs": "188422",
+      "Cliente": "01",
+      "TipoCambio": "3.775",
+      "GastoSepelio": 5448.54,
+      "MontoCIC": "66305.38",
+      "Licencia": "Usuario",
+      "Gastos": {
+        "Gastosmant": 280,
+        "Gastosemi": 3000,
+        "Porcentajedeuda": 0,
+        "Impuestos": 30
+      },
+      "Asegurado": {
+        "IdBeneficiario": 1,
+        "TipoInvalidez": "S",
+        "FechaNacimiento": "1970-09-05",
+        "Genero": "F",
+        "ComisionAFP": "3.19",
+        "TipoPension": "D",
+        "FechaDevengue": "2024-10-01",
+        "FechaDevengueSolicitud": "2023-03-10"
+      },
+      "Beneficiario": [
+        {
+          "IdBeneficiario": 2,
+          "Parentesco": "HI",
+          "FechaNacimiento": "2006-08-31",
+          "Genero": "F",
+          "TipoInvalidez": "N"
+        }
+      ],
+      "Modalidad": [
+        {
+          "IdModalidad": 1,
+          "Moneda": "S/.Aj.",
+          "PeriodoDiferido": "",
+          "PeriodoGarantizado": "",
+          "Gratificacion": "N",
+          "PrimerTramo": 0,
+          "SegundoTramo": 0,
+          "TasaRentaAFP": 3.19,
+          "RentaTemp": 0,
+          "tasaanclaje": 3,
+          "tasaventaprom": 6.31,
+          "tasaventa": 6.5,
+          "tasatirtope": 9,
+          "tasaperdidatope": 9,
+          "comision": 2.4
+        },
+        {
+          "IdModalidad": 2,
+          "Moneda": "S/.Aj.",
+          "PeriodoDiferido": "3",
+          "PeriodoGarantizado": "15",
+          "Gratificacion": "N",
+          "PrimerTramo": 0,
+          "SegundoTramo": 0,
+          "TasaRentaAFP": 3.19,
+          "RentaTemp": 50,
+          "tasaanclaje": 3,
+          "tasaventaprom": 6.31,
+          "tasaventa": 6.5,
+          "tasatirtope": 9,
+          "tasaperdidatope": 9,
+          "comision": 2.4
+        },
+        {
+          "IdModalidad": 3,
+          "Moneda": "S/.Aj.",
+          "PeriodoDiferido": "5",
+          "PeriodoGarantizado": "15",
+          "Gratificacion": "N",
+          "PrimerTramo": 0,
+          "SegundoTramo": 0,
+          "TasaRentaAFP": 3.19,
+          "RentaTemp": 50,
+          "tasaanclaje": 3,
+          "tasaventaprom": 6.31,
+          "tasaventa": 6.5,
+          "tasatirtope": 9,
+          "tasaperdidatope": 9,
+          "comision": 2.4
+        },
+        {
+          "IdModalidad": 4,
+          "Moneda": "S/.Aj.",
+          "PeriodoDiferido": "3",
+          "PeriodoGarantizado": "",
+          "Gratificacion": "N",
+          "PrimerTramo": 0,
+          "SegundoTramo": 0,
+          "TasaRentaAFP": 3.19,
+          "RentaTemp": 50,
+          "tasaanclaje": 3,
+          "tasaventaprom": 6.31,
+          "tasaventa": 6.5,
+          "tasatirtope": 9,
+          "tasaperdidatope": 9,
+          "comision": 2.4
+        }
+      ]
+    },
+    {
+      "IdoperacionSbs": "188432",
+      "Cliente": "01",
+      "TipoCambio": "3.772",
+      "GastoSepelio": 5448.54,
+      "MontoCIC": "2744669.37",
+      "Licencia": "Usuario",
+      "Gastos": {
+        "Gastosmant": 280,
+        "Gastosemi": 3000,
+        "Porcentajedeuda": 0,
+        "Impuestos": 30
+      },
+      "Asegurado": {
+        "IdBeneficiario": 1,
+        "TipoInvalidez": "S",
+        "FechaNacimiento": "1985-08-06",
+        "Genero": "M",
+        "ComisionAFP": "3.85",
+        "TipoPension": "D",
+        "FechaDevengue": "2024-10-01",
+        "FechaDevengueSolicitud": "2022-04-22"
+      },
+      "Beneficiario": [
+        {
+          "IdBeneficiario": 2,
+          "Parentesco": "CB",
+          "FechaNacimiento": "1992-04-05",
+          "Genero": "F",
+          "TipoInvalidez": "N"
+        },
+        {
+          "IdBeneficiario": 3,
+          "Parentesco": "HI",
+          "FechaNacimiento": "2013-08-28",
+          "Genero": "F",
+          "TipoInvalidez": "N"
+        },
+        {
+          "IdBeneficiario": 4,
+          "Parentesco": "HI",
+          "FechaNacimiento": "2017-03-01",
+          "Genero": "M",
+          "TipoInvalidez": "N"
+        },
+        {
+          "IdBeneficiario": 5,
+          "Parentesco": "HI",
+          "FechaNacimiento": "2007-09-10",
+          "Genero": "F",
+          "TipoInvalidez": "N"
+        },
+        {
+          "IdBeneficiario": 6,
+          "Parentesco": "PA",
+          "FechaNacimiento": "1966-11-28",
+          "Genero": "F",
+          "TipoInvalidez": "N"
+        }
+      ],
+      "Modalidad": [
+        {
+          "IdModalidad": 1,
+          "Moneda": "S/.",
+          "PeriodoDiferido": "",
+          "PeriodoGarantizado": "",
+          "Gratificacion": "N",
+          "PrimerTramo": 0,
+          "SegundoTramo": 0,
+          "TasaRentaAFP": 3.85,
+          "RentaTemp": 0,
+          "tasaanclaje": 3,
+          "tasaventaprom": 6.31,
+          "tasaventa": 6.5,
+          "tasatirtope": 9,
+          "tasaperdidatope": 9,
+          "comision": 2.4
+        },
+        {
+          "IdModalidad": 2,
+          "Moneda": "S/.",
+          "PeriodoDiferido": "3",
+          "PeriodoGarantizado": "",
+          "Gratificacion": "N",
+          "PrimerTramo": 0,
+          "SegundoTramo": 0,
+          "TasaRentaAFP": 3.85,
+          "RentaTemp": 50,
+          "tasaanclaje": 3,
+          "tasaventaprom": 6.31,
+          "tasaventa": 6.5,
+          "tasatirtope": 9,
+          "tasaperdidatope": 9,
+          "comision": 2.4
+        },
+        {
+          "IdModalidad": 3,
+          "Moneda": "S/.",
+          "PeriodoDiferido": "3",
+          "PeriodoGarantizado": "15",
+          "Gratificacion": "N",
+          "PrimerTramo": 0,
+          "SegundoTramo": 0,
+          "TasaRentaAFP": 3.85,
+          "RentaTemp": 50,
+          "tasaanclaje": 3,
+          "tasaventaprom": 6.31,
+          "tasaventa": 6.5,
+          "tasatirtope": 9,
+          "tasaperdidatope": 9,
+          "comision": 2.4
+        },
+        {
+          "IdModalidad": 4,
+          "Moneda": "S/.",
+          "PeriodoDiferido": "5",
+          "PeriodoGarantizado": "15",
+          "Gratificacion": "N",
+          "PrimerTramo": 0,
+          "SegundoTramo": 0,
+          "TasaRentaAFP": 3.85,
+          "RentaTemp": 50,
+          "tasaanclaje": 3,
+          "tasaventaprom": 6.31,
+          "tasaventa": 6.5,
+          "tasatirtope": 9,
+          "tasaperdidatope": 9,
+          "comision": 2.4
+        }
+      ]
+    }
+  ]
+}

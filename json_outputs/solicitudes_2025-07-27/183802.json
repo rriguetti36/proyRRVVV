@@ -1,0 +1,74 @@
+{
+  "nroOperacion": "183802",
+  "AFP": "1009",
+  "CUSPP": "230291BACÑA5",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2023-09-19",
+  "fechaSuscripcionIII": "2024-03-20",
+  "devengueSolicitud": "2023-09-19",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.703",
+  "diaCita": "2024-04-04",
+  "horaCita": "15:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "06710905",
+    "apellidoPaterno": "AZAÑEDO",
+    "apellidoMaterno": "CAJACHAGUA",
+    "primerNombre": "BORIS",
+    "segundoNombre": "CARLOS",
+    "genero": "M",
+    "fechaNacimiento": "1963-01-20",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "6816.99",
+    "saldoCic": "6816.99",
+    "valorCuota": "14.0346380",
+    "saldoCuotas": "485.7262898",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "CAJACHAGUA",
+    "apellidoMaterno": "ALEJO",
+    "primerNombre": "ANA",
+    "segundoNombre": "MARIA",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1944-07-02",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

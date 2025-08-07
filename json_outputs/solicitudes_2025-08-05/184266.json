@@ -1,0 +1,108 @@
+{
+  "nroOperacion": "184266",
+  "AFP": "1002",
+  "CUSPP": "567411RQFSF5",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2024-03-01",
+  "fechaSuscripcionIII": "2024-04-15",
+  "devengueSolicitud": "2021-05-14",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.707",
+  "diaCita": "2024-04-25",
+  "horaCita": "11:00",
+  "lugarCita": "ICA-CHINCHA-CHINCHA ALTA. CALLE LIMA N° 250 CERCADO CHINCHA ALTA - CHINCHA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "21863384",
+    "apellidoPaterno": "QUISPE",
+    "apellidoMaterno": "FARFAN",
+    "primerNombre": "ROBERTO",
+    "segundoNombre": "CARLOS",
+    "genero": "M",
+    "fechaNacimiento": "1973-03-20",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "581553.00",
+    "saldoCic": "100688.19",
+    "valorCuota": "13.9615179",
+    "saldoCuotas": "7211.8369021",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "480864.81"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "QUISPE",
+      "apellidoMaterno": "CARBAJAL",
+      "primerNombre": "ANDREW",
+      "segundoNombre": "ALEXANDER",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2012-02-01",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "QUISPE",
+      "apellidoMaterno": "PEREZ",
+      "primerNombre": "PEDRO",
+      "segundoNombre": "ROBERTO",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1945-06-06",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "CARBAJAL",
+      "apellidoMaterno": "MARTINEZ",
+      "primerNombre": "MARIA",
+      "segundoNombre": "CONSUELO",
+      "parentesco": "CB",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1971-04-11",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

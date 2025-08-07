@@ -1,0 +1,32 @@
+[
+  {
+    "apellidoPaterno": "ALBORNOZ",
+    "apellidoMaterno": "FLORES",
+    "primerNombre": "INES",
+    "segundoNombre": "EDITH",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1974-04-06",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "NAVARRO",
+    "apellidoMaterno": "ALBORNOZ",
+    "primerNombre": "LENIN",
+    "segundoNombre": "STIVEN",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2011-05-15",
+    "genero": "M"
+  },
+  {
+    "apellidoPaterno": "NAVARRO",
+    "apellidoMaterno": "ALBORNOZ",
+    "primerNombre": "ANDERSON",
+    "segundoNombre": "VICTOR",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2008-04-18",
+    "genero": "M"
+  }
+]

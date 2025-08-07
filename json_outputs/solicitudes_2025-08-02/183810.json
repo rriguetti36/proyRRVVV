@@ -1,0 +1,83 @@
+{
+  "nroOperacion": "183810",
+  "AFP": "1010",
+  "CUSPP": "208121GRBAM3",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.85",
+  "fechaDevengue": "2020-09-02",
+  "fechaSuscripcionIII": "2024-03-20",
+  "devengueSolicitud": "2020-09-02",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.703",
+  "diaCita": "2024-04-02",
+  "horaCita": "12:00",
+  "lugarCita": "PIURA-PIURA-CASTILLA. CENTRO COMERCIAL OPEN PLAZA PIURA, LOCAL LC-109, AV. ANDRÉS AVELINO CÁCERES 147 ",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "23942186",
+    "apellidoPaterno": "ROCA",
+    "apellidoMaterno": "BERMUDO",
+    "primerNombre": "GLOMEDIANO",
+    "genero": "M",
+    "fechaNacimiento": "1956-12-25",
+    "estadoSobrevivencia": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "299977.63",
+    "saldoCic": "19073.34",
+    "valorCuota": "14.3395217",
+    "saldoCuotas": "1330.1238632",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "280904.29"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "ROJAS",
+    "apellidoMaterno": "FERNANDEZ",
+    "primerNombre": "BERTHA",
+    "segundoNombre": "MARINA",
+    "parentesco": "CB",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1968-11-19",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

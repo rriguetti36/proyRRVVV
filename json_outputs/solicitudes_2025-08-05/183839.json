@@ -1,0 +1,108 @@
+{
+  "nroOperacion": "183839",
+  "AFP": "1002",
+  "CUSPP": "637201JCOCO0",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2024-02-01",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2021-02-11",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-05",
+  "horaCita": "11:00",
+  "lugarCita": "LAMBAYEQUE-CHICLAYO-CHICLAYO. AV. ANDRÉS AVELINO CÁCERES 238 URB. SANTA VICTORIA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "47204152",
+    "apellidoPaterno": "CHICOMA",
+    "apellidoMaterno": "OZCO",
+    "primerNombre": "JULIO",
+    "segundoNombre": "JONATHAN",
+    "genero": "M",
+    "fechaNacimiento": "1992-04-28",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "495270.62",
+    "saldoCic": "20748.30",
+    "valorCuota": "13.9078956",
+    "saldoCuotas": "1491.8360475",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "474522.32"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "CHICOMA",
+      "apellidoMaterno": "SOTO",
+      "primerNombre": "EDRIC",
+      "segundoNombre": "FARID",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2017-05-22",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "CHICOMA",
+      "apellidoMaterno": "SOTO",
+      "primerNombre": "ANDRY",
+      "segundoNombre": "GADIEL",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2020-08-14",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "SOTO",
+      "apellidoMaterno": "ANACLETO",
+      "primerNombre": "MARIA",
+      "segundoNombre": "BELEN",
+      "parentesco": "CB",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1997-10-03",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

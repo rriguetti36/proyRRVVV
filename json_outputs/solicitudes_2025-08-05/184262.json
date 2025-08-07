@@ -1,0 +1,77 @@
+{
+  "nroOperacion": "184262",
+  "AFP": "1009",
+  "CUSPP": "216981FVCLQ7",
+  "tipoBeneficio": "C",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2024-03-18",
+  "fechaSuscripcionIII": "2024-04-12",
+  "devengueSolicitud": "2018-09-18",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.711",
+  "diaCita": "2024-04-22",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "29723666",
+    "apellidoPaterno": "VALLEJOS",
+    "apellidoMaterno": "CHOQUE",
+    "primerNombre": "FERNANDO",
+    "segundoNombre": "GABINO",
+    "genero": "M",
+    "fechaNacimiento": "1959-05-30",
+    "gradoInvalidez": "T"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "335811.35",
+    "saldoCic": "88509.10",
+    "valorCuota": "14.0819334",
+    "saldoCuotas": "6285.2946031",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "247302.25"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "FERNANDEZ",
+    "apellidoMaterno": "CHIPOCO",
+    "primerNombre": "LOURDES",
+    "segundoNombre": "MARINA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1961-06-29",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

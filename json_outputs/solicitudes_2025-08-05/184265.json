@@ -1,0 +1,79 @@
+{
+  "nroOperacion": "184265",
+  "AFP": "1002",
+  "CUSPP": "589640JQCND7",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2017-09-03",
+  "fechaSuscripcionIII": "2024-04-15",
+  "devengueSolicitud": "2017-09-03",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.707",
+  "diaCita": "2024-04-26",
+  "horaCita": "11:00",
+  "lugarCita": "ICA-CHINCHA-CHINCHA ALTA. CALLE LIMA N° 250 CERCADO CHINCHA ALTA - CHINCHA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "40197483",
+    "apellidoPaterno": "QUINTANA",
+    "apellidoMaterno": "CORDERO",
+    "primerNombre": "JENNY",
+    "segundoNombre": "ROSSANA",
+    "genero": "F",
+    "fechaNacimiento": "1979-04-21",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "14615.78",
+    "saldoCic": "14615.78",
+    "valorCuota": "13.9615179",
+    "saldoCuotas": "1046.8620967",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "SALAZAR",
+      "apellidoMaterno": "QUINTANA",
+      "primerNombre": "JOSE",
+      "segundoNombre": "OSWALDO",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2000-12-30",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "LUQUE",
+      "apellidoMaterno": "QUINTANA",
+      "primerNombre": "ADRIANA",
+      "segundoNombre": "LUCERO",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2012-10-25",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

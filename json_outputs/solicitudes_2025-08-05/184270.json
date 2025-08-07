@@ -1,0 +1,98 @@
+{
+  "nroOperacion": "184270",
+  "AFP": "1002",
+  "CUSPP": "549690FCFER1",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-10-11",
+  "fechaSuscripcionIII": "2024-04-15",
+  "devengueSolicitud": "2023-10-11",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.707",
+  "diaCita": "2024-04-24",
+  "horaCita": "15:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. AV. CANAVAL Y MOREYRA 540",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "08672257",
+    "apellidoPaterno": "CAVERO",
+    "apellidoMaterno": "FLORES",
+    "primerNombre": "FANNY",
+    "segundoNombre": "IVON",
+    "genero": "F",
+    "fechaNacimiento": "1968-05-13",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "82461.74",
+    "saldoCic": ".10",
+    "valorCuota": "13.9615179",
+    "saldoCuotas": ".0071626",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "82461.64"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "GARCIA",
+      "apellidoMaterno": "REYES",
+      "primerNombre": "RODOLFO",
+      "segundoNombre": "SANTIAGO",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1964-11-16",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "CAVERO",
+      "apellidoMaterno": "MENDOZA",
+      "primerNombre": "JUAN",
+      "segundoNombre": "JOSE",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1948-12-28",
+      "genero": "M"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

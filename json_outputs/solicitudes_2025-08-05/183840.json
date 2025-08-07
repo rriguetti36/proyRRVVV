@@ -1,0 +1,85 @@
+{
+  "nroOperacion": "183840",
+  "AFP": "1002",
+  "CUSPP": "645221MÑEUO6",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-06-05",
+  "fechaSuscripcionIII": "2024-03-23",
+  "devengueSolicitud": "2023-06-05",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.694",
+  "diaCita": "2024-04-04",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. AV. CANAVAL Y MOREYRA 540",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "71791309",
+    "apellidoPaterno": "ÑAHUI",
+    "apellidoMaterno": "ESCOBAR",
+    "primerNombre": "MAICOL",
+    "genero": "M",
+    "fechaNacimiento": "1994-07-09",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "223762.09",
+    "saldoCic": "2290.95",
+    "valorCuota": "13.9064157",
+    "saldoCuotas": "164.7405090",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "221471.14"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "ÑAHUI",
+    "apellidoMaterno": "TINEO",
+    "primerNombre": "LUANA",
+    "segundoNombre": "GABRIELA",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2021-07-07",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "apellidoPaterno": "CHAPILLIQUEN",
+    "apellidoMaterno": "ANTON",
+    "primerNombre": "BERTHYLA",
+    "segundoNombre": "ELIZABEHT",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1963-04-21",
+    "genero": "F"
+  },
+  {
+    "apellidoPaterno": "RUIZ",
+    "apellidoMaterno": "CASTRO",
+    "primerNombre": "JUAN",
+    "segundoNombre": "FRANCISCO",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1930-04-03",
+    "genero": "M"
+  }
+]

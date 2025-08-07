@@ -1,0 +1,85 @@
+{
+  "nroOperacion": "183821",
+  "AFP": "1002",
+  "CUSPP": "655651EMCHQ1",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-11-17",
+  "fechaSuscripcionIII": "2024-03-20",
+  "devengueSolicitud": "2023-11-17",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.703",
+  "diaCita": "2024-04-05",
+  "horaCita": "10:00",
+  "lugarCita": "ICA-CHINCHA-CHINCHA ALTA. CALLE LIMA N° 250 CERCADO CHINCHA ALTA - CHINCHA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "71880526",
+    "apellidoPaterno": "MACHACA",
+    "apellidoMaterno": "CHUQUIMAMANI",
+    "primerNombre": "EDGAR",
+    "segundoNombre": "ALCE",
+    "genero": "M",
+    "fechaNacimiento": "1997-05-17",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "46480.46",
+    "saldoCic": "2905.81",
+    "valorCuota": "13.9064157",
+    "saldoCuotas": "208.9546338",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "43574.65"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "CHUQUIMAMANI",
+    "apellidoMaterno": "PERALTA",
+    "primerNombre": "SALOMEA",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1968-10-07",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

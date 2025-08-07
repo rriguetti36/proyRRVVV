@@ -1,0 +1,68 @@
+{
+  "nroOperacion": "183812",
+  "AFP": "1002",
+  "CUSPP": "237061VCGCC1",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2015-10-29",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2015-10-29",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-08",
+  "horaCita": "15:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. AV. CANAVAL Y MOREYRA 540",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "06820310",
+    "apellidoPaterno": "CANCHACHI",
+    "apellidoMaterno": "GARCIA",
+    "primerNombre": "VIRGINIO",
+    "segundoNombre": "MANUEL",
+    "genero": "M",
+    "fechaNacimiento": "1964-11-27",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "29880.03",
+    "saldoCic": "29880.03",
+    "valorCuota": "13.9064157",
+    "saldoCuotas": "2148.6513865",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "CANCHACHI",
+    "apellidoMaterno": "GUTIERREZ",
+    "primerNombre": "RONALDO",
+    "segundoNombre": "CAMILO",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2004-08-20",
+    "genero": "M"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

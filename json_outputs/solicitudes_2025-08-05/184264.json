@@ -1,0 +1,96 @@
+{
+  "nroOperacion": "184264",
+  "AFP": "1010",
+  "CUSPP": "597881UDBME8",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.85",
+  "fechaDevengue": "2023-09-30",
+  "fechaSuscripcionIII": "2024-04-12",
+  "devengueSolicitud": "2023-09-30",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.711",
+  "diaCita": "2024-04-23",
+  "horaCita": "15:00",
+  "lugarCita": "AREQUIPA-AREQUIPA-CAYMA. AV. EL EJERCITO 1009, REAL PLAZA LC 149",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "45724010",
+    "apellidoPaterno": "DOLMOS",
+    "apellidoMaterno": "BECERRA",
+    "primerNombre": "URIEL",
+    "segundoNombre": "FRANKDALI",
+    "genero": "M",
+    "fechaNacimiento": "1981-07-23",
+    "estadoSobrevivencia": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "423797.25",
+    "saldoCic": "7757.08",
+    "valorCuota": "14.3977221",
+    "saldoCuotas": "538.7713381",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "416040.17"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "CENTENO",
+      "apellidoMaterno": "LICOTA",
+      "primerNombre": "NOEMI",
+      "segundoNombre": "VICTORIA",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1991-05-23",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "BECERRA",
+      "apellidoMaterno": "GONGORA",
+      "primerNombre": "MARLENI",
+      "segundoNombre": "ZOILA",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1958-12-27",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "nroOperacion": "183820",
+  "AFP": "1002",
+  "CUSPP": "235801WGMZD8",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-11-03",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2023-11-03",
+  "fechaEnvio": "2024-03-22",
+  "fechaCierre": "2024-03-27",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-03",
+  "horaCita": "12:00",
+  "lugarCita": "ICA-CHINCHA-CHINCHA ALTA. CALLE LIMA N° 250 CERCADO CHINCHA ALTA - CHINCHA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "21852879",
+    "apellidoPaterno": "GONZALES",
+    "apellidoMaterno": "MENDOZA",
+    "primerNombre": "WILFREDO",
+    "segundoNombre": "JOSE",
+    "genero": "M",
+    "fechaNacimiento": "1964-07-24",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "39099.26",
+    "saldoCic": "279.37",
+    "valorCuota": "13.9064157",
+    "saldoCuotas": "20.0892888",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "38819.89"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "ATUNCAR",
+    "apellidoMaterno": "DE GONZALES",
+    "primerNombre": "MARIA",
+    "segundoNombre": "MAGDALENA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1962-11-18",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "modalidad": "RV",
+    "moneda": "S/.",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "modalidad": "RTVD",
+    "moneda": "S/.",
+    "anosRT": "1",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "modalidad": "RTVD",
+    "moneda": "S/.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  },
+  {
+    "modalidad": "RTVD",
+    "moneda": "S/.",
+    "anosRT": "3",
+    "porcentajeRVD": "50.00",
+    "periodoGarantizado": "15",
+    "derechoCrecer": "N",
+    "gratificacion": "N"
+  }
+]

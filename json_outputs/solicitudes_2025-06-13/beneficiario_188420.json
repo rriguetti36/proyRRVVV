@@ -1,0 +1,41 @@
+[
+  {
+    "apellidoPaterno": "NOLE",
+    "apellidoMaterno": "PULACHE",
+    "primerNombre": "THIAGO",
+    "segundoNombre": "OMAR",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2014-03-30",
+    "genero": "M"
+  },
+  {
+    "apellidoPaterno": "NOLE",
+    "apellidoMaterno": "PULACHE",
+    "primerNombre": "MIGUEL",
+    "segundoNombre": "ANGEL",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2011-05-31",
+    "genero": "M"
+  },
+  {
+    "apellidoPaterno": "NOLE",
+    "apellidoMaterno": "BAUTISTA",
+    "primerNombre": "MIGUEL",
+    "segundoNombre": "ANGEL",
+    "parentesco": "CB",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1988-10-28",
+    "genero": "M"
+  },
+  {
+    "apellidoPaterno": "GIRON",
+    "apellidoMaterno": "DE PULACHE",
+    "primerNombre": "JUANA",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1959-07-11",
+    "genero": "F"
+  }
+]

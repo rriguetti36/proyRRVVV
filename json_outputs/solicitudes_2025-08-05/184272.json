@@ -1,0 +1,86 @@
+{
+  "nroOperacion": "184272",
+  "AFP": "1002",
+  "CUSPP": "252891GSCPP4",
+  "tipoBeneficio": "C",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2024-04-01",
+  "fechaSuscripcionIII": "2024-04-12",
+  "devengueSolicitud": "2023-12-04",
+  "fechaEnvio": "2024-04-16",
+  "fechaCierre": "2024-04-19",
+  "tipoCambio": "3.711",
+  "diaCita": "2024-04-23",
+  "horaCita": "10:00",
+  "lugarCita": "CAJAMARCA-CAJAMARCA-CAJAMARCA. JR. SAN MARTIN 358",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "26682517",
+    "apellidoPaterno": "SEMPERTEGUI",
+    "apellidoMaterno": "CAMPOS",
+    "primerNombre": "GILMER",
+    "segundoNombre": "OVIDIO",
+    "genero": "M",
+    "fechaNacimiento": "1969-03-29",
+    "gradoInvalidez": "T"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "1014197.05",
+    "saldoCic": "334128.74",
+    "valorCuota": "13.9615179",
+    "saldoCuotas": "23932.1213061",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "680068.31"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "SORIANO",
+    "apellidoMaterno": "CHUGNAS",
+    "primerNombre": "MERCEDES",
+    "segundoNombre": "MARGARITA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1963-10-06",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}
