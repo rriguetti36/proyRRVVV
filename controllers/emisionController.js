@@ -41,6 +41,10 @@ exports.ProcesoCalculoPagos = async (req, res) => {
     }
 };
 
+exports.ProcesoCalculoEndosos = async (req, res) => {
+
+};
+
 async function CalcularPagos(Polizas, Beneficiarios, Feccal, Tasaanual, IPC) {
 
     let numpoliza = Polizas.poliza;
