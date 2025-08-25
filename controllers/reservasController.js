@@ -6,6 +6,7 @@ const { Console } = require('console');
 const path = require('path');
 const { Worker } = require('worker_threads');
 const os = require('os');
+const logger = require("../servicios/logger");
 
 exports.ProcesoCalculoReservas = async (req, res) => {
 
@@ -26,17 +27,20 @@ exports.ProcesoCalculoReservas = async (req, res) => {
         const TasasRentabilidad = await tablasTasasInd.getTasaInversiones();
 
         //Crea la foto temporal
+        logger.info(`Crea la foto temporal de los datos enviados en archivos fisico`);
         const carpeta = await creaTemporalesJson(datos);
 
         // Ruta del archivo
         const rutaArchivo = path.join(__dirname, `../json_outputs/reservas_${datos.proceso}`, "polizasdatos.json");
 
         // Leer archivo
+        logger.info(`Leer archivo de la foto temporal de los datos enviados en archivos fisico`);
         const data = JSON.parse(fs.readFileSync(rutaArchivo, "utf8"));
         const datosPol = data.Polizas;
 
 
         // Carpeta dinámica con la fecha del proceso para guardar los flujos
+        logger.info(`Carpeta dinámica con la fecha del proceso para guardar los flujos de forma fisica archivos .json`);
         const ruta = "D:\\DataReservasRRVV" //"../json_outputs"
         const carpetaFlujos = path.join(ruta, `flujos_polizas_${data.proceso}`);
         //const carpeta = path.join(__dirname, "../json_outputs", `flujos_reservas_${feccalculo}`, "flujos");
@@ -46,36 +50,10 @@ exports.ProcesoCalculoReservas = async (req, res) => {
             fs.mkdirSync(carpetaFlujos, { recursive: true });
         }
 
-        /* const resultados = await Promise.all(
-            datosPol.map(c => calcularRes(c, datos.proceso, TasasIPC, TasasRentabilidad, TasasCurvaCero, TablasMortal, TablasVtaPromedio, carpetaFlujos))
-        ); */
-        /* const resultadosRM = await Promise.all(
-            datosPol.map(async (c) => {
-                const label = `Cálcula reserva Poliza-${c.poliza}`;
-                console.time(label);
-
-                const resultado = await calcularRes(
-                    c,
-                    datos.proceso,
-                    datos.montosepelio,
-                    datos.tipocambio,
-                    TasasIPC,
-                    TasasRentabilidad,
-                    TasasCurvaCero,
-                    TablasMortal,
-                    TablasVtaPromedio,
-                    carpetaFlujos
-                );
-
-                console.timeEnd(label);
-                return {
-                    poliza: c.poliza,
-                    reserva: resultado
-                };
-            })
-        ); */
+        logger.info(`Inicia calculos de reserva de periodo menos a la fecha ${data.proceso}`);
         const tareas = datosPol.map((c) =>
             limit(async () => {
+                logger.info(`Iniciando cálculo de reservas para póliza ${c.poliza}`);
                 const label = `Cálcula reserva Poliza-${c.poliza}`;
                 console.time(label);
 
@@ -91,7 +69,7 @@ exports.ProcesoCalculoReservas = async (req, res) => {
                     TablasVtaPromedio,
                     carpetaFlujos
                 );
-
+                logger.info(`Iniciando cálculo de reservas para póliza ${c.poliza}`);
                 console.timeEnd(label);
                 return { poliza: c.poliza, reserva: resultado };
             })
@@ -99,7 +77,7 @@ exports.ProcesoCalculoReservas = async (req, res) => {
         const resultadosRM = await Promise.all(tareas);
         res.json(resultadosRM);
 
-
+        logger.info(`Finaliza Calculo de reservas`);
         //res.json({ mensaje: `Datos guardados en ${carpeta}` });
     } catch (err) {
         console.error(err);
@@ -161,7 +139,7 @@ async function calcularRes(poliza, feccalculo, montosepelio, tipocambio, TasasIP
         const tc = parseFloat(tipocambio);
         const dataPoliza = [];
         const dataBeneficiarios = [];
-
+        const fecvigencia = parseFecha(datosPol.vigencia);
         let gastosep = sepelio
         if (datosPol.moneda == 3 || datosPol.moneda == 4) {
             gastosep = Math.round(sepelio / tc, 2);
@@ -222,13 +200,63 @@ async function calcularRes(poliza, feccalculo, montosepelio, tipocambio, TasasIP
             JSON.stringify(resultadosFlujos, null, 2)
         );
 
+        let prestacion = "";
+        switch (datosPol.prestacion) {
+            case "1":
+                prestacion = "J";
+                break;
+            case "2":
+                prestacion = "J";
+                break;
+            case "3":
+                prestacion = "I";
+                break;
+            case "4":
+                prestacion = "I";
+                break;
+            case "5":
+                prestacion = "S";
+                break;
+            case "6":
+                prestacion = "J";
+                break;
+            case "7":
+                prestacion = "J";
+                break;
+            case "8":
+                prestacion = "I";
+                break;
+            case "9":
+                prestacion = "I";
+                break;
+        }
+
+        const tasaRes = datosPol.tasares;
+        //console.log("tasaRes", tasaRes);
+        const tasaVta = datosPol.tasaventa;
+        //console.log("tasaVta", tasaVta);
+        const tasaVtapro = await ObtieneTasasVtaPromedio(TablasVtaPromedio, datosPol.moneda, prestacion, fechacalculo)
+        //console.log("tasaVtapro", tasaVtapro);
+        let bautizo = "N";
+        const fechavigencia = parseFecha(datosPol.vigencia);
+        const ultVigencia = ultimoDiaMes(fechavigencia);
+        const ultCalculo = ultimoDiaMes(restarUnDia(fechacalculo));
+
+        //console.log("ultVigencia", ultVigencia);
+        //console.log("ultCalculo", ultCalculo);
+
+        if (new Date(ultVigencia).getTime() === new Date(ultCalculo).getTime()) {
+            bautizo = "S";
+            //console.log("bautizo", bautizo);
+        }
+
         // Calcula la reseva matematica
-        const reservamatetica = await calcularReservaMat(datosflujos, datosPol.tasares / 100);
-        console.log("|poliza : " + datosPol.poliza + " |reservamatetica : " + reservamatetica);
+        const reservamatematica = await calcularReservaMat(datosflujos, datosPol.pension, datosPol.moneda, tasaRes, TasasCurvaCero, tasaVta, tasaVtapro, bautizo);
+        console.log("|poliza : " + datosPol.poliza + " |reservamatetica : " + reservamatematica);
 
         //console.timeEnd(`Cálculo Poliza-${datosPol.poliza}`);
 
-        return reservamatetica;
+        return { reserva: reservamatematica, tasareserva: tasaRes };
     } catch (error) {
         console.error('Error:', error);
         res.status(500).json({ message: 'Error rutina' });
@@ -528,20 +556,54 @@ async function calcularflujos(objDatosPol, objDatosBen, objDatosIpc) {
     return flujosfamiliar;
 }
 
-async function calcularReservaMat(objDatoflujos, tasares) {
-    // Preprocesar flujos por mes
-    const tasanu = (1 + tasares) ** (1 / 12) - 1;
-    //console.log(tasanu);
-    const tasmen = 1 / (1 + tasanu);
-    //console.log(tasmen);
+async function calcularReservaMat(objDatoflujos, pension, moneda, tasareserva, TasasCurvaCero, tasavta, tasapro, bautizo) {
+
+    const DatasumaFlujosIni = [];
+    const DatasumaFlujos = [];
+    let tasares = tasareserva / 100;
+    let sumpentotal = 0, sumgstotal = 0, sumFlujoTotalRenta = 0, sumFlujoTotaldescontado = 0;
+    let mescalculo = 0;
+
     const flujoMap = new Map();
     for (const flujo of objDatoflujos) {
         if (!flujoMap.has(flujo.num)) flujoMap.set(flujo.num, []);
         flujoMap.get(flujo.num).push(flujo);
     }
-    //console.log(flujoMap);
-    let sumpentotal = 0, sumgstotal = 0, sumFlujoTotalRenta = 0, sumFlujoTotaldescontado = 0;
-    const DatasumaFlujos = [];
+
+    if (bautizo == "S") {
+        for (let i = 0; i <= 1331; i++) {
+            //mescalculo = i <= mesdevengdo ? 0 : mescalculo + 1;
+            const flujos = flujoMap.get(i) || [];
+
+            const sumFlujo = flujos.reduce((acc, x) => acc + x.flujo, 0);
+            const sumFlujoGS = flujos.reduce((acc, x) => acc + x.flujosepelio, 0);
+
+            //crupen += sumFlujo * Math.pow(tasvtamen, mescalculo);
+            //crugs += sumFlujoGS * Math.pow(tasvtamen, mescalculo);
+
+            DatasumaFlujosIni.push({
+                mes: i,
+                mescal: i,
+                flujossumtot: sumFlujo,
+                flujosgssumtot: sumFlujoGS
+            });
+        }
+        //logMatriz(DatasumaFlujosIni, "DatasumaFlujosIni.txt", "T");
+
+        const resultadoTci = await calcularTciTlr(DatasumaFlujosIni, pension, moneda, TasasCurvaCero);
+        const tasaTci = resultadoTci.valortci * 100;
+        //console.log("tasaTci", tasaTci);
+        const tasaTcebautizo = Math.min(tasavta, tasaTci, tasapro);
+        //console.log("tasaTcebautizo", tasaTcebautizo);
+        tasares = tasaTcebautizo / 100;
+    }
+    //console.log("tasares", tasares);
+    // Preprocesar flujos por mes
+    const tasanu = (1 + tasares) ** (1 / 12) - 1;
+    //console.log(tasanu);
+    const tasmen = 1 / (1 + tasanu);
+    //console.log(tasmen);
+
     for (let i = 0; i <= 1331; i++) {
         const flujos = flujoMap.get(i) || [];
         let mescalculado = flujos.length > 0 ? flujos[0].mescal : null;
@@ -564,17 +626,107 @@ async function calcularReservaMat(objDatoflujos, tasares) {
             sumFlujoTotaldescontado: sumFlujoTotaldescontado || 0
         });
     }
-    logMatriz(DatasumaFlujos, "DatasumaFlujos.txt", "T");
+    //logMatriz(DatasumaFlujos, "DatasumaFlujos.txt", "T");
     const reservafinal = DatasumaFlujos.reduce((acc, x) => acc + x.sumFlujoTotaldescontado, 0);
     return reservafinal;
 
     //logMatriz(DatasumaFlujos, "DatasumaFlujos.txt", "T");
 }
 
+async function calcularTciTlr(dataSumflujos, pension, moneda, TasasCurvaCero) {
+    //const TasasCurvaCero = await tablasTasasInd.getTasaCurvaCuponCero();
+    //console.log("TasasCurvaCero", TasasCurvaCero);
+    const curvamoneda = TasasCurvaCero.filter(x => x.idmoneda === Number(moneda));
+    //console.log("curvamoneda", curvamoneda.find(x => x.mes === 0)?.n_valor);
+    const DataFlujospen = [];
+    let Valflujo = 0;
+    let Valflujodev = 0;
+    let totalpasivo = 0;
+    let pasivo = 0;
+
+    //console.log("pension",pension);
+    //console.log("moneda",moneda);
+    //SACA LOS FLUJOS DE PENSIONES
+    for (const data of dataSumflujos) {
+        data.valfulpen = (data.flujossumtot * pension) + data.flujosgssumtot;
+    }
+    //logMatriz(dataSumflujos, "dataSumflujos.txt");
+    //logMatriz(dataSumflujos.map(x=>x.valfulpen), "log_flujopensionesinicial.txt");
+    //ARMA EL CUADRO DE FLUJOS PARA LA TCE
+    for (let i = 0; i <= 1332; i++) {
+        let valcurvames = curvamoneda.find(x => x.mes === i)?.n_valor;
+
+        if (i == 0) {
+            Valflujodev = dataSumflujos.filter(item => item.mescal === 0).reduce((total, item) => total + item.valfulpen, 0);
+            Valflujo = dataSumflujos.filter(item => item.mescal === 0).reduce((total, item) => total + item.valfulpen, 0);
+        } else {
+            Valflujo = dataSumflujos.find(item => item.mescal === i)?.valfulpen || 0;
+        }
+        pasivo = Valflujo / Math.pow(1 + (valcurvames / 100), i / 12);
+        totalpasivo = totalpasivo + pasivo;
+
+        const filaTce = {
+            mest: i,
+            valflu: Valflujo,
+            valfluTLR: Valflujo,
+            valcurva: valcurvames,
+            valpasivo: pasivo
+        }
+        DataFlujospen.push(filaTce);
+    }
+
+    //logMatriz(DataFlujospen.map(x=>x.valflu), "log_sumpentci.txt");
+    //logMatriz(DataFlujospen, "log_sumpentci.txt");
+    const itemcero = DataFlujospen.find(x => x.mest === 0);
+    itemcero.valfluTLR = Valflujodev - totalpasivo; // nuevo valor del mes 0 para sacar la tce
+    //console.log("Valflujodev", Valflujodev);
+    //console.log("totalpasivo", totalpasivo);
+    //logMatriz(DataFlujospen, "log_sumpentci.txt");
+    const flujosTLR = DataFlujospen.map(obj => obj.valfluTLR);
+    //logMatriz(flujosTLR, "log_sumpentci.txt");
+    const valorTci = Math.pow((1 + await calculaIRR(flujosTLR)), 12) - 1;
+    const valorTciMes = (Math.pow(1 + await calculaIRR(flujosTLR), 12) - 1) * 100
+    //console.log("valorTci", valorTci);
+    //console.log("valorTciMes", valorTciMes);
+    //console.log("DataFlujospen", DataFlujospen);
+    return {
+        valortci: valorTci,
+        valortcimen: valorTciMes,
+        pagos: DataFlujospen
+    };
+    //console.log("totalpasivo", totalpasivo);
+
+    //logMatriz(DataFlujospen, "log_sumpenflu.txt");
+    //console.log("DataFlujospen", DataFlujospen);
+}
+
+async function ObtieneTasasVtaPromedio(listadoTasaVtaProm, moneda, prestacion, fecha) {
+    //console.log("fecha", fecha);
+    const fechaObj = fecha;
+    // Primero, buscar coincidencia exacta
+    let resultado = listadoTasaVtaProm.find(item =>
+        item.idmoneda === Number(moneda) &&
+        item.idprestacion === prestacion &&
+        formatDate(item.v_periodo) === fecha
+    );
+    // Si no se encuentra, buscar la más reciente anterior o igual
+    if (!resultado) {
+        resultado = listadoTasaVtaProm
+            .filter(item =>
+                item.idmoneda === Number(moneda) &&
+                item.idprestacion === prestacion &&
+                new Date(item.v_periodo) <= fechaObj
+            )
+            .sort((a, b) => new Date(b.v_periodo) - new Date(a.v_periodo)) // orden descendente
+        [0]; // primer más reciente
+    }
+    return resultado?.n_valor ?? null;
+}
+
 async function edadtope(idpar, inv, devsol) {
     let edadt = 111;
-    const fecsol = new Date('2013-08-01');
-    const fecdsl = new Date(devsol);
+    const fecsol = parseFecha('2013-08-01');
+    const fecdsl = parseFecha(devsol);
 
     if (idpar == 6 && inv == 1) {
         if (fecdsl >= fecsol) {
@@ -588,15 +740,24 @@ async function edadtope(idpar, inv, devsol) {
 }
 
 async function edadtopemes(fecdev, fecnac, fecfal, parentesco, invalido, estudiante, edadtope) {
-    const fecdevt = new Date(fecdev);
-    const fecnact = new Date(fecnac);
-    const fecfalt = new Date(fecfal);
+
+    /*  console.log("edadtope", edadtope);
+     console.log("fecdev", fecdev);
+     console.log("fecnac", fecnac);
+     console.log("fecfal", fecfal);
+     console.log("parentesco", parentesco);
+     console.log("invalido", invalido);
+     console.log("estudiante", estudiante); */
+
+    const fecdevt = parseFecha(fecdev);
+    const fecnact = parseFecha(fecnac);
+    const fecfalt = parseFecha(fecfal);
     const mesfecdev = fecdevt.getMonth() + 1; // getMonth() devuelve 0 (enero) a 11 (diciembre)
     const aniofecdev = fecdevt.getFullYear();
     const mesfecnact = fecnact.getMonth() + 1; // getMonth() devuelve 0 (enero) a 11 (diciembre)
     const aniofecnact = fecnact.getFullYear();
-    const mesfecfalt = fecfalt.getMonth() + 1; // getMonth() devuelve 0 (enero) a 11 (diciembre)
-    const aniofecfalt = fecfalt.getFullYear();
+    let mesfecfalt = "";
+    let aniofecfalt = "";
     const edadlegal = 18;
     const edadbenef = 28;
     let edaddv = 0;
@@ -612,6 +773,8 @@ async function edadtopemes(fecdev, fecnac, fecfal, parentesco, invalido, estudia
             edaddv = edadtope * 12;
         }
     } else {
+        mesfecfalt = fecfalt.getMonth() + 1; // getMonth() devuelve 0 (enero) a 11 (diciembre)
+        aniofecfalt = fecfalt.getFullYear();
         edaddv = (aniofecfalt * 12 + mesfecfalt) - (aniofecnact * 12 + mesfecnact);
     }
 
@@ -635,7 +798,7 @@ async function MortalidadPer(sex, inv, fecnac, tm) {
     /* console.log('sex', sex);
     console.log('inv', inv);
     console.log('fecnac', fecnac); */
-    const fecnact = new Date(fecnac);
+    const fecnact = parseFecha(fecnac);
     const anonac = fecnact.getFullYear();
     const anno = 2017
     //console.log("tm",tm);
@@ -808,4 +971,59 @@ function parseFecha(fechaStr) {
     if (!fechaStr) return null;
     const [anio, mes, dia] = fechaStr.split("-").map(Number);
     return new Date(anio, mes - 1, dia); // mes - 1 porque getMonth() es base 0
+}
+
+function ultimoDiaMes(fecha) {
+    // Creamos una nueva fecha con el siguiente mes y día 0
+    return new Date(fecha.getFullYear(), fecha.getMonth() + 1, 0);
+}
+
+function restarUnDia(fecha) {
+    const nuevaFecha = new Date(fecha);
+    nuevaFecha.setDate(nuevaFecha.getDate() - 1);
+    return nuevaFecha;
+}
+
+function formatDate(date) {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+
+async function calculaIRR(cashFlows, guess = 0.0025) {
+    const maxIterations = 1000;
+    const precision = 1e-7;
+    let rate = guess;
+
+    for (let i = 0; i < maxIterations; i++) {
+        let npv = 0;
+        let derivative = 0;
+        let safe = true;
+        //console.log("iteracion:", i);
+        for (let t = 0; t < cashFlows.length; t++) {
+            //console.log("rate:", rate);
+            const denom = Math.pow(1 + rate, t);
+            if (!isFinite(denom) || denom === 0) {
+                safe = false;
+                break;
+            }
+
+            npv += cashFlows[t] / denom;
+            derivative -= (t * cashFlows[t]) / Math.pow(1 + rate, t + 1);
+            //console.log("rate:" + rate + "|t:" + t + "|denom:" + denom + "|npv:" + npv + "|derivative:" + derivative);
+        }
+
+        if (!safe || derivative === 0) return 0;
+
+        const newRate = rate - npv / derivative;
+        if (!isFinite(newRate)) return 0;
+
+        if (Math.abs(newRate - rate) < precision) return newRate;
+
+        rate = Math.max(Math.min(newRate, 1), -0.999); //newRate;
+    }
+
+    return 0; // No converge
 }
