@@ -5,7 +5,10 @@ const PORT = 3000;
 const rutinaRoutes = require('./routes/rutinaRoutes');
 const authRoutes = require('./routes/authRoutes');
 const requestLogger = require("./middleware/requestLogger");
+const cors = require("cors");
 
+// habilita CORS para todos los orígenes
+app.use(cors());
 // Middleware para parsear JSON
 //app.use(express.json());
 app.use(express.json({ limit: '10mb' })); // o el tamaño que necesites

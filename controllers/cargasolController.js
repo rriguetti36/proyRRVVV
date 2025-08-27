@@ -5,8 +5,83 @@ const path = require('path');
 const TablaCot = require('../models/cotizacionesModel');
 const TablaPar = require('../models/tabTasasModel');
 const fs = require('fs/promises');
+const fs2 = require("fs");
 const xml2js = require('xml2js');
+const XLSX = require("xlsx");
 const fetch = require('node-fetch'); // Solo si usas Node <18
+
+/* exports.AsignacionIntermediarios = async (req, res) => {
+    try {
+        if (!req.body) {
+            return res.status(400).send('No se recibió cuerpo en la petición.');
+        }
+
+        const xmlData = req.body;
+        xml2js.parseString(xmlData, { explicitArray: false }, (err, result) => {
+            if (err) {
+                return res.status(400).json({ error: "Error al parsear XML", detalle: err });
+            }
+
+            const solicitudes = result.descargaSolicitudesEESS.solicitudRecibidaEESS;
+            const lista = Array.isArray(solicitudes) ? solicitudes : [solicitudes];
+
+            const data = lista.map(s => ({
+                nroOperacion: s.nroOperacion,
+                CUSPP: s.CUSPP,
+                dniAsesor: ""
+            }));
+
+            // Crear Excel
+            const worksheet = XLSX.utils.json_to_sheet(data);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Solicitudes");
+
+            if (!fs2.existsSync("./xls_outputs")) fs2.mkdirSync("./xls_outputs");
+            const excelFile = "./xls_outputs/solicitudes.xlsx";
+            XLSX.writeFile(workbook, excelFile);
+
+            return res.json({
+                message: "XML procesado y Excel generado",
+                ruta: excelFile,
+                datos: data
+            });
+        });
+    } catch (err) {
+        console.error('Error:', err.message);
+        res.status(500).send('Error procesando XML');
+    }
+} */
+
+exports.AsignacionIntermediarios = async (req, res) => {
+    try {
+        if (!req.body) {
+            return res.status(400).send('No se recibió cuerpo en la petición.');
+        }
+        const data = req.body; // 👈 viene del cliente (el JSON del ejemplo)
+        const fechaCarga = new Date().toISOString().split('T')[0];
+        
+        if (!Array.isArray(data)) {
+            return res.status(400).json({ error: "Formato inválido, debe ser un array" });
+        }
+
+        // Ruta donde guardarás el archivo
+        const filePath = path.join(__dirname, '../json_outputs/asignaciones/asesores.json');
+
+        // Nos aseguramos de que el folder exista
+        const dir = path.dirname(filePath);
+        if (!fs2.existsSync(dir)) {
+            fs2.mkdirSync(dir, { recursive: true });
+        }
+
+        // Guardamos el archivo formateado
+        fs2.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
+
+        res.json({ mensaje: "Archivo guardado correctamente", ruta: filePath });
+    } catch (err) {
+        console.error('Error:', err.message);
+        res.status(500).send('Error procesando XML');
+    }
+}
 
 exports.ProcesaSolicitud = async (req, res) => {
     try {
@@ -734,6 +809,12 @@ async function validarExistente(solicitudes_meler, fechacarga) {
 
 async function insertaCotizacionesCalculadas(data) {
     await TablaCot.insertaCotizacionesCalc(data);
+}
+
+function parseFecha(fechaStr) {
+    if (!fechaStr) return null;
+    const [anio, mes, dia] = fechaStr.split("-").map(Number);
+    return new Date(anio, mes - 1, dia); // mes - 1 porque getMonth() es base 0
 }
 
 async function CotizacionCrea(fechaCarga) {

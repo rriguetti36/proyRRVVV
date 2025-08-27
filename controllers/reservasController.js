@@ -7,6 +7,7 @@ const path = require('path');
 const { Worker } = require('worker_threads');
 const os = require('os');
 const logger = require("../servicios/logger");
+require('dotenv').config();
 
 exports.ProcesoCalculoReservas = async (req, res) => {
 
@@ -17,21 +18,18 @@ exports.ProcesoCalculoReservas = async (req, res) => {
 
         const datos = req.body;
         const TasasIPC = await tablasTasasInd.getTasaTasaIPC();
-        const TasasMercado = await tablasTasasInd.getTasaMercado();
-        //const TasasInversion = await tablasTasasInd.getTasaInversiones();
         const TasasCurvaCero = await tablasTasasInd.getTasaCurvaCuponCero();
         const TablasMortal = await tablasmortal.getAllMortalProc();
-        const TablasCicRegion = await tablasTasasInd.getRegionCIC();
-        const TablasTopesTasas = await tablasTasasInd.getTopesTasas();
         const TablasVtaPromedio = await tablasTasasInd.getTasaVentaPromedio();
         const TasasRentabilidad = await tablasTasasInd.getTasaInversiones();
+        const rutaRes = process.env.RUTA_RESRVAS; //"../json_outputs"
 
         //Crea la foto temporal
         logger.info(`Crea la foto temporal de los datos enviados en archivos fisico`);
-        const carpeta = await creaTemporalesJson(datos);
+        await creaTemporalesJson(datos, rutaRes);
 
         // Ruta del archivo
-        const rutaArchivo = path.join(__dirname, `../json_outputs/reservas_${datos.proceso}`, "polizasdatos.json");
+        const rutaArchivo = path.join(rutaRes, `reservas_${datos.proceso}`, "polizasDatos.json");
 
         // Leer archivo
         logger.info(`Leer archivo de la foto temporal de los datos enviados en archivos fisico`);
@@ -41,8 +39,7 @@ exports.ProcesoCalculoReservas = async (req, res) => {
 
         // Carpeta dinámica con la fecha del proceso para guardar los flujos
         logger.info(`Carpeta dinámica con la fecha del proceso para guardar los flujos de forma fisica archivos .json`);
-        const ruta = "D:\\DataReservasRRVV" //"../json_outputs"
-        const carpetaFlujos = path.join(ruta, `flujos_polizas_${data.proceso}`);
+        const carpetaFlujos = path.join(rutaRes, `reservas_${datos.proceso}`, `flujos_polizas_${data.proceso}`);
         //const carpeta = path.join(__dirname, "../json_outputs", `flujos_reservas_${feccalculo}`, "flujos");
 
         // Crear carpeta si no existe
@@ -75,9 +72,11 @@ exports.ProcesoCalculoReservas = async (req, res) => {
             })
         );
         const resultadosRM = await Promise.all(tareas);
-        res.json(resultadosRM);
+        logger.info(`Finaliza Calculo de reservas y crea los json de resultados en la ruta:`);
+        await creaResultadosJson(resultadosRM, rutaRes, data.proceso);
 
-        logger.info(`Finaliza Calculo de reservas`);
+        logger.info(`Finaliza Calculo de reservas envia respuesta`);
+        res.json(resultadosRM);
         //res.json({ mensaje: `Datos guardados en ${carpeta}` });
     } catch (err) {
         console.error(err);
@@ -85,51 +84,7 @@ exports.ProcesoCalculoReservas = async (req, res) => {
     }
 };
 
-async function creaTemporalesJson(data) {
-    if (!data.proceso || !data.polizas || !data.beneficiarios) {
-        return false; //res.status(400).json({ error: "JSON inválido" });
-    }
-
-    // 🔹 Anidar beneficiarios en cada poliza (sin incluir proceso dentro de cada una)
-    const polizasFinal = data.polizas.map(poliza => {
-        const beneficiariosPoliza = data.beneficiarios
-            .filter(b => b.poliza === poliza.poliza)
-            .map(b => {
-                // eliminamos campo "poliza" de cada beneficiario para no duplicar
-                const { poliza, ...rest } = b;
-                return rest;
-            });
-
-        return {
-            ...poliza,
-            beneficiarios: beneficiariosPoliza
-        };
-    });
-
-    // 🔹 Estructura final con proceso arriba
-    const estructuraFinal = {
-        proceso: data.proceso,
-        Polizas: polizasFinal
-    };
-
-    // Carpeta dinámica con la fecha del proceso
-    const carpeta = path.join(__dirname, "../json_outputs", `reservas_${data.proceso}`);
-
-    // Crear carpeta si no existe
-    if (!fs.existsSync(carpeta)) {
-        fs.mkdirSync(carpeta, { recursive: true });
-    }
-
-    // Guardar en un único archivo reservas.json
-    fs.writeFileSync(
-        path.join(carpeta, "polizasdatos.json"),
-        JSON.stringify(estructuraFinal, null, 2)
-    );
-
-    return carpeta;
-}
-
-async function calcularRes(poliza, feccalculo, montosepelio, tipocambio, TasasIPC, TasasRentabilidad, TasasCurvaCero, TablasMortal, TablasVtaPromedio, carpeta) {
+async function calcularRes(poliza, feccalculo, montosepelio, tipocambio, TasasIPC, TasasRentabilidad, TasasCurvaCero, TablasMortal, TablasVtaPromedio, ruta) {
     try {
 
         const datosPol = poliza;
@@ -196,7 +151,7 @@ async function calcularRes(poliza, feccalculo, montosepelio, tipocambio, TasasIP
         };
         // Guardar en un único archivo reservas.json
         fs.writeFileSync(
-            path.join(carpeta, "polizaflujos_" + datosPol.poliza + ".json"),
+            path.join(ruta, "polizasflujos_" + datosPol.poliza + ".json"),
             JSON.stringify(resultadosFlujos, null, 2)
         );
 
@@ -965,6 +920,80 @@ function logMatriz(datos, nombre, tipo) {
             console.log('Archivo log.txt creado exitosamente');
         }
     });
+}
+
+async function creaTemporalesJson(data, ruta) {
+    if (!data.proceso || !data.polizas || !data.beneficiarios) {
+        return false; //res.status(400).json({ error: "JSON inválido" });
+    }
+
+    // 🔹 Anidar beneficiarios en cada poliza (sin incluir proceso dentro de cada una)
+    const polizasFinal = data.polizas.map(poliza => {
+        const beneficiariosPoliza = data.beneficiarios
+            .filter(b => b.poliza === poliza.poliza)
+            .map(b => {
+                // eliminamos campo "poliza" de cada beneficiario para no duplicar
+                const { poliza, ...rest } = b;
+                return rest;
+            });
+
+        return {
+            ...poliza,
+            beneficiarios: beneficiariosPoliza
+        };
+    });
+
+    // 🔹 Estructura final con proceso arriba
+    const estructuraFinal = {
+        proceso: data.proceso,
+        Polizas: polizasFinal
+    };
+
+    // Carpeta dinámica con la fecha del proceso
+    const carpeta = path.join(ruta, `reservas_${data.proceso}`);
+
+    // Crear carpeta si no existe
+    if (!fs.existsSync(carpeta)) {
+        fs.mkdirSync(carpeta, { recursive: true });
+    }
+
+    // Guardar en un único archivo reservas.json
+    fs.writeFileSync(
+        path.join(carpeta, "polizasDatos.json"),
+        JSON.stringify(estructuraFinal, null, 2)
+    );
+
+    return carpeta;
+}
+
+async function creaResultadosJson(data, ruta, periodo) {
+
+    //console.log(data);
+    if (data.length == 0) {
+        return false; //res.status(400).json({ error: "JSON inválido" });
+    }
+    
+    const estructuraFinal = {
+        proceso: periodo,
+        polizas: data
+    };
+
+    //console.log("estructuraFinal", estructuraFinal);
+    // Carpeta dinámica con la fecha del proceso
+    const carpeta = path.join(ruta, `reservas_${periodo}`);
+    
+    // Crear carpeta si no existe
+    if (!fs.existsSync(carpeta)) {
+        fs.mkdirSync(carpeta, { recursive: true });
+    }
+
+    // Guardar en un único archivo reservas.json
+    fs.writeFileSync(
+        path.join(carpeta, "polizasResultados.json"),
+        JSON.stringify(estructuraFinal, null, 2)
+    );
+
+    return carpeta;
 }
 
 function parseFecha(fechaStr) {

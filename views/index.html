@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cargar XML y Editar DNI</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        /* table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+ */
+        textarea {
+            width: 100%;
+            height: 120px;
+            margin-top: 20px;
+            font-family: monospace;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .table-container {
+            max-height: 400px;
+            /* ajusta el alto máximo que quieras */
+            overflow-y: auto;
+            /* activa el scroll vertical */
+            border: 1px solid #ccc;
+        }
+
+        #xmlTable {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        #xmlTable th,
+        #xmlTable td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Cargar XML → Calculo de solicitudes</h2>
+
+
+    <div class="row flex-grow-1">
+        <div class="col-6 seccion">
+            <!--  <h2>Izquierda</h2>
+            <p>Contenido lado izquierdo</p> -->
+            <input type="file" id="xmlFile" accept=".xml">
+            <div class="container mt-4">
+                <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                    <table id="xmlTable" class="table table-bordered table-striped table-sm">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Nro Operación</th>
+                                <th>CUSPP</th>
+                                <th>DNI Asesor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Filas dinámicas con JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <button id="saveBtn">Guardar Cambios en JSON</button>
+        </div>
+        <div class="col-6 seccion">
+            <!--  <h2>Derecha</h2>
+            <p>Contenido lado derecho</p> -->
+            <h3>XML Minificado</h3>
+            <textarea id="xmlMin"></textarea>
+        </div>
+    </div>
+
+    <!-- Sección abajo (100%) -->
+    <div class="row">
+        <div class="col-12 seccion">
+            <h2>Consola</h2>
+            <p>Sección completa abajo</p>
+        </div>
+    </div>
+
+    <script>
+        let xmlData = null;
+
+        document.getElementById("xmlFile").addEventListener("change", function (e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const arrayBuffer = event.target.result; // ✅ ahora sí es ArrayBuffer
+                const decoder = new TextDecoder("iso-8859-1"); // 👈 Aquí indicas el encoding real
+                const text = decoder.decode(arrayBuffer);
+
+                // Parseamos el XML desde string
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(text, "application/xml");
+
+                // Guardamos XML para después
+                xmlData = xmlDoc;
+
+                // Minificar XML para mostrarlo en textarea
+                const serializer = new XMLSerializer();
+                const xmlMin = serializer.serializeToString(xmlDoc)
+                    .replace(/\s{2,}/g, " ")
+                    .replace(/>\s+</g, "><");
+                document.getElementById("xmlMin").value = xmlMin;
+
+                // Llenar tabla
+                const tbody = document.querySelector("#xmlTable tbody");
+                tbody.innerHTML = "";
+
+                const solicitudes = xmlDoc.getElementsByTagName("solicitudRecibidaEESS");
+
+                Array.from(solicitudes).forEach((prod, index) => {
+                    const nroOperacion = prod.getElementsByTagName("nroOperacion")[0]?.textContent || "";
+                    const cuspp = prod.getElementsByTagName("CUSPP")[0]?.textContent || "";
+
+                    const row = document.createElement("tr");
+
+                    row.innerHTML = `
+            <td>${nroOperacion}</td>
+            <td>${cuspp}</td>
+            <td><input type="text" placeholder="Ingrese DNI" data-index="${index}"></td>
+          `;
+
+                    tbody.appendChild(row);
+                });
+            };
+            //reader.readAsText(file, "UTF-8");
+            reader.readAsArrayBuffer(file); // 👈 importante
+        });
+
+        document.getElementById("saveBtn").addEventListener("click", function () {
+            const rows = document.querySelectorAll("#xmlTable tbody tr");
+            const result = [];
+
+            rows.forEach(row => {
+                const nroOperacion = row.cells[0].innerText;
+                const cuspp = row.cells[1].innerText;
+                const dni = row.querySelector("input").value;
+
+                result.push({ nroOperacion, cuspp, dniAsesor: dni });
+            });
+
+            // 1. Pedir token
+            fetch("http://localhost:3000/auth/token", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ clientId: "cliente1", clientSecret: "secret123" })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const token = data.token;
+
+                    // 2. Usar el token en la petición protegida
+                    return fetch("http://localhost:3000/rutinarv/asignacionasesor", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`
+                        },
+                        body: JSON.stringify(result)
+                    });
+                })
+                .then(res => res.json())
+                .then(console.log)
+                .catch(console.error);
+
+
+            // Descargar JSON
+            const blob = new Blob([JSON.stringify(result, null, 2)], { type: "application/json" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "datos_editados.json";
+            link.click();
+        });
+    </script>
+</body>
+
+</html>
+
+
+<!-- Bootstrap JS (para algunos componentes como modales o tooltips, no es obligatorio para la tabla) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
