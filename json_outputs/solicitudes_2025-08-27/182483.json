@@ -1,0 +1,88 @@
+{
+  "nroOperacion": "182483",
+  "AFP": "1002",
+  "CUSPP": "583691CLREE4",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2013-12-15",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2013-12-15",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-26",
+  "horaCita": "12:00",
+  "lugarCita": "ICA-CHINCHA-CHINCHA ALTA. CALLE LIMA N° 250 CERCADO CHINCHA ALTA - CHINCHA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "80303222",
+    "apellidoPaterno": "LOPEZ",
+    "apellidoMaterno": "ROMERO",
+    "primerNombre": "CALVINO",
+    "genero": "M",
+    "fechaNacimiento": "1977-09-03",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "35025.75",
+    "saldoCic": "9540.52",
+    "valorCuota": "13.7447222",
+    "saldoCuotas": "694.1224320",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "25485.23"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "LOPEZ",
+      "apellidoMaterno": "LOPEZ",
+      "primerNombre": "GERLITH",
+      "segundoNombre": "NELLY",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1996-01-08",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "LOPEZ",
+      "apellidoMaterno": "LOPEZ",
+      "primerNombre": "PATRICIA",
+      "segundoNombre": "DEL PILAR",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1997-10-15",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "LOPEZ",
+      "apellidoMaterno": "AMASIFUEN",
+      "primerNombre": "RICARDO",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1944-06-04",
+      "genero": "M"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

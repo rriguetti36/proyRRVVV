@@ -1,0 +1,107 @@
+{
+  "nroOperacion": "182481",
+  "AFP": "1001",
+  "CUSPP": "611560MVHLN5",
+  "tipoBeneficio": "C",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-09-25",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2023-09-25",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-25",
+  "horaCita": "15:30",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "42933696",
+    "apellidoPaterno": "VILLANUEVA",
+    "apellidoMaterno": "HERNANDEZ",
+    "primerNombre": "MARIA",
+    "segundoNombre": "DEL CARMEN",
+    "genero": "F",
+    "fechaNacimiento": "1985-04-21",
+    "gradoInvalidez": "T"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "464330.74",
+    "saldoCic": "3447.02",
+    "valorCuota": "13.9443858",
+    "saldoCuotas": "247.1976930",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": "3.700",
+    "EESScobertura": "4040",
+    "aporteAdicional": "460883.72"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "MUNOZ",
+      "apellidoMaterno": "STUART",
+      "primerNombre": "ALEJANDRO",
+      "segundoNombre": "MARCEL",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1971-11-23",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "HERNANDEZ",
+      "apellidoMaterno": "ALCANTARA DE VIL",
+      "primerNombre": "ANA",
+      "segundoNombre": "CECILIA",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1960-02-10",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "VILLANUEVA",
+      "apellidoMaterno": "SAN MARTIN",
+      "primerNombre": "CARLOS",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1952-09-27",
+      "genero": "M"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "US$Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "US$Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "US$Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "US$Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "nroOperacion": "183830",
+  "AFP": "1009",
+  "CUSPP": "644791JAVUL2",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2023-11-14",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2023-11-14",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-02",
+  "horaCita": "11:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "71308813",
+    "apellidoPaterno": "ARAUCO",
+    "apellidoMaterno": "VILLANUEVA",
+    "primerNombre": "JONATHAN",
+    "segundoNombre": "GIAN MARCO",
+    "genero": "M",
+    "fechaNacimiento": "1994-05-27",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "802661.56",
+    "saldoCic": "11255.27",
+    "valorCuota": "14.0368167",
+    "saldoCuotas": "801.8392091",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4120",
+    "aporteAdicional": "791406.29"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "GUTIERREZ",
+      "apellidoMaterno": "VARAS",
+      "primerNombre": "SANDRA",
+      "segundoNombre": "ISAMAR",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1994-01-31",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "ARAUCO",
+      "apellidoMaterno": "GUTIERREZ",
+      "primerNombre": "LUCIANA",
+      "segundoNombre": "TERESA",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2018-09-09",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "ARAUCO",
+      "apellidoMaterno": "GUTIERREZ",
+      "primerNombre": "AILEEN",
+      "segundoNombre": "SCARLETT",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2022-01-01",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "VILLANUEVA",
+      "apellidoMaterno": "VALDERRAMA DE ARAUCO",
+      "primerNombre": "TERESA",
+      "segundoNombre": "RAQUEL",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1967-08-27",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

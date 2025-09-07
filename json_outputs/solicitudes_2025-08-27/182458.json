@@ -1,0 +1,66 @@
+{
+  "nroOperacion": "182458",
+  "AFP": "1001",
+  "CUSPP": "570041CLINC2",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-05-13",
+  "fechaSuscripcionIII": "2024-01-16",
+  "devengueSolicitud": "2023-05-13",
+  "fechaEnvio": "2024-01-18",
+  "fechaCierre": "2024-01-23",
+  "tipoCambio": "3.704",
+  "diaCita": "2024-01-24",
+  "horaCita": "10:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "22505104",
+    "apellidoPaterno": "LEANDRO",
+    "apellidoMaterno": "INOCENCIO",
+    "primerNombre": "CESAR",
+    "segundoNombre": "ORTIZ",
+    "genero": "M",
+    "fechaNacimiento": "1973-12-08",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "1495.65",
+    "saldoCic": "1495.65",
+    "valorCuota": "13.9354637",
+    "saldoCuotas": "107.3270463",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "INOCENCIO",
+    "apellidoMaterno": "DE LEANDRO",
+    "primerNombre": "DALTIVA",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1939-12-06",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

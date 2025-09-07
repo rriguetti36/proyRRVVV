@@ -1,0 +1,126 @@
+{
+  "nroOperacion": "182477",
+  "AFP": "1001",
+  "CUSPP": "580800RTVRG7",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-12-01",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2021-03-03",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-25",
+  "horaCita": "10:30",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "05397163",
+    "apellidoPaterno": "TORRES",
+    "apellidoMaterno": "VARGAS",
+    "primerNombre": "ROSA",
+    "segundoNombre": "ADELINA",
+    "genero": "F",
+    "fechaNacimiento": "1976-11-18",
+    "estadoSobrevivencia": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "606768.13",
+    "saldoCic": "148000.63",
+    "valorCuota": "13.9443858",
+    "saldoCuotas": "10613.6356325",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "458767.50"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "RAMOS",
+      "apellidoMaterno": "GONZALES",
+      "primerNombre": "WILLIE",
+      "segundoNombre": "JEREMY",
+      "parentesco": "CB",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1975-03-15",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "RAMOS",
+      "apellidoMaterno": "TORRES",
+      "primerNombre": "ESTEPHANO",
+      "segundoNombre": "AXEL GUSTAVO",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2006-09-13",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "RAMOS",
+      "apellidoMaterno": "TORRES",
+      "primerNombre": "NORELYS",
+      "segundoNombre": "IVANNA DAFNE",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2008-01-19",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "RAMOS",
+      "apellidoMaterno": "TORRES",
+      "primerNombre": "MAVIS",
+      "segundoNombre": "LUNA SIRENA",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2019-03-05",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "RAMOS",
+      "apellidoMaterno": "TORRES",
+      "primerNombre": "ANGELLO",
+      "segundoNombre": "BRANDON JEREMY",
+      "parentesco": "HI",
+      "condicionInvalidez": "S",
+      "fechaNacimiento": "2003-09-05",
+      "genero": "M"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

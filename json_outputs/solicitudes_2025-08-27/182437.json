@@ -1,0 +1,108 @@
+{
+  "nroOperacion": "182437",
+  "AFP": "1009",
+  "CUSPP": "585391JCVTQ8",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2021-06-09",
+  "fechaSuscripcionIII": "2024-01-16",
+  "devengueSolicitud": "2021-06-09",
+  "fechaEnvio": "2024-01-18",
+  "fechaCierre": "2024-01-23",
+  "tipoCambio": "3.704",
+  "diaCita": "2024-01-24",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "40705411",
+    "apellidoPaterno": "CASTILLO",
+    "apellidoMaterno": "VASQUEZ",
+    "primerNombre": "JOSE",
+    "segundoNombre": "LUIS",
+    "genero": "M",
+    "fechaNacimiento": "1978-02-20",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "167789.12",
+    "saldoCic": "1818.33",
+    "valorCuota": "13.8609148",
+    "saldoCuotas": "131.1839822",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4120",
+    "aporteAdicional": "165970.79"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "CHAMBERGO",
+      "apellidoMaterno": "TERRAZOS",
+      "primerNombre": "KETTY",
+      "segundoNombre": "MABEL",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1973-05-15",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "CASTILLO",
+      "apellidoMaterno": "YARANGA",
+      "primerNombre": "LUCIO",
+      "segundoNombre": "WILFREDO",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1950-02-11",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "VASQUEZ",
+      "apellidoMaterno": "SALAZAR DE CASTILLO",
+      "primerNombre": "MARIA",
+      "segundoNombre": "LUISA",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1958-05-25",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

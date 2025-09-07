@@ -1,0 +1,84 @@
+{
+  "nroOperacion": "182485",
+  "AFP": "1002",
+  "CUSPP": "546691MRMCT6",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2020-07-14",
+  "fechaSuscripcionIII": "2024-01-18",
+  "devengueSolicitud": "2020-07-14",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.739",
+  "diaCita": "2024-01-30",
+  "horaCita": "11:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. AV. CANAVAL Y MOREYRA 540",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "09299312",
+    "apellidoPaterno": "RIECKHOFF",
+    "apellidoMaterno": "MARTINEZ",
+    "primerNombre": "MIGUEL",
+    "segundoNombre": "AUGUSTO",
+    "genero": "M",
+    "fechaNacimiento": "1967-07-18",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "36655.73",
+    "saldoCic": "36655.73",
+    "valorCuota": "13.7447222",
+    "saldoCuotas": "2666.8953135",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "RIECKHOFF",
+    "apellidoMaterno": "COSTA",
+    "primerNombre": "LUCCA",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2015-12-07",
+    "genero": "M"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

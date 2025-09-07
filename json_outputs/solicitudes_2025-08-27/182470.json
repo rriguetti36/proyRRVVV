@@ -1,0 +1,79 @@
+{
+  "nroOperacion": "182470",
+  "AFP": "1009",
+  "CUSPP": "577371LHJYE3",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2021-05-29",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2021-05-29",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-25",
+  "horaCita": "11:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "10094048",
+    "apellidoPaterno": "HUAYHUAS",
+    "apellidoMaterno": "JIMENEZ",
+    "primerNombre": "LUIS",
+    "segundoNombre": "ALBERTO",
+    "genero": "M",
+    "fechaNacimiento": "1975-12-11",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "436433.48",
+    "saldoCic": "39306.66",
+    "valorCuota": "13.8677258",
+    "saldoCuotas": "2834.3984131",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4120",
+    "aporteAdicional": "397126.82"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "HUAYHUAS",
+      "apellidoMaterno": "URETA",
+      "primerNombre": "IKER",
+      "segundoNombre": "DAYRO",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2013-01-04",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "HUAYHUAS",
+      "apellidoMaterno": "URETA",
+      "primerNombre": "DILAN",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2016-01-29",
+      "genero": "M"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

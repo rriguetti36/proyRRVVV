@@ -1,0 +1,98 @@
+{
+  "nroOperacion": "182465",
+  "AFP": "1010",
+  "CUSPP": "621540MCVNQ2",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.85",
+  "fechaDevengue": "2024-01-01",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2023-06-19",
+  "fechaEnvio": "2024-01-18",
+  "fechaCierre": "2024-01-23",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-25",
+  "horaCita": "15:00",
+  "lugarCita": "LA LIBERTAD-TRUJILLO-TRUJILLO. C.C. MALL AVENTURA PLAZA, LOCAL 103, AV. AMÉRICA OESTE N° 750, URB. EL INGENIO",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "45825803",
+    "apellidoPaterno": "CUN",
+    "apellidoMaterno": "VASQUEZ",
+    "primerNombre": "MARY",
+    "segundoNombre": "ELENA",
+    "genero": "F",
+    "fechaNacimiento": "1988-01-14",
+    "estadoSobrevivencia": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "119664.10",
+    "saldoCic": "5831.38",
+    "valorCuota": "14.1576272",
+    "saldoCuotas": "411.8896421",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "113832.72"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "JUAREZ",
+      "apellidoMaterno": "CUN",
+      "primerNombre": "PEDRO",
+      "segundoNombre": "SEBASTHIAN",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2006-06-09",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "VASQUEZ",
+      "apellidoMaterno": "CHIROQUE VDA DE CUN",
+      "primerNombre": "ROSA",
+      "segundoNombre": "DEL PILAR",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1959-02-01",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

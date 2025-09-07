@@ -1,0 +1,66 @@
+{
+  "nroOperacion": "183844",
+  "AFP": "1002",
+  "CUSPP": "650311BCPAA9",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-07-29",
+  "fechaSuscripcionIII": "2024-03-22",
+  "devengueSolicitud": "2023-07-29",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.701",
+  "diaCita": "2024-04-04",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. AV. CANAVAL Y MOREYRA 540",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "70880853",
+    "apellidoPaterno": "CANAYO",
+    "apellidoMaterno": "PACAYA",
+    "primerNombre": "BILUT",
+    "genero": "M",
+    "fechaNacimiento": "1995-11-30",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "24872.36",
+    "saldoCic": "1117.99",
+    "valorCuota": "13.9078956",
+    "saldoCuotas": "80.3852742",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "23754.37"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "PACAYA",
+    "apellidoMaterno": "LACHUMA",
+    "primerNombre": "CECILIA",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1957-08-25",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

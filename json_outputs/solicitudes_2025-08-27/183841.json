@@ -1,0 +1,97 @@
+{
+  "nroOperacion": "183841",
+  "AFP": "1002",
+  "CUSPP": "547041JSTER3",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2020-06-23",
+  "fechaSuscripcionIII": "2024-03-22",
+  "devengueSolicitud": "2020-06-23",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.701",
+  "diaCita": "2024-04-04",
+  "horaCita": "11:00",
+  "lugarCita": "ICA-CHINCHA-CHINCHA ALTA. CALLE LIMA N° 250 CERCADO CHINCHA ALTA - CHINCHA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "21813407",
+    "apellidoPaterno": "SOTELO",
+    "apellidoMaterno": "TORRES",
+    "primerNombre": "JUAN",
+    "genero": "M",
+    "fechaNacimiento": "1967-08-22",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "165839.07",
+    "saldoCic": "12834.66",
+    "valorCuota": "13.9064157",
+    "saldoCuotas": "922.9308456",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "153004.41"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "MORA",
+      "apellidoMaterno": "ABURTO",
+      "primerNombre": "CARMEN",
+      "segundoNombre": "ROSA",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1967-04-11",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "SOTELO",
+      "apellidoMaterno": "MORA",
+      "primerNombre": "LISBETH",
+      "segundoNombre": "MILAGROS",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2009-03-14",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "nroOperacion": "182491",
+  "AFP": "1002",
+  "CUSPP": "641430LCZCN8",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-09-10",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2023-09-10",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-26",
+  "horaCita": "11:00",
+  "lugarCita": "UCAYALI-CORONEL PORTILLO-CALLARIA. JIRON CORONEL PORTILLO 607 - PUCALLPA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "48013903",
+    "apellidoPaterno": "CAPCHA",
+    "apellidoMaterno": "ZHENDER",
+    "primerNombre": "LILA",
+    "genero": "F",
+    "fechaNacimiento": "1993-06-25",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "200438.23",
+    "saldoCic": "517.99",
+    "valorCuota": "13.7420820",
+    "saldoCuotas": "37.6937061",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "199920.24"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "ROJAS",
+      "apellidoMaterno": "ARONI",
+      "primerNombre": "DANIEL",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1984-03-13",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "ROJAS",
+      "apellidoMaterno": "CAPCHA",
+      "primerNombre": "BRISEIDA",
+      "segundoNombre": "MELANIA LI",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2014-11-17",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "ROJAS",
+      "apellidoMaterno": "CAPCHA",
+      "primerNombre": "DANIELA",
+      "segundoNombre": "ANGIE",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2011-12-21",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

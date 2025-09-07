@@ -1,0 +1,85 @@
+{
+  "nroOperacion": "183833",
+  "AFP": "1009",
+  "CUSPP": "605991EQTSR0",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2023-11-27",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2023-11-27",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-02",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "42160556",
+    "apellidoPaterno": "QUISPE",
+    "apellidoMaterno": "TORRES",
+    "primerNombre": "ELMER",
+    "segundoNombre": "SANTIAGO",
+    "genero": "M",
+    "fechaNacimiento": "1983-10-12",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "29739.94",
+    "saldoCic": "3097.45",
+    "valorCuota": "14.0368167",
+    "saldoCuotas": "220.6661287",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4120",
+    "aporteAdicional": "26642.49"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "TORRES",
+    "apellidoMaterno": "BECERRA DE QUISPE",
+    "primerNombre": "MATILDE",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1961-03-16",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

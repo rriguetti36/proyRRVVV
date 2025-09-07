@@ -1,0 +1,67 @@
+{
+  "nroOperacion": "182497",
+  "AFP": "1002",
+  "CUSPP": "514880MVCET0",
+  "tipoBeneficio": "A",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-12-01",
+  "fechaSuscripcionIII": "2024-01-18",
+  "devengueSolicitud": "2023-12-20",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.739",
+  "diaCita": "2024-01-29",
+  "horaCita": "11:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. AV. CANAVAL Y MOREYRA 540",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "07938091",
+    "apellidoPaterno": "VICENTE",
+    "apellidoMaterno": "CASTRO",
+    "primerNombre": "MARINA",
+    "segundoNombre": "AURORA",
+    "genero": "F",
+    "fechaNacimiento": "1958-11-01",
+    "condicionInvalidez": "N"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "93455.73",
+    "saldoCic": "93455.73",
+    "valorCuota": "13.7447222",
+    "saldoCuotas": "6799.3904345",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "VERASTEGUI",
+    "apellidoMaterno": "SANCHO DAVILA",
+    "primerNombre": "JAVIER",
+    "segundoNombre": "FRANCISCO",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1960-10-04",
+    "genero": "M"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

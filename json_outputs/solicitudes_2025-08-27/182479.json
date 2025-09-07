@@ -1,0 +1,86 @@
+{
+  "nroOperacion": "182479",
+  "AFP": "1001",
+  "CUSPP": "552851GCPOE0",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2015-08-24",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2015-08-24",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-25",
+  "horaCita": "14:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "1",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "22273605",
+    "apellidoPaterno": "CAJO",
+    "apellidoMaterno": "PEREZ",
+    "primerNombre": "GERMAN",
+    "segundoNombre": "ALCIDES",
+    "genero": "M",
+    "fechaNacimiento": "1969-03-25",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "138644.72",
+    "saldoCic": "5099.65",
+    "valorCuota": "28.9925152",
+    "saldoCuotas": "175.8953980",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "133545.07"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "SOTO",
+    "apellidoMaterno": "LURITA",
+    "primerNombre": "GREGORIA",
+    "segundoNombre": "JUANA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1970-12-01",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

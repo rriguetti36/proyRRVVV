@@ -1,0 +1,104 @@
+{
+  "nroOperacion": "182464",
+  "AFP": "1001",
+  "CUSPP": "218441DRSRA8",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-09-05",
+  "fechaSuscripcionIII": "2024-01-16",
+  "devengueSolicitud": "2023-09-05",
+  "fechaEnvio": "2024-01-18",
+  "fechaCierre": "2024-01-23",
+  "tipoCambio": "3.704",
+  "diaCita": "2024-01-25",
+  "horaCita": "14:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "05327048",
+    "apellidoPaterno": "RODRIGUEZ",
+    "apellidoMaterno": "SALAS",
+    "primerNombre": "DARWIN",
+    "genero": "M",
+    "fechaNacimiento": "1959-10-20",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "28239.06",
+    "saldoCic": "1271.71",
+    "valorCuota": "13.9354637",
+    "saldoCuotas": "91.2570997",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "26967.35"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "AMASIFUEN",
+      "apellidoMaterno": "RIOS DE RODRIGUEZ",
+      "primerNombre": "ROSA",
+      "segundoNombre": "MARIA",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1988-08-16",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "RODRIGUEZ",
+      "apellidoMaterno": "AMASIFUEN",
+      "primerNombre": "AITANA",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2023-03-11",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "RODRIGUEZ",
+      "apellidoMaterno": "AMASIFUEN",
+      "primerNombre": "DARWIN",
+      "segundoNombre": "MARTIN",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2008-04-11",
+      "genero": "M"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

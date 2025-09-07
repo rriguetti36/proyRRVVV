@@ -1,0 +1,76 @@
+{
+  "nroOperacion": "182460",
+  "AFP": "1001",
+  "CUSPP": "215760LDTGR8",
+  "tipoBeneficio": "C",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-01-31",
+  "fechaSuscripcionIII": "2024-01-16",
+  "devengueSolicitud": "2023-01-31",
+  "fechaEnvio": "2024-01-18",
+  "fechaCierre": "2024-01-23",
+  "tipoCambio": "3.704",
+  "diaCita": "2024-01-25",
+  "horaCita": "14:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "00974073",
+    "apellidoPaterno": "DELGADO",
+    "apellidoMaterno": "TERRONES",
+    "primerNombre": "LUZ",
+    "segundoNombre": "MARINA",
+    "genero": "F",
+    "fechaNacimiento": "1959-01-28",
+    "gradoInvalidez": "T"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "134359.58",
+    "saldoCic": "4966.44",
+    "valorCuota": "13.9354637",
+    "saldoCuotas": "356.3885715",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "129393.14"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

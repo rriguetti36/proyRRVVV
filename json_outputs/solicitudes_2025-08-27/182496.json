@@ -1,0 +1,104 @@
+{
+  "nroOperacion": "182496",
+  "AFP": "1002",
+  "CUSPP": "249791CHFMU8",
+  "tipoBeneficio": "G",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-12-01",
+  "fechaSuscripcionIII": "2024-01-18",
+  "devengueSolicitud": "2023-12-06",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.739",
+  "diaCita": "2024-01-31",
+  "horaCita": "10:00",
+  "lugarCita": "CAJAMARCA-CAJAMARCA-CAJAMARCA. JR. SAN MARTIN 358",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "27568568",
+    "apellidoPaterno": "HUAMAN",
+    "apellidoMaterno": "FIGUEROA",
+    "primerNombre": "CRUZ",
+    "genero": "M",
+    "fechaNacimiento": "1968-05-23",
+    "condicionInvalidez": "S"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "20154.13",
+    "saldoCic": "20154.13",
+    "valorCuota": "13.7447222",
+    "saldoCuotas": "1466.3179529",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "INFANTE",
+      "apellidoMaterno": "GALVEZ",
+      "primerNombre": "MARIA",
+      "segundoNombre": "ISABEL",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1965-07-08",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "HUAMAN",
+      "apellidoMaterno": "INFANTE",
+      "primerNombre": "JHAN",
+      "segundoNombre": "CARLOS",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2007-01-19",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "HUAMAN",
+      "apellidoMaterno": "INFANTE",
+      "primerNombre": "ROSA",
+      "segundoNombre": "ELVIRA",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2009-09-26",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

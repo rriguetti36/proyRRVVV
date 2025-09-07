@@ -1,0 +1,76 @@
+{
+  "nroOperacion": "182476",
+  "AFP": "1001",
+  "CUSPP": "252350BAGVI8",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-12-01",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2022-06-14",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-26",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "33781243",
+    "apellidoPaterno": "AREVALO",
+    "apellidoMaterno": "GUPIOC",
+    "primerNombre": "BETTY",
+    "segundoNombre": "CONSUELO",
+    "genero": "F",
+    "fechaNacimiento": "1969-02-03",
+    "estadoSobrevivencia": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "160785.27",
+    "saldoCic": "97219.93",
+    "valorCuota": "13.9443858",
+    "saldoCuotas": "6971.9764926",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "63565.34"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "MORI",
+    "apellidoMaterno": "ZAVALETA",
+    "primerNombre": "ROMULO",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1964-09-05",
+    "genero": "M"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

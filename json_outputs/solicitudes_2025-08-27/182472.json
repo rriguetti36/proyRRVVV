@@ -1,0 +1,118 @@
+{
+  "nroOperacion": "182472",
+  "AFP": "1001",
+  "CUSPP": "566321CLCUZ2",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-12-01",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2020-01-29",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-25",
+  "horaCita": "10:30",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "18149869",
+    "apellidoPaterno": "LU",
+    "apellidoMaterno": "CRUZ",
+    "primerNombre": "CRISTHOPER",
+    "segundoNombre": "JOEL",
+    "genero": "M",
+    "fechaNacimiento": "1972-12-01",
+    "estadoSobrevivencia": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "205507.95",
+    "saldoCic": "10854.38",
+    "valorCuota": "13.9443858",
+    "saldoCuotas": "778.4050267",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "194653.57"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "LU",
+      "apellidoMaterno": "TRUJILLO",
+      "primerNombre": "JOE",
+      "segundoNombre": "FERNANDO",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2002-06-10",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "LU",
+      "apellidoMaterno": "TRUJILLO",
+      "primerNombre": "KEYMI",
+      "segundoNombre": "LUATANY",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2013-10-22",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "CRUZ",
+      "apellidoMaterno": "GARCIA VDA DE LU",
+      "primerNombre": "JUDITH",
+      "segundoNombre": "ELEUDORA",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1942-07-03",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "TRUJILLO",
+      "apellidoMaterno": "LOPEZ",
+      "primerNombre": "JENNY",
+      "segundoNombre": "MERY",
+      "parentesco": "CB",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1972-04-02",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

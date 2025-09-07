@@ -1,0 +1,68 @@
+{
+  "nroOperacion": "182480",
+  "AFP": "1001",
+  "CUSPP": "518641EPYAR0",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-07-24",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2023-07-24",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-25",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "33326823",
+    "apellidoPaterno": "PEÑARANDA",
+    "apellidoMaterno": "YAURI",
+    "primerNombre": "EUSEBIO",
+    "segundoNombre": "RICARDO",
+    "genero": "M",
+    "fechaNacimiento": "1959-11-12",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "11199.54",
+    "saldoCic": "1020.50",
+    "valorCuota": "13.9443858",
+    "saldoCuotas": "73.1835748",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "10179.04"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "SALAS",
+    "apellidoMaterno": "LOMOTE DE PENARANDA",
+    "primerNombre": "MAURA",
+    "segundoNombre": "CONSUELO",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1971-11-03",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

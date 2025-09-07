@@ -1,0 +1,67 @@
+{
+  "nroOperacion": "183848",
+  "AFP": "1002",
+  "CUSPP": "234561JNBRD0",
+  "tipoBeneficio": "P",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2024-03-01",
+  "fechaSuscripcionIII": "2024-03-22",
+  "devengueSolicitud": "2024-03-13",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.701",
+  "diaCita": "2024-04-04",
+  "horaCita": "15:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. AV. CANAVAL Y MOREYRA 540",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "25595382",
+    "apellidoPaterno": "NEGRON",
+    "apellidoMaterno": "BENDEZU",
+    "primerNombre": "JOSE",
+    "segundoNombre": "LUIS",
+    "genero": "M",
+    "fechaNacimiento": "1964-03-22",
+    "condicionInvalidez": "N"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "27435.58",
+    "saldoCic": "27435.58",
+    "valorCuota": "13.9078956",
+    "saldoCuotas": "1972.6628767",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "VERA",
+    "apellidoMaterno": "GONZALES",
+    "primerNombre": "MARIA",
+    "segundoNombre": "DEL PILAR",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1958-07-22",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "nroOperacion": "182475",
+  "AFP": "1001",
+  "CUSPP": "551631CVALE5",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-10-01",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2021-05-07",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-26",
+  "horaCita": "10:30",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "23939691",
+    "apellidoPaterno": "VILLACORTA",
+    "apellidoMaterno": "AGUERO",
+    "primerNombre": "CLAUDIO",
+    "genero": "M",
+    "fechaNacimiento": "1968-11-23",
+    "estadoSobrevivencia": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "379976.93",
+    "saldoCic": "54207.03",
+    "valorCuota": "13.9443858",
+    "saldoCuotas": "3887.3730818",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "325769.90"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "PAREDES",
+      "apellidoMaterno": "VILCA VDA DE VIL",
+      "primerNombre": "GLADYS",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1984-07-22",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "VILLACORTA",
+      "apellidoMaterno": "PAREDES",
+      "primerNombre": "BRIGITTE",
+      "segundoNombre": "GABRIELA",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2006-11-15",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "VILLACORTA",
+      "apellidoMaterno": "PAREDES",
+      "primerNombre": "YAZID",
+      "segundoNombre": "PATRICK",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2009-01-07",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "VILLACORTA",
+      "apellidoMaterno": "PAREDES",
+      "primerNombre": "YAHIR",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2016-06-27",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "VILLACORTA",
+      "apellidoMaterno": "FARFAN",
+      "primerNombre": "EMETERIO",
+      "segundoNombre": "CELEDONIO",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1944-05-03",
+      "genero": "M"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

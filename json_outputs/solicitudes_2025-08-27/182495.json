@@ -1,0 +1,74 @@
+{
+  "nroOperacion": "182495",
+  "AFP": "1002",
+  "CUSPP": "233391PACAA0",
+  "tipoBeneficio": "G",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-12-01",
+  "fechaSuscripcionIII": "2024-01-18",
+  "devengueSolicitud": "2023-12-01",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.739",
+  "diaCita": "2024-01-29",
+  "horaCita": "16:00",
+  "lugarCita": "AREQUIPA-AREQUIPA-YANAHUARA. AV. ABELARDO QUIÑONEZ MZ. \"F\" LT. \"16\" URB. LOS CEDROS",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "30565435",
+    "apellidoPaterno": "AYMA",
+    "apellidoMaterno": "CALACHUA",
+    "primerNombre": "PEDRO",
+    "segundoNombre": "ALEJANDRINO",
+    "genero": "M",
+    "fechaNacimiento": "1963-11-26",
+    "condicionInvalidez": "S"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "42561.36",
+    "saldoCic": "42561.36",
+    "valorCuota": "13.7420820",
+    "saldoCuotas": "3097.1557028",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "FERIA",
+    "apellidoMaterno": "HUAMANI",
+    "primerNombre": "MARTHA",
+    "segundoNombre": "BETTY",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1968-01-01",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

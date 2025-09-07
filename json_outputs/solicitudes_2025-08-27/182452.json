@@ -1,0 +1,128 @@
+{
+  "nroOperacion": "182452",
+  "AFP": "1001",
+  "CUSPP": "577911CLCNT7",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-11-01",
+  "fechaSuscripcionIII": "2024-01-16",
+  "devengueSolicitud": "2019-07-19",
+  "fechaEnvio": "2024-01-18",
+  "fechaCierre": "2024-01-23",
+  "tipoCambio": "3.704",
+  "diaCita": "2024-01-24",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "16792641",
+    "apellidoPaterno": "LEON",
+    "apellidoMaterno": "CASTRO",
+    "primerNombre": "CRISTIAN",
+    "segundoNombre": "DAVID",
+    "genero": "M",
+    "fechaNacimiento": "1976-02-03",
+    "estadoSobrevivencia": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "659560.99",
+    "saldoCic": "22190.82",
+    "valorCuota": "13.9354637",
+    "saldoCuotas": "1592.3991105",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "637370.17"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "LEON",
+      "apellidoMaterno": "GUEVARA",
+      "primerNombre": "SEGUNDO",
+      "segundoNombre": "SANTOS",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1951-11-29",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "LEON",
+      "apellidoMaterno": "MORE",
+      "primerNombre": "LADY",
+      "segundoNombre": "MILEY",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2007-06-07",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "BAZALAR",
+      "apellidoMaterno": "CASTILLO",
+      "primerNombre": "ZORAIDA",
+      "segundoNombre": "GRACIELA",
+      "parentesco": "CB",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1979-05-02",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "LEON",
+      "apellidoMaterno": "BAZALAR",
+      "primerNombre": "DAYRON",
+      "segundoNombre": "JESUS GAEL",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2012-06-20",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "CASTRO",
+      "apellidoMaterno": "PEREZ",
+      "primerNombre": "MATILDE",
+      "segundoNombre": "TRINIDAD",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1953-10-21",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}
