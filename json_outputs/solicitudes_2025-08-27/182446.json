@@ -1,0 +1,86 @@
+{
+  "nroOperacion": "182446",
+  "AFP": "1002",
+  "CUSPP": "634791APLOI8",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-05-10",
+  "fechaSuscripcionIII": "2024-01-16",
+  "devengueSolicitud": "2023-05-10",
+  "fechaEnvio": "2024-01-18",
+  "fechaCierre": "2024-01-23",
+  "tipoCambio": "3.704",
+  "diaCita": "2024-01-25",
+  "horaCita": "16:00",
+  "lugarCita": "LA LIBERTAD-TRUJILLO-TRUJILLO. AV. FÁTIMA 551 LOTE 08 TERCERA ETAPA URB. LA MERCED",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "70690420",
+    "apellidoPaterno": "PALOMINO",
+    "apellidoMaterno": "LI",
+    "primerNombre": "ALEJANDRO",
+    "segundoNombre": "ELISBAN",
+    "genero": "M",
+    "fechaNacimiento": "1991-08-31",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "388217.90",
+    "saldoCic": "10562.50",
+    "valorCuota": "13.7420820",
+    "saldoCuotas": "768.6244341",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "377655.40"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "PALOMINO",
+    "apellidoMaterno": "PAREDES",
+    "primerNombre": "NICOLAS",
+    "segundoNombre": "ALEJANDRO",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2016-07-28",
+    "genero": "M"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

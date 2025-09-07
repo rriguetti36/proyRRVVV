@@ -1,0 +1,68 @@
+{
+  "nroOperacion": "182482",
+  "AFP": "1001",
+  "CUSPP": "208560ESMVD0",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-10-02",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2023-10-02",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-25",
+  "horaCita": "14:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "26675291",
+    "apellidoPaterno": "SILVA",
+    "apellidoMaterno": "DE CELIS",
+    "primerNombre": "ESTHER",
+    "segundoNombre": "AVELINA",
+    "genero": "F",
+    "fechaNacimiento": "1957-02-07",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "39473.60",
+    "saldoCic": "26370.78",
+    "valorCuota": "13.9443858",
+    "saldoCuotas": "1891.1395869",
+    "bonoActualizado": "13102.82",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "CELIS",
+    "apellidoMaterno": "SANTA CRUZ",
+    "primerNombre": "MIGUEL",
+    "segundoNombre": "ANGEL",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1953-04-06",
+    "genero": "M"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

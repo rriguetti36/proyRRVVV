@@ -1,0 +1,66 @@
+{
+  "nroOperacion": "183835",
+  "AFP": "1009",
+  "CUSPP": "254101JAANI5",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2014-06-18",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2014-06-18",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-02",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "1",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "09585468",
+    "apellidoPaterno": "ATUNCAR",
+    "apellidoMaterno": "ARRIOLA",
+    "primerNombre": "JOSE",
+    "segundoNombre": "JULIO",
+    "genero": "M",
+    "fechaNacimiento": "1969-07-28",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "9351.32",
+    "saldoCic": "9351.32",
+    "valorCuota": "33.5462135",
+    "saldoCuotas": "278.7594725",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "ARRIOLA",
+    "apellidoMaterno": "BADARACO VDA DE ATUN",
+    "primerNombre": "ANA",
+    "parentesco": "PA",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1943-04-15",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

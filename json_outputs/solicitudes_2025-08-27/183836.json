@@ -1,0 +1,74 @@
+{
+  "nroOperacion": "183836",
+  "AFP": "1010",
+  "CUSPP": "544940MFLNM8",
+  "tipoBeneficio": "C",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.85",
+  "fechaDevengue": "2024-03-01",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2022-03-01",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-02",
+  "horaCita": "11:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE LAS PALMERAS N° 385 CENTRO EMPRESARIAL TORRE AZUL",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "02772022",
+    "apellidoPaterno": "FRANCO",
+    "apellidoMaterno": "LLAMAS",
+    "primerNombre": "MELBA",
+    "segundoNombre": "VIOLETA",
+    "genero": "F",
+    "fechaNacimiento": "1967-01-24",
+    "gradoInvalidez": "T"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "93896.99",
+    "saldoCic": "5991.46",
+    "valorCuota": "14.3417267",
+    "saldoCuotas": "417.7642013",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "87905.53"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "nroOperacion": "183846",
+  "AFP": "1002",
+  "CUSPP": "555501ECPCO0",
+  "tipoBeneficio": "G",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2024-02-01",
+  "fechaSuscripcionIII": "2024-03-22",
+  "devengueSolicitud": "2024-02-09",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.701",
+  "diaCita": "2024-04-05",
+  "horaCita": "11:00",
+  "lugarCita": "ICA-CHINCHA-CHINCHA ALTA. CALLE LIMA N° 250 CERCADO CHINCHA ALTA - CHINCHA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "28828924",
+    "apellidoPaterno": "CHECCLLO",
+    "apellidoMaterno": "PALOMINO",
+    "primerNombre": "EUSEBIO",
+    "genero": "M",
+    "fechaNacimiento": "1969-12-15",
+    "condicionInvalidez": "S"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "30314.78",
+    "saldoCic": "30314.78",
+    "valorCuota": "13.9078956",
+    "saldoCuotas": "2179.6817242",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "CAMANA",
+    "apellidoMaterno": "RAMOS",
+    "primerNombre": "MARIA",
+    "segundoNombre": "CASILDA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1967-04-09",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

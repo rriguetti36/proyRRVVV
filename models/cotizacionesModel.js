@@ -60,7 +60,7 @@ class cotizacion {
       );
 
       await conn.commit();
-      console.log('Solicitud y detalles guardados correctamente.');
+      console.log('Solicitud guadadas en Matriz de errores.');
     } catch (err) {
       await conn.rollback();
       console.error('Error al guardar:', err);
@@ -152,7 +152,7 @@ class cotizacion {
       await conn.query('UPDATE m_numeradores SET n_numcot = ? WHERE n_aperiodo = ?', [numerofinal, anioActual]);
 
       await conn.commit();
-      console.log('Solicitud y detalles guardados correctamente.');
+      console.log('Cotizaciones guardados correctamente.');
     } catch (err) {
       await conn.rollback();
       console.error('Error al guardar:', err);

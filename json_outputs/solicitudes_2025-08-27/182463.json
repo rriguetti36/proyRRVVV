@@ -1,0 +1,67 @@
+{
+  "nroOperacion": "182463",
+  "AFP": "1001",
+  "CUSPP": "193941AHASL0",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-07-23",
+  "fechaSuscripcionIII": "2024-01-16",
+  "devengueSolicitud": "2023-07-23",
+  "fechaEnvio": "2024-01-18",
+  "fechaCierre": "2024-01-23",
+  "tipoCambio": "3.704",
+  "diaCita": "2024-01-25",
+  "horaCita": "15:30",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "10617743",
+    "apellidoPaterno": "HUASASQUICHE",
+    "apellidoMaterno": "AVALOS",
+    "primerNombre": "ARMANDO",
+    "segundoNombre": "RICARDO",
+    "genero": "M",
+    "fechaNacimiento": "1953-02-06",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "23554.64",
+    "saldoCic": "23554.64",
+    "valorCuota": "13.9354637",
+    "saldoCuotas": "1690.2660398",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "MENDOZA",
+    "apellidoMaterno": "VDA DE HUASASQUICHE",
+    "primerNombre": "JUANA",
+    "segundoNombre": "ESPERANZA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1951-12-18",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

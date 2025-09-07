@@ -1,0 +1,85 @@
+{
+  "nroOperacion": "183832",
+  "AFP": "1009",
+  "CUSPP": "556131PTGUC9",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2021-04-06",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2021-04-06",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-02",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "09730840",
+    "apellidoPaterno": "TIPULA",
+    "apellidoMaterno": "GARCIA",
+    "primerNombre": "PEDRO",
+    "segundoNombre": "ALFONSO",
+    "genero": "M",
+    "fechaNacimiento": "1970-02-16",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "167854.22",
+    "saldoCic": ".00",
+    "valorCuota": "14.0368167",
+    "saldoCuotas": ".0000000",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4120",
+    "aporteAdicional": "167854.22"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "ACUNA",
+    "apellidoMaterno": "CAILLAHUA",
+    "primerNombre": "NORMA",
+    "segundoNombre": "PILAR",
+    "parentesco": "CB",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1976-01-19",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "nroOperacion": "182484",
+  "AFP": "1002",
+  "CUSPP": "583800ECGVR6",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2019-05-20",
+  "fechaSuscripcionIII": "2024-01-18",
+  "devengueSolicitud": "2019-05-20",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.739",
+  "diaCita": "2024-01-31",
+  "horaCita": "12:00",
+  "lugarCita": "ICA-CHINCHA-CHINCHA ALTA. CALLE LIMA N° 250 CERCADO CHINCHA ALTA - CHINCHA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "07640531",
+    "apellidoPaterno": "CHAVEZ",
+    "apellidoMaterno": "GUERRA",
+    "primerNombre": "ERIKA",
+    "segundoNombre": "GISELLY",
+    "genero": "F",
+    "fechaNacimiento": "1975-09-14",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "21497.33",
+    "saldoCic": "9659.43",
+    "valorCuota": "13.7420820",
+    "saldoCuotas": "702.9087733",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "11837.90"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "RUPAY",
+    "apellidoMaterno": "CHAVEZ",
+    "primerNombre": "CAMILA",
+    "segundoNombre": "ARIANA",
+    "parentesco": "HI",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "2005-10-17",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

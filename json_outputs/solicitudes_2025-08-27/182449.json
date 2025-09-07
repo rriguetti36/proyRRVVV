@@ -1,0 +1,66 @@
+{
+  "nroOperacion": "182449",
+  "AFP": "1002",
+  "CUSPP": "552291LCURA9",
+  "tipoBeneficio": "G",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-12-01",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2023-12-13",
+  "fechaEnvio": "2024-01-18",
+  "fechaCierre": "2024-01-23",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-26",
+  "horaCita": "12:00",
+  "lugarCita": "AREQUIPA-AREQUIPA-YANAHUARA. AV. ABELARDO QUIÑONEZ MZ. \"F\" LT. \"16\" URB. LOS CEDROS",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "01344250",
+    "apellidoPaterno": "CCARI",
+    "apellidoMaterno": "USCAMAYTA",
+    "primerNombre": "LEONIDAS",
+    "genero": "M",
+    "fechaNacimiento": "1969-01-28",
+    "condicionInvalidez": "S"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "10021.70",
+    "saldoCic": "10021.70",
+    "valorCuota": "13.7395939",
+    "saldoCuotas": "729.4034816",
+    "tieneCobertura": "N",
+    "tipoCambioCompraAA": ".000",
+    "aporteAdicional": ".00"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "TACO",
+    "apellidoMaterno": "MAMANI",
+    "primerNombre": "SABINA",
+    "segundoNombre": "MARCELA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1973-12-29",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

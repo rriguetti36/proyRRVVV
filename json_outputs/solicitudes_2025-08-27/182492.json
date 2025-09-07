@@ -1,0 +1,82 @@
+{
+  "nroOperacion": "182492",
+  "AFP": "1002",
+  "CUSPP": "545711FCRTZ3",
+  "tipoBeneficio": "C",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-08-02",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2023-08-02",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-26",
+  "horaCita": "12:00",
+  "lugarCita": "ICA-CHINCHA-CHINCHA ALTA. CALLE LIMA N° 250 CERCADO CHINCHA ALTA - CHINCHA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "01115065",
+    "apellidoPaterno": "DEL CASTILLO",
+    "apellidoMaterno": "RUIZ",
+    "primerNombre": "FERNANDO",
+    "genero": "M",
+    "fechaNacimiento": "1967-04-11",
+    "gradoInvalidez": "T"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "105871.66",
+    "saldoCic": "15553.53",
+    "valorCuota": "13.7447222",
+    "saldoCuotas": "1131.6001716",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "90318.13"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "AREVALO",
+    "apellidoMaterno": "LLERENA",
+    "primerNombre": "LILIANA",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1963-01-25",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

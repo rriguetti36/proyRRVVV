@@ -1,0 +1,85 @@
+{
+  "nroOperacion": "182490",
+  "AFP": "1002",
+  "CUSPP": "250271RCGVC5",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-08-17",
+  "fechaSuscripcionIII": "2024-01-18",
+  "devengueSolicitud": "2023-08-17",
+  "fechaEnvio": "2024-01-19",
+  "fechaCierre": "2024-01-24",
+  "tipoCambio": "3.739",
+  "diaCita": "2024-01-29",
+  "horaCita": "11:00",
+  "lugarCita": "UCAYALI-CORONEL PORTILLO-CALLARIA. JIRON CORONEL PORTILLO 607 - PUCALLPA",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "05258546",
+    "apellidoPaterno": "CHAVEZ",
+    "apellidoMaterno": "GARCIA",
+    "primerNombre": "RAUL",
+    "segundoNombre": "ANTONIO",
+    "genero": "M",
+    "fechaNacimiento": "1964-10-10",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "268719.17",
+    "saldoCic": "10778.65",
+    "valorCuota": "13.7420820",
+    "saldoCuotas": "784.3534918",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "257940.52"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "DEL CASTILLO",
+    "apellidoMaterno": "VELA",
+    "primerNombre": "DIANI",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1973-11-05",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

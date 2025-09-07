@@ -1,0 +1,117 @@
+{
+  "nroOperacion": "183831",
+  "AFP": "1009",
+  "CUSPP": "562121RAPRE7",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2023-06-07",
+  "fechaSuscripcionIII": "2024-03-21",
+  "devengueSolicitud": "2023-06-07",
+  "fechaEnvio": "2024-03-25",
+  "fechaCierre": "2024-03-28",
+  "tipoCambio": "3.696",
+  "diaCita": "2024-04-03",
+  "horaCita": "09:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "09867237",
+    "apellidoPaterno": "ABARZUA",
+    "apellidoMaterno": "PEREZ",
+    "primerNombre": "RHONY",
+    "segundoNombre": "ALVARO",
+    "genero": "M",
+    "fechaNacimiento": "1971-10-08",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "323774.24",
+    "saldoCic": "3257.09",
+    "valorCuota": "14.0368167",
+    "saldoCuotas": "232.0390777",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": "3.780",
+    "EESScobertura": "4120",
+    "aporteAdicional": "320517.15"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "ABARZUA",
+      "apellidoMaterno": "ARRIBASPLATA",
+      "primerNombre": "NICOLE",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2010-02-26",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "ABARZUA",
+      "apellidoMaterno": "ARRIBASPLATA",
+      "primerNombre": "RHONY",
+      "segundoNombre": "MATHIAS",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2008-03-24",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "PEREZ",
+      "apellidoMaterno": "GRANDE",
+      "primerNombre": "ENRIQUETA",
+      "segundoNombre": "RAQUEL",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1939-12-20",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "ARRIBASPLATA",
+      "apellidoMaterno": "ARDILES",
+      "primerNombre": "CAROL",
+      "segundoNombre": "JANET",
+      "parentesco": "CY",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1975-02-24",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "US$Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "US$Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "US$Aj.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "US$Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "nroOperacion": "182453",
+  "AFP": "1001",
+  "CUSPP": "211911SHVNQ2",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "4.10",
+  "fechaDevengue": "2023-09-01",
+  "fechaSuscripcionIII": "2024-01-16",
+  "devengueSolicitud": "2021-04-04",
+  "fechaEnvio": "2024-01-18",
+  "fechaCierre": "2024-01-23",
+  "tipoCambio": "3.704",
+  "diaCita": "2024-01-24",
+  "horaCita": "11:30",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE ANDRÉS REYES 495",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "16541478",
+    "apellidoPaterno": "HUANCAS",
+    "apellidoMaterno": "VASQUEZ",
+    "primerNombre": "SEGUNDO",
+    "segundoNombre": "WALTER",
+    "genero": "M",
+    "fechaNacimiento": "1958-01-08",
+    "estadoSobrevivencia": "P"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "375091.28",
+    "saldoCic": "105322.62",
+    "valorCuota": "13.9354637",
+    "saldoCuotas": "7557.8841342",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "269768.66"
+  },
+  "beneficiario": {
+    "apellidoPaterno": "CACHAY",
+    "apellidoMaterno": "RAMOS VDA DE HUAN",
+    "primerNombre": "MARISA",
+    "segundoNombre": "YRIS",
+    "parentesco": "CY",
+    "condicionInvalidez": "N",
+    "fechaNacimiento": "1956-02-08",
+    "genero": "F"
+  },
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

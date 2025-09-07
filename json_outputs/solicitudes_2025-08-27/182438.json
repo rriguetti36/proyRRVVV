@@ -1,0 +1,108 @@
+{
+  "nroOperacion": "182438",
+  "AFP": "1002",
+  "CUSPP": "591611CZCBQ9",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "N",
+  "tasaRPyRT": "4.06",
+  "fechaDevengue": "2023-11-01",
+  "fechaSuscripcionIII": "2024-01-17",
+  "devengueSolicitud": "2016-05-24",
+  "fechaEnvio": "2024-01-18",
+  "fechaCierre": "2024-01-23",
+  "tipoCambio": "3.718",
+  "diaCita": "2024-01-30",
+  "horaCita": "15:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. AV. CANAVAL Y MOREYRA 540",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "80653552",
+    "apellidoPaterno": "ZAMBRANO",
+    "apellidoMaterno": "CHUQUIYAURI",
+    "primerNombre": "CARLOS",
+    "segundoNombre": "GABRIEL",
+    "genero": "M",
+    "fechaNacimiento": "1979-11-04",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "420304.19",
+    "saldoCic": "44737.65",
+    "valorCuota": "13.7420820",
+    "saldoCuotas": "3255.5219799",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4040",
+    "aporteAdicional": "375566.54"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "ZAMBRANO",
+      "apellidoMaterno": "JUAREZ",
+      "primerNombre": "MARICIELO",
+      "segundoNombre": "SAMIRA",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2010-07-09",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "ZAMBRANO",
+      "apellidoMaterno": "JUAREZ",
+      "primerNombre": "LEONARDO",
+      "segundoNombre": "GABRIEL GU",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2003-12-13",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "CHUQUIYAURI",
+      "apellidoMaterno": "VARGAS",
+      "primerNombre": "MARIA",
+      "segundoNombre": "GRACIELA",
+      "parentesco": "PA",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1946-04-09",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.",
+      "anosRT": "5",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}

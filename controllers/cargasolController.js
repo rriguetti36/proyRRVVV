@@ -10,48 +10,6 @@ const xml2js = require('xml2js');
 const XLSX = require("xlsx");
 const fetch = require('node-fetch'); // Solo si usas Node <18
 
-/* exports.AsignacionIntermediarios = async (req, res) => {
-    try {
-        if (!req.body) {
-            return res.status(400).send('No se recibió cuerpo en la petición.');
-        }
-
-        const xmlData = req.body;
-        xml2js.parseString(xmlData, { explicitArray: false }, (err, result) => {
-            if (err) {
-                return res.status(400).json({ error: "Error al parsear XML", detalle: err });
-            }
-
-            const solicitudes = result.descargaSolicitudesEESS.solicitudRecibidaEESS;
-            const lista = Array.isArray(solicitudes) ? solicitudes : [solicitudes];
-
-            const data = lista.map(s => ({
-                nroOperacion: s.nroOperacion,
-                CUSPP: s.CUSPP,
-                dniAsesor: ""
-            }));
-
-            // Crear Excel
-            const worksheet = XLSX.utils.json_to_sheet(data);
-            const workbook = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(workbook, worksheet, "Solicitudes");
-
-            if (!fs2.existsSync("./xls_outputs")) fs2.mkdirSync("./xls_outputs");
-            const excelFile = "./xls_outputs/solicitudes.xlsx";
-            XLSX.writeFile(workbook, excelFile);
-
-            return res.json({
-                message: "XML procesado y Excel generado",
-                ruta: excelFile,
-                datos: data
-            });
-        });
-    } catch (err) {
-        console.error('Error:', err.message);
-        res.status(500).send('Error procesando XML');
-    }
-} */
-
 exports.AsignacionIntermediarios = async (req, res) => {
     try {
         if (!req.body) {
@@ -59,7 +17,8 @@ exports.AsignacionIntermediarios = async (req, res) => {
         }
         const data = req.body; // 👈 viene del cliente (el JSON del ejemplo)
         const fechaCarga = new Date().toISOString().split('T')[0];
-        
+        //console.log("data de asesores", data);
+
         if (!Array.isArray(data)) {
             return res.status(400).json({ error: "Formato inválido, debe ser un array" });
         }
@@ -96,7 +55,7 @@ exports.ProcesaSolicitud = async (req, res) => {
 
         console.log("🚀Valida si ya fue cargado el archivo...");
         vallidaOk = await validarExistente(solicitudes_meler, fechaCarga);                                          //Valida si ya fueron cargadas
-        //console.log("vallidaOk", vallidaOk);
+        console.log("vallidaOk", vallidaOk);
         //vallidaOk = false;
 
         if (!vallidaOk) {
@@ -117,9 +76,11 @@ exports.ProcesaSolicitud = async (req, res) => {
                 // Aquí puedes trabajar con los arrays, exportarlos, guardarlos, etc.
                 // Por ejemplo, para ver el primero:
                 //console.log('\n🧾 Primer registro en c_cotizacion:\n', c_detallecotizacion[0]); 
-            });                                                                                                     // guarda las cotizaciones las solicitudes
+            });
+            console.log('Procesado: solicitudes cargadas con exito.');                                                                                              // guarda las cotizaciones las solicitudes
             res.send(`Procesado: solicitudes cargadas con exito`);
         } else {
+            console.log('Procesado: Solicitudes ya fueron cargadas, revisar el log.');
             res.send(`Procesado: Solicitudes ya fueron cargadas, revisar el log`);
         }
 
@@ -299,17 +260,6 @@ async function SolicitudesCalc(fechaCarga) {
                 }))
                 : [];
 
-
-            /* const beneficiarios = Array.isArray(solicitud.beneficiario) ? solicitud.beneficiario : [solicitud.beneficiario];
-            const beneficiariosTransformados = beneficiarios.map((ben, idx) => ({
-                IdBeneficiario: idx + 2,
-                Parentesco: tabparametros.find(x => x.v_codsbs === ben.parentesco)?.v_cod,
-                FechaNacimiento: ben.fechaNacimiento,
-                Genero: tabparametros.find(x => x.v_codsbs === ben.genero)?.v_cod,
-                TipoInvalidez: ben.condicionInvalidez = "N" ? "1" : "2"
-            })); */
-            //console.log("beneficiariosTransformados", );
-            // Crear solicitud
             const nuevaSolicitud = {
                 IdoperacionSbs: nroOperacion,
                 Cliente: "01",
@@ -348,7 +298,22 @@ async function SolicitudesCalc(fechaCarga) {
             },
             body: JSON.stringify(resultado) // minificado automáticamente
         });
-        const data = await respuesta.json();
+
+        if (!respuesta.ok) {
+            // Si no fue un 200, mostramos lo que devolvió realmente
+            const errorText = await respuesta.text();
+            throw new Error(`❌ Error HTTP ${respuesta.status}: ${errorText}`);
+        }
+
+        let data;
+        try {
+            data = await respuesta.json();
+        } catch (err) {
+            const rawText = await respuesta.text();
+            throw new Error(`❌ La respuesta no era JSON válido:\n${rawText}`);
+        }
+
+        //const data = await respuesta.json();
         //console.log(JSON.stringify(data, null, 2));
         await fs.writeFile(archivoresultados, JSON.stringify(data, null, 2), 'utf8');
 
@@ -809,6 +774,19 @@ async function validarExistente(solicitudes_meler, fechacarga) {
 
 async function insertaCotizacionesCalculadas(data) {
     await TablaCot.insertaCotizacionesCalc(data);
+}
+
+async function aisgnaIntermediario(operacion) {
+    try {
+        const carpetaAsignacion = path.join(__dirname, '../json_outputs/asignaciones');
+        const asignacionesInter = await fs.readFile(carpetaAsignacion, 'utf8');
+        const asesor = JSON.parse(asignacionesInter);
+        const numerodni = asesor.find(x=>x.nroOperacion === operacion).dniAsesor || "";
+
+        return numerodni;
+    } catch (err) {
+        console.error('❌ Error procesando archivos JSON:', err);
+    }
 }
 
 function parseFecha(fechaStr) {

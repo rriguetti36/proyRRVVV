@@ -1,0 +1,108 @@
+{
+  "nroOperacion": "182433",
+  "AFP": "1009",
+  "CUSPP": "343111MLBNC2",
+  "tipoBeneficio": "D",
+  "cambioModalidad": "N",
+  "pensionPreliminar": "S",
+  "tasaRPyRT": "3.19",
+  "fechaDevengue": "2023-12-01",
+  "fechaSuscripcionIII": "2024-01-16",
+  "devengueSolicitud": "2021-04-20",
+  "fechaEnvio": "2024-01-18",
+  "fechaCierre": "2024-01-23",
+  "tipoCambio": "3.704",
+  "diaCita": "2024-01-24",
+  "horaCita": "11:00",
+  "lugarCita": "LIMA-LIMA-SAN ISIDRO. CALLE CHINCHON 986",
+  "numeroMensualidad": "12",
+  "tipoFondo": "9",
+  "afiliado": {
+    "tipoDoc": "00",
+    "nroDoc": "73324346",
+    "apellidoPaterno": "LEON",
+    "apellidoMaterno": "BANCES",
+    "primerNombre": "MANUEL",
+    "segundoNombre": "ANGEL",
+    "genero": "M",
+    "fechaNacimiento": "1993-12-10",
+    "estadoSobrevivencia": "A"
+  },
+  "fondo": {
+    "moneda": "S/.",
+    "capitalPension": "308801.29",
+    "saldoCic": "13066.95",
+    "valorCuota": "13.8609148",
+    "saldoCuotas": "942.7191631",
+    "tieneCobertura": "S",
+    "tipoCambioCompraAA": ".000",
+    "EESScobertura": "4120",
+    "aporteAdicional": "295734.34"
+  },
+  "beneficiario": [
+    {
+      "apellidoPaterno": "LEON",
+      "apellidoMaterno": "EFFIO",
+      "primerNombre": "ASLYN",
+      "segundoNombre": "LINDSAY",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2021-02-07",
+      "genero": "F"
+    },
+    {
+      "apellidoPaterno": "LEON",
+      "apellidoMaterno": "EFFIO",
+      "primerNombre": "ANGEL",
+      "segundoNombre": "GAEL",
+      "parentesco": "HI",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "2018-07-14",
+      "genero": "M"
+    },
+    {
+      "apellidoPaterno": "EFFIO",
+      "apellidoMaterno": "DE LA CRUZ",
+      "primerNombre": "VERONICA",
+      "segundoNombre": "DEL MILAGRO",
+      "parentesco": "CB",
+      "condicionInvalidez": "N",
+      "fechaNacimiento": "1991-03-19",
+      "genero": "F"
+    }
+  ],
+  "producto": [
+    {
+      "modalidad": "RV",
+      "moneda": "S/.Aj.",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "1",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "periodoGarantizado": "15",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    },
+    {
+      "modalidad": "RTVD",
+      "moneda": "S/.Aj.",
+      "anosRT": "3",
+      "porcentajeRVD": "50.00",
+      "derechoCrecer": "N",
+      "gratificacion": "N"
+    }
+  ]
+}
