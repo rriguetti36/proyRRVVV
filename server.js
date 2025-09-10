@@ -6,6 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const PORT = 3000;
 const rutinaRoutes = require('./routes/rutinaRoutes');
+const listasRoutes = require('./routes/ListasRoutes');
 const authRoutes = require('./routes/authRoutes');
 const requestLogger = require("./middleware/requestLogger");
 const cors = require("cors");
@@ -43,8 +44,10 @@ console.log = function (...args) {
 };
 
 // RUTAS
+app.use('/', listasRoutes);
 app.use('/auth', authRoutes);
 app.use('/rutinarv', rutinaRoutes);
+
 
 // Ruta base
 /* app.get('/', (req, res) => {
@@ -64,9 +67,9 @@ io.on("connection", (socket) => {
 });
 
 //pagina vista inicial
-app.get("/", (req, res) => {
+/* app.get("/", (req, res) => {
   res.render("index", { titulo: "App EJS", mensaje: "Hola con CommonJS" });
-});
+}); */
 
 // Iniciar el servidor
 server.listen(PORT, () => {
