@@ -38,6 +38,19 @@ class cotizacion {
     }
   }
 
+  static async getTablaSolicitudesMELER() {
+    //console.log("entra a consultar")
+    const query = `SELECT a.id, a.v_descripcion, a.fec_carga, b.fec_envio, b.fec_cierre 
+                    FROM c_solicitudes_meler a join c_solicitudes_meler_det b ON a.id=b.id_archivo 
+                    where id_estado=1 
+                    group by a.id, a.v_descripcion, a.fec_carga order by id desc`;
+    try {
+      const [results] = await db.query(query);
+      return results;
+    } catch (err) {
+      throw err;
+    }
+  }
   static async insertaSolicitudesMeler(data) {
     //console.log(data);
     const conn = await db.getConnection();
@@ -61,6 +74,7 @@ class cotizacion {
 
       await conn.commit();
       console.log('Solicitud guadadas en Matriz de errores.');
+      return idArchivo;
     } catch (err) {
       await conn.rollback();
       console.error('Error al guardar:', err);

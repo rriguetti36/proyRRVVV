@@ -24,7 +24,9 @@ exports.AsignacionIntermediarios = async (req, res) => {
         }
 
         // Ruta donde guardarás el archivo
-        const filePath = path.join(__dirname, '../json_outputs/asignaciones/asesores.json');
+
+        const rutaCot = process.env.RUTA_COTIZA;
+        const filePath = path.join(rutaCot, `CO_${fechaCarga}`, "asignaciones", "asesores.json");
 
         // Nos aseguramos de que el folder exista
         const dir = path.dirname(filePath);
@@ -48,23 +50,24 @@ exports.ProcesaSolicitud = async (req, res) => {
             return res.status(400).send('No se recibió cuerpo en la petición.');
         }
         const fechaCarga = new Date().toISOString().split('T')[0];
+        const rutaCot = process.env.RUTA_COTIZA;
 
         let vallidaOk = false
         console.log("🚀Inicia Validando del XML...");
-        const { solicitudes_meler } = await ValidaXML(req.body, fechaCarga);                                        //valida con el XSD
+        const { solicitudes_meler } = await ValidaXML(req.body, fechaCarga, rutaCot);                                        //valida con el XSD
 
         console.log("🚀Valida si ya fue cargado el archivo...");
         vallidaOk = await validarExistente(solicitudes_meler, fechaCarga);                                          //Valida si ya fueron cargadas
-        console.log("vallidaOk", vallidaOk);
+        console.log("vallidaOk", vallidaOk.existe);
         //vallidaOk = false;
 
-        if (!vallidaOk) {
+        if (!vallidaOk.existe) {
             console.log("🚀Empieza a calcular las solicitudes...");
-            await SolicitudesCalc(fechaCarga);                                                                      // Calcula las solicitudes
+            await SolicitudesCalc(fechaCarga, rutaCot);                                                                      // Calcula las solicitudes
 
             // 🚀 Ejecutar
             console.log("🚀Setea los datos en las arrays...");
-            await CrearCotizacion(fechaCarga).then(({ c_cotizacion, c_detallecotizacion, c_beneficiario }) => {
+            await CrearCotizacion(fechaCarga, rutaCot).then(({ c_cotizacion, c_detallecotizacion, c_beneficiario }) => {
 
                 const solicitudesMelerValidas = {
                     cabecera: c_cotizacion,
@@ -90,8 +93,21 @@ exports.ProcesaSolicitud = async (req, res) => {
     }
 };
 
+exports.Listados = async (req, res) => {
+  try {
+    const solicitudes = await TablaCot.getTablaSolicitudesMELER();
+    //console.log(solicitudes);
+    //const recientes = await SolicitudesMeler.getRecientes();
+
+    res.render("index", { solicitudes });
+  } catch (err) {
+    console.error("Error al obtener solicitudes:", err);
+    res.status(500).send("Error en el servidor");
+  }
+};
+
 //1 paso valida el XML y compara con el XSD
-async function ValidaXML(reqbody, fechaCarga) {
+async function ValidaXML(reqbody, fechaCarga, ruta) {
     try {
         // Aquí tienes el contenido XML como texto
         const xmlString = reqbody;
@@ -120,7 +136,7 @@ async function ValidaXML(reqbody, fechaCarga) {
         if (isValid) {
 
             console.log('isValid:', isValid);
-            const carpetaSalida = path.join(__dirname, '../json_outputs/solicitudes_' + fechaCarga);
+            const carpetaSalida = path.join(ruta, `CO_${fechaCarga}`, "solicitudes"); //path.join(__dirname, '../json_outputs/solicitudes_' + fechaCarga);
 
             const parser = new xml2js.Parser({ explicitArray: false });
             const jsonResult = await parser.parseStringPromise(xmlString_mod);
@@ -162,11 +178,11 @@ async function ValidaXML(reqbody, fechaCarga) {
 }
 
 //2 paso procesa las solicitudes y las cotiza
-async function SolicitudesCalc(fechaCarga) {
-    const carpetaEntrada = path.join(__dirname, '../json_outputs/solicitudes_' + fechaCarga);
-    const carpetaSalida = path.join(__dirname, '../json_outputs/cotizaciones_' + fechaCarga); // Puedes cambiarla si quieres
-    const archivoSalida = path.join(carpetaSalida, 'solicitudes_calcular.json');
-    const archivoresultados = path.join(carpetaSalida, 'solicitudes_resultados.json');
+async function SolicitudesCalc(fechaCarga, ruta) {
+    const carpetaEntrada = path.join(ruta, `CO_${fechaCarga}`, "solicitudes"); //path.join(__dirname, '../json_outputs/solicitudes_' + fechaCarga);
+    const carpetaSalida = path.join(ruta, `CO_${fechaCarga}`, "cotizaciones"); //path.join(__dirname, '../json_outputs/cotizaciones_' + fechaCarga); // Puedes cambiarla si quieres
+    const archivoSalida = path.join(carpetaSalida, "solicitudes_calcular.json"); //path.join(carpetaSalida, 'solicitudes_calcular.json');
+    const archivoresultados = path.join(carpetaSalida, "solicitudes_resultados.json"); //path.join(carpetaSalida, 'solicitudes_resultados.json');
     const tabparametros = await TablaPar.getParametros();
     const tabparametrosMatriz = await TablaPar.getMatrisConfig();
     //console.log(tabparametrosMatriz);
@@ -326,18 +342,18 @@ async function SolicitudesCalc(fechaCarga) {
 }
 
 //3 paso procesa las solicitudes y las cotiza
-async function CrearCotizacion(fechaCarga) {
+async function CrearCotizacion(fechaCarga, ruta) {
     const tabparametros = await TablaPar.getParametros();
     const c_cotizacion = [];
     const c_detallecotizacion = [];
     const c_beneficiario = [];
     //console.log(fechaCarga)
     try {
-        const carpetaEntrada = path.join(__dirname, '../json_outputs/solicitudes_' + fechaCarga);
-        const carpetaSalida = path.join(__dirname, '../json_outputs/cotizaciones_' + fechaCarga); // Puedes cambiarla si quieres
+        const carpetaEntrada = path.join(ruta, `CO_${fechaCarga}`, "solicitudes"); //path.join(__dirname, '../json_outputs/solicitudes_' + fechaCarga);
+        const carpetaSalida = path.join(ruta, `CO_${fechaCarga}`, "cotizaciones"); //path.join(__dirname, '../json_outputs/cotizaciones_' + fechaCarga); // Puedes cambiarla si quieres
         const archivos = await fs.readdir(carpetaEntrada);
 
-        const ResultadosSol = path.join(__dirname, '../json_outputs/cotizaciones_' + fechaCarga + '/solicitudes_resultados.json');
+        const ResultadosSol = path.join(carpetaSalida, "solicitudes_resultados.json"); //path.join(__dirname, '../json_outputs/cotizaciones_' + fechaCarga + '/solicitudes_resultados.json');
         const contenido = fs_.readFileSync(ResultadosSol, 'utf8');
         const resultados = JSON.parse(contenido); // Esto será un array
         // Paso 1: Aplanar todos los arrays de nivel 1
@@ -347,20 +363,12 @@ async function CrearCotizacion(fechaCarga) {
             )
         );
 
-        const ResultadosCal = path.join(__dirname, '../json_outputs/cotizaciones_' + fechaCarga + '/solicitudes_calcular.json');
+        const ResultadosCal = path.join(carpetaSalida, "solicitudes_calcular.json"); //path.join(__dirname, '../json_outputs/cotizaciones_' + fechaCarga + '/solicitudes_calcular.json');
         const contenidoCal = fs_.readFileSync(ResultadosCal, 'utf8');
         //console.log("contenidoCal", contenidoCal);
         const resultadosCal = JSON.parse(contenidoCal); // Esto será un array
         //console.log("resultadosCal", resultadosCal);
         const solicitudesCal = resultadosCal.Solicitudes;
-        //console.log("solicitudes", solicitudesCal);
-        // Paso 1: Aplanar todos los arrays de nivel 1
-        // const solCalcular = resultadosCal.flatMap(
-        //     grupo => grupo.flatMap(
-        //         item => item.Solicitudes || []
-        //     )
-        // );
-
         for (const archivo of archivos) {
             if (!archivo.endsWith('.json')) continue;
 
@@ -393,7 +401,7 @@ async function CrearCotizacion(fechaCarga) {
                 num_aniojubila: await obtenerEdadJub(solicitud.afiliado.fechaNacimiento),
                 //num_cargas: 0,
                 id_agente: 0,
-                num_docagente: 0,
+                num_docagente: await aisgnaIntermediario(nroOperacion, fechaCarga) || 0,
                 id_moneda: tabparametros.find(x => x.v_codsbs === solicitud.fondo.moneda)?.v_cod || "",
                 val_tcfondo: parseFloat(solicitud.tipoCambio),
                 mto_capitalfon: parseFloat(solicitud.fondo.capitalPension),
@@ -561,45 +569,6 @@ async function CrearCotizacion(fechaCarga) {
                 c_beneficiario.push(beneficiario);
                 idorden++;
             }
-
-            /* const beneficiarios = Array.isArray(solicitud.beneficiario) ? solicitud.beneficiario : [solicitud.beneficiario];
-            for (const ben of beneficiarios) {
-                const benef = resultadosPen.find(x => x.id === idorden);
-                const beneficiario = {
-                    //id_cot: 0,
-                    //num_cot: 0,
-                    id_orden: idorden,
-                    //id_archivo: 0,
-                    num_operacion: nroOperacion,
-                    id_parentesco: tabparametros.find(x => x.v_codsbs === ben.parentesco)?.v_cod,
-                    id_grupofam: 1,
-                    id_sexo: tabparametros.find(x => x.v_codsbs === ben.genero)?.v_cod || "",
-                    id_invalido: ben.condicionInvalidez = "N" ? "1" : "2",
-                    //fec_invalido: 0,
-                    //id_causainv: 0,
-                    id_derpen: 99,
-                    //ind_dercre: solicitud.afiliado,
-                    id_tipodociden: "",
-                    num_dociden: "",
-                    des_nombre: ben.primerNombre,
-                    des_nombresegundo: ben.segundoNombre || "",
-                    des_apepaterno: ben.apellidoPaterno,
-                    des_apematerno: ben.apellidoMaterno,
-                    fec_nacimiento: ben.fechaNacimiento,
-                    fec_fallecimiento: "",
-                    fec_nachijomayor: "",
-                    val_pension: benef.prc,
-                    val_pensionleg: benef.prc,
-                    //val_pensionrep: 0,
-                    mto_pension: benef.pension,
-                    mto_pensiongar: benef.pension,
-                    ind_estsob: solicitud.afiliado.estadoSobrevivencia || "",
-                    ind_estudiante: "",
-                }
-
-                c_beneficiario.push(beneficiario);
-                idorden++;
-            } */
         }
 
         // Crear carpeta si no existe
@@ -765,24 +734,29 @@ async function validarExistente(solicitudes_meler, fechacarga) {
     };
     //console.log(solicitudesMelerValid)
 
-    TablaCot.insertaSolicitudesMeler(solicitudesMelerValid).catch(() => {
+    const resultado = await TablaCot.insertaSolicitudesMeler(solicitudesMelerValid);
+    console.log("Resultado ID Archivo:", resultado);
+    /* TablaCot.insertaSolicitudesMeler(solicitudesMelerValid).catch(() => {
         // Ya se manejó el error internamente
-    });;
+    });; */
     console.log("caeSol", caeSol)
-    return caeSol;
+    return {existe: caeSol, idArchivo: resultado};
 }
 
 async function insertaCotizacionesCalculadas(data) {
     await TablaCot.insertaCotizacionesCalc(data);
 }
 
-async function aisgnaIntermediario(operacion) {
+async function aisgnaIntermediario(operacion, fechaCarga) {
     try {
-        const carpetaAsignacion = path.join(__dirname, '../json_outputs/asignaciones');
+        const rutaCot = process.env.RUTA_COTIZA;
+        const carpetaAsignacion = path.join(rutaCot, `CO_${fechaCarga}`, "asignaciones", "asesores.json");
+        //const carpetaAsignacion = path.join(__dirname, '../json_outputs/asignaciones');
         const asignacionesInter = await fs.readFile(carpetaAsignacion, 'utf8');
         const asesor = JSON.parse(asignacionesInter);
-        const numerodni = asesor.find(x=>x.nroOperacion === operacion).dniAsesor || "";
-
+        console.log(operacion);
+        const numerodni = asesor.find(x => x.nroOperacion === operacion)?.dniAsesor || "";
+        console.log(numerodni);
         return numerodni;
     } catch (err) {
         console.error('❌ Error procesando archivos JSON:', err);

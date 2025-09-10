@@ -88,20 +88,73 @@
                 </div>
             </div>
             <button id="saveBtn">Actualizar y Procesar Solicitudes</button>
+            <div class="col-12 seccion">
+                <h3>XML Minificado</h3>
+                <textarea id="xmlMin"></textarea>
+            </div>
+            <div class="col-12 seccion">
+                <h2>Consola</h2>
+                <button onclick="limpiarLogs()">🧹 Limpiar logs</button>
+                <div id="logs"
+                    style="font-family: monospace; background: #111; color: #0f0; padding: 10px; height: 300px; overflow-y: auto;">
+                </div>
+            </div>
+
+
+
         </div>
         <div class="col-6 seccion">
             <div class="row">
                 <div class="col-12 seccion">
-                    <h3>XML Minificado</h3>
-                    <textarea id="xmlMin"></textarea>
-                </div>
-                <div class="col-12 seccion">
-                    <h2>Consola</h2>
-                    <button onclick="limpiarLogs()">🧹 Limpiar logs</button>
-                    <div id="logs"
-                        style="font-family: monospace; background: #111; color: #0f0; padding: 10px; height: 300px; overflow-y: auto;">
+                    <h3>Todas las Solicitudes Calculadas</h3>
+                    <div class="container mt-4">
+                        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                            <table class="table table-bordered table-striped table-sm">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Descripción</th>
+                                        <th>Fecha de Carga</th>
+                                        <th>Fecha de Envio</th>
+                                        <th>Fecha de Cierre</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% if (solicitudes.length> 0) { %>
+                                        <% solicitudes.forEach(s=> { %>
+                                            <tr>
+                                                <td>
+                                                    <%= s.id %>
+                                                </td>
+                                                <td>
+                                                    <%= s.v_descripcion %>
+                                                </td>
+                                                <td>
+                                                    <%= s.fec_carga.toISOString().slice(0,10) %>
+                                                </td>
+                                                <td>
+                                                    <%= s.fec_envio.toISOString().slice(0,10) %>
+                                                </td>
+                                                <td>
+                                                    <%= s.fec_cierre.toISOString().slice(0,10) %>
+                                                </td>
+                                                <td>
+                                                    <button onclick="generarXML('<%= s.id %>')">Generar XML</button>
+                                                </td>
+                                            </tr>
+                                            <% }) %>
+                                                <% } else { %>
+                                                    <tr>
+                                                        <td colspan="3" class="text-center">No hay registros</td>
+                                                    </tr>
+                                                    <% } %>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
@@ -237,6 +290,56 @@
         function limpiarLogs() {
             const logDiv = document.getElementById("logs");
             logDiv.innerHTML = ""; // Borra todo el contenido
+        }
+
+        async function generarXML(id) {
+            try {
+                // 1. Pedir el token primero
+                const authResp = await fetch("http://localhost:3000/auth/token", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ clientId: "cliente1", clientSecret: "secret123" })
+                });
+                const authData = await authResp.json();
+
+                if (!authData.token) {
+                    alert("❌ No se pudo obtener token");
+                    return;
+                }
+
+                // 2. Llamar al servicio generaXMLsalida con el token
+                const respuesta = await fetch("http://localhost:3000/rutinarv/generar-xml", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${authData.token}` // 👈 enviar el token
+                    },
+                    body: JSON.stringify({ id_archivo: id })
+                });
+
+                if (!respuesta.ok) {
+                    const err = await respuesta.json();
+                    alert("❌ Error: " + err.mensaje);
+                    return;
+                }
+
+                // 3. Descargar archivo (igual que antes)
+                //👇 aquí lo tratamos como archivo
+                const blob = await respuesta.blob();
+                const url = window.URL.createObjectURL(blob);
+
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = `cargaCot_${new Date().toISOString().slice(0, 10)}.xml`;
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+
+                window.URL.revokeObjectURL(url);
+            } catch (error) {
+                console.error("❌ Error en fetch:", error);
+                alert("Error generando XML");
+            }
         }
 
     </script>
