@@ -1,0 +1,34 @@
+ // Variable.scss
+
+.nestable-cart {
+    overflow: hidden;
+}
+
+// .dd-item > button {
+//     height: 2.1rem;
+// }
+.dd-handle {
+    color: $white;
+    background: var(--primary);
+    border-radius: 0.3125rem;
+	padding: 0.5rem 0.9375rem;
+	height:auto;
+	cursor:all-scroll;
+    border: 0.0625rem solid $border;
+}
+.dd-handle:hover {
+    color: $white;
+    background: var(--primary);
+}
+
+.dd3-content:hover {
+    color: $white;
+    background: var(--primary);
+}
+.dd3-content {
+    color: $white;
+}
+.dd-item>button{
+	line-height:1.75rem;
+	color:$white;
+}

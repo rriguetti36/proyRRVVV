@@ -8,6 +8,8 @@ const PORT = 3000;
 const rutinaRoutes = require('./routes/rutinaRoutes');
 const listasRoutes = require('./routes/ListasRoutes');
 const authRoutes = require('./routes/authRoutes');
+const cotizadorRoutes = require('./routes/cotizadorRoutes');
+const layouts = require('express-ejs-layouts');
 const requestLogger = require("./middleware/requestLogger");
 const cors = require("cors");
 const path = require("path");
@@ -33,6 +35,10 @@ app.use(requestLogger);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
+app.use('/theme', express.static(path.join(__dirname, 'theme')));
+
+app.use(layouts);
+app.set('layout', 'layouts/layoutCT');
 
 // Middleware para interceptar console.log
 const logs = [];
@@ -47,6 +53,7 @@ console.log = function (...args) {
 app.use('/', listasRoutes);
 app.use('/auth', authRoutes);
 app.use('/rutinarv', rutinaRoutes);
+app.use("/cotizador", cotizadorRoutes);
 
 
 // Ruta base

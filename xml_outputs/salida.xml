@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cargaCotizaciones xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <cotizaciones>
-    <nroOperacion>184883</nroOperacion>
-    <CUSPP>509940ECZNA3</CUSPP>
+    <nroOperacion>8193867</nroOperacion>
+    <CUSPP>671801JMCIT4</CUSPP>
     <productoCotizado>
       <modalidad>RTVD</modalidad>
       <moneda>S/.</moneda>
@@ -12,32 +12,48 @@
       <gratificacion>N</gratificacion>
       <cotizacionEESS>
         <siCotizaNoCotiza>S</siCotizaNoCotiza>
-        <nroCotizacion>2025000232</nroCotizacion>
-        <primaUnicaAFPEESS>4371.19</primaUnicaAFPEESS>
-        <primaUnicaEESS>30534.07</primaUnicaEESS>
-        <primeraPensionRT>485.69</primeraPensionRT>
-        <tasaInteresRT>0.00</tasaInteresRT>
-        <primeraPensionRVD>242.84</primeraPensionRVD>
-        <tasaInteresRVD>0.00</tasaInteresRVD>
+        <nroCotizacion>2025000342</nroCotizacion>
+        <primaUnicaEESS>246517.11</primaUnicaEESS>
+        <primeraPensionRT>7272.88</primeraPensionRT>
+        <tasaInteresRT>6.25</tasaInteresRT>
+        <primeraPensionRVD>3636.44</primeraPensionRVD>
+        <tasaInteresRVD>6.25</tasaInteresRVD>
       </cotizacionEESS>
     </productoCotizado>
     <productoCotizado>
       <modalidad>RTVD</modalidad>
       <moneda>S/.</moneda>
-      <anosRT>1</anosRT>
+      <anosRT>5</anosRT>
       <porcentajeRVD>50.000</porcentajeRVD>
       <periodoGarantizado>15</periodoGarantizado>
       <derechoCrecer>N</derechoCrecer>
       <gratificacion>N</gratificacion>
       <cotizacionEESS>
         <siCotizaNoCotiza>S</siCotizaNoCotiza>
-        <nroCotizacion>2025000232</nroCotizacion>
-        <primaUnicaAFPEESS>3971.07</primaUnicaAFPEESS>
-        <primaUnicaEESS>30934.19</primaUnicaEESS>
-        <primeraPensionRT>441.23</primeraPensionRT>
-        <tasaInteresRT>0.00</tasaInteresRT>
-        <primeraPensionRVD>220.62</primeraPensionRVD>
-        <tasaInteresRVD>0.00</tasaInteresRVD>
+        <nroCotizacion>2025000342</nroCotizacion>
+        <primaUnicaEESS>249837.43</primaUnicaEESS>
+        <primeraPensionRT>8379.66</primeraPensionRT>
+        <tasaInteresRT>6.25</tasaInteresRT>
+        <primeraPensionRVD>4189.83</primeraPensionRVD>
+        <tasaInteresRVD>6.25</tasaInteresRVD>
+      </cotizacionEESS>
+    </productoCotizado>
+    <productoCotizado>
+      <modalidad>RTVD</modalidad>
+      <moneda>S/.</moneda>
+      <anosRT>3</anosRT>
+      <porcentajeRVD>50.000</porcentajeRVD>
+      <periodoGarantizado>15</periodoGarantizado>
+      <derechoCrecer>N</derechoCrecer>
+      <gratificacion>N</gratificacion>
+      <cotizacionEESS>
+        <siCotizaNoCotiza>S</siCotizaNoCotiza>
+        <nroCotizacion>2025000342</nroCotizacion>
+        <primaUnicaEESS>246404.69</primaUnicaEESS>
+        <primeraPensionRT>7235.41</primeraPensionRT>
+        <tasaInteresRT>6.25</tasaInteresRT>
+        <primeraPensionRVD>3617.71</primeraPensionRVD>
+        <tasaInteresRVD>6.25</tasaInteresRVD>
       </cotizacionEESS>
     </productoCotizado>
     <productoCotizado>
@@ -47,29 +63,10 @@
       <gratificacion>N</gratificacion>
       <cotizacionEESS>
         <siCotizaNoCotiza>S</siCotizaNoCotiza>
-        <nroCotizacion>2025000232</nroCotizacion>
-        <primaUnicaEESS>34905.26</primaUnicaEESS>
-        <primeraPensionRV>247.28</primeraPensionRV>
-        <tasaInteresRV>0.00</tasaInteresRV>
-      </cotizacionEESS>
-    </productoCotizado>
-    <productoCotizado>
-      <modalidad>RTVD</modalidad>
-      <moneda>S/.</moneda>
-      <anosRT>3</anosRT>
-      <porcentajeRVD>50.000</porcentajeRVD>
-      <periodoGarantizado>15</periodoGarantizado>
-      <derechoCrecer>N</derechoCrecer>
-      <gratificacion>N</gratificacion>
-      <cotizacionEESS>
-        <siCotizaNoCotiza>S</siCotizaNoCotiza>
-        <nroCotizacion>2025000232</nroCotizacion>
-        <primaUnicaAFPEESS>4205.88</primaUnicaAFPEESS>
-        <primaUnicaEESS>30699.38</primaUnicaEESS>
-        <primeraPensionRT>467.32</primeraPensionRT>
-        <tasaInteresRT>0.00</tasaInteresRT>
-        <primeraPensionRVD>233.66</primeraPensionRVD>
-        <tasaInteresRVD>0.00</tasaInteresRVD>
+        <nroCotizacion>2025000342</nroCotizacion>
+        <primaUnicaEESS>224698.46</primaUnicaEESS>
+        <primeraPensionRV>2739.34</primeraPensionRV>
+        <tasaInteresRV>6.24</tasaInteresRV>
       </cotizacionEESS>
     </productoCotizado>
   </cotizaciones>
