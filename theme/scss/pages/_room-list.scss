@@ -1,0 +1,34 @@
+.room-list-tbl{
+	tr{
+		td{
+			span{
+				color:#262626;	
+			}	
+		}	
+	}	
+	thead{
+		tr{
+			th{
+				border-bottom:1px solid $border;
+				
+				&:last-child{
+				
+					text-align:end;
+				}
+				
+			}
+				
+		}
+	}
+	tbody{
+		tr{
+			td{
+				&:last-child{
+				
+					text-align:end;
+				}
+			}
+		}
+	}
+	 
+}

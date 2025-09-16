@@ -406,7 +406,7 @@ async function calcularRV(solicitudes, TasasIPC, TasasMercado, TasasRentabilidad
     let resultadoFinalSol = [];
     const fechacalculo = new Date().toISOString().slice(0, 10);
 
-    console.time(`Cálculo Solicitud-${datosSol.IdoperacionSbs}`);
+    console.time(`Cálculando Solicitud-${datosSol.IdoperacionSbs}`);
     //console.log("Inicia calculo modalidad " + datosSol.IdoperacionSbs);
     const montoCIC = datosSol.MontoCIC;
     const tipocambio = datosSol.TipoCambio;
@@ -583,7 +583,7 @@ async function calcularRV(solicitudes, TasasIPC, TasasMercado, TasasRentabilidad
     //res.json(resultadoFinal);
     //console.log("acaba de calcular solicitud " + datosSol.IdoperacionSbs);
     //console.log("Resultados: ", resultadoscalpen);
-    console.timeEnd(`Cálculo Solicitud-${datosSol.IdoperacionSbs}`);
+    console.timeEnd(`Cálculando Solicitud-${datosSol.IdoperacionSbs}`);
     //console.error('datosSol:', datosSol);
     return resultadoFinalSol;
     //res.json(resultadoFinalSol);

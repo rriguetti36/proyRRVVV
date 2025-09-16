@@ -15,6 +15,7 @@ exports.AsignacionIntermediarios = async (req, res) => {
         if (!req.body) {
             return res.status(400).send('No se recibió cuerpo en la petición.');
         }
+        console.log("🚀Asigna intermediario a la solicitud...");
         const data = req.body; // 👈 viene del cliente (el JSON del ejemplo)
         const fechaCarga = new Date().toISOString().split('T')[0];
         //console.log("data de asesores", data);
@@ -27,7 +28,7 @@ exports.AsignacionIntermediarios = async (req, res) => {
 
         const rutaCot = process.env.RUTA_COTIZA;
         const filePath = path.join(rutaCot, `CO_${fechaCarga}`, "asignaciones", "asesores.json");
-
+        console.log("🚀Se crea la ruta para Asignacion- " + filePath);
         // Nos aseguramos de que el folder exista
         const dir = path.dirname(filePath);
         if (!fs2.existsSync(dir)) {
@@ -81,10 +82,12 @@ exports.ProcesaSolicitud = async (req, res) => {
                 //console.log('\n🧾 Primer registro en c_cotizacion:\n', c_detallecotizacion[0]); 
             });
             console.log('Procesado: solicitudes cargadas con exito.');                                                                                              // guarda las cotizaciones las solicitudes
-            res.send(`Procesado: solicitudes cargadas con exito`);
+            //res.send(`Procesado: solicitudes cargadas con exito`);
+            res.json({ mensaje: "Procesado: solicitudes cargadas con exito" });
         } else {
             console.log('Procesado: Solicitudes ya fueron cargadas, revisar el log.');
-            res.send(`Procesado: Solicitudes ya fueron cargadas, revisar el log`);
+            res.json({ mensaje: "Procesado: Solicitudes ya fueron cargadas, revisar el log" });
+            //res.send(`Procesado: Solicitudes ya fueron cargadas, revisar el log`);
         }
 
     } catch (err) {
@@ -99,7 +102,7 @@ exports.Listados = async (req, res) => {
     //console.log(solicitudes);
     //const recientes = await SolicitudesMeler.getRecientes();
 
-    res.render("index", { solicitudes });
+    res.render("index", { layout: 'layouts/layoutCT', solicitudes });
   } catch (err) {
     console.error("Error al obtener solicitudes:", err);
     res.status(500).send("Error en el servidor");

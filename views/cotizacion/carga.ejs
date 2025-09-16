@@ -1,0 +1,241 @@
+<main class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="h4 mb-4 text-primary fw-bold">
+                📂 Cargar XML → Calculo de solicitudes
+            </h1>
+            <div class="row g-4">
+
+                <!-- Panel izquierdo -->
+                <div class="col-lg-6">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            Subir archivo XML
+                        </div>
+                        <div class="card-body">
+                            <form id="formXML" class="mb-3" enctype="multipart/form-data">
+                                <div class="input-group">
+                                    <input type="file" id="archivoXML" name="archivoXML" accept=".xml"
+                                        class="form-control">
+                                </div>
+                            </form>
+
+                            <!-- XML minificado -->
+                            <div class="mt-4">
+                                <h6 class="fw-bold">XML Minificado</h6>
+                                <textarea id="xmlMinificado" rows="10" class="form-control font-monospace bg-light"
+                                    placeholder="Aquí aparecerá el XML minificado..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel derecho -->
+                <div class="col-lg-6">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            📋 Solicitudes MELER (Asignacion de Asesores)
+                        </div>
+                        <div class="card-body p-0">
+                            <div style="max-height: 300px; overflow-y: auto;">
+                                <table id="xmlTable"
+                                    class="table table-hover table-bordered mb-0 text-center align-middle">
+                                    <thead class="table-dark sticky-top">
+                                        <tr>
+                                            <th>Nro Operación</th>
+                                            <th>CUSPP</th>
+                                            <th>DNI Asesor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaSolicitudes">
+                                        <!-- dinámico -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <button type="button" id="btnProcesar" class="btn btn-success">
+                                ✅ Actualizar y Procesar Calculo
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="limpiarLogs()">
+                                🧹 Limpiar logs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logs -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-secondary text-white">
+                            📜 Logs del proceso
+                        </div>
+                        <div class="card-body p-0">
+                            <pre id="logs" class="m-0 p-3 text-success bg-black"
+                                style="height: 300px; overflow-y: auto; font-size: 0.9rem;">
+                            </pre>
+                            <div id="status" class="px-3 py-2 bg-dark text-success font-monospace d-none">
+                                Procesando<span id="dots"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+<script>
+    let intervalDots;
+    let isAnimating = false;
+    function startLoadingAnimation() {
+        if (isAnimating) return; // evita crear más intervalos
+        const dots = document.getElementById("dots");
+        const status = document.getElementById("status");
+        status.classList.remove("d-none");
+
+        let count = 0;
+        intervalDots = setInterval(() => {
+            count = (count + 1) % 4; // 0,1,2,3 → reinicia
+            dots.textContent = ".".repeat(count);
+        }, 500);
+
+        isAnimating = true;
+    }
+
+    function stopLoadingAnimation() {
+        clearInterval(intervalDots);
+        document.getElementById("dots").textContent = "";
+        document.getElementById("status").classList.add("d-none");
+        isAnimating = false;
+    }
+
+    document.getElementById("archivoXML").addEventListener("change", function (event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            const xmlString = e.target.result;
+
+            try {
+                // Minificar XML (remueve saltos de línea y espacios extra)
+                const xmlMin = xmlString.replace(/\s{2,}|\n|\r/g, "");
+                document.getElementById("xmlMinificado").value = xmlMin;
+
+                // Parsear XML
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+
+                // Seleccionar nodos (ajusta los nombres exactos según tu XML real)
+                const operaciones = xmlDoc.getElementsByTagName("solicitudRecibidaEESS");
+                const tabla = document.getElementById("tablaSolicitudes");
+                tabla.innerHTML = ""; // limpiar antes de pintar
+
+                for (let i = 0; i < operaciones.length; i++) {
+                    const nroOperacion = operaciones[i].getElementsByTagName("nroOperacion")[0]?.textContent || "";
+                    const cuspp = operaciones[i].getElementsByTagName("CUSPP")[0]?.textContent || "";
+                    //const dniAsesor = operaciones[i].getElementsByTagName("dniAsesor")[0]?.textContent || "";
+
+                    const fila = `
+                    <tr>
+                        <td>${nroOperacion}</td>
+                        <td>${cuspp}</td>
+                        <td><input type="text" placeholder="Ingrese DNI" data-index="${i}"></td>
+                    </tr>
+                `;
+                    tabla.insertAdjacentHTML("beforeend", fila);
+                }
+
+                agregarLog("✅ XML cargado y procesado correctamente.");
+            } catch (error) {
+                agregarLog("❌ Error procesando XML: " + error.message);
+            }
+        };
+
+        reader.readAsText(file);
+    });
+
+    document.getElementById("btnProcesar").addEventListener("click", function () {
+        agregarLog("🚀 Iniciando procesamiento...");
+        startLoadingAnimation();
+        const rows = document.querySelectorAll("#tablaSolicitudes tbody tr");
+        const result = [];
+
+        rows.forEach(row => {
+            const nroOperacion = row.cells[0].innerText;
+            const cuspp = row.cells[1].innerText;
+            const dni = row.querySelector("input").value;
+
+            result.push({ nroOperacion, cuspp, dniAsesor: dni });
+        });
+
+        fetch("http://localhost:3000/auth/token", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ clientId: "cliente1", clientSecret: "secret123" })
+        })
+            .then(res => res.json())
+            .then(data => {
+                const token = data.token;
+
+                // 2. Usar el token en asignacionasesor
+                return fetch("http://localhost:3000/rutinarv/asignacionasesor", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify(result)
+                }).then(res => res.json())
+                    .then(resAsignacion => {
+                        console.log(resAsignacion);
+
+                        // Si el backend devuelve éxito → ahora llamamos a cargasol
+                        if (resAsignacion.mensaje === "Archivo guardado correctamente") {
+                            const textareaValue = document.getElementById("xmlMinificado").value;
+
+                            return fetch("http://localhost:3000/rutinarv/cargasol", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/xml", // asumiendo que mandas XML
+                                    "Authorization": `Bearer ${token}`
+                                },
+                                body: textareaValue
+                            }).then(res => res.json());
+                        }
+                    });
+            })
+            .then(resCargasol => {
+                if (resCargasol) {
+                    agregarLog("✅ Proceso finalizado.");
+                    stopLoadingAnimation();
+                }
+            })
+            .catch(err => {
+                agregarLog("❌ Error: " + err.message);
+                stopLoadingAnimation();
+            });
+
+        const socket = io("http://localhost:3000");
+        limpiarLogs();
+        socket.on("log", (msg) => {
+            agregarLog(msg);
+        });
+    });
+
+    function agregarLog(msg) {
+        const logs = document.getElementById("logs");
+        logs.textContent += `[${new Date().toLocaleTimeString()}] ${msg}\n`;
+        logs.scrollTop = logs.scrollHeight; // auto-scroll
+    }
+
+    function limpiarLogs() {
+        document.getElementById("logs").textContent = "";
+    }
+</script>
