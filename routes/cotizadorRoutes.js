@@ -4,7 +4,8 @@ const cotizadorController = require('../controllers/backend_Interface/cotizadorC
 
 router.get("/carga", cotizadorController.CargaXML);
 router.get("/descarga", cotizadorController.DescargaXML);
-router.get("/api/solicitudes", cotizadorController.getSolicitudes);
 router.get("/resultado", cotizadorController.ResultadosXML);
-router.post("/cargaresultado", cotizadorController.CargaResultados);
+router.get("/api/solicitudes", cotizadorController.getSolicitudes);
+router.post("/api/cargaresultado", cotizadorController.CargaResultados);
+router.post("/api/respuestas", cotizadorController.getRespuestas);
 module.exports = router;
