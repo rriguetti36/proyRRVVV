@@ -178,7 +178,7 @@ class cotizacion {
   }
 
   static async getCotizacionesCalculadasCarga23(id) {
-    console.log("consulta getCotizacionesCalculadasCarga23")
+    //console.log("consulta getCotizacionesCalculadasCarga23")
     const query = `SELECT 
                   d.num_operacion AS operacion, 
                   c.num_cuspp AS CUSPP, 
@@ -214,6 +214,140 @@ class cotizacion {
               WHERE sm.id_archivo = ?
               ORDER BY d.num_operacion ASC`;
     try {
+      const [results] = await db.query(query, [id]);
+      return results;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  static async insertaSolicitudesRespuesta(data) {
+    //console.log("📥 datos solicitud", data);
+
+    const conn = await db.getConnection();
+    try {
+      await conn.beginTransaction();
+
+      // 1. Insertar en tabla cabecera (c_solicitudes_meler)
+      const [res] = await conn.execute(
+        `INSERT INTO c_solicitudes_meler 
+        (idtipo, v_descripcion, fec_carga, idusuario, id_estado) 
+       VALUES (?, ?, ?, ?, ?)`,
+        [data.tipoArchivo, data.nombreArchivo, data.fechaCarga, data.idusuario, data.estado]
+      );
+
+      const idArchivo = res.insertId;
+      console.log(data.respuestas)
+      // 2. Insertar en la tabla de respuestas (c_solicitudes_meler_res)
+      if (data.respuestas && Array.isArray(data.respuestas) && data.respuestas.length > 0) {
+        const valores = data.respuestas.map(r => [
+          idArchivo,
+          r.nroOperacion,
+          r.CUSPP,
+          r.decisionAfiliado,
+          r.modalidad,
+          r.moneda,
+          r.pd,
+          r.pg,
+          r.porRVD,
+          r.dercre,
+          r.grati,
+          r.tipo,
+          r.codigo,
+          r.atiende,
+          r.gana,
+          r.cotiza,
+          r.nroCotizacion,
+          r.tasaAFP,
+          r.pensionAFP,
+          r.tasaAseg,
+          r.pensionAseg
+        ]);
+
+        await conn.query(
+          `INSERT INTO c_solicitudes_meler_res (
+          id_archivo,
+          num_operacion,
+          num_cussp,
+          var_desicion,
+          var_modalidad,
+          var_moneda,
+          num_anosRT,
+          num_periodoGarantizado,
+          num_porcentajeRVD,
+          var_derechoCrecer,
+          var_gratificacion,
+          var_tipo,
+          var_codigo,
+          var_atiende,
+          var_gana,
+          var_cotiza,
+          var_cotizacion,
+          num_tasaafp,
+          num_pensionafp,
+          num_tasaaseg,
+          num_pesnionaseg
+        ) VALUES ?`,
+          [valores]
+        );
+      }
+
+      await conn.commit();
+      console.log("✅ Solicitud y respuestas guardadas con éxito");
+      return idArchivo;
+
+    } catch (err) {
+      await conn.rollback();
+      console.error("❌ Error al guardar:", err);
+      throw err;
+    } finally {
+      conn.release(); // liberar conexión
+    }
+  }
+
+  static async getTablaSolicitudRespuesta(id) {
+    //console.log("entra a consultar")
+    try {
+      const query = `
+          select num_operacion nroOperacion,
+          num_cussp CUSPP,
+          var_desicion decisionAfiliado,
+          var_modalidad modalidad,
+          var_moneda moneda,
+          num_anosRT pd,
+          num_periodoGarantizado pg,
+          num_porcentajeRVD porRVD,
+          var_derechoCrecer dercre,
+          var_gratificacion grati,
+          var_tipo tipo,
+          var_codigo codigo,
+          var_atiende atiende,
+          var_gana gana,
+          var_cotiza cotiza,
+          var_cotizacion nroCotizacion,
+          num_tasaafp tasaAFP,
+          num_pensionafp pensionAFP,
+          num_tasaaseg tasaAseg,
+          num_pesnionaseg pensionAseg
+          from c_solicitudes_meler_res 
+          where id_archivo=?`;
+
+      // const params = [];
+
+      // if (id) {
+      //   query += " AND id_archivo = ?";
+      //   params.push(id);
+      // }
+
+      // if (codcia) {
+      //   query += " AND var_codigo = ?";
+      //   params.push(codcia);
+      // }
+
+      // if (gana) {
+      //   query += " AND var_gana = ?";
+      //   params.push(gana);
+      // }
       const [results] = await db.query(query, [id]);
       return results;
     } catch (err) {

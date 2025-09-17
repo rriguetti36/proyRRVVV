@@ -3,6 +3,8 @@ const { XMLParser } = require('fast-xml-parser');
 const path = require('path');
 const libxml = require('libxmljs');
 const fs = require('fs');
+const { normalizeXmlToUtf8 } = require('../../servicios/normalizaXML');
+const codApeseg = process.env.CODIGOCIA;
 
 exports.CargaXML = async (req, res) => {
   res.render("cotizacion/carga", { layout: 'layouts/layoutCT' });
@@ -19,7 +21,9 @@ exports.ResultadosXML = async (req, res) => {
 
 exports.CargaResultados = async (req, res) => {
   try {
-    const xmlPath = req.body.xmlMinificado; // XML en string (textarea o fileReader)
+
+    const xmlContent = normalizeXmlToUtf8(req.body.xmlMinificado, false);
+    const xmlPath = xmlContent; // XML en string (textarea o fileReader)
     const xsdPath = fs.readFileSync("./resource/xsd/descargaResultados22.xsd", "utf-8");
 
     // Parse XML y XSD
@@ -78,9 +82,9 @@ exports.CargaResultados = async (req, res) => {
             decisionAfiliado,
             modalidad,
             moneda,
-            pd: anosRT,
-            pg: periodoGarantizado,
-            porRVD: porcentajeRVD,
+            pd: parseFloat(anosRT),
+            pg: parseFloat(periodoGarantizado),
+            porRVD: parseFloat(porcentajeRVD),
             grati: gratificacion,
             dercre: derechoCrecer,
             tipo: "AFP",
@@ -89,10 +93,10 @@ exports.CargaResultados = async (req, res) => {
             gana: afp.siGanaNoGana || "",
             cotiza: afp.siCotizaNoCotiza || "",
             nroCotizacion: afp.nroCotizacion || "",
-            tasaAFP: afp.tasaRPyRT || "0",
-            pensionAFP: afp.primeraPension || "0",
-            tasaAseg: "0",
-            pensionAseg: "0"
+            tasaAFP: parseFloat(afp.tasaRPyRT) || 0,
+            pensionAFP: parseFloat(afp.primeraPension) || 0,
+            tasaAseg: 0,
+            pensionAseg: 0
           });
         });
 
@@ -110,9 +114,9 @@ exports.CargaResultados = async (req, res) => {
             decisionAfiliado,
             modalidad,
             moneda,
-            pd: anosRT,
-            pg: periodoGarantizado,
-            porRVD: porcentajeRVD,
+            pd: parseFloat(anosRT),
+            pg: parseFloat(periodoGarantizado),
+            porRVD: parseFloat(porcentajeRVD),
             grati: gratificacion,
             dercre: derechoCrecer,
             tipo: "EESS",
@@ -121,24 +125,28 @@ exports.CargaResultados = async (req, res) => {
             gana: e.siGanaNoGana || "",
             cotiza: e.siCotizaNoCotiza || "",
             nroCotizacion: e.nroCotizacion || "",
-            tasaAFP: e.tasaInteresRT || "0",
-            pensionAFP: e.primeraPensionRT || "0",
-            tasaAseg: e.tasaInteresRV || e.tasaInteresRVD || "0",
-            pensionAseg: e.primeraPensionRV || e.primeraPensionRVD || "0"
+            tasaAFP: parseFloat(e.tasaInteresRT) || 0,
+            pensionAFP: parseFloat(e.primeraPensionRT) || 0,
+            tasaAseg: parseFloat(e.tasaInteresRV) || parseFloat(e.tasaInteresRVD) || 0,
+            pensionAseg: parseFloat(e.primeraPensionRV) || parseFloat(e.primeraPensionRVD) || 0
           });
         });
       });
     });
-    console.log("resultados", resultados);
+    //console.log("resultados", resultados);
+
+    const idArchivo = await insertSolicitudesResp(resultados, "desResultados_2024_04_23_09_47_59_am.xml");
     // Renderizar tabla en la vista
-    res.json({ resultados });
+    res.json({
+      id: idArchivo,
+      resultados: resultados
+    });
     //res.render("cotizacion/respuesta", { resultados });
   } catch (error) {
     console.error(error);
     res.status(500).send("Error procesando el XML");
   }
 };
-
 
 exports.getSolicitudes = async (req, res) => {
   try {
@@ -152,3 +160,61 @@ exports.getSolicitudes = async (req, res) => {
   }
 };
 
+exports.getRespuestas = async (req, res) => {
+  try {
+    const { idArchivo, tipo } = req.body;
+
+    let respuestasMeler = await TablaCot.getTablaSolicitudRespuesta(idArchivo); // 👈 OJO con los ()
+
+
+    if (tipo == 2) {
+      respuestasMeler = respuestasMeler.filter(r => r.gana === 'S' && r.codigo != codApeseg);
+    }
+
+    if (tipo == 3) {
+      respuestasMeler = respuestasMeler.filter(r => r.gana === 'S' && r.codigo === codApeseg);
+    }
+
+    respuestasMeler = respuestasMeler.map(r => ({
+      ...r,
+      porRVD: r.porRVD !== null ? Number(parseFloat(r.porRVD).toFixed(2)) : null,
+      tasaAFP: r.tasaAFP !== null ? Number(parseFloat(r.tasaAFP).toFixed(2)) : null,
+      pensionAFP: r.pensionAFP !== null ? Number(parseFloat(r.pensionAFP).toFixed(2)) : null,
+      tasaAseg: r.tasaAseg !== null ? Number(parseFloat(r.tasaAseg).toFixed(2)) : null,
+      pensionAseg: r.pensionAseg !== null ? Number(parseFloat(r.pensionAseg).toFixed(2)) : null
+    }));
+    
+    console.log("respuestasMeler", respuestasMeler)
+    res.json({ resultados: respuestasMeler }); // DataTables lo consume
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
+async function insertSolicitudesResp(resultados, nombrearch) {
+  try {
+
+    const tipoArchivo = 2;
+    const nombreArchivo = nombrearch;
+    const fechaCarga = new Date().toISOString().split('T')[0];
+    const idusuario = 1;
+    const estado = 1;
+    const resultado = {
+      tipoArchivo,
+      nombreArchivo,
+      fechaCarga,
+      idusuario,
+      estado,
+      respuestas: [...resultados] // 👈 aquí lo convertimos en array
+    }
+
+    const idarchivo = await TablaCot.insertaSolicitudesRespuesta(resultado) || 0;
+
+    return idarchivo;
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error procesando el XML");
+  }
+};
