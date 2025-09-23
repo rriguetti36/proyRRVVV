@@ -354,6 +354,36 @@ class cotizacion {
       throw err;
     }
   }
+
+  static async getCotizacionind(id) {
+    //console.log("entra a consultar")
+    const query = 'select id_tipren, id_moneda, num_mesdif, num_mesgar, mto_pension from c_cotizaciondetalle where num_operacion=?';
+    try {
+      const [results] = await db.query(query, [id]);
+      return results;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  static async insertRegistraAcepta(ope, cor, fecha) {
+    try {
+
+      const fechaAcepta = fecha && fecha.trim() !== '' ? fecha : null;
+
+      const query = `update c_cotizaciondetalle set 
+                      fec_acepta=?, 
+                      id_estado=3 
+                      where num_operacion=? and id_correlativo=?`
+                      
+      const [result] = await db.execute(query,[fechaAcepta, ope, cor ]
+      );
+      return result.affectedRows > 0;
+    } catch (err) {
+      throw err;
+    }
+  }
+
 }
 
 module.exports = cotizacion;

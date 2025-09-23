@@ -1,10 +1,38 @@
 const TablaCot = require('../../models/cotizacionesModel');
+const TablaPar = require('../../models/tabTasasModel');
+const tablasTasasInd = require('../../models/tabTasasModel');
 const { XMLParser } = require('fast-xml-parser');
 const path = require('path');
 const libxml = require('libxmljs');
 const fs = require('fs');
 const { normalizeXmlToUtf8 } = require('../../servicios/normalizaXML');
 const codApeseg = process.env.CODIGOCIA;
+
+exports.EstudioCot = async (req, res) => {
+
+  const paramtetros = await TablaPar.getParametros();
+  const parGastosSepelio = await TablaPar.getGastosSepelio();
+  const parGastosAdm = await TablaPar.getGastosAdm();
+  const hoy = new Date();
+  let fechacalculo = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
+  const tipoAfp = paramtetros.filter(x => x.idpar === 1);
+  const tipoMod = paramtetros.filter(x => x.idpar === 2);
+  const tipoPar = paramtetros.filter(x => x.idpar === 6);
+  const tiposex = paramtetros.filter(x => x.idpar === 7);
+  const tipoInv = paramtetros.filter(x => x.idpar === 8);
+  const tipoMon = paramtetros.filter(x => x.idpar === 10);
+  const tipoPen = paramtetros.filter(x => x.idpar === 12);
+  const tipoRen = paramtetros.filter(x => x.idpar === 13);
+  const tipodoc = paramtetros.filter(x => x.idpar === 15);
+  const gasSep = await ObtieneGastosSep(parGastosSepelio, formatDate(fechacalculo));
+  const gasEmi = parGastosAdm.n_gastoemi || 0;
+  const gasMan = parGastosAdm.n_gastomant || 0;
+  const gasImp = parGastosAdm.n_impuesto || 0;
+  const tipCam = 3.722;
+  const Gastos = { "Gastosmant": gasMan, "Gastosemi": gasEmi, "Porcentajedeuda": 0.0, "Impuestos": gasImp };
+
+  res.render("cotizacion/estudio", { layout: 'layouts/layoutCT', tipoAfp, tipoMod, tipoPar, tiposex, tipoInv, tipoMon, tipoPen, tipoRen, tipodoc, gasSep, tipCam, Gastos });
+};
 
 exports.CargaXML = async (req, res) => {
   res.render("cotizacion/carga", { layout: 'layouts/layoutCT' });
@@ -183,7 +211,7 @@ exports.getRespuestas = async (req, res) => {
       tasaAseg: r.tasaAseg !== null ? Number(parseFloat(r.tasaAseg).toFixed(2)) : null,
       pensionAseg: r.pensionAseg !== null ? Number(parseFloat(r.pensionAseg).toFixed(2)) : null
     }));
-    
+
     console.log("respuestasMeler", respuestasMeler)
     res.json({ resultados: respuestasMeler }); // DataTables lo consume
   } catch (error) {
@@ -192,6 +220,64 @@ exports.getRespuestas = async (req, res) => {
   }
 };
 
+exports.postValidacion = async (req, res) => {
+  try {
+    const { arc, ope, mod, mon, pd, pg, pens } = req.body;
+    const validacion = await validaModalidad(arc, ope, mod, mon, pd, pg, pens);
+    console.log("validacion", validacion);
+    res.json({ mensaje: validacion }); // DataTables lo consume
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+}
+
+exports.postAceptaCotizacion = async (req, res) => {
+  try {
+    const { ope, cor, fecha } = req.body;
+    const respuesta = await registraAceptacion(ope, cor, fecha);
+    console.log("respuestaAceptacion", respuesta);
+    res.json({ mensaje: validacion }); // DataTables lo consume
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+}
+
+exports.getTasasTopes = async (req, res) => {
+  try {
+    const { moneda, prestacion, montoCIC, afp } = req.body;
+
+    console.log("entra a getTasasTopes");
+
+    const fechacalculo = new Date().toISOString().slice(0, 10);
+    const TablasCicRegion = await tablasTasasInd.getRegionCIC();
+    const TablasTopesTasas = await tablasTasasInd.getTopesTasas();
+    const TablasVtaPromedio = await tablasTasasInd.getTasaVentaPromedio();
+    const porcentajeAFP = await TablaPar.getParametros();
+
+    let idreg = await ObtieneRegionCIC(TablasCicRegion, montoCIC);
+    //console.log("idreg",idreg);
+    let valtac = 3;
+    let valvta = await ObtieneTasasTope(TablasTopesTasas, idreg, moneda, prestacion, "V");
+    //console.log("valvta",valvta);
+    let valtir = await ObtieneTasasTope(TablasTopesTasas, idreg, moneda, prestacion, "T");
+    //console.log("valtir",valtir);
+    let valper = await ObtieneTasasTope(TablasTopesTasas, idreg, moneda, prestacion, "P");
+    //console.log("valper",valper);
+    let valpro = await ObtieneTasasVtaPromedio(TablasVtaPromedio, moneda, prestacion, fechacalculo)
+    //console.log("valpro",valpro);
+    let comision = 2;
+    let prcafp = porcentajeAFP.find(x => x.v_cod === afp).n_valor || 0;
+
+    res.json({ valtac: valtac, valvta: valvta, valtir: valtir, valper: valper, valpro: valpro, comision: comision, prcafp }); // DataTables lo consume
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+}
 
 async function insertSolicitudesResp(resultados, nombrearch) {
   try {
@@ -218,3 +304,166 @@ async function insertSolicitudesResp(resultados, nombrearch) {
     res.status(500).send("Error procesando el XML");
   }
 };
+
+async function validaModalidad(idArch, operacion, modalidad, moneda, pd, pg, pen) {
+  try {
+    const tabparametros = await TablaPar.getParametros();
+    const respuestasMeler = await TablaCot.getTablaSolicitudRespuesta(idArch); // 👈 OJO con los ()
+    const cotizacionelegida = await TablaCot.getCotizacionind(parseFloat(operacion));
+    let mensaje = "OK"; //;
+
+    const idmod = tabparametros.find(x => x.v_codsbs === modalidad)?.v_cod || "";
+    const idmon = tabparametros.find(x => x.v_codsbs === moneda)?.v_cod || "";
+    const mesdif = parseFloat(pd);
+    const mesgar = parseFloat(pg);
+    const pension = parseFloat(pen);
+
+    const encontrado = cotizacionelegida.find(
+      x => x.id_tipren === idmod && x.id_moneda === idmon && x.num_mesdif === mesdif && x.num_mergar === mesgar
+    );
+    const pensionCalculada = encontrado ? encontrado.mto_pension : 0;
+
+    console.log("pensionCalculada", pensionCalculada)
+    if (pensionCalculada == 0) {
+      mensaje = "Modalida Invalida!. No existe la Solicitud elegida."; // 
+      return mensaje;
+    }
+
+    if (pensionCalculada != pension) {
+      mensaje = "Modalida Invlida!. Monto de Pensión elegida no coincide con la calculada."; //
+      return mensaje;
+    }
+
+    return mensaje; //
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+}
+
+async function registraAceptacion(ope, cor, fecha) {
+  try {
+    let mensaje = "OK"; //;
+    const actualizado = await Modelo.insertRegistraAcepta(ope, cor, fecha);
+    if (actualizado) {
+      mensaje = "OK"; //
+      return mensaje;
+    } else {
+      mensaje = "No se encontró ningún registro con esos parámetros"; //
+      return mensaje;
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+}
+
+async function ObtieneRegionCIC(listadoRegion, monto) {
+  //console.log("listadoRegion", listadoRegion);
+  //console.log("monto", monto);
+
+  const resultado = listadoRegion.find(region => {
+    const min = parseFloat(region.n_cicminimo);
+    const max = parseFloat(region.n_cicmaximo);
+    return monto >= min && monto <= max;
+  });
+
+  if (resultado) {
+    idreg = resultado.id;
+    //console.log(`El valor ${monto} está en el ID: ${resultado.id}`);
+  } else {
+    console.log('Valor no encontrado en ningún rango');
+  }
+
+  //console.log("fx ObtieneRegionCIC", idreg)
+  return idreg;
+
+}
+
+async function ObtieneTasasTope(listadoTasas, region, moneda, prestacion, tipo) {
+
+  //console.log("listadoTasas",listadoTasas);
+  //console.log("region", region);
+  //console.log("moneda", moneda);
+  //console.log("prestacion", prestacion);
+  //console.log("tipo", tipo);
+
+  let valor = 0;
+
+  switch (tipo) {
+    case "V":
+      //console.log("entra en v");
+      const valtas = listadoTasas.find(x => x.idmrg === Number(region) && x.idmoneda === Number(moneda) && x.idprestacion === prestacion)?.n_valtasini
+      valor = valtas;
+      //console.log("valtas",valtas);
+      break;
+    case "T":
+      //console.log("entra en t");
+      const valtir = listadoTasas.find(x => x.idmrg === Number(region) && x.idmoneda === Number(moneda) && x.idprestacion === prestacion)?.n_valtirini
+      valor = valtir;
+      //console.log("valtir",valtir);
+      break;
+    case "P":
+      //console.log("entra en p");
+      const valper = listadoTasas.find(x => x.idmrg === Number(region) && x.idmoneda === Number(moneda) && x.idprestacion === prestacion)?.n_valperini
+      valor = valper;
+      //console.log("valper",valper);
+      break;
+  }
+  return valor;
+}
+
+async function ObtieneTasasVtaPromedio(listadoTasaVtaProm, moneda, prestacion, fecha) {
+  //console.log("fecha", fecha);
+  const fechaObj = new Date(fecha);
+  // Primero, buscar coincidencia exacta
+  let resultado = listadoTasaVtaProm.find(item =>
+    item.idmoneda === Number(moneda) &&
+    item.idprestacion === prestacion &&
+    formatDate(item.v_periodo) === fecha
+  );
+  // Si no se encuentra, buscar la más reciente anterior o igual
+  if (!resultado) {
+    resultado = listadoTasaVtaProm
+      .filter(item =>
+        item.idmoneda === Number(moneda) &&
+        item.idprestacion === prestacion &&
+        new Date(item.v_periodo) <= fechaObj
+      )
+      .sort((a, b) => new Date(b.v_periodo) - new Date(a.v_periodo)) // orden descendente
+    [0]; // primer más reciente
+  }
+  return resultado?.n_valor ?? null;
+}
+
+async function ObtieneGastosSep(parGastosSepelio, fechacalculo) {
+  //console.log("parGastosSepelio",parGastosSepelio)
+  // función para formatear a YYYY-MM-DD
+  const toYMD = (f) => new Date(f).toISOString().slice(0, 10);
+
+  // normalizamos la fecha de cálculo
+  const fechaCalcStr = toYMD(fechacalculo);
+  console.log("fechaCalcStr",fechaCalcStr)
+  // intentamos encontrar coincidencia exacta
+  let gasSep = parGastosSepelio.find(x => toYMD(x.d_periodo) === fechaCalcStr);
+  console.log("gasSep", gasSep)
+  if (!gasSep) {
+    // si no hay coincidencia, buscamos la más reciente anterior
+    gasSep = parGastosSepelio
+      .filter(x => new Date(x.d_periodo) < new Date(fechacalculo)) // solo las anteriores
+      .sort((a, b) => new Date(b.d_periodo) - new Date(a.d_periodo)) // orden descendente
+    [0]; // tomamos la primera (más reciente)
+    console.log("gasSep-", gasSep)
+  }
+
+  const valor = gasSep ? Number(parseFloat(gasSep.n_valor).toFixed(2)) : 0;
+  return valor;
+}
+
+function formatDate(date) {
+  const d = new Date(date);
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}

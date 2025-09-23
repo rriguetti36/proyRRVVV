@@ -101,41 +101,62 @@ class TasasInd {
       throw err;
     }
   }
-//   static async getById(id) {
-//     try {
-//       const [results] = await db.query("SELECT * FROM productos WHERE id = ?", [id]);
-//       return results[0];
-//     } catch (err) {
-//       throw err;
-//     }
-//   }
 
-//   static async create(producto) {
-//     try {
-//       const [results] = await db.query("INSERT INTO productos SET ?", producto);
-//       return results;
-//     } catch (err) {
-//       throw err;
-//     }
-//   }
+  static async getGastosSepelio() {
+    const query = 'select * from c_tablasasepelio';
+    try {
+      const [results] = await db.query(query);
+      return results;
+    } catch (err) {
+      throw err;
+    }
+  }
 
-//   static async update(id, producto) {
-//     try {
-//       const [results] = await db.query("UPDATE productos SET ? WHERE id = ?", [producto, id]);
-//       return results;
-//     } catch (err) {
-//       throw err;
-//     }
-//   }
+  static async getGastosAdm() {
+    const query = 'select * from c_tablasagastos';
+    try {
+      const [results] = await db.query(query);
+      return results;
+    } catch (err) {
+      throw err;
+    }
+  }
 
-//   static async delete(id) {
-//     try {
-//       const [results] = await db.query("DELETE FROM productos WHERE id = ?", [id]);
-//       return results;
-//     } catch (err) {
-//       throw err;
-//     }
-//   }
+  //   static async getById(id) {
+  //     try {
+  //       const [results] = await db.query("SELECT * FROM productos WHERE id = ?", [id]);
+  //       return results[0];
+  //     } catch (err) {
+  //       throw err;
+  //     }
+  //   }
+
+  //   static async create(producto) {
+  //     try {
+  //       const [results] = await db.query("INSERT INTO productos SET ?", producto);
+  //       return results;
+  //     } catch (err) {
+  //       throw err;
+  //     }
+  //   }
+
+  //   static async update(id, producto) {
+  //     try {
+  //       const [results] = await db.query("UPDATE productos SET ? WHERE id = ?", [producto, id]);
+  //       return results;
+  //     } catch (err) {
+  //       throw err;
+  //     }
+  //   }
+
+  //   static async delete(id) {
+  //     try {
+  //       const [results] = await db.query("DELETE FROM productos WHERE id = ?", [id]);
+  //       return results;
+  //     } catch (err) {
+  //       throw err;
+  //     }
+  //   }
 }
 
 module.exports = TasasInd;
