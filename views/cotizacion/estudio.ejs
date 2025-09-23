@@ -1,0 +1,773 @@
+<main class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="h4 mb-4 text-primary fw-bold">
+                📂 Simulador de estudios de Cotización
+            </h1>
+            <!-- Wizard -->
+            <div class="card shadow">
+                <div class="card-body">
+                    <div id="wizard">
+                        <!-- Paso 1: Asegurado -->
+                        <div class="wizard-step active" id="step1">
+                            <h5>Datos del Asegurado</h5>
+                            <hr>
+                            <form id="formAsegurado">
+                                <div class="row">
+                                    <!-- Tipo Documento -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="tipoDoc">Tipo Documento</label>
+                                        <select class="form-control" id="aseTipoDoc" name="aseTipoDoc">
+                                            <option value="">-- Seleccione --</option>
+                                            <% tipodoc.forEach(function(doc) { %>
+                                                <option value="<%= doc.v_cod %>">
+                                                    <%= doc.v_nombre %>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+                                        <!-- <select class="form-control" id="tipoDoc" required>
+                                            <option value="">-- Seleccione --</option>
+                                            <option value="DNI">DNI</option>
+                                            <option value="CE">Carné Extranjería</option>
+                                            <option value="PAS">Pasaporte</option>
+                                        </select> -->
+                                    </div>
+
+                                    <!-- Número Documento -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="numDoc">Núm. Documento</label>
+                                        <input type="text" class="form-control" id="aseNumDoc" required>
+                                    </div>
+
+                                    <!-- CUSPP -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="cuspp">CUSPP</label>
+                                        <input type="text" class="form-control" id="aseCuspp">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- Nombres -->
+                                    <div class="col-md-4 mb-3">
+                                        <label for="nombres">Nombres</label>
+                                        <input type="text" class="form-control" id="aseNombres">
+                                    </div>
+
+                                    <!-- Apellido Paterno -->
+                                    <div class="col-md-4 mb-3">
+                                        <label for="apellidoPat">Apellido Paterno</label>
+                                        <input type="text" class="form-control" id="aseApellidoPat">
+                                    </div>
+
+                                    <!-- Apellido Materno -->
+                                    <div class="col-md-4 mb-3">
+                                        <label for="apellidoMat">Apellido Materno</label>
+                                        <input type="text" class="form-control" id="aseApellidoMat">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- Departamento -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="departamento">Departamento</label>
+                                        <select class="form-control" id="aseDepartamento">
+                                            <option value="LIMA">LIMA</option>
+                                            <option value="AREQUIPA">AREQUIPA</option>
+                                            <option value="CUSCO">CUSCO</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Provincia -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="provincia">Provincia</label>
+                                        <select class="form-control" id="aseProvincia">
+                                            <option value="LIMA">LIMA</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Distrito -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="distrito">Distrito</label>
+                                        <select class="form-control" id="aseDistrito">
+                                            <option value="LIMA">LIMA</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- Sexo -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="sexo">Sexo</label>
+                                        <select class="form-control" id="aseSexo" name="aseSexo">
+                                            <option value="">-- Seleccione --</option>
+                                            <% tiposex.forEach(function(doc) { %>
+                                                <option value="<%= doc.v_cod %>">
+                                                    <%= doc.v_nombre %>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+                                        <!-- <select class="form-control" id="sexo">
+                                            <option value="">-- Seleccione --</option>
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
+                                        </select> -->
+                                    </div>
+
+                                    <!-- Fecha Nacimiento -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="fechaNac">Fecha Nacimiento</label>
+                                        <input type="date" class="form-control" id="aseFechaNac">
+                                    </div>
+
+                                    <!-- AFP -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="afp">AFP</label>
+                                        <select class="form-control" id="aseAfp" name="aseAfp">
+                                            <option value="">-- Seleccione --</option>
+                                            <% tipoAfp.forEach(function(doc) { %>
+                                                <option value="<%= doc.v_cod %>">
+                                                    <%= doc.v_nombre %>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+                                        <!-- <select class="form-control" id="afp">
+                                            <option value="">-- Seleccione --</option>
+                                            <option value="PRIMA">PRIMA</option>
+                                            <option value="INTEGRA">INTEGRA</option>
+                                            <option value="HABITAT">HABITAT</option>
+                                        </select> -->
+                                    </div>
+
+                                    <!-- Tipo de Pensión -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="pension">Tipo de Pensión</label>
+                                        <!-- <select class="form-control" id="pension" name="pension">
+                                            <option value="">-- Seleccione --</option>
+                                            <% tipoPen.forEach(function(doc) { %>
+                                                <option value="<%= doc.v_cod %>">
+                                                    <%= doc.v_nombre %>
+                                                </option>
+                                                <% }) %>
+                                        </select> -->
+                                        <select class="form-control" id="asePension" name="asePension">
+                                            <option value="">-- Seleccione --</option>
+                                            <option value="J">JUBILACION</option>
+                                            <option value="I">INVALIDEZ</option>
+                                            <option value="S">SOBREVIVECNIA</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Tipo de invalidez -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="pension">Tipo de Invalidez</label>
+                                        <select class="form-control" id="aseInvalidez" name="aseInvalidez">
+                                            <option value="">-- Seleccione --</option>
+                                            <% tipoInv.forEach(function(doc) { %>
+                                                <option value="<%= doc.v_cod %>">
+                                                    <%= doc.v_nombre %>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+                                    </div>
+
+                                    <!-- CIC -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="cic">CIC</label>
+                                        <input type="text" class="form-control" id="aseCic">
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <!-- Fecha Devengue -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="fechaDev">Fecha Devengue</label>
+                                        <input type="date" class="form-control" id="aseFechaDev">
+                                    </div>
+
+                                    <!-- Fecha Devengue Solicitud -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="fechaDevSol">Devengue Solicitud</label>
+                                        <input type="date" class="form-control" id="aseFechaDevSol">
+                                    </div>
+
+                                    <!-- Gasto Sepelio -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="gastoSep">Gasto Sepelio</label>
+                                        <input type="text" class="form-control" id="gastoSep" value="<%= gasSep %>"
+                                            disabled>
+                                    </div>
+
+                                    <!-- Tipo de Cambio -->
+                                    <div class="col-md-2 mb-3">
+                                        <label for="tipoCambio">Tipo Cambio</label>
+                                        <input type="text" class="form-control" id="tipoCambio" value="<%= tipCam %>"
+                                            disabled>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="GasEmi" name="GasEmi" value="<%= Gastos.Gastosemi %>">
+                                <input type="hidden" id="GasAdm" name="GasAdm" value="<%= Gastos.Gastosmant %>">
+                                <input type="hidden" id="GasImp" name="GasImp" value="<%= Gastos.Impuestos %>">
+
+                            </form>
+                            <button class="btn btn-primary float-end nextBtn">Siguiente</button>
+                        </div>
+
+                        <!-- Paso 2: Beneficiarios -->
+                        <div class="wizard-step d-none" id="step2">
+                            <h5>Registro de Beneficiarios</h5>
+                            <hr>
+
+                            <!-- Botón para abrir modal -->
+                            <button class="btn btn-sm btn-primary mb-3" data-bs-toggle="modal"
+                                data-bs-target="#modalBeneficiario">
+                                + Agregar Beneficiario
+                            </button>
+
+                            <!-- Tabla de beneficiarios -->
+                            <div class="table-responsive"
+                                style="max-height: 500px; overflow-y: auto; overflow-x: auto;">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-sm text-center" id="tablaBeneficiarios">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Parentesco</th>
+                                                <th>Sexo</th>
+                                                <th>Fecha Nac.</th>
+                                                <th>Invalidez</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Aquí se insertarán dinámicamente los beneficiarios -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+
+                            <button class="btn btn-secondary prevBtn">Anterior</button>
+                            <button class="btn btn-primary float-end nextBtn">Siguiente</button>
+                        </div>
+
+                        <!-- Paso 3: Modalidades -->
+                        <div class="wizard-step d-none" id="step3">
+                            <h5>Modalidades de Cotización</h5>
+                            <hr>
+                            <button class="btn btn-sm btn-primary mb-3" data-bs-toggle="modal"
+                                data-bs-target="#modalAgregarModalidad">
+                                + Agregar Modalidad
+                            </button>
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover align-middle text-center"
+                                    id="tablaModalidades">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Tipo de Renta</th>
+                                            <th>Modalidad</th>
+                                            <th>Moneda</th>
+                                            <th>Diferido</th>
+                                            <th>Garantizado</th>
+                                            <th>Gratificación</th>
+                                            <th>Primer Tramo</th>
+                                            <th>Segundo Tramo</th>
+                                            <th>% Renta AFP</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Se insertan dinámicamente -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <button class="btn btn-secondary prevBtn">Anterior</button>
+                            <button class="btn btn-success float-end" id="btnCalcular">Calcular</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Modal Beneficiario -->
+<div class="modal fade" id="modalBeneficiario" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">Registro de Beneficiario</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formBeneficiario" class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Tipo Documento</label>
+                        <select class="form-control" id="benTipoDoc" name="benTipoDoc">
+                            <option value="">-- Seleccione --</option>
+                            <% tipodoc.forEach(function(doc) { %>
+                                <option value="<%= doc.v_cod %>">
+                                    <%= doc.v_nombre %>
+                                </option>
+                                <% }) %>
+                        </select>
+                        <!-- <select class="form-control" id="benTipoDoc">
+                            <option value="">-- Seleccione --</option>
+                            <option value="DNI">DNI</option>
+                            <option value="CE">Carné Extranjería</option>
+                        </select> -->
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Núm. Documento</label>
+                        <input type="text" class="form-control" id="benNumDoc">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Parentesco</label>
+                        <select class="form-control" id="benParentesco" name="benParentesco">
+                            <option value="">-- Seleccione --</option>
+                            <% tipoPar.forEach(function(doc) { %>
+                                <option value="<%= doc.v_cod %>">
+                                    <%= doc.v_nombre %>
+                                </option>
+                                <% }) %>
+                        </select>
+                        <!-- <select class="form-control" id="benParentesco">
+                            <option value="">-- Seleccione --</option>
+                            <option value="conyuge">Cónyuge</option>
+                            <option value="hijo">Hijo</option>
+                        </select> -->
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Fecha Nacimiento</label>
+                        <input type="date" class="form-control" id="benFechaNac">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Sexo</label>
+                        <select class="form-control" id="benSexo" name="benSexo">
+                            <option value="">-- Seleccione --</option>
+                            <% tiposex.forEach(function(doc) { %>
+                                <option value="<%= doc.v_cod %>">
+                                    <%= doc.v_nombre %>
+                                </option>
+                                <% }) %>
+                        </select>
+                        <!-- <select class="form-control" id="benSexo">
+                            <option value="">-- Seleccione --</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select> -->
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Situación Invalidez</label>
+                        <select class="form-control" id="benInvalidez">
+                            <option value="">-- Seleccione --</option>
+                            <option value="1">Sano</option>
+                            <option value="2">Invalido</option>
+                        </select>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success" id="btnGuardarBeneficiario">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para agregar modalidad -->
+<div class="modal fade" id="modalAgregarModalidad" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">Agregar Modalidad</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formModalidad" class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Moneda</label>
+                        <select class="form-control" id="moneda" name="moneda">
+                            <option value="">-- Seleccione --</option>
+                            <% tipoMon.forEach(function(doc) { %>
+                                <option value="<%= doc.v_cod %>">
+                                    <%= doc.v_nombre %>
+                                </option>
+                                <% }) %>
+                        </select>
+                        <!--  <select id="moneda" class="form-control" required>
+                            <option value="">-- Seleccione --</option>
+                            <option value="PEN">Soles</option>
+                            <option value="USD">Dólares</option>
+                        </select> -->
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Modalidad</label>
+                        <select class="form-control" id="modalidad" name="modalidad">
+                            <option value="">-- Seleccione --</option>
+                            <% tipoMod.forEach(function(doc) { %>
+                                <option value="<%= doc.v_cod %>">
+                                    <%= doc.v_nombre %>
+                                </option>
+                                <% }) %>
+                        </select>
+                        <!-- <select id="modalidad" class="form-control" required>
+                            <option value="">-- Seleccione --</option>
+                            <option value="RentaVitalicia">Renta Vitalicia</option>
+                            <option value="RentaTemporal">Renta Temporal</option>
+                        </select> -->
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Tipo de Renta</label>
+                        <select class="form-control" id="tipoRenta" name="tipoRenta">
+                            <option value="">-- Seleccione --</option>
+                            <% tipoRen.forEach(function(doc) { %>
+                                <option value="<%= doc.v_cod %>">
+                                    <%= doc.v_nombre %>
+                                </option>
+                                <% }) %>
+                        </select>
+                        <!-- <select id="tipoRenta" class="form-control" required>
+                            <option value="">-- Seleccione --</option>
+                            <option value="Directa">Directa</option>
+                            <option value="Conyugal">Conyugal</option>
+                        </select> -->
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Periodo Diferido</label>
+                        <select id="periodoDiferido" name="periodoDiferido" class="form-control">
+                            <option value="">-- Seleccione --</option>
+                            <option value="1">1 Años</option>
+                            <option value="2">2 Años</option>
+                            <option value="3">3 Años</option>
+                            <option value="4">4 Años</option>
+                            <option value="5">5 Años</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Periodo Garantizado</label>
+                        <select id="periodoGarantizado" name="periodoGarantizado" class="form-control">
+                            <option value="">-- Seleccione --</option>
+                            <option value="10">10 años</option>
+                            <option value="15">15 años</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Gratificación</label>
+                        <select id="gratificacion" class="form-control">
+                            <option value="">-- Seleccione --</option>
+                            <option value="S">Sí</option>
+                            <option value="N">No</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Primer Tramo</label>
+                        <select id="primerTramo" class="form-control">
+                            <option value="">-- Seleccione --</option>
+                            <option value="1">1 años</option>
+                            <option value="2">2 años</option>
+                            <option value="3">3 años</option>
+                            <option value="4">4 años</option>
+                            <option value="5">5 años</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Segundo Tramo</label>
+                        <select id="segundoTramo" class="form-control">
+                            <option value="">-- Seleccione --</option>
+                            <option value="50">50 %</option>
+                            <option value="100">100 %</option>
+                            <option value="200">200 %</option>
+                        </select>
+                    </div>
+
+                    <!-- <div class="col-md-4">
+                        <label class="form-label">% Comisión AFP</label>
+                        <input type="text" id="comisionAFP" class="form-control" placeholder="%" disabled>
+                    </div> -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="btnGuardarModalidad" class="btn btn-success">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Navegación del wizard
+    document.querySelectorAll(".nextBtn").forEach(btn => {
+        btn.addEventListener("click", function () {
+            let currentStep = this.closest(".wizard-step");
+            let nextStep = currentStep.nextElementSibling;
+            if (nextStep) {
+                currentStep.classList.add("d-none");
+                nextStep.classList.remove("d-none");
+            }
+        });
+    });
+
+    document.querySelectorAll(".prevBtn").forEach(btn => {
+        btn.addEventListener("click", function () {
+            let currentStep = this.closest(".wizard-step");
+            let prevStep = currentStep.previousElementSibling;
+            if (prevStep) {
+                currentStep.classList.add("d-none");
+                prevStep.classList.remove("d-none");
+            }
+        });
+    });
+
+    // Enviar datos finales
+    document.getElementById("btnCalcular").addEventListener("click", function () {
+        alert("✅ Cotización generada correctamente.");
+        // Aquí puedes hacer un fetch o AJAX para enviar los datos al backend
+    });
+
+    let beneficiarios = [];
+    let countBeneficiario = 0;
+
+    // Guardar Beneficiarios
+    document.getElementById("btnGuardarBeneficiario").addEventListener("click", () => {
+        countBeneficiario++;
+        const data = {
+            id: countBeneficiario,
+            parentesco: parseFloat(document.getElementById("benParentesco").value),
+            sexo: parseFloat(document.getElementById("benSexo").value),
+            fecha: document.getElementById("benFechaNac").value,
+            invalidez: parseFloat(document.getElementById("benInvalidez").value)
+        };
+
+        if (!data.parentesco || !data.sexo || !data.fecha || !data.invalidez) {
+            alert("Complete los campos obligatorios.");
+            return;
+        }
+
+        beneficiarios.push(data);
+        renderTablaBeneficiarios();
+        document.getElementById("formBeneficiario").reset();
+        bootstrap.Modal.getInstance(document.getElementById("modalBeneficiario")).hide();
+    });
+
+    function renderTablaBeneficiarios() {
+        const tbody = document.querySelector("#tablaBeneficiarios tbody");
+        tbody.innerHTML = "";
+        beneficiarios.forEach((b, index) => {
+            tbody.innerHTML += `
+        <tr>
+            <td>${index + 1}</td>
+            <td>${b.parentesco}</td>
+            <td>${b.sexo}</td>
+            <td>${b.fecha}</td>
+            <td>${b.invalidez}</td>
+            <td>
+                <button class="btn btn-danger btn-sm" onclick="eliminarbeneficiarios(${b.id})">
+                <i class="fa fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+      `;
+        });
+    }
+
+    function eliminarbeneficiarios(id) {
+        beneficiarios = beneficiarios.filter(m => m.id !== id);
+        renderTablaModalidades();
+    }
+
+
+    let modalidades = [];
+    let countModalidad = 0;
+
+    // Guardar Modalidad
+    document.getElementById("btnGuardarModalidad").addEventListener("click", async () => {
+        countModalidad++;
+        const data = {
+            id: countModalidad,
+            moneda: parseFloat(document.getElementById("moneda").value),
+            modalidad: parseFloat(document.getElementById("modalidad").value),
+            tipoRenta: parseFloat(document.getElementById("tipoRenta").value),
+            diferido: parseFloat(document.getElementById("periodoDiferido").value || 0),
+            garantizado: parseFloat(document.getElementById("periodoGarantizado").value || 0),
+            gratificacion: document.getElementById("gratificacion").value,
+            primerTramo: parseFloat(document.getElementById("primerTramo").value || 0),
+            segundoTramo: parseFloat(document.getElementById("segundoTramo").value || 0),
+            //comisionAFP: document.getElementById("comisionAFP").value
+        };
+        //trae las tasas y topes de cada modalidad
+        const MontoCIC = parseFloat(document.getElementById("aseCic").value || 0);
+        const TipoPension = document.getElementById("asePension").value;
+        const IdAfp = document.getElementById("aseAfp").value;
+        const body = {
+            moneda: data.moneda,
+            montoCIC: MontoCIC,
+            prestacion: TipoPension,
+            afp: IdAfp
+        };
+        const response = await fetch("http://localhost:3000/cotizador/api/tasasInd", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+        });
+        const result = await response.json();
+        data.TasaRentaAFP = parseFloat(result.prcafp || 0);
+        data.TasaRentaAFP = 50;
+        data.tasaanclaje = parseFloat(result.valtac || 0);
+        data.tasaventaprom = parseFloat(result.valpro || 0);
+        data.tasaventa = parseFloat(result.valvta || 0);
+        data.tasatirtope = parseFloat(result.valtir || 0);
+        data.tasaperdidatope = parseFloat(result.valper || 0);
+        data.comision = parseFloat(result.comision || 0);
+
+        //muestra las descripciones
+        let selectMon = document.getElementById("moneda");
+        data.DescriTipoMoneda = selectMon.options[selectMon.selectedIndex].text;
+        let selectMod = document.getElementById("modalidad");
+        data.DescriTipoModalidad = selectMod.options[selectMod.selectedIndex].text;
+        let selectRen = document.getElementById("tipoRenta");
+        data.DescriTipoRenta = selectRen.options[selectRen.selectedIndex].text;
+
+        if (!data.moneda || !data.modalidad || !data.tipoRenta) {
+            alert("Complete los campos obligatorios.");
+            return;
+        }
+
+        modalidades.push(data);
+        console.log(modalidades);
+        renderTablaModalidades();
+        document.getElementById("formModalidad").reset();
+        bootstrap.Modal.getInstance(document.getElementById("modalAgregarModalidad")).hide();
+    });
+
+    function renderTablaModalidades() {
+        const tbody = document.querySelector("#tablaModalidades tbody");
+        tbody.innerHTML = "";
+        modalidades.forEach((m, index) => {
+            tbody.innerHTML += `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${m.DescriTipoRenta}</td>
+          <td>${m.DescriTipoModalidad}</td>
+          <td>${m.DescriTipoMoneda}</td>
+          <td>${m.diferido}</td>
+          <td>${m.garantizado}</td>
+          <td>${m.gratificacion}</td>
+          <td>${m.primerTramo}</td>
+          <td>${m.segundoTramo}</td>
+          <td>${m.TasaRentaAFP}%</td>
+          <td>
+            <button class="btn btn-danger btn-sm" onclick="eliminarModalidad(${m.id})">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      `;
+        });
+    }
+
+    function eliminarModalidad(id) {
+        modalidades = modalidades.filter(m => m.id !== id);
+        renderTablaModalidades();
+    }
+
+    // Arrays globales para almacenar la info
+
+
+
+    // 👉 aquí deberías tener tus funciones que van haciendo push
+    // beneficiarios.push({...})
+    // modalidades.push({...})
+
+    document.getElementById("btnCalcular").addEventListener("click", async () => {
+        // --- Datos del asegurado (ejemplo: tomados de inputs) ---
+        const asegurado = {
+            IdBeneficiario: 1,
+            TipoInvalidez: parseFloat(document.getElementById("aseInvalidez").value),
+            FechaNacimiento: document.getElementById("aseFechaNac").value,
+            Genero: parseFloat(document.getElementById("aseSexo").value),
+            ComisionAFP: 0,
+            TipoPension: document.getElementById("asePension").value,
+            FechaDevengue: document.getElementById("aseFechaDev").value,
+            FechaDevengueSolicitud: document.getElementById("aseFechaDevSol").value
+        };
+
+        // --- Datos generales ---
+        const payload = {
+            IdoperacionSbs: 0,
+            Cliente: "01",
+            TipoCambio: parseFloat(document.getElementById("tipoCambio").value || 0),
+            GastoSepelio: parseFloat(document.getElementById("gastoSep").value || 0),
+            MontoCIC: parseFloat(document.getElementById("aseCic").value || 0),
+            Licencia: "",
+            Gastos: {
+                Gastosmant: parseFloat(document.getElementById("GasAdm").value || 0),
+                Gastosemi: parseFloat(document.getElementById("GasEmi").value || 0),
+                Porcentajedeuda: 0,
+                Impuestos: parseFloat(document.getElementById("GasImp").value || 0)
+            },
+            Asegurado: asegurado,
+            Beneficiario: beneficiarios, // tu array construido en el paso 2
+            Modalidad: modalidades       // tu array construido en el paso 3
+        };
+
+        console.log("📤 Enviando JSON:", payload);
+
+        try {
+            /* const response = await fetch("http://localhost:3000/rutinarv/calcular", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json(); */
+            fetch("http://localhost:3000/auth/token", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ clientId: "cliente1", clientSecret: "secret123" })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const token = data.token;
+
+                    // 2. Usar el token en calcula simulador
+                    return fetch("http://localhost:3000/rutinarv/calcular", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`
+                        },
+                        body: JSON.stringify(result)
+                    }).then(res => res.json())
+                })
+            console.log("✅ Respuesta backend:", res);
+            alert("Cotización calculada correctamente");
+        } catch (error) {
+            console.error("❌ Error:", error);
+            alert("Error al enviar la cotización");
+        }
+    });
+
+</script>

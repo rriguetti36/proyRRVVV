@@ -1,6 +1,9 @@
 <main class="container-fluid mt-4">
     <div class="row">
         <div class="col-12">
+            <h1 class="h4 mb-4 text-primary fw-bold">
+                📂 Carga Respuestas MELER → Aceptación de solicitudes
+            </h1>
             <div class="card shadow-sm">
                 <div class="card-header bg-primary text-white">
                     Subir archivo XML
@@ -44,45 +47,51 @@
             <div class="modal-body">
                 <form id="modalForm">
                     <div class="row">
-<div class="col-6">
-                        <div class="mb-3">
-                            <label class="form-label">CUSPP</label>
-                            <input type="text" id="modalCU" class="form-control" readonly>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">CUSPP</label>
+                                <input type="text" id="modalCU" class="form-control" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Operación</label>
+                                <input type="text" id="modalOP" class="form-control" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Modalidad</label>
+                                <input type="text" id="modalMO" class="form-control" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Moneda</label>
+                                <input type="text" id="modalMN" class="form-control" readonly>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Modalidad</label>
-                            <input type="text" id="modalMO" class="form-control" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Moneda</label>
-                            <input type="text" id="modalMN" class="form-control" readonly>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Años Temporal</label>
+                                <input type="text" id="modalPd" class="form-control" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Periodo Garantizado</label>
+                                <input type="text" id="modalPg" class="form-control" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Pension</label>
+                                <input type="text" id="modalPE" class="form-control" readonly>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <label class="form-label">Años Temporal</label>
-                            <input type="text" id="modalPd" class="form-control" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Periodo Garantizado</label>
-                            <input type="text" id="modalPg" class="form-control" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Pension</label>
-                            <input type="text" id="modalPE" class="form-control" readonly>
-                        </div>
-                    </div>
-                    </div>
-                    
+
                     <div class="mb-3">
                         <label class="form-label">Fecha Aceptación</label>
                         <input type="date" id="modalFecha" class="form-control">
                     </div>
                 </form>
+                <div id="msgError" class="mt-2"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-success" id="btnGuardarModal">Guardar</button>
+                <button type="button" class="btn btn-secondary" id="btnValidar">Validar</button>
+                <button type="button" class="btn btn-success" id="btnGuardarModal" disabled>Guardar</button>
             </div>
         </div>
     </div>
@@ -237,6 +246,7 @@
                                     data-pd="${row.pd}" 
                                     data-pg="${row.pg}" 
                                     data-cu="${row.CUSPP}"
+                                    data-op="${row.nroOperacion}"
                                     data-mo="${row.modalidad}"
                                     data-mn="${row.moneda}"
                                     data-pe="${row.pensionAseg}"
@@ -273,6 +283,7 @@
             const mo = button.getAttribute("data-mo");
             const mn = button.getAttribute("data-mn");
             const pe = button.getAttribute("data-pe");
+            const op = button.getAttribute("data-op");
 
             document.getElementById("modalPd").value = pd;
             document.getElementById("modalPg").value = pg;
@@ -280,6 +291,7 @@
             document.getElementById("modalMO").value = mo;
             document.getElementById("modalMN").value = mn;
             document.getElementById("modalPE").value = pe;
+            document.getElementById("modalOP").value = op;
 
             document.getElementById("modalFecha").value = ""; // limpio el datepicker
         });
@@ -313,5 +325,87 @@
             modal.hide();
         });
     });
+
+    const btn = document.getElementById("btnValidar");
+    const msgError = document.getElementById("msgError");
+
+    btn.addEventListener("click", async function () {
+        // Limpiar mensajes anteriores
+        msgError.innerHTML = "";
+
+        // Tomar valores de inputs
+        const datos = {
+            arc: document.getElementById("idarch").value,
+            ope: document.getElementById("modalOP").value,
+            mod: document.getElementById("modalMO").value,
+            mon: document.getElementById("modalMN").value,
+            pd: document.getElementById("modalPd").value,
+            pg: document.getElementById("modalPg").value,
+            pens: document.getElementById("modalPE").value
+        };
+
+        // Mostrar cargando
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Validando...';
+        btn.disabled = true;
+
+        try {
+            const response = await fetch("http://localhost:3000/cotizador/api/validasol", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(datos)
+            });
+
+            const data = await response.json();
+            const mensaje = data.mensaje;
+            if (mensaje === "Ok") {
+                // Éxito
+                btn.innerHTML = '<i class="fas fa-check"></i> Validado';
+                btn.classList.remove("btn-primary");
+                btn.classList.add("btn-success");
+                // Activar botón Guardar
+                btnGuardar.disabled = false;
+            } else {
+                // Error → mostrar mensaje con botón cerrar
+                btn.innerHTML = '<i class="fas fa-times"></i> Error';
+                btn.classList.remove("btn-primary");
+                btn.classList.add("btn-danger");
+
+                msgError.innerHTML = `
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  ${mensaje}
+                  <button type="button" class="btn-close" id="btnCerrarError"></button>
+                </div>
+            `;
+
+                // Acción del botón cerrar
+                document.getElementById("btnCerrarError").addEventListener("click", () => {
+                    msgError.innerHTML = "";
+                    btn.innerHTML = "Validar";
+                    btn.className = "btn btn-primary";
+                    btn.disabled = false;
+                });
+            }
+        } catch (err) {
+            btn.innerHTML = '<i class="fas fa-times"></i> Error conexión';
+            btn.classList.remove("btn-primary");
+            btn.classList.add("btn-danger");
+
+            msgError.innerHTML = `
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              No se pudo conectar con el servidor
+              <button type="button" class="btn-close" id="btnCerrarError"></button>
+            </div>
+        `;
+
+            // Acción del botón cerrar
+            document.getElementById("btnCerrarError").addEventListener("click", () => {
+                msgError.innerHTML = "";
+                btn.innerHTML = "Validar";
+                btn.className = "btn btn-primary";
+                btn.disabled = false;
+            });
+        }
+    });
+
 
 </script>
