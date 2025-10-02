@@ -279,6 +279,46 @@ exports.getTasasTopes = async (req, res) => {
   }
 }
 
+exports.getRegion = async (req, res) => {
+  try {
+    const regiones = await TablaPar.getRegiones();
+    res.json(regiones);
+  } catch (err) {
+    console.error("Error getRegiones:", err);
+    res.status(500).json({ error: err.message });
+  }
+}
+
+exports.getProvincia = async (req, res) => {
+  try {
+    const provincias = await TablaPar.getProvincias(req.params.idRegion);
+    res.json(provincias);
+  } catch (err) {
+    console.error("Error getProvincias:", err);
+    res.status(500).json({ error: err.message });
+  }
+}
+
+exports.getDistrito = async (req, res) => {
+  try {
+    const distritos = await TablaPar.getDistritos(req.params.idProvincia);
+    res.json(distritos);
+  } catch (err) {
+    console.error("Error getDistritos:", err);
+    res.status(500).json({ error: err.message });
+  }
+}
+
+exports.getDistritoInfo = async (req, res) => {
+  try {
+    const info = await TablaPar.getDistritoInfo(req.params.idDistrito);
+    res.json(info);
+  } catch (err) {
+    console.error("Error getDistritoInfo:", err);
+    res.status(500).json({ error: err.message });
+  }
+}
+
 async function insertSolicitudesResp(resultados, nombrearch) {
   try {
 
@@ -443,7 +483,7 @@ async function ObtieneGastosSep(parGastosSepelio, fechacalculo) {
 
   // normalizamos la fecha de cálculo
   const fechaCalcStr = toYMD(fechacalculo);
-  console.log("fechaCalcStr",fechaCalcStr)
+  console.log("fechaCalcStr", fechaCalcStr)
   // intentamos encontrar coincidencia exacta
   let gasSep = parGastosSepelio.find(x => toYMD(x.d_periodo) === fechaCalcStr);
   console.log("gasSep", gasSep)
