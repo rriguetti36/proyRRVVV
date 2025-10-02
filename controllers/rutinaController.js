@@ -11,11 +11,13 @@ const { generarXML, validarXML } = require('../servicios/generaXML');
 exports.calcular = async (req, res) => {
   try {
     const datos = req.body;
+    console.log("datos", datos);
     const TasasIPC = await tablasTasasInd.getTasaTasaIPC();
     const TasasMercado = await tablasTasasInd.getTasaMercado();
     const TasasInversion = await tablasTasasInd.getTasaInversiones();
     const TasasCurvaCero = await tablasTasasInd.getTasaCurvaCuponCero();
     const TablasMortal = await tablasmortal.getAllMortalProc();
+    const TasasRentabilidad = await tablasTasasInd.getTasaInversiones();
 
     const datosMod = datos.Modalidad;
     const datosAse = datos.Asegurado;
@@ -115,7 +117,7 @@ exports.calcular = async (req, res) => {
       //console.log(dostosMod);
       console.log("Inicia calculo modalidad " + dostosMod.id);
       const datosflujos = await calcularflujos(dostosMod, DataBeneficiarios, TasasIPC);
-      const resultadoscalpen = await calcularpension_ini(dostosMod, datosflujos, sumprcben);
+      const resultadoscalpen = await calcularpension_ini(dostosMod, datosflujos, sumprcben, TasasCurvaCero, TasasRentabilidad);
       for (const ben of DataBeneficiarios) {
         const benfila = {
           id: ben.idben,

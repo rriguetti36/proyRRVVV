@@ -15,4 +15,8 @@ router.post("/api/respuestas", cotizadorController.getRespuestas);
 router.post("/api/validasol", cotizadorController.postValidacion);
 router.post("/api/aceptasol", cotizadorController.postAceptaCotizacion);
 router.post("/api/tasasInd", cotizadorController.getTasasTopes);
+router.get("/api/regiones", cotizadorController.getRegion);
+router.get("/api/provincias/:idRegion", cotizadorController.getProvincia);
+router.get("/api/distritos/:idProvincia", cotizadorController.getDistrito);
+router.get("/api/distrito-info/:idDistrito", cotizadorController.getDistritoInfo);
 module.exports = router;

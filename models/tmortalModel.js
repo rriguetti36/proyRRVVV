@@ -1,4 +1,35 @@
-const db = require('../config/db');  // Configuración de la base de datos
+//configuraion SQL server
+const { sql, poolPromise } = require('../config/db');
+
+class Mortalidad {
+  // Método genérico reutilizable
+  static async getTabla(nombreTabla) {
+    try {
+      const pool = await poolPromise;
+      const result = await pool.request().query(`SELECT * FROM ${nombreTabla}`);
+      return result.recordset;
+    } catch (err) {
+      console.error(`❌ Error consultando la tabla ${nombreTabla}:`, err);
+      throw err;
+    }
+  }
+
+  static async getAllMortalCab() {
+    return this.getTabla("c_tablamortal_dim_c");
+  }
+
+  static async getAllMortalDet() {
+    return this.getTabla("c_tablamortal_dim_d");
+  }
+
+  static async getAllMortalProc() {
+    return this.getTabla("c_tablamortal_dim_p");
+  }
+}
+
+module.exports = Mortalidad;
+
+/* const db = require('../config/db');  // Configuración de la base de datos
 
 class Mortalidad {
   static async getAllMortalCab() {
@@ -32,42 +63,6 @@ class Mortalidad {
       throw err;
     }
   }
-
-//   static async getById(id) {
-//     try {
-//       const [results] = await db.query("SELECT * FROM productos WHERE id = ?", [id]);
-//       return results[0];
-//     } catch (err) {
-//       throw err;
-//     }
-//   }
-
-//   static async create(producto) {
-//     try {
-//       const [results] = await db.query("INSERT INTO productos SET ?", producto);
-//       return results;
-//     } catch (err) {
-//       throw err;
-//     }
-//   }
-
-//   static async update(id, producto) {
-//     try {
-//       const [results] = await db.query("UPDATE productos SET ? WHERE id = ?", [producto, id]);
-//       return results;
-//     } catch (err) {
-//       throw err;
-//     }
-//   }
-
-//   static async delete(id) {
-//     try {
-//       const [results] = await db.query("DELETE FROM productos WHERE id = ?", [id]);
-//       return results;
-//     } catch (err) {
-//       throw err;
-//     }
-//   }
 }
 
-module.exports = Mortalidad;
+module.exports = Mortalidad; */
