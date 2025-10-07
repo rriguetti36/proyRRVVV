@@ -6,14 +6,14 @@ const cargasolController = require('../controllers/cargasolController');
 const consultaController = require('../controllers/consultasController');
 const emisionController = require('../controllers/emisionController');
 const reservasController = require('../controllers/reservasController');
-
+const validarCotizacion = require('../middleware/validarCotizacion');
 // Rutas de clientes
 
 router.post("/asignacionasesor", jwtAuth, cargasolController.AsignacionIntermediarios);
 router.post("/cargasol", jwtAuth,
     express.text({ type: ['application/xml'] }),
     cargasolController.ProcesaSolicitud);
-router.post("/calcular", jwtAuth, rutinaController.calcular);
+router.post("/calcular", jwtAuth, validarCotizacion, rutinaController.calcular);
 router.post('/generar-xml', jwtAuth, rutinaController.generaXMLsalida);
 router.post('/calcularpagos', jwtAuth, emisionController.ProcesoCalculoPagos);
 router.post('/calculareservas', jwtAuth, reservasController.ProcesoCalculoReservas);

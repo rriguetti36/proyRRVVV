@@ -6,7 +6,10 @@ const path = require('path');
 const libxml = require('libxmljs');
 const fs = require('fs');
 const { normalizeXmlToUtf8 } = require('../../servicios/normalizaXML');
+const EstudioModel = require('../../models/estudioModel');
 const codApeseg = process.env.CODIGOCIA;
+
+/*cotizador Estudio*/
 
 exports.EstudioCot = async (req, res) => {
 
@@ -33,6 +36,25 @@ exports.EstudioCot = async (req, res) => {
 
   res.render("cotizacion/estudio", { layout: 'layouts/layoutCT', tipoAfp, tipoMod, tipoPar, tiposex, tipoInv, tipoMon, tipoPen, tipoRen, tipodoc, gasSep, tipCam, Gastos });
 };
+
+exports.guardar = async (req, res) => {
+  const result = await EstudioModel.guardarEstudio(req.body);
+  res.json(result);
+};
+
+exports.listar = async (req, res) => {
+  const data = await EstudioModel.listarEstudios();
+  res.json(data);
+};
+
+exports.eliminar = async (req, res) => {
+  const { id } = req.params;
+  const result = await EstudioModel.eliminarEstudio(id);
+  res.json(result);
+};
+
+
+/*cotizador Masivo*/
 
 exports.CargaXML = async (req, res) => {
   res.render("cotizacion/carga", { layout: 'layouts/layoutCT' });
@@ -270,7 +292,7 @@ exports.getTasasTopes = async (req, res) => {
     let valpro = await ObtieneTasasVtaPromedio(TablasVtaPromedio, moneda, prestacion, fechacalculo)
     //console.log("valpro",valpro);
     let comision = 2;
-    let prcafp = porcentajeAFP.find(x => x.v_cod === afp).n_valor || 0;
+    let prcafp = afp;//porcentajeAFP.find(x => x.v_cod === afp).n_valor || 0;
 
     res.json({ valtac: valtac, valvta: valvta, valtir: valtir, valper: valper, valpro: valpro, comision: comision, prcafp }); // DataTables lo consume
   } catch (error) {
