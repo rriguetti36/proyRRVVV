@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const validarCotizacion = require('../middleware/validarCotizacion');
 const cotizadorController = require('../controllers/backend_Interface/cotizadorController');
 
 //paginas
@@ -8,7 +9,9 @@ router.get("/carga", cotizadorController.CargaXML);
 router.get("/descarga", cotizadorController.DescargaXML);
 router.get("/resultado", cotizadorController.ResultadosXML);
 
-//Api
+//---------------Apis-----------------------------//
+
+//cotizador
 router.get("/api/solicitudes", cotizadorController.getSolicitudes);
 router.post("/api/cargaresultado", cotizadorController.CargaResultados);
 router.post("/api/respuestas", cotizadorController.getRespuestas);
@@ -19,4 +22,9 @@ router.get("/api/regiones", cotizadorController.getRegion);
 router.get("/api/provincias/:idRegion", cotizadorController.getProvincia);
 router.get("/api/distritos/:idProvincia", cotizadorController.getDistrito);
 router.get("/api/distrito-info/:idDistrito", cotizadorController.getDistritoInfo);
+
+//cotizador Estudio
+router.post("/api/guardar", cotizadorController.guardar);
+router.get("/api/listar", cotizadorController.listar);
+router.delete("/api/eliminar/:id", cotizadorController.eliminar);
 module.exports = router;
