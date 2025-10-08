@@ -187,7 +187,7 @@ async function SolicitudesCalc(fechaCarga, ruta) {
     const archivoSalida = path.join(carpetaSalida, "solicitudes_calcular.json"); //path.join(carpetaSalida, 'solicitudes_calcular.json');
     const archivoresultados = path.join(carpetaSalida, "solicitudes_resultados.json"); //path.join(carpetaSalida, 'solicitudes_resultados.json');
     const tabparametros = await TablaPar.getParametros();
-    const tabparametrosMatriz = await TablaPar.getMatrisConfig();
+    const tabparametrosMatriz = await TablaPar.getMatrizConfig();
     //console.log(tabparametrosMatriz);
     const resultado = { Solicitudes: [] };
     const nroOP = 0;

@@ -8,7 +8,8 @@ const fs = require('fs');
 const { normalizeXmlToUtf8 } = require('../../servicios/normalizaXML');
 const EstudioModel = require('../../models/estudioModel');
 const codApeseg = process.env.CODIGOCIA;
-
+const pdf = require("html-pdf-node");
+const ejs = require("ejs");
 /*cotizador Estudio*/
 
 exports.EstudioCot = async (req, res) => {
@@ -20,13 +21,13 @@ exports.EstudioCot = async (req, res) => {
   let fechacalculo = new Date(hoy.getFullYear(), hoy.getMonth(), 1);
   const tipoAfp = paramtetros.filter(x => x.idpar === 1);
   const tipoMod = paramtetros.filter(x => x.idpar === 2);
-  const tipoPar = paramtetros.filter(x => x.idpar === 6);
   const tiposex = paramtetros.filter(x => x.idpar === 7);
   const tipoInv = paramtetros.filter(x => x.idpar === 8);
   const tipoMon = paramtetros.filter(x => x.idpar === 10);
-  const tipoPen = paramtetros.filter(x => x.idpar === 12);
   const tipoRen = paramtetros.filter(x => x.idpar === 13);
   const tipodoc = paramtetros.filter(x => x.idpar === 15);
+  const tipoPen = paramtetros.filter(x => x.idpar === 33);
+  const tipoPar = paramtetros.filter(x => x.idpar === 34);
   const gasSep = await ObtieneGastosSep(parGastosSepelio, formatDate(fechacalculo));
   const gasEmi = parGastosAdm.n_gastoemi || 0;
   const gasMan = parGastosAdm.n_gastomant || 0;
@@ -38,13 +39,50 @@ exports.EstudioCot = async (req, res) => {
 };
 
 exports.guardar = async (req, res) => {
-  const result = await EstudioModel.guardarEstudio(req.body);
-  res.json(result);
+  try {
+    const result = await EstudioModel.guardarEstudio(req.body, 1);
+    res.json(result);
+  } catch (error){
+    console.error("❌ Error en guardarEstudio:", error);
+
+    // Si el error viene del driver SQL, puede tener detalles útiles:
+    const mensaje = error.message || "Error interno en el servidor";
+    const detalle = error.originalError ? error.originalError.message : null;
+
+    res.status(500).json({
+      ok: false,
+      message: "Error al guardar el estudio",
+      error: mensaje,
+      detalle
+    });
+  }
+
 };
 
 exports.listar = async (req, res) => {
-  const data = await EstudioModel.listarEstudios();
-  res.json(data);
+  const paramtetros = await TablaPar.getParametros();
+  const tipodoc = paramtetros.filter(x => x.idpar === 15);
+  try {
+    const filtros = {
+      tipoDoc: req.query.tipoDoc || null,
+      numDoc: req.query.numDoc || null,
+      nombre: req.query.nombre || null,
+      apepat: req.query.apepat || null,
+      apemat: req.query.apemat || null
+    };
+
+    const estudios = await EstudioModel.listarEstudios(filtros);
+
+    res.render('cotizacion/estudiolistar', {
+      title: 'Listado de Cotizaciones',
+      estudios,
+      filtros,
+      tipodoc
+    });
+  } catch (err) {
+    console.error('Error en controlador listar:', err);
+    res.status(500).send('Error al listar estudios');
+  }
 };
 
 exports.eliminar = async (req, res) => {
@@ -53,6 +91,41 @@ exports.eliminar = async (req, res) => {
   res.json(result);
 };
 
+exports.generarPDF = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // 🔹 Trae toda la información del estudio
+    const estudio = await EstudioModel.obtenerEstudioCompleto(id);
+    if (!estudio) return res.status(404).send("Estudio no encontrado");
+
+    // 🔹 Renderiza HTML desde un template EJS
+    const html = await ejs.renderFile(
+      path.join(__dirname, "../../pdf/templates/cotizacionTemplate.ejs"),
+      { estudio }
+    );
+
+    // 🔹 Genera el PDF con html-pdf-node (alternativa simple a puppeteer)
+    const file = { content: html };
+    const pdfBuffer = await pdf.generatePdf(file, {
+      format: "A4",
+      margin: { top: "20mm", bottom: "20mm" }
+    });
+
+    // 🔹 Opción 1: mostrar en navegador
+    res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", `inline; filename=cotizacion_${id}.pdf`);
+    res.send(pdfBuffer);
+
+    // 🔹 Opción 2 (si prefieres guardar en carpeta):
+    // const outputPath = path.join(__dirname, "../pdf/generated", `cotizacion_${id}.pdf`);
+    // fs.writeFileSync(outputPath, pdfBuffer);
+
+  } catch (err) {
+    console.error("Error al generar PDF:", err);
+    res.status(500).send("Error al generar el PDF");
+  }
+};
 
 /*cotizador Masivo*/
 
@@ -292,7 +365,7 @@ exports.getTasasTopes = async (req, res) => {
     let valpro = await ObtieneTasasVtaPromedio(TablasVtaPromedio, moneda, prestacion, fechacalculo)
     //console.log("valpro",valpro);
     let comision = 2;
-    let prcafp = afp;//porcentajeAFP.find(x => x.v_cod === afp).n_valor || 0;
+    let prcafp = porcentajeAFP.find(x => x.v_cod === afp).n_valor || 0;
 
     res.json({ valtac: valtac, valvta: valvta, valtir: valtir, valper: valper, valpro: valpro, comision: comision, prcafp }); // DataTables lo consume
   } catch (error) {

@@ -36,6 +36,7 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use('/theme', express.static(path.join(__dirname, 'theme')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(layouts);
 app.set('layout', 'layouts/layoutCT');

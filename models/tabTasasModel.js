@@ -102,6 +102,16 @@ class TasasInd {
     return result.recordset[0];
   }
 
+  static async getMatrizConfig() {
+    try {
+      const pool = await poolPromise;
+      const result = await pool.request().query('SELECT * FROM m_configuracionmatriz');
+      return result.recordset; // devuelve los registros como un array
+    } catch (err) {
+      console.error('Error en getMatrizConfig:', err);
+      throw err;
+    }
+  }
 }
 module.exports = TasasInd;
 

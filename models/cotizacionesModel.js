@@ -204,11 +204,11 @@ class cotizacion {
         .input("id_estado", sql.Int, data.estado)
         .query(`
         INSERT INTO c_solicitudes_meler (idtipo, v_descripcion, fec_carga, idusuario, id_estado)
-        OUTPUT INSERTED.id_archivo AS idArchivo
+        OUTPUT INSERTED.id
         VALUES (@idtipo, @v_descripcion, @fec_carga, @idusuario, @id_estado)
       `);
 
-      const idArchivo = res.recordset[0].idArchivo;
+      const idArchivo = res.recordset[0].id;
 
       // 2. Insertar múltiples registros en c_solicitudes_meler_det
       if (data.solicitudes && data.solicitudes.length > 0) {
