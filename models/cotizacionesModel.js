@@ -271,7 +271,7 @@ class cotizacion {
         // 1. Insertar cabecera
         const cabReq = transaction.request();
         const resultCab = await cabReq
-          .input('num_cot', sql.VarChar, nuevoNumCotFin)
+          .input('num_cot', sql.VarChar(10), nuevoNumCotFin)
           .input('num_operacion', sql.Int, c.num_operacion)
           .input('fec_suscripcion', sql.DateTime, c.fec_suscripcion)
           .input('fec_envio', sql.DateTime, c.fec_envio)
@@ -279,47 +279,43 @@ class cotizacion {
           .input('fec_devenge', sql.DateTime, c.fec_devenge)
           .input('id_afp', sql.Int, c.id_afp)
           .input('id_prestacion', sql.Int, c.id_prestacion)
-          .input('id_tipobenef', sql.Int, c.id_tipobenef)
-          .input('id_estciv', sql.Int, c.id_estciv)
-          .input('ind_clientecia', sql.Int, c.ind_clientecia)
-          .input('num_cuspp', sql.VarChar, c.num_cuspp)
+          .input('id_tipobenef', sql.VarChar(5), c.id_tipobenef)
+          //.input('id_estciv', sql.Int, c.id_estciv)
+          //.input('ind_clientecia', sql.Int, c.ind_clientecia)
+          .input('num_cuspp', sql.VarChar(15), c.num_cuspp)
           .input('id_sucursal', sql.Int, c.id_sucursal)
           .input('num_aniojubila', sql.Int, c.num_aniojubila)
           .input('num_cargas', sql.Int, c.num_cargas)
           .input('id_agente', sql.Int, c.id_agente)
-          .input('num_docagente', sql.VarChar, c.num_docagente)
+          .input('num_docagente', sql.VarChar(15), c.num_docagente)
           .input('id_moneda', sql.Int, c.id_moneda)
-          .input('val_tcfondo', sql.Decimal(18, 4), c.val_tcfondo)
-          .input('mto_capitalfon', sql.Decimal(18, 4), c.mto_capitalfon)
-          .input('mto_cicfon', sql.Decimal(18, 4), c.mto_cicfon)
-          .input('mto_bonofon', sql.Decimal(18, 4), c.mto_bonofon)
-          .input('mto_priuni', sql.Decimal(18, 4), c.mto_priuni)
-          .input('mto_cic', sql.Decimal(18, 4), c.mto_cic)
-          .input('mto_bono', sql.Decimal(18, 4), c.mto_bono)
-          .input('val_tasart', sql.Decimal(18, 4), c.val_tasart)
-          .input('mto_apoadi', sql.Decimal(18, 4), c.mto_apoadi)
-          .input('ind_cober', sql.Int, c.ind_cober)
-          .input('id_tipocot', sql.Int, c.id_tipocot)
-          .input('id_estadocot', sql.Int, c.id_estadocot)
+          .input('val_tcfondo', sql.Decimal(18, 3), c.val_tcfondo)
+          .input('mto_capitalfon', sql.Decimal(18, 3), c.mto_capitalfon)
+          .input('mto_cicfon', sql.Decimal(18, 3), c.mto_cicfon)
+          .input('mto_bonofon', sql.Decimal(18, 3), c.mto_bonofon)
+          .input('mto_priuni', sql.Decimal(18, 3), c.mto_priuni)
+          .input('mto_cic', sql.Decimal(18, 3), c.mto_cic)
+          .input('mto_bono', sql.Decimal(18, 3), c.mto_bono)
+          .input('val_tasart', sql.Decimal(18, 3), c.val_tasart)
+          .input('mto_apoadi', sql.Decimal(18, 3), c.mto_apoadi)
+          .input('ind_cober', sql.VarChar(2), c.ind_cober)
+          .input('id_tipocot', sql.VarChar(2), c.id_tipocot)
+          .input('id_estadocot', sql.VarChar(2), c.id_estadocot)
           .input('num_mensual', sql.Int, c.num_mensual)
           .input('id_tipofon', sql.Int, c.id_tipofon)
           .input('id_region', sql.Int, c.id_region)
           .input('fec_devsol', sql.DateTime, c.fec_devsol)
           .query(`
           INSERT INTO c_cotizacion (
-            num_cot, num_operacion, fec_suscripcion, fec_envio, fec_cierre, fec_devenge,
-            id_afp, id_prestacion, id_tipobenef, id_estciv, ind_clientecia, num_cuspp, id_sucursal,
-            num_aniojubila, num_cargas, id_agente, num_docagente, id_moneda, val_tcfondo,
-            mto_capitalfon, mto_cicfon, mto_bonofon, mto_priuni, mto_cic, mto_bono, val_tasart,
-            mto_apoadi, ind_cober, id_tipocot, id_estadocot, num_mensual, id_tipofon, id_region, fec_devsol
+            num_cot, num_operacion, fec_suscripcion, fec_envio, fec_cierre, fec_devenge, id_afp, id_prestacion, id_tipobenef, num_cuspp, id_sucursal,
+            num_aniojubila, num_cargas, id_agente, num_docagente, id_moneda, val_tcfondo, mto_capitalfon, mto_cicfon, mto_bonofon, mto_priuni, mto_cic,
+            mto_bono, val_tasart, mto_apoadi, ind_cober, id_tipocot, id_estadocot, num_mensual, id_tipofon, id_region, fec_devsol
           )
           OUTPUT INSERTED.id_cot
           VALUES (
-            @num_cot, @num_operacion, @fec_suscripcion, @fec_envio, @fec_cierre, @fec_devenge,
-            @id_afp, @id_prestacion, @id_tipobenef, @id_estciv, @ind_clientecia, @num_cuspp, @id_sucursal,
-            @num_aniojubila, @num_cargas, @id_agente, @num_docagente, @id_moneda, @val_tcfondo,
-            @mto_capitalfon, @mto_cicfon, @mto_bonofon, @mto_priuni, @mto_cic, @mto_bono, @val_tasart,
-            @mto_apoadi, @ind_cober, @id_tipocot, @id_estadocot, @num_mensual, @id_tipofon, @id_region, @fec_devsol
+            @num_cot, @num_operacion, @fec_suscripcion, @fec_envio, @fec_cierre, @fec_devenge, @id_afp, @id_prestacion, @id_tipobenef, @num_cuspp, @id_sucursal,
+            @num_aniojubila, @num_cargas, @id_agente, @num_docagente, @id_moneda, @val_tcfondo, @mto_capitalfon, @mto_cicfon, @mto_bonofon, @mto_priuni, @mto_cic, 
+            @mto_bono, @val_tasart, @mto_apoadi, @ind_cober, @id_tipocot, @id_estadocot, @num_mensual, @id_tipofon, @id_region, @fec_devsol
           )
         `);
 
@@ -331,16 +327,59 @@ class cotizacion {
           const detReq = transaction.request();
           await detReq
             .input('id_cot', sql.Int, idCotizacion)
-            .input('num_cot', sql.VarChar, nuevoNumCotFin)
             .input('id_correlativo', sql.Int, d.id_correlativo)
             .input('num_operacion', sql.Int, d.num_operacion)
             .input('fec_calcot', sql.DateTime, d.fec_calcot)
+            .input('id_moneda', sql.Int, d.id_moneda)
+            .input('val_tcmon', sql.Decimal(18, 3), d.val_tcmon)
+            .input('mto_priuni', sql.Decimal(18, 3), d.mto_priuni)
+            .input('mto_capital', sql.Decimal(18, 3), d.mto_capital)
+            .input('mto_bono', sql.Decimal(18, 3), d.mto_bono)
+            .input('val_agecom', sql.Decimal(18, 3), d.val_agecom)
+            .input('val_agecomreal', sql.Decimal(18, 3), d.val_agecomreal)
+            .input('mto_agecom', sql.Decimal(18, 3), d.mto_agecom)
+            .input('id_tipren', sql.Int, d.id_tipren)
+            .input('num_mesdif', sql.Int, d.num_mesdif)
+            .input('id_modalidad', sql.Int, d.id_modalidad)
+            .input('num_mesgar', sql.Int, d.num_mesgar)
+            .input('num_mesesc', sql.Int, d.num_mesesc)
+            .input('val_rentaesc', sql.Decimal(18, 3), d.val_rentaesc)
+            .input('val_tasartafp', sql.Decimal(18, 3), d.val_tasartafp)
+            .input('val_rentart', sql.Decimal(18, 3), d.val_rentart)
+            .input('mto_sepelio', sql.Decimal(18, 3), d.mto_sepelio)
+            .input('val_tasatce', sql.Decimal(18, 3), d.val_tasatce)
+            .input('val_tasavta', sql.Decimal(18, 3), d.val_tasavta)
+            .input('val_tasatir', sql.Decimal(18, 3), d.val_tasatir)
+            .input('mto_pension', sql.Decimal(18, 3), d.mto_pension)
+            .input('mto_pensiongar', sql.Decimal(18, 3), d.mto_pensiongar)
+            .input('mto_priAFP', sql.Decimal(18, 3), d.mto_priAFP)
+            .input('mto_pensionRT', sql.Decimal(18, 3), d.mto_pensionRT)
+            .input('val_rentapentmp', sql.Decimal(18, 3), d.val_rentapentmp)
+            .input('mto_sumpenben', sql.Decimal(18, 3), d.mto_sumpenben)
+            .input('val_perdida', sql.Decimal(18, 3), d.val_perdida)
+            .input('ind_cober', sql.Int, d.ind_cober)
+            .input('ind_dercre', sql.VarChar(2), d.ind_dercre)
+            .input('ind_dergra', sql.VarChar(2), d.ind_dergra)
+            .input('id_estado', sql.VarChar(2), d.id_estado)
+            .input('fec_acepta', sql.DateTime, d.fec_acepta)
+            .input('id_rechazo', sql.Int, d.id_rechazo)
+            .input('mto_parcap', sql.Decimal(18, 3), d.mto_parcap)
+            .input('des_error', sql.VarChar(200), d.des_error)
+            .input('ind_sisco', sql.VarChar(2), d.ind_sisco)
+            .input('ind_pasofiltro', sql.VarChar(2), d.ind_pasofiltro)
+
             // ⚠️ aquí seguirías con todos los campos uno por uno como arriba...
             .query(`
             INSERT INTO c_cotizaciondetalle (
-              id_cot, num_cot, id_correlativo, num_operacion, fec_calcot, id_moneda
+              id_cot,id_correlativo,num_operacion,fec_calcot,id_moneda,val_tcmon,mto_priuni,mto_capital,mto_bono,val_agecom,val_agecomreal,mto_agecom,id_tipren,num_mesdif,
+              id_modalidad,num_mesgar,num_mesesc,val_rentaesc,val_tasartafp,val_rentart,mto_sepelio,val_tasatce,val_tasavta,val_tasatir,mto_pension,mto_pensiongar,
+              mto_priAFP,mto_pensionRT,val_rentapentmp,mto_sumpenben,val_perdida,ind_cober,ind_dercre,ind_dergra,id_estado,fec_acepta,id_rechazo,mto_parcap,des_error,
+              ind_sisco,ind_pasofiltro
             )
-            VALUES (@id_cot, @num_cot, @id_correlativo, @num_operacion, @fec_calcot, @id_moneda)
+            VALUES (@id_cot,@id_correlativo,@num_operacion,@fec_calcot,@id_moneda,@val_tcmon,@mto_priuni,@mto_capital,@mto_bono,@val_agecom,@val_agecomreal,@mto_agecom,@id_tipren,@num_mesdif,
+              @id_modalidad,@num_mesgar,@num_mesesc,@val_rentaesc,@val_tasartafp,@val_rentart,@mto_sepelio,@val_tasatce,@val_tasavta,@val_tasatir,@mto_pension,@mto_pensiongar,
+              @mto_priAFP,@mto_pensionRT,@val_rentapentmp,@mto_sumpenben,@val_perdida,@ind_cober,@ind_dercre,@ind_dergra,@id_estado,@fec_acepta,@id_rechazo,@mto_parcap,@des_error,
+              @ind_sisco,@ind_pasofiltro)
           `);
         }
 
