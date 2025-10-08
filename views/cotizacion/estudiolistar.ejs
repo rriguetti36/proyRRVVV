@@ -1,0 +1,127 @@
+<main class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="h4 mb-4 text-primary fw-bold">
+                📂 Estudios de Cotización
+            </h1>
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    Buscar cotizaciones
+                </div>
+                <div class="card-body">
+                    <!-- Filtros -->
+                    <form class="row g-2 mb-4" method="get" action="/cotizador/estudiolista">
+                        <!-- <div class="col-md-2">
+                            <label>Tipo Doc</label>
+                            <select class="form-control" id="TipoDoc" name="TipoDoc">
+                                <option value="">-- Seleccione --</option>
+                                <% tipodoc.forEach(function(doc) { %>
+                                    <option value="<%= doc.v_cod %>">
+                                        <%= doc.v_nombre %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                        </div> -->
+                        <div class="col-md-2">
+
+                            <input type="text" name="numDoc" class="form-control" value="<%= filtros.numDoc || '' %>"
+                                placeholder="N° Documento">
+                        </div>
+                        <div class="col-md-2">
+
+                            <input type="text" name="nombre" class="form-control" value="<%= filtros.nombre || '' %>"
+                                placeholder="Nombre">
+                        </div>
+                        <div class="col-md-2">
+
+                            <input type="text" name="apepat" class="form-control" value="<%= filtros.apepat || '' %>"
+                                placeholder="Apellido Paterno">
+                        </div>
+                        <div class="col-md-2">
+
+                            <input type="text" name="apemat" class="form-control" value="<%= filtros.apemat || '' %>"
+                                placeholder="Apellido Materno">
+                        </div>
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button class="btn btn-sm btn-primary mb-3">Buscar</button>
+                        </div>
+                    </form>
+                    <hr>
+                    <div class="mb-3 text-end">
+                        <a href="/cotizador/estudio" class="btn btn-sm btn-primary mb-3">
+                            <i class="bi bi-plus-circle"></i> Nueva Cotización
+                        </a>
+                    </div>
+
+                    <!-- Tabla -->
+                    <div class="table-responsive" style="max-height: 350px; overflow-y: auto;">
+                        <table class="table table-bordered table-hover align-middle text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>N° Estudio</th>
+                                    <th>Tipo Doc</th>
+                                    <th>N° Documento</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido Paterno</th>
+                                    <th>Apellido Materno</th>
+                                    <th>Fecha</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (estudios.length===0) { %>
+                                    <tr>
+                                        <td colspan="8" class="text-center text-muted">No se encontraron registros</td>
+                                    </tr>
+                                    <% } else { %>
+                                        <% estudios.forEach(e=> { %>
+                                            <tr>
+                                                <td>
+                                                    <%= e.num_cot %>
+                                                </td>
+                                                <td>
+                                                    <%= e.id_tipodociden %>
+                                                </td>
+                                                <td>
+                                                    <%= e.num_dociden %>
+                                                </td>
+                                                <td>
+                                                    <%= e.des_nombre %>
+                                                </td>
+                                                <td>
+                                                    <%= e.des_apepaterno %>
+                                                </td>
+                                                <td>
+                                                    <%= e.des_apematerno %>
+                                                </td>
+                                                <td>
+                                                    <%= e.fec_creacion.toISOString().substring(0, 10) %>
+                                                </td>
+                                                <td>
+                                                    <a href="/cotizador/editar/<%= e.id %>"
+                                                        class="btn btn-sm btn-warning">Editar</a>
+                                                    <a href="/cotizador/api/pdf/<%= e.id %>" target="_blank"
+                                                        class="btn btn-sm btn-outline-danger">
+                                                        <i class="bi bi-file-earmark-pdf"></i> Ver PDF
+                                                    </a>
+                                                    <!-- <button class="btn btn-sm btn-danger btnEliminar"
+                                                        data-id="<%= e.id %>">Eliminar</button> -->
+                                                </td>
+                                            </tr>
+                                            <% }) %>
+                                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/estudios.js"></script>

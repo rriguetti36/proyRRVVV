@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cotización - <%= estudio.num_cot %></title>
+  <style>
+    body { font-family: Arial, sans-serif; font-size: 12px; }
+    .header { text-align: center; margin-bottom: 20px; }
+    .table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    .table th, .table td { border: 1px solid #ccc; padding: 6px; text-align: left; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>Cotización N° <%= estudio.num_cot %></h2>
+    <p>Fecha: <%= new Date(estudio.fec_creacion).toLocaleDateString() %></p>
+  </div>
+
+  <h3>Datos del Asegurado</h3>
+  <table class="table">
+    <tr><th>Documento</th><td><%= estudio.asegurado.num_dociden %></td></tr>
+    <tr><th>Nombre</th><td><%= estudio.asegurado.des_nombre %> <%= estudio.asegurado.des_apepaterno %> <%= estudio.asegurado.des_apematerno %></td></tr>
+    <tr><th>CUSPP</th><td><%= estudio.asegurado.cod_cuspp %></td></tr>
+  </table>
+
+  <h3>Beneficiarios</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Parentesco</th>
+        <th>Pensión</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% estudio.beneficiarios.forEach(b => { %>
+      <tr>
+        <td><%= b.des_nombre %> <%= b.des_apepaterno %> <%= b.des_apematerno %></td>
+        <td><%= b.id_parentesco %></td>
+        <td><%= b.mto_pension %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <h3>Resumen de Modalidades</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Moneda</th>
+        <th>Pensión AFP</th>
+        <th>Pensión CIA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% estudio.modalidades.forEach(m => { %>
+      <tr>
+        <td><%= m.id_moneda %></td>
+        <td><%= m.mto_pensionafp %></td>
+        <td><%= m.mto_primacia %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</body>
+</html>
