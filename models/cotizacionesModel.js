@@ -67,7 +67,7 @@ class cotizacion {
 
   static async getTablaSolicitudesMELER() {
     try {
-      const pool = await poolPromise; // abre conexión al pool
+      const pool = await poolPromise; // conexión activa
       const result = await pool.request().query(`
       SELECT 
         a.id_estado, 
@@ -89,9 +89,9 @@ class cotizacion {
       ORDER BY a.id DESC
     `);
 
-      return result.recordset; // en mssql los resultados están en recordset
+      return result.recordset;
     } catch (err) {
-      console.error("Error en getTablaSolicitudesMELER:", err);
+      console.error("❌ Error en getTablaSolicitudesMELER:", err);
       throw err;
     }
   }
@@ -300,7 +300,7 @@ class cotizacion {
           .input('mto_apoadi', sql.Decimal(18, 3), c.mto_apoadi)
           .input('ind_cober', sql.VarChar(2), c.ind_cober)
           .input('id_tipocot', sql.VarChar(2), c.id_tipocot)
-          .input('id_estadocot', sql.VarChar(2), c.id_estadocot)
+          .input('id_estadocot', sql.Int, c.id_estadocot)
           .input('num_mensual', sql.Int, c.num_mensual)
           .input('id_tipofon', sql.Int, c.id_tipofon)
           .input('id_region', sql.Int, c.id_region)
@@ -320,13 +320,14 @@ class cotizacion {
         `);
 
         const idCotizacion = resultCab.recordset[0].id_cot;
-
+        //console.log("idCotizacion guarda el detalle", idCotizacion)
         // 2. Insertar detalles
         const detalles = data.detalle.filter(d => d.num_operacion === c.num_operacion);
         for (const d of detalles) {
           const detReq = transaction.request();
           await detReq
             .input('id_cot', sql.Int, idCotizacion)
+            .input('num_cot', sql.VarChar(10), nuevoNumCotFin)
             .input('id_correlativo', sql.Int, d.id_correlativo)
             .input('num_operacion', sql.Int, d.num_operacion)
             .input('fec_calcot', sql.DateTime, d.fec_calcot)
@@ -360,45 +361,77 @@ class cotizacion {
             .input('ind_cober', sql.Int, d.ind_cober)
             .input('ind_dercre', sql.VarChar(2), d.ind_dercre)
             .input('ind_dergra', sql.VarChar(2), d.ind_dergra)
-            .input('id_estado', sql.VarChar(2), d.id_estado)
-            .input('fec_acepta', sql.DateTime, d.fec_acepta)
+            .input('id_estado', sql.Int, d.id_estado)
+            //.input('fec_acepta', sql.DateTime, d.fec_acepta)
             .input('id_rechazo', sql.Int, d.id_rechazo)
             .input('mto_parcap', sql.Decimal(18, 3), d.mto_parcap)
             .input('des_error', sql.VarChar(200), d.des_error)
-            .input('ind_sisco', sql.VarChar(2), d.ind_sisco)
-            .input('ind_pasofiltro', sql.VarChar(2), d.ind_pasofiltro)
+            .input('ind_sisco', sql.Int, d.ind_sisco)
+            .input('ind_pasofiltro', sql.Int, d.ind_pasofiltro)
 
             // ⚠️ aquí seguirías con todos los campos uno por uno como arriba...
             .query(`
             INSERT INTO c_cotizaciondetalle (
-              id_cot,id_correlativo,num_operacion,fec_calcot,id_moneda,val_tcmon,mto_priuni,mto_capital,mto_bono,val_agecom,val_agecomreal,mto_agecom,id_tipren,num_mesdif,
+              id_cot,num_cot,id_correlativo,num_operacion,fec_calcot,id_moneda,val_tcmon,mto_priuni,mto_capital,mto_bono,val_agecom,val_agecomreal,mto_agecom,id_tipren,num_mesdif,
               id_modalidad,num_mesgar,num_mesesc,val_rentaesc,val_tasartafp,val_rentart,mto_sepelio,val_tasatce,val_tasavta,val_tasatir,mto_pension,mto_pensiongar,
-              mto_priAFP,mto_pensionRT,val_rentapentmp,mto_sumpenben,val_perdida,ind_cober,ind_dercre,ind_dergra,id_estado,fec_acepta,id_rechazo,mto_parcap,des_error,
+              mto_priAFP,mto_pensionRT,val_rentapentmp,mto_sumpenben,val_perdida,ind_cober,ind_dercre,ind_dergra,id_estado,id_rechazo,mto_parcap,des_error,
               ind_sisco,ind_pasofiltro
             )
-            VALUES (@id_cot,@id_correlativo,@num_operacion,@fec_calcot,@id_moneda,@val_tcmon,@mto_priuni,@mto_capital,@mto_bono,@val_agecom,@val_agecomreal,@mto_agecom,@id_tipren,@num_mesdif,
+            VALUES (@id_cot,@num_cot,@id_correlativo,@num_operacion,@fec_calcot,@id_moneda,@val_tcmon,@mto_priuni,@mto_capital,@mto_bono,@val_agecom,@val_agecomreal,@mto_agecom,@id_tipren,@num_mesdif,
               @id_modalidad,@num_mesgar,@num_mesesc,@val_rentaesc,@val_tasartafp,@val_rentart,@mto_sepelio,@val_tasatce,@val_tasavta,@val_tasatir,@mto_pension,@mto_pensiongar,
-              @mto_priAFP,@mto_pensionRT,@val_rentapentmp,@mto_sumpenben,@val_perdida,@ind_cober,@ind_dercre,@ind_dergra,@id_estado,@fec_acepta,@id_rechazo,@mto_parcap,@des_error,
+              @mto_priAFP,@mto_pensionRT,@val_rentapentmp,@mto_sumpenben,@val_perdida,@ind_cober,@ind_dercre,@ind_dergra,@id_estado,@id_rechazo,@mto_parcap,@des_error,
               @ind_sisco,@ind_pasofiltro)
           `);
         }
 
+        //console.log("idCotizacion guarda el beneficiario", idCotizacion)
         // 3. Insertar beneficiarios
         const beneficiarios = data.beneficiario.filter(b => b.num_operacion === c.num_operacion);
         for (const b of beneficiarios) {
           const benReq = transaction.request();
           await benReq
             .input('id_cot', sql.Int, idCotizacion)
-            .input('num_cot', sql.VarChar, nuevoNumCotFin)
+            .input('num_cot', sql.VarChar(10), nuevoNumCotFin)
             .input('id_orden', sql.Int, b.id_orden)
             .input('num_operacion', sql.Int, b.num_operacion)
             .input('id_parentesco', sql.Int, b.id_parentesco)
+            .input('id_grupofam', sql.Int, b.id_grupofam)
+            .input('id_sexo', sql.Int, b.id_sexo)
+            .input('id_invalido', sql.Int, b.id_invalido)
+            .input('id_derpen', sql.Int, b.id_derpen)
+            .input('id_tipodociden', sql.Int, b.id_tipodociden)
+            .input('num_dociden', sql.VarChar(20), b.num_dociden)
+            .input('des_nombre', sql.VarChar(50), b.des_nombre)
+            .input('des_nombresegundo', sql.VarChar(50), b.des_nombresegundo)
+            .input('des_apepaterno', sql.VarChar(50), b.des_apepaterno)
+            .input('des_apematerno', sql.VarChar(50), b.des_apematerno)
+            .input('fec_nacimiento', sql.DateTime, b.fec_nacimiento)
+            //.input('fec_fallecimiento', sql.DateTime, b.fec_fallecimiento)
+            .input('fec_fallecimiento', sql.DateTime,
+              b.fec_fallecimiento && b.fec_fallecimiento.trim() !== ""
+                ? new Date(b.fec_fallecimiento)
+                : null
+            )
+            //.input('fec_nachijomayor', sql.DateTime, b.fec_nachijomayor)
+            .input('fec_nachijomayor', sql.DateTime,
+              b.fec_nachijomayor && b.fec_nachijomayor.trim() !== ""
+                ? new Date(b.fec_nachijomayor)
+                : null
+            )
+            .input('val_pension', sql.Decimal(18, 3), b.val_pension)
+            .input('val_pensionleg', sql.Decimal(18, 3), b.val_pensionleg)
+            .input('mto_pension', sql.Decimal(18, 3), b.mto_pension)
+            .input('mto_pensiongar', sql.Decimal(18, 3), b.mto_pensiongar)
+            .input('ind_estsob', sql.VarChar(2), b.ind_estsob)
+            .input('ind_estudiante', sql.VarChar(2), b.ind_estudiante)
             // ⚠️ igual que arriba: ir agregando .input() por cada campo
             .query(`
             INSERT INTO c_cotizacionbeneficiario (
-              id_cot, num_cot, id_orden, num_operacion, id_parentesco
+              id_cot,num_cot,id_orden,num_operacion,id_parentesco,id_grupofam,id_sexo,id_invalido,id_derpen,id_tipodociden,num_dociden,des_nombre,des_nombresegundo,des_apepaterno,
+              des_apematerno,fec_nacimiento,fec_fallecimiento,fec_nachijomayor,val_pension,val_pensionleg,mto_pension,mto_pensiongar,ind_estsob,ind_estudiante
             )
-            VALUES (@id_cot, @num_cot, @id_orden, @num_operacion, @id_parentesco)
+            VALUES (@id_cot,@num_cot,@id_orden,@num_operacion,@id_parentesco,@id_grupofam,@id_sexo,@id_invalido,@id_derpen,@id_tipodociden,@num_dociden,@des_nombre,@des_nombresegundo,@des_apepaterno,
+            @des_apematerno,@fec_nacimiento,@fec_fallecimiento,@fec_nachijomayor,@val_pension,@val_pensionleg,@mto_pension,@mto_pensiongar,@ind_estsob,@ind_estudiante)
           `);
         }
 
@@ -538,6 +571,90 @@ class cotizacion {
       return result.recordset;
     } catch (err) {
       console.error("❌ Error en getTablaSolicitudRespuesta:", err);
+      throw err;
+    }
+  }
+
+  //crud parametros
+  static async getCabecerasParam() {
+    try {
+      const pool = await poolPromise;
+      const result = await pool.request().query(`SELECT * FROM m_parametros ORDER BY id`);
+      return result.recordset;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  static async insertCabeceraParam(nombre) {
+    try {
+      const pool = await poolPromise;
+      await pool.request()
+        .input('v_nombre', sql.NVarChar, nombre)
+        .query(`INSERT INTO m_parametros (v_nombre) VALUES (@v_nombre)`);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  static async getDetallesParam(idpar) {
+    try {
+      const pool = await poolPromise;
+      const result = await pool.request()
+        .input('idpar', sql.Int, idpar)
+        .query(`SELECT * FROM m_parametros_detalle WHERE idpar = @idpar ORDER BY id DESC`);
+      return result.recordset;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  static async insertDetalleParam(data) {
+    try {
+      const pool = await poolPromise;
+      await pool.request()
+        .input('idpar', sql.Int, data.idpar)
+        .input('v_cod', sql.NVarChar, data.v_cod)
+        .input('v_nombre', sql.NVarChar, data.v_nombre)
+        .input('n_valor', sql.Decimal(18, 3), data.n_valor || 0)
+        .input('v_codsbs', sql.NVarChar, data.v_codsbs)
+        .input('v_nombrecorto', sql.NVarChar, data.v_nombrecorto)
+        .query(`
+        INSERT INTO m_parametros_detalle (idpar, v_cod, v_nombre, n_valor, v_codsbs, v_nombrecorto)
+        VALUES (@idpar, @v_cod, @v_nombre, @n_valor, @v_codsbs, @v_nombrecorto)
+      `);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  static async updateDetalleParam(data) {
+    try {
+      const pool = await poolPromise;
+      await pool.request()
+        .input('id', sql.Int, data.id)
+        .input('v_cod', sql.NVarChar, data.v_cod)
+        .input('v_nombre', sql.NVarChar, data.v_nombre)
+        .input('n_valor', sql.Decimal(18, 3), data.n_valor)
+        .input('v_codsbs', sql.NVarChar, data.v_codsbs)
+        .input('v_nombrecorto', sql.NVarChar, data.v_nombrecorto)
+        .query(`
+        UPDATE m_parametros_detalle 
+        SET v_cod=@v_cod, v_nombre=@v_nombre, n_valor=@n_valor, 
+            v_codsbs=@v_codsbs, v_nombrecorto=@v_nombrecorto
+        WHERE id=@id
+      `);
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  static async deleteDetalleParam(id) {
+    try {
+      const pool = await poolPromise;
+      await pool.request().input('id', sql.Int, id)
+        .query(`DELETE FROM m_parametros_detalle WHERE id=@id`);
+    } catch (err) {
       throw err;
     }
   }
