@@ -42,7 +42,7 @@ exports.guardar = async (req, res) => {
   try {
     const result = await EstudioModel.guardarEstudio(req.body, 1);
     res.json(result);
-  } catch (error){
+  } catch (error) {
     console.error("❌ Error en guardarEstudio:", error);
 
     // Si el error viene del driver SQL, puede tener detalles útiles:
@@ -126,6 +126,43 @@ exports.generarPDF = async (req, res) => {
     res.status(500).send("Error al generar el PDF");
   }
 };
+
+
+/*Parametros*/
+
+exports.Paramtetros = async (req, res) => {
+  const cabeceras = await TablaCot.getCabecerasParam();
+  res.render('cotizacion/parametros', { cabeceras });
+}
+
+exports.addCabecera = async (req, res) => {
+  const { nombre } = req.body;
+  await TablaCot.insertCabeceraParam(nombre);
+  const cabeceras = await TablaCot.getCabecerasParam();
+  res.json({ ok: true, cabeceras });
+}
+
+exports.getDetalles = async (req, res) => {
+  const { idpar } = req.params;
+  const detalles = await TablaCot.getDetallesParam(idpar);
+  res.json(detalles);
+}
+
+exports.addDetalle = async (req, res) => {
+  await TablaCot.insertDetalleParam(req.body);
+  res.json({ ok: true, mensaje: "Detalle agregado correctamente" });
+}
+
+exports.updateDetalle = async (req, res) => {
+  await TablaCot.updateDetalleParam(req.body);
+  res.json({ ok: true, mensaje: "Detalle actualizado correctamente" });
+}
+
+exports.deleteDetalle = async (req, res) => {
+  const { id } = req.params;
+  await TablaCot.deleteDetalleParam(id);
+  res.json({ ok: true, mensaje: "Detalle eliminado" });
+}
 
 /*cotizador Masivo*/
 

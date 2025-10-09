@@ -18,7 +18,7 @@ exports.AsignacionIntermediarios = async (req, res) => {
         console.log("🚀Asigna intermediario a la solicitud...");
         const data = req.body; // 👈 viene del cliente (el JSON del ejemplo)
         const fechaCarga = new Date().toISOString().split('T')[0];
-        //console.log("data de asesores", data);
+        console.log("data de asesores", data);
 
         if (!Array.isArray(data)) {
             return res.status(400).json({ error: "Formato inválido, debe ser un array" });
@@ -382,6 +382,7 @@ async function CrearCotizacion(fechaCarga, ruta) {
             const nroOperacion = solicitud.nroOperacion;
             const resOperacion = solResultados.filter(x => x.operacion === nroOperacion);
             const calOperacion = solicitudesCal.filter(x => x.IdoperacionSbs === nroOperacion);
+            const prestacion = await obtenerPrestacion(tabparametros, solicitud.tipoBeneficio, solicitud.afiliado.condicionInvalidez);
             //console.log("calOperacion", calOperacion[0].Modalidad);
             //console.log("calOperacion", calOperacion);
 
@@ -395,7 +396,7 @@ async function CrearCotizacion(fechaCarga, ruta) {
                 fec_cierre: solicitud.fechaCierre,
                 fec_devenge: solicitud.fechaDevengue,
                 id_afp: tabparametros.find(x => x.v_codsbs === solicitud.AFP)?.v_cod || "",
-                id_prestacion: await obtenerPrestacion(tabparametros, solicitud.tipoBeneficio, solicitud.afiliado.condicionInvalidez),
+                id_prestacion: prestacion,
                 id_tipobenef: solicitud.tipoBeneficio,
                 //id_estciv: 0,
                 //ind_clientecia: 0,
@@ -404,7 +405,7 @@ async function CrearCotizacion(fechaCarga, ruta) {
                 num_aniojubila: await obtenerEdadJub(solicitud.afiliado.fechaNacimiento),
                 //num_cargas: 0,
                 id_agente: 0,
-                num_docagente: await aisgnaIntermediario(nroOperacion, fechaCarga) || 0,
+                num_docagente: await aisgnaIntermediario(nroOperacion, fechaCarga) || "",
                 id_moneda: tabparametros.find(x => x.v_codsbs === solicitud.fondo.moneda)?.v_cod || "",
                 val_tcfondo: parseFloat(solicitud.tipoCambio),
                 mto_capitalfon: parseFloat(solicitud.fondo.capitalPension),
@@ -521,7 +522,7 @@ async function CrearCotizacion(fechaCarga, ruta) {
                 des_apepaterno: solicitud.afiliado.apellidoPaterno,
                 des_apematerno: solicitud.afiliado.apellidoMaterno,
                 fec_nacimiento: solicitud.afiliado.fechaNacimiento,
-                fec_fallecimiento: "",
+                fec_fallecimiento: prestacion == 5 ? solicitud.fechaDevengue : "",
                 fec_nachijomayor: "",
                 val_pension: benefTit.prc,
                 val_pensionleg: benefTit.prc,
