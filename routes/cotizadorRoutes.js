@@ -9,6 +9,7 @@ router.get("/estudio", cotizadorController.EstudioCot);
 router.get("/carga", cotizadorController.CargaXML);
 router.get("/descarga", cotizadorController.DescargaXML);
 router.get("/resultado", cotizadorController.ResultadosXML);
+router.get('/parametros', cotizadorController.Paramtetros);
 
 //---------------Apis-----------------------------//
 
@@ -24,10 +25,15 @@ router.get("/api/provincias/:idRegion", cotizadorController.getProvincia);
 router.get("/api/distritos/:idProvincia", cotizadorController.getDistrito);
 router.get("/api/distrito-info/:idDistrito", cotizadorController.getDistritoInfo);
 
-
-
 //cotizador Estudio
 router.post("/api/guardar", cotizadorController.guardar);
 router.delete("/api/eliminar/:id", cotizadorController.eliminar);
 router.get("/api/pdf/:id", cotizadorController.generarPDF);
+
+//Parametros
+router.post('/api/cabecera', cotizadorController.addCabecera);
+router.get('/api/detalle/:idpar', cotizadorController.getDetalles);
+router.post('/api/detalle', cotizadorController.addDetalle);
+router.put('/api/detalle', cotizadorController.updateDetalle);
+router.delete('/api/detalle/:id', cotizadorController.deleteDetalle);
 module.exports = router;
