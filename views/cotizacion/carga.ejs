@@ -166,7 +166,7 @@
     document.getElementById("btnProcesar").addEventListener("click", function () {
         agregarLog("🚀 Iniciando procesamiento...");
         startLoadingAnimation();
-        const rows = document.querySelectorAll("#tablaSolicitudes tbody tr");
+        const rows = document.querySelectorAll("#tablaSolicitudes tr");
         const result = [];
 
         rows.forEach(row => {
@@ -176,7 +176,7 @@
 
             result.push({ nroOperacion, cuspp, dniAsesor: dni });
         });
-
+        console.log(result);
         fetch("http://localhost:3000/auth/token", {
             method: "POST",
             headers: { "Content-Type": "application/json" },

@@ -1,7 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const validarCotizacion = require('../middleware/validarCotizacion');
+const fs = require('fs');
+//const validarCotizacion = require('../middleware/validarCotizacion');
 const cotizadorController = require('../controllers/backend_Interface/cotizadorController');
+const multer = require('multer');
+const path = require('path');
+
+const uploadPath = path.join(process.cwd(), 'uploads');
+if (!fs.existsSync(uploadPath)) fs.mkdirSync(uploadPath, { recursive: true });
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, uploadPath),
+  filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
+});
+
+const upload = multer({ storage });
 
 //paginas
 router.get("/estudiolista", cotizadorController.listar);
@@ -10,7 +23,8 @@ router.get("/carga", cotizadorController.CargaXML);
 router.get("/descarga", cotizadorController.DescargaXML);
 router.get("/resultado", cotizadorController.ResultadosXML);
 router.get('/parametros', cotizadorController.Paramtetros);
-
+router.get("/tasas", cotizadorController.listarTasas);
+router.get("/tasas/limites", cotizadorController.LimiteIni);
 //---------------Apis-----------------------------//
 
 //cotizador
@@ -31,9 +45,21 @@ router.delete("/api/eliminar/:id", cotizadorController.eliminar);
 router.get("/api/pdf/:id", cotizadorController.generarPDF);
 
 //Parametros
-router.post('/api/cabecera', cotizadorController.addCabecera);
+router.get('/api/cabecera', cotizadorController.Cabecera);
+router.post('/api/addcabecera', cotizadorController.addCabecera);
 router.get('/api/detalle/:idpar', cotizadorController.getDetalles);
-router.post('/api/detalle', cotizadorController.addDetalle);
-router.put('/api/detalle', cotizadorController.updateDetalle);
-router.delete('/api/detalle/:id', cotizadorController.deleteDetalle);
+router.post('/api/adddetalle', cotizadorController.addDetalle);
+router.put('/api/upddetalle/:id', cotizadorController.updateDetalle);
+router.delete('/api/deldetalle/:id', cotizadorController.deleteDetalle);
+
+//tasas
+router.get("/api/modulo/:nombre", cotizadorController.cargarModulo);
+router.get('/api/filtrar', cotizadorController.filtrar);
+router.get('/api/listar/:f_creacion', cotizadorController.listarPorFecha);
+router.post('/api/upload', upload.single('archivoXLS'), cotizadorController.uploadExcel);
+router.post('/api/actualizar', cotizadorController.actualizar);
+router.get('/api/regiones', cotizadorController.regiones);
+router.get('/api/monedas', cotizadorController.monedas);
+router.get('/api/prestaciones', cotizadorController.prestaciones);
+
 module.exports = router;

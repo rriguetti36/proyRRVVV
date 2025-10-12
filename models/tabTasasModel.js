@@ -112,6 +112,195 @@ class TasasInd {
       throw err;
     }
   }
+
+  //tasas 
+
+  static async getMtasas() {
+    try {
+      const pool = await poolPromise;
+      const result = await pool.request().query("SELECT id, v_nombre, script_path FROM m_tasas ORDER BY id");
+      return result.recordset;
+    } catch (err) {
+      console.error("Error en TasasModel.getAll:", err);
+      throw err;
+    }
+  }
+
+  static async listarFechas() {
+    const pool = await poolPromise;
+    const result = await pool.request().query(`
+        SELECT DISTINCT convert(date,CONVERT(varchar(10), f_creacion, 23)) f_creacion
+        FROM c_tasastopecalc
+        ORDER BY convert(date,CONVERT(varchar(10), f_creacion, 23)) DESC
+    `);
+    return result.recordset;
+  }
+
+  static async listarTasas(f_creacion = null) {
+    const pool = await poolPromise;
+    let query = `
+      SELECT 
+        a.id,
+        d.v_nombre AS region,
+        b.v_nombre AS moneda,
+        c.v_nombre AS prestacion,
+        a.n_valtasini,
+        a.n_valtirini,
+        a.n_valperini,
+        a.n_valtasest,
+        a.n_valtirest,
+        a.n_valperest,
+        a.n_valtasmej,
+        a.n_valtirmej,
+        a.n_valpermej
+      FROM c_tasastopecalc a
+      LEFT JOIN m_parametros_val b ON a.idmoneda = CONVERT(INT, b.v_cod) AND b.idpar = 10
+      LEFT JOIN m_parametros_val c ON a.idprestacion = c.v_cod AND c.idpar = 33
+      LEFT JOIN c_region d ON a.idmrg = d.id
+      WHERE a.i_estado = 1
+    `;
+    if (f_creacion) {
+      query += ` AND CONVERT(varchar(10), a.f_creacion, 23) = '${f_creacion}'`;
+    }
+    query += ` ORDER BY 1, 2, 3`;
+
+    const result = await pool.request().query(query);
+    return result.recordset;
+  }
+
+  static async listarFiltros() {
+    const pool = await poolPromise;
+    const regiones = (await pool.request().query(`SELECT id, v_nombre FROM c_region ORDER BY v_nombre`)).recordset;
+    const monedas = (await pool.request().query(`SELECT v_cod, v_nombre FROM m_parametros_val WHERE idpar = 10 ORDER BY v_nombre`)).recordset;
+    const prestaciones = (await pool.request().query(`SELECT v_cod, v_nombre FROM m_parametros_val WHERE idpar = 33 ORDER BY v_nombre`)).recordset;
+    return { regiones, monedas, prestaciones };
+  }
+
+  static async obtenerIdParametro(v_nombre, idpar) {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('v_nombre', sql.VarChar, v_nombre)
+      .input('idpar', sql.Int, idpar)
+      .query(`SELECT v_cod FROM m_parametros_val WHERE v_nombre = @v_nombre AND idpar = @idpar`);
+    return result.recordset.length ? result.recordset[0].v_cod : null;
+  }
+
+  static async obtenerIdRegion(v_nombre) {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('v_nombre', sql.VarChar, v_nombre)
+      .query(`SELECT id FROM c_region WHERE v_nombre=@v_nombre`);
+    return result.recordset.length ? result.recordset[0].id : null;
+  }
+
+  static async insertarDesdeExcel(registros) {
+    const pool = await poolPromise;
+
+    await pool.request()
+      .query(`
+          UPDATE c_tasastopecalc SET i_estado=0
+        `);
+
+    for (const r of registros) {
+      await pool.request()
+        .input('idmrg', sql.Int, r.idmrg)
+        .input('idmoneda', sql.Int, r.idmoneda)
+        .input('idprestacion', sql.NVarChar, r.idprestacion)
+        .input('n_valtasini', sql.Decimal(18, 3), r.n_valtasini)
+        .input('n_valtirini', sql.Decimal(18, 3), r.n_valtirini)
+        .input('n_valperini', sql.Decimal(18, 3), r.n_valperini)
+        .query(`
+          INSERT INTO c_tasastopecalc (
+            idmrg, idmoneda, idprestacion,
+            n_valtasini, n_valtasmej, n_valtasest,
+            n_valtirini, n_valtirmej, n_valtirest,
+            n_valperini, n_valpermej, n_valperest,
+            i_estado, f_creacion
+          )
+          VALUES (
+            @idmrg, @idmoneda, @idprestacion,
+            @n_valtasini, 0, 0,
+            @n_valtirini, 0, 0,
+            @n_valperini, 0, 0,
+            1, GETDATE()
+          )
+        `);
+      //return { success: true };
+    }
+  }
+
+  static async actualizarValores({ id, n_valtasini, n_valtirini, n_valperini }) {
+    try {
+      const pool = await poolPromise;
+      await pool.request()
+        .input('id', sql.Int, id)
+        .input('n_valtasini', sql.Decimal(18, 3), n_valtasini)
+        .input('n_valtirini', sql.Decimal(18, 3), n_valtirini)
+        .input('n_valperini', sql.Decimal(18, 3), n_valperini)
+        .query(`
+          UPDATE c_tasastopecalc
+          SET 
+            n_valtasini = @n_valtasini,
+            n_valtirini = @n_valtirini,
+            n_valperini = @n_valperini
+          WHERE id = @id
+        `);
+      return { success: true };
+    } catch (error) {
+      console.error('Error al actualizar tasas tope:', error);
+      throw error;
+    }
+  }
+
+  static async obtenerTasas({ region, moneda, prestacion, fecha }) {
+    try {
+      const pool = await poolPromise;
+
+      const result = await pool.request()
+        .input('region', sql.VarChar, region || null)
+        .input('moneda', sql.VarChar, moneda || null)
+        .input('prestacion', sql.VarChar, prestacion || null)
+        .input('fecha', sql.Date, fecha || null)
+        .query(`SELECT a.id,
+          d.v_nombre AS region,
+          b.v_nombre AS moneda,
+          c.v_nombre AS prestacion,
+          a.n_valtasini,
+          a.n_valtirini,
+          a.n_valperini,
+          a.n_valtasest,
+          a.n_valtirest,
+          a.n_valperest,
+          a.n_valtasmej,
+          a.n_valtirmej,
+          a.n_valpermej
+          FROM c_tasastopecalc a
+          LEFT JOIN m_parametros_val b ON a.idmoneda = CONVERT(INT, b.v_cod) AND b.idpar = 10
+          LEFT JOIN m_parametros_val c ON a.idprestacion = c.v_cod AND c.idpar = 33
+          LEFT JOIN c_region d ON a.idmrg = d.id
+          WHERE (@region IS NULL OR a.idmrg = @region)
+            AND (@moneda IS NULL OR a.idmoneda = @moneda)
+            AND (@prestacion IS NULL OR a.idprestacion = @prestacion)
+            AND (@fecha IS NULL OR CAST(a.f_creacion AS date) >= @fecha)
+          ORDER BY 1, 2, 3
+      `);
+
+      return result.recordset;
+
+    } catch (error) {
+      console.error('Error en obtenerTasas:', error);
+      throw error;
+    }
+  }
+
+  static async ultimafecha() {
+    const pool = await poolPromise;
+    const result = await pool.request().query(`
+      SELECT MAX(f_creacion) AS ultimaFecha FROM c_tasastopecalc
+    `);
+    return result.recordset;
+  }
+
 }
 module.exports = TasasInd;
 

@@ -10,6 +10,7 @@ const EstudioModel = require('../../models/estudioModel');
 const codApeseg = process.env.CODIGOCIA;
 const pdf = require("html-pdf-node");
 const ejs = require("ejs");
+const XLSX = require('xlsx');
 /*cotizador Estudio*/
 
 exports.EstudioCot = async (req, res) => {
@@ -135,6 +136,11 @@ exports.Paramtetros = async (req, res) => {
   res.render('cotizacion/parametros', { cabeceras });
 }
 
+exports.Cabecera = async (req, res) => {
+  const cabeceras = await TablaCot.getCabecerasParam();
+  res.json(cabeceras);
+}
+
 exports.addCabecera = async (req, res) => {
   const { nombre } = req.body;
   await TablaCot.insertCabeceraParam(nombre);
@@ -162,6 +168,190 @@ exports.deleteDetalle = async (req, res) => {
   const { id } = req.params;
   await TablaCot.deleteDetalleParam(id);
   res.json({ ok: true, mensaje: "Detalle eliminado" });
+}
+
+/*Tasas */
+
+exports.listarTasas = async (req, res) => {
+  try {
+    const tasas = await TablaPar.getMtasas();
+    res.render("cotizacion/tasas", { tasas });
+  } catch (error) {
+    console.error("Error en listarTasas:", error);
+    res.status(500).send("Error al obtener tasas");
+  }
+};
+
+exports.cargarModulo = async (req, res) => {
+  try {
+    const nombre = req.params.nombre.toLowerCase();
+    console.log("nombre", nombre);
+    // Mapeo del nombre de la pestaña con su vista parcial
+    const modulos = {
+      "limite tasas estudio": "limitesE",
+      "limite tasas oficial": "limitesI",
+      "limite tasas mejoras": "limitesM"
+      // agrega más si hay otros
+    };
+
+    const vista = modulos[nombre];
+    if (!vista) return res.status(404).send("Módulo no encontrado");
+
+    const paramtetros = await TablaPar.getParametros();
+    const tipoMon = paramtetros.filter(x => x.idpar === 10);
+    const tipoPen = paramtetros.filter(x => x.idpar === 33);
+    const regiones = await TablaPar.getRegiones();
+    const fechas = await TablaPar.listarFechas();
+    const tasas = await TablaPar.listarTasas();
+    const filtros = await TablaPar.listarFiltros();
+//console.log(tasas)
+
+    res.render(`cotizacion/tasas/${vista}`, { layout: false, tipoMon, tipoPen, regiones, fechas, tasas, filtros, selectedDate: null }); // sin layout
+  } catch (err) {
+    console.error("Error cargando módulo:", err);
+    res.status(500).send("Error al cargar el módulo");
+  }
+};
+
+exports.LimiteIni = async (req, res) => {
+  try {
+    const fechas = await TablaPar.listarFechas();
+    const tasas = await TablaPar.listarTasas();
+    const filtros = await TablaPar.listarFiltros();
+    res.render('cotizacion/tasas/limites', { fechas, tasas, filtros, selectedDate: null });
+  } catch (err) {
+    console.error('Error en index tasas:', err);
+    res.status(500).send('Error al cargar tasas');
+  }
+};
+
+exports.uploadExcel = async (req, res) => {
+  try {
+    if (!req.file) return res.status(400).json({ error: 'Debe subir un archivo Excel' });
+
+    const filePath = path.join(process.cwd(), 'uploads', req.file.filename);
+    const workbook = XLSX.readFile(filePath);
+    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+    const data = XLSX.utils.sheet_to_json(sheet);
+
+    const registros = [];
+
+    for (const row of data) {
+      // Suponiendo columnas: Region, Moneda, Prestacion, TasaIni, TIRIni, PERIni
+      const idmrg = await TablaPar.obtenerIdRegion(row.region);
+      const idmoneda = await TablaPar.obtenerIdParametro(row.moneda, 10);
+      const idprestacion = await TablaPar.obtenerIdParametro(row.prestacion, 33);
+
+      // console.log("Region",row.region)
+      // console.log("Moneda",row.moneda)
+      // console.log("Prestacion",row.prestacion)
+      // console.log("idmrg",idmrg)
+      // console.log("idmoneda",idmoneda)
+      // console.log("idprestacion",idprestacion)
+      if (!idmrg || !idmoneda || !idprestacion) {
+        console.warn(`Fila omitida: ${JSON.stringify(row)}`);
+        continue;
+      }
+
+      registros.push({
+        idmrg,
+        idmoneda,
+        idprestacion,
+        n_valtasini: row.n_valtasini || 0,
+        n_valtirini: row.n_valtirini || 0,
+        n_valperini: row.n_valperini || 0
+      });
+    }
+
+    await TablaPar.insertarDesdeExcel(registros);
+    fs.unlinkSync(filePath);
+
+    // Obtener la última fecha activa
+    const ultimaFecha = await TablaPar.ultimafecha(); // devuelve un DATE
+    let fechaFormateada = null;
+
+    if (ultimaFecha && ultimaFecha.length > 0) {
+      // Si es un objeto Date válido
+      console.log("ultimaFecha", ultimaFecha)
+      const fecha = ultimaFecha[0].ultimaFecha;
+      if (fecha instanceof Date && !isNaN(fecha)) {
+        fechaFormateada = fecha.toISOString().split('T')[0];
+      } else if (typeof fecha === 'string') {
+        const d = new Date(fecha);
+        if (!isNaN(d)) fechaFormateada = d.toISOString().split('T')[0];
+      }
+    }
+    // const fechaFormateada = ultimaFecha
+    //   ? new Date(ultimaFecha).toISOString().split('T')[0]  // "YYYY-MM-DD"
+    //   : null;
+    console.log(fechaFormateada);
+    res.json({ ok: true, mensaje: `Se cargaron ${registros.length} registros correctamente.`, ultimaFecha: fechaFormateada });
+  } catch (err) {
+    console.error('Error al procesar Excel:', err);
+    res.status(500).json({ error: 'Error al procesar archivo Excel' });
+  }
+};
+
+exports.listarPorFecha = async (req, res) => {
+  try {
+    const { f_creacion } = req.params;
+    const tasas = await TablaPar.listar(f_creacion);
+    res.json(tasas);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al listar tasas por fecha' });
+  }
+}
+
+exports.filtrar = async (req, res) => {
+  try {
+    const { region, moneda, prestacion, fecha } = req.query;
+    const tasas = await TablaPar.obtenerTasas({ region, moneda, prestacion, fecha });
+    res.json({ success: true, data: tasas });
+  } catch (error) {
+    console.error('Error al filtrar tasas:', error);
+    res.status(500).json({ success: false, message: 'Error interno del servidor' });
+  }
+}
+
+exports.actualizar = async (req, res) => {
+  try {
+    const result = await TablaPar.actualizarValores(req.body);
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al actualizar tasa' });
+  }
+}
+
+exports.regiones = async (req, res) => {
+  try {
+    const regiones = await TablaPar.getRegiones();
+    res.json(regiones);
+  } catch (err) {
+    console.error("❌ Error obteniendo monedas:", err);
+    res.status(500).json({ error: "Error interno al obtener monedas" });
+  }
+}
+
+exports.monedas = async (req, res) => {
+  try {
+    const paramtetros = await TablaPar.getParametros();
+    const tipoMon = paramtetros.filter(x => x.idpar === 10);
+    res.json(tipoMon);
+  } catch (err) {
+    console.error("❌ Error obteniendo monedas:", err);
+    res.status(500).json({ error: "Error interno al obtener monedas" });
+  }
+}
+
+exports.prestaciones = async (req, res) => {
+  try {
+    const paramtetros = await TablaPar.getParametros();
+    const tipoPen = paramtetros.filter(x => x.idpar === 33);
+    res.json(tipoPen);
+  } catch (err) {
+    console.error("❌ Error obteniendo monedas:", err);
+    res.status(500).json({ error: "Error interno al obtener monedas" });
+  }
 }
 
 /*cotizador Masivo*/

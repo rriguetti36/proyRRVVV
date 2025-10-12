@@ -3,6 +3,7 @@ const { sql, poolPromise } = require('../config/db');
 
 class cotizacion {
 
+  //Cotizaciones
   static async creacotizacion(data) {
     try {
       const {
@@ -591,7 +592,7 @@ class cotizacion {
       const pool = await poolPromise;
       await pool.request()
         .input('v_nombre', sql.NVarChar, nombre)
-        .query(`INSERT INTO m_parametros (v_nombre) VALUES (@v_nombre)`);
+        .query(`INSERT INTO m_parametros (nombre) VALUES (@v_nombre)`);
     } catch (err) {
       throw err;
     }
@@ -602,7 +603,7 @@ class cotizacion {
       const pool = await poolPromise;
       const result = await pool.request()
         .input('idpar', sql.Int, idpar)
-        .query(`SELECT * FROM m_parametros_detalle WHERE idpar = @idpar ORDER BY id DESC`);
+        .query(`SELECT * FROM m_parametros_val WHERE idpar = @idpar ORDER BY id`);
       return result.recordset;
     } catch (err) {
       throw err;
@@ -620,7 +621,7 @@ class cotizacion {
         .input('v_codsbs', sql.NVarChar, data.v_codsbs)
         .input('v_nombrecorto', sql.NVarChar, data.v_nombrecorto)
         .query(`
-        INSERT INTO m_parametros_detalle (idpar, v_cod, v_nombre, n_valor, v_codsbs, v_nombrecorto)
+        INSERT INTO m_parametros_val (idpar, v_cod, v_nombre, n_valor, v_codsbs, v_nombrecorto)
         VALUES (@idpar, @v_cod, @v_nombre, @n_valor, @v_codsbs, @v_nombrecorto)
       `);
     } catch (err) {
@@ -639,7 +640,7 @@ class cotizacion {
         .input('v_codsbs', sql.NVarChar, data.v_codsbs)
         .input('v_nombrecorto', sql.NVarChar, data.v_nombrecorto)
         .query(`
-        UPDATE m_parametros_detalle 
+        UPDATE m_parametros_val 
         SET v_cod=@v_cod, v_nombre=@v_nombre, n_valor=@n_valor, 
             v_codsbs=@v_codsbs, v_nombrecorto=@v_nombrecorto
         WHERE id=@id
@@ -653,12 +654,15 @@ class cotizacion {
     try {
       const pool = await poolPromise;
       await pool.request().input('id', sql.Int, id)
-        .query(`DELETE FROM m_parametros_detalle WHERE id=@id`);
+        .query(`DELETE FROM m_parametros_val WHERE id=@id`);
     } catch (err) {
       throw err;
     }
   }
 }
+
+
+
 
 module.exports = cotizacion;
 
