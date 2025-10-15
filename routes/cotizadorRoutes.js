@@ -17,14 +17,15 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 //paginas
-router.get("/estudiolista", cotizadorController.listar);
-router.get("/estudio", cotizadorController.EstudioCot);
-router.get("/carga", cotizadorController.CargaXML);
-router.get("/descarga", cotizadorController.DescargaXML);
-router.get("/resultado", cotizadorController.ResultadosXML);
-router.get('/parametros', cotizadorController.Paramtetros);
-router.get("/tasas", cotizadorController.listarTasas);
-router.get("/tasas/limites", cotizadorController.LimiteIni);
+router.get("/estudiolista", cotizadorController.listar); // render EJS
+router.get("/estudio", cotizadorController.EstudioCot); // render EJS
+router.get("/carga", cotizadorController.CargaXML); // render EJS
+router.get("/descarga", cotizadorController.DescargaXML); // render EJS
+router.get("/resultado", cotizadorController.ResultadosXML); // render EJS
+router.get('/parametros', cotizadorController.Paramtetros); // render EJS
+router.get("/tasas", cotizadorController.listarTasas); // render EJS
+router.get("/tasas/limites", cotizadorController.LimiteIni); // render EJS
+router.get('/tasas/inversiones', cotizadorController.rentabilidad); // render EJS
 //---------------Apis-----------------------------//
 
 //cotizador
@@ -61,5 +62,6 @@ router.post('/api/actualizar', cotizadorController.actualizar);
 router.get('/api/regiones', cotizadorController.regiones);
 router.get('/api/monedas', cotizadorController.monedas);
 router.get('/api/prestaciones', cotizadorController.prestaciones);
-
+router.get('/api/filtrarRentabilidad', cotizadorController.filtrarRentabiliad);
+router.post('/api/guardarRentabilidad', cotizadorController.guardarentabilidad);
 module.exports = router;

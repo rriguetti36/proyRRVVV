@@ -1,0 +1,54 @@
+<main class="container-fluid py-4">
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            📂 Mantenedor de Tasas del Sistema
+        </div>
+
+        <div class="card-body">
+            <% if (tasas && tasas.length > 0) { %>
+                <!-- Nav Tabs -->
+                <ul class="nav nav-tabs" id="tasasTabs" role="tablist">
+                    <% tasas.forEach((tasa, index) => { %>
+                        <li class="nav-item" role="presentation">
+                            <button
+                                class="nav-link <%= index === 0 ? 'active' : '' %>"
+                                id="tab-<%= tasa.id %>-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#tab-<%= tasa.id %>"
+                                data-script="<%= tasa.script_path %>"
+                                type="button"
+                                role="tab"
+                                aria-controls="tab-<%= tasa.id %>"
+                                aria-selected="<%= index === 0 ? 'true' : 'false' %>"
+                                data-nombre="<%= tasa.v_nombre %>">
+                                <%= tasa.v_nombre %>
+                            </button>
+                        </li>
+                    <% }) %>
+                </ul>
+
+                <!-- Tab Content -->
+                <div class="tab-content p-3 border border-top-0 rounded-bottom bg-light" id="tasasTabsContent">
+                    <% tasas.forEach((tasa, index) => { %>
+                        <div
+                            class="tab-pane fade <%= index === 0 ? 'show active' : '' %>"
+                            id="tab-<%= tasa.id %>"
+                            role="tabpanel"
+                            aria-labelledby="tab-<%= tasa.id %>-tab">
+                            <div class="p-3 text-center text-muted contenedor-tab">
+                                <p>🧱 Contenedor para <strong><%= tasa.v_nombre %></strong></p>
+                                <p>Aquí se cargará el módulo CRUD correspondiente...</p>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <div class="alert alert-warning">No hay tasas registradas en la base de datos.</div>
+            <% } %>
+        </div>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/tasas.js"></script>
+<script src="/js/limitesIni.js"></script>

@@ -1,0 +1,135 @@
+<main class="container-fluid mt-4">
+  <div class="row">
+    <!-- Columna izquierda: cabeceras -->
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+          <span>📋 Parámetros</span>
+
+        </div>
+
+        <div class="card-body p-2">
+
+          <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
+            <table class="table table-bordered table-hover align-middle text-center" id="tablaCabecera">
+              <thead class="table-secondary">
+                <tr>
+                  <th>ID</th>
+                  <th>Descripción</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% cabeceras.forEach(c=> { %>
+                  <tr data-id="<%= c.id %>">
+                    <td>
+                      <%= c.id %>
+                    </td>
+                    <td>
+                      <%= c.nombre %>
+                    </td>
+                  </tr>
+                  <% }) %>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-12 mt-2 d-flex justify-content-end gap-2">
+            <button id="btnNuevoParametro" class="btn btn-sm btn-primary mb-3">➕ Nuevo</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna derecha: detalle -->
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-secondary text-white">
+          🧩 Detalles del Parámetro Seleccionado
+        </div>
+
+        <div class="card-body p-2">
+          <!-- Tabla de detalle -->
+          <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+            <table class="table table-bordered table-hover align-middle text-center" id="tablaDetalle">
+              <thead class="table-dark">
+                <tr>
+                  <th>Código</th>
+                  <th>Nombre</th>
+                  <th>Valor</th>
+                  <th>Cod. SBS</th>
+                  <th>Nombre corto</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+
+
+          <!-- Formulario de detalle -->
+          <h6 class="fw-bold mt-3">📝 Registrar / Editar Detalle</h6>
+          <form id="formDetalle" class="row g-2">
+            <input type="hidden" id="idDetalle">
+            <input type="hidden" id="idpar">
+
+            <div class="col-md-2">
+              <label class="form-label">Código</label>
+              <input type="text" class="form-control" id="v_cod">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="v_nombre">
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Valor</label>
+              <input type="number" class="form-control" id="n_valor">
+            </div>
+            <div class="col-md-2">
+              <label class="form-label">Cod. SBS</label>
+              <input type="text" class="form-control" id="v_codsbs">
+            </div>
+            <div class="col-md-3">
+              <label class="form-label">Nombre corto</label>
+              <input type="text" class="form-control" id="v_nombrecorto">
+            </div>
+
+            <div class="col-12 mt-2 d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-sm btn-primary mb-3" id="btnGuardarDetalle">💾 Guardar</button>
+              <!-- <button type="button" class="btn btn-sm btn-primary mb-3" id="btnEditarDetalle">✏️ Editar</button>
+              <button type="button" class="btn btn-sm btn-primary mb-3" id="btnEliminarDetalle">🗑️ Eliminar</button> -->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modal para crear cabecera -->
+<div class="modal fade" id="modalParametro" tabindex="-1" aria-labelledby="modalParametroLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="modalParametroLabel">Nuevo Parámetro</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formCabecera">
+          <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <input type="text" class="form-control" id="v_descripcion">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="btnGuardarCabecera">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/parametros.js"></script>

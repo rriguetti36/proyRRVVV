@@ -118,7 +118,7 @@ class TasasInd {
   static async getMtasas() {
     try {
       const pool = await poolPromise;
-      const result = await pool.request().query("SELECT id, v_nombre, script_path FROM m_tasas ORDER BY id");
+      const result = await pool.request().query("SELECT id, v_nombre, script_path FROM m_tasas where i_estado=1 ORDER BY id");
       return result.recordset;
     } catch (err) {
       console.error("Error en TasasModel.getAll:", err);
@@ -126,12 +126,12 @@ class TasasInd {
     }
   }
 
-  static async listarFechas() {
+  static async listarFechas(tabla) {
     const pool = await poolPromise;
     const result = await pool.request().query(`
         SELECT DISTINCT convert(date,CONVERT(varchar(10), f_creacion, 23)) f_creacion
-        FROM c_tasastopecalc
-        ORDER BY convert(date,CONVERT(varchar(10), f_creacion, 23)) DESC
+        FROM ` + tabla +
+        ` ORDER BY convert(date,CONVERT(varchar(10), f_creacion, 23)) DESC
     `);
     return result.recordset;
   }
@@ -229,25 +229,56 @@ class TasasInd {
     }
   }
 
-  static async actualizarValores({ id, n_valtasini, n_valtirini, n_valperini }) {
+  static async actualizarValores({ id, n_valtasini, n_valtirini, n_valperini, tipo }) {
     try {
       const pool = await poolPromise;
-      await pool.request()
-        .input('id', sql.Int, id)
-        .input('n_valtasini', sql.Decimal(18, 3), n_valtasini)
-        .input('n_valtirini', sql.Decimal(18, 3), n_valtirini)
-        .input('n_valperini', sql.Decimal(18, 3), n_valperini)
-        .query(`
-          UPDATE c_tasastopecalc
-          SET 
-            n_valtasini = @n_valtasini,
-            n_valtirini = @n_valtirini,
-            n_valperini = @n_valperini
-          WHERE id = @id
-        `);
+
+      // 🔹 Mapear campos según el tipo de pestaña
+      let campos = {};
+      switch (tipo) {
+        case 'estudio':
+          campos = {
+            n_valtasest: n_valtasini,
+            n_valtirest: n_valtirini,
+            n_valpeest: n_valperini
+          };
+          break;
+        case 'mejoras':
+          campos = {
+            n_valtasmej: n_valtasini,
+            n_valtirmej: n_valtirini,
+            n_valpemej: n_valperini
+          };
+          break;
+        default:
+          // valores por defecto si es 'tope'
+          campos = {
+            n_valtasini: n_valtasini,
+            n_valtirini: n_valtirini,
+            n_valperini: n_valperini
+          };
+      }
+
+      // 🔹 Construir query dinámica
+      const query = `
+      UPDATE c_tasastopecalc
+      SET 
+        ${Object.keys(campos).map(k => `${k} = @${k}`).join(', ')}
+      WHERE id = @id
+    `;
+
+      const request = pool.request().input('id', sql.Int, id);
+
+      // 🔹 Agregar inputs dinámicos
+      for (const [key, value] of Object.entries(campos)) {
+        request.input(key, sql.Decimal(18, 3), value);
+      }
+
+      await request.query(query);
+
       return { success: true };
     } catch (error) {
-      console.error('Error al actualizar tasas tope:', error);
+      console.error('Error al actualizar tasas:', error);
       throw error;
     }
   }
@@ -301,6 +332,85 @@ class TasasInd {
     return result.recordset;
   }
 
+  static async obtenerPorFechaYMoneda(fecha, idmoneda) {
+    try {
+      const pool = await poolPromise;
+      const result = await pool.request()
+        .input('fecha', sql.Date, fecha)
+        .input('idmoneda', sql.Int, idmoneda)
+        .query(`
+          SELECT annio, n_valor
+          FROM c_tablatasainversiones
+          WHERE CONVERT(date, f_creacion) = @fecha
+          AND idmoneda = @idmoneda
+          AND activo = 1
+          ORDER BY annio
+        `);
+
+      return result.recordset;
+    } catch (error) {
+      console.error('Error al obtener tasas de inversión:', error);
+      throw error;
+    }
+  }
+
+  static async guardarRegistros(registros) {
+    const pool = await poolPromise;
+    const transaction = new sql.Transaction(pool);
+
+    try {
+      await transaction.begin();
+
+      for (const reg of registros) {
+        const { annio, idmoneda, n_valor, activo, f_creacion } = reg;
+
+        // Verificar si ya existe el registro (para hacer update o insert)
+        const existe = await new sql.Request(transaction)
+          .input('annio', sql.Int, annio)
+          .input('idmoneda', sql.Int, idmoneda)
+          .input('f_creacion', sql.Date, f_creacion)
+          .query(`
+            SELECT COUNT(*) AS existe
+            FROM c_tablatasainversiones
+            WHERE annio = @annio AND idmoneda = @idmoneda AND CONVERT(date, f_creacion) = @f_creacion
+          `);
+
+        if (existe.recordset[0].existe > 0) {
+          // 🔸 Actualiza si ya existe
+          await new sql.Request(transaction)
+            .input('annio', sql.Int, annio)
+            .input('idmoneda', sql.Int, idmoneda)
+            .input('f_creacion', sql.Date, f_creacion)
+            .input('n_valor', sql.Decimal(18, 3), n_valor)
+            .query(`
+              UPDATE c_tablatasainversiones
+              SET n_valor = @n_valor
+              WHERE annio = @annio AND idmoneda = @idmoneda AND CONVERT(date, f_creacion) = @f_creacion
+            `);
+        } else {
+          // 🔹 Inserta si no existe
+          await new sql.Request(transaction)
+            .input('annio', sql.Int, annio)
+            .input('idmoneda', sql.Int, idmoneda)
+            .input('n_valor', sql.Decimal(18, 3), n_valor)
+            .input('activo', sql.Bit, activo)
+            .input('f_creacion', sql.Date, f_creacion)
+            .query(`
+              INSERT INTO c_tablatasainversiones (annio, idmoneda, n_valor, activo, f_creacion)
+              VALUES (@annio, @idmoneda, @n_valor, @activo, @f_creacion)
+            `);
+        }
+      }
+
+      await transaction.commit();
+      return { success: true };
+
+    } catch (error) {
+      console.error('Error al guardar tasas de inversión:', error);
+      await transaction.rollback();
+      throw error;
+    }
+  }
 }
 module.exports = TasasInd;
 

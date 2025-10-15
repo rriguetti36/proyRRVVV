@@ -1,0 +1,48 @@
+<main class="container mt-4">
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label>Filtrar por fecha:</label>
+            <select id="filtroFecha" class="form-select">
+                <!-- <option value="">-- Todas --</option> -->
+                <% if (fechas && fechas.length) { %>
+                    <% fechas.forEach(f=> { %>
+                        <option value="<%= f.f_creacion ? f.f_creacion.toISOString().split('T')[0] : '' %>">
+                        <%= f.f_creacion ? f.f_creacion.toISOString().split('T')[0] : '' %>
+                        </option>
+                    <% }) %>
+                <% } %>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>Moneda</label>
+            <select id="selMoneda" class="form-select">
+                <option value="">-- Seleccionar --</option>
+                <% tipoMon.forEach(m=> { %>
+                    <option value="<%= m.v_cod %>">
+                        <%= m.v_nombre %>
+                    </option>
+                    <% }); %>
+            </select>
+        </div>
+        <!-- <div class="col-md-2 d-flex align-items-end">
+            <button id="btnAddAnio" class="btn btn btn-primary mt-3">Agregar año</button>
+        </div> -->
+        <div class="col-md-3 d-flex align-items-end">
+            <button id="btnNuevoPer" class="btn btn btn-primary mt-3">Nuevo Periodo</button>
+        </div>
+
+    </div>
+<!-- Contenedor dinámico de inputs -->
+  <div id="inputsContainer" class="mt-4">
+    <p class="text-muted text-center">Seleccione una moneda para cargar los valores.</p>
+  </div>
+
+  <div class="text-end mt-4">
+    <button id="btnGuardarRentabilidad" class="btn btn-primary">Guardar</button>
+  </div>
+    
+    
+</main>
+
+<script src="/js/tasasInversiones.js"></script>

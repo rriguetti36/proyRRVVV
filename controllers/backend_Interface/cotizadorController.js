@@ -11,8 +11,10 @@ const codApeseg = process.env.CODIGOCIA;
 const pdf = require("html-pdf-node");
 const ejs = require("ejs");
 const XLSX = require('xlsx');
-/*cotizador Estudio*/
 
+
+
+//#region cotizador Estudio
 exports.EstudioCot = async (req, res) => {
 
   const paramtetros = await TablaPar.getParametros();
@@ -127,10 +129,9 @@ exports.generarPDF = async (req, res) => {
     res.status(500).send("Error al generar el PDF");
   }
 };
+//#endregion
 
-
-/*Parametros*/
-
+//#region Mantenedor Parametros
 exports.Paramtetros = async (req, res) => {
   const cabeceras = await TablaCot.getCabecerasParam();
   res.render('cotizacion/parametros', { cabeceras });
@@ -169,9 +170,9 @@ exports.deleteDetalle = async (req, res) => {
   await TablaCot.deleteDetalleParam(id);
   res.json({ ok: true, mensaje: "Detalle eliminado" });
 }
+//#endregion
 
-/*Tasas */
-
+//#region Mantenedor Tasas
 exports.listarTasas = async (req, res) => {
   try {
     const tasas = await TablaPar.getMtasas();
@@ -184,13 +185,15 @@ exports.listarTasas = async (req, res) => {
 
 exports.cargarModulo = async (req, res) => {
   try {
+    let fechas;
     const nombre = req.params.nombre.toLowerCase();
     console.log("nombre", nombre);
     // Mapeo del nombre de la pestaña con su vista parcial
     const modulos = {
       "limite tasas estudio": "limitesE",
       "limite tasas oficial": "limitesI",
-      "limite tasas mejoras": "limitesM"
+      "limite tasas mejoras": "limitesM",
+      "tasas rentabilidad": "rentabilidad"
       // agrega más si hay otros
     };
 
@@ -201,10 +204,25 @@ exports.cargarModulo = async (req, res) => {
     const tipoMon = paramtetros.filter(x => x.idpar === 10);
     const tipoPen = paramtetros.filter(x => x.idpar === 33);
     const regiones = await TablaPar.getRegiones();
-    const fechas = await TablaPar.listarFechas();
+    
     const tasas = await TablaPar.listarTasas();
     const filtros = await TablaPar.listarFiltros();
-//console.log(tasas)
+
+    switch (vista){
+      case "limitesE":
+        fechas = await TablaPar.listarFechas("c_tasastopecalc");
+        break;
+      case "limitesI":
+        fechas = await TablaPar.listarFechas("c_tasastopecalc");
+        break;
+      case "limitesM":
+        fechas = await TablaPar.listarFechas("c_tasastopecalc");
+        break;
+      case "rentabilidad":
+        fechas = await TablaPar.listarFechas("c_tablatasainversiones");
+        break;
+    }
+    //console.log(tasas)
 
     res.render(`cotizacion/tasas/${vista}`, { layout: false, tipoMon, tipoPen, regiones, fechas, tasas, filtros, selectedDate: null }); // sin layout
   } catch (err) {
@@ -315,12 +333,14 @@ exports.filtrar = async (req, res) => {
 
 exports.actualizar = async (req, res) => {
   try {
-    const result = await TablaPar.actualizarValores(req.body);
+    const { tipo } = req.body; // recibir tipo desde el frontend
+    const result = await TablaPar.actualizarValores({ ...req.body, tipo });
     res.json(result);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Error al actualizar tasa' });
   }
-}
+};
 
 exports.regiones = async (req, res) => {
   try {
@@ -354,8 +374,41 @@ exports.prestaciones = async (req, res) => {
   }
 }
 
-/*cotizador Masivo*/
+exports.rentabilidad = async (req, res) => {
+  // renderiza EJS con años y monedas (trae monedas desde tu modelo de parametros)
+  // const monedas = await /* tu consulta de monedas, por ejemplo */ require('../models/TablaPar').getMonedas();
+  const paramtetros = await TablaPar.getParametros();
+  const monedas = paramtetros.filter(x => x.idpar === 10);
+  const años = [new Date().getFullYear(), new Date().getFullYear() + 1]; // ejemplo
+  res.render('cotizacion/tasas/rentabilidad', { monedas, años });
+};
 
+exports.filtrarRentabiliad = async (req, res) => {
+  try {
+    const { fecha, idmoneda } = req.query;
+    const result = await TablaPar.obtenerPorFechaYMoneda(fecha, idmoneda);
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json([]);
+  }
+};
+
+exports.guardarentabilidad = async (req, res) => {
+  try {
+    const { registros } = req.body;
+    await TablaPar.guardarRegistros(registros);
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false });
+  }
+};
+
+
+//#endregion
+
+//#region Cotizador Masivo
 exports.CargaXML = async (req, res) => {
   res.render("cotizacion/carga", { layout: 'layouts/layoutCT' });
 };
@@ -829,3 +882,4 @@ function formatDate(date) {
   const day = String(d.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
 }
+//#endregion

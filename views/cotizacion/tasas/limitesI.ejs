@@ -1,0 +1,100 @@
+<main class="container mt-4">
+
+  <!-- 🧱 Fila 1: Subida de archivo -->
+  <div class="row mb-3 align-items-end">
+    <!-- Input de archivo -->
+    <div class="col-md-6">
+      <label for="archivoXLS" class="form-label">Subir archivo XLS:</label>
+      <input type="file" id="archivoXLS" name="archivoXLS" class="form-control" accept=".xls,.xlsx" />
+    </div>
+
+    <!-- Botón de carga -->
+    <div class="col-md-2">
+      <button id="btnUpload" class="btn btn-sm btn-primary w-100">
+        <i class="bi bi-upload"></i> Cargar
+      </button>
+    </div>
+  </div>
+
+  <!-- 🧱 Fila 2: Filtros -->
+  <div class="row mb-3">
+    <div class="col-md-3">
+      <label>Filtrar por fecha:</label>
+      <select id="filtroFecha" class="form-select">
+        <!-- <option value="">-- Todas --</option> -->
+        <% if (fechas && fechas.length) { %>
+          <% fechas.forEach(f=> { %>
+            <option value="<%= f.f_creacion ? f.f_creacion.toISOString().split('T')[0] : '' %>">
+              <%= f.f_creacion ? f.f_creacion.toISOString().split('T')[0] : '' %>
+            </option>
+            <% }) %>
+              <% } %>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label>Región</label>
+      <select id="region" class="form-select">
+        <option value="">-- Seleccionar --</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label>Moneda</label>
+      <select id="moneda" class="form-select">
+        <option value="">-- Seleccionar --</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label>Prestación</label>
+      <select id="prestacion" class="form-select">
+        <option value="">-- Seleccionar --</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- 🧱 Fila 3: Tabla -->
+  <div class="row">
+    <div class="table-responsive" style="max-height: 350px; overflow-y: auto;">
+      <table class="table table-bordered table-hover align-middle text-center" id="tablaTasas">
+        <thead>
+          <tr>
+            <th>Región</th>
+            <th>Moneda</th>
+            <th>Prestación</th>
+            <th>Tasa</th>
+            <th>TIR</th>
+            <th>PER</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (tasas && tasas.length) { %>
+            <% tasas.forEach(t=> { %>
+              <tr data-id="<%= t.id %>">
+                <td>
+                  <%= t.region %>
+                </td>
+                <td>
+                  <%= t.moneda %>
+                </td>
+                <td>
+                  <%= t.prestacion %>
+                </td>
+                <td><input class="form-control form-control-sm valtas" type="number" value="<%= t.n_valtasini %>"></td>
+                <td><input class="form-control form-control-sm valtir" type="number" value="<%= t.n_valtirini %>"></td>
+                <td><input class="form-control form-control-sm valper" type="number" value="<%= t.n_valperini %>"></td>
+                <td><button class="btn btn-success btn-sm btnGuardar">💾</button></td>
+              </tr>
+              <% }) %>
+                <% } else { %>
+                  <tr>
+                    <td colspan="7" class="text-center text-muted">Sin datos disponibles</td>
+                  </tr>
+                  <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
