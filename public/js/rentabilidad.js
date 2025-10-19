@@ -174,6 +174,7 @@ function initRentabilidad(root) {
     if (data.success) Swal.fire("✅", "Dato actualizado correctamente", "success");
     else Swal.fire("❌", data.error || "Error desconocido", "error");
   });
+  //
 }
 
 

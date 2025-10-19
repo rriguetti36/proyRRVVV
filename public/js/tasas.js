@@ -68,3 +68,4 @@ function runInit(nombrejs, contenedor) {
   const initFn = window[`init${nombrejs.charAt(0).toUpperCase() + nombrejs.slice(1)}`];
   if (typeof initFn === "function") initFn(contenedor);
 }
+//
