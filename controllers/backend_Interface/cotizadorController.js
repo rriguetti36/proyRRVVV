@@ -12,7 +12,81 @@ const pdf = require("html-pdf-node");
 const ejs = require("ejs");
 const XLSX = require('xlsx');
 
+exports.cargarModulo = async (req, res) => {
+  try {
+    let fechas;
+    let registros
+    const nombre = req.params.nombre.toLowerCase();
+    console.log("nombre", nombre);
+    // Mapeo del nombre de la pestaña con su vista parcial
+    const modulos = {
+      "limite tasas estudio": "tasas/limitesE",
+      "limite tasas oficial": "tasas/limitesI",
+      "limite tasas mejoras": "tasas/limitesM",
+      "tasas rentabilidad": "tasas/rentabilidad",
+      "tasas venta promedio": "tasas/promedio",
+      "curva de tasas": "tasas/curvatasas",
+      "parametros de gastos": "valores/gastos",
+      "ipc mensual": "valores/ipc",
+      "tipo cambio": "valores/tipocambio",
+      "tipo cambio mensual": "valores/tipocambiom",
+      "gastos de sepelio": "valores/sepelio",
+      // agrega más si hay otros
+    };
 
+    const vista = modulos[nombre];
+    if (!vista) return res.status(404).send("Módulo no encontrado");
+
+    const paramtetros = await TablaPar.getParametros();
+    const tipoMon = paramtetros.filter(x => x.idpar === 10);
+    const tipoPen = paramtetros.filter(x => x.idpar === 33);
+    const regiones = await TablaPar.getRegiones();
+
+    const tasas = await TablaPar.listarTasas();
+    const filtros = await TablaPar.listarFiltros();
+    const periodos = await TablaPar.listaPeriodosVtaProm();
+
+    switch (vista) {
+      case "tasas/limitesE":
+        fechas = await TablaPar.listarFechas("c_tasastopecalc");
+        break;
+      case "tasas/limitesI":
+        fechas = await TablaPar.listarFechas("c_tasastopecalc");
+        break;
+      case "tasas/limitesM":
+        fechas = await TablaPar.listarFechas("c_tasastopecalc");
+        break;
+      case "tasas/rentabilidad":
+        fechas = await TablaPar.listarFechas("c_tablatasainversiones");
+        break;
+      case "tasas/promedio":
+        fechas = await TablaPar.listarFechas("c_tablatasainversiones");
+        break;
+      case "valores/gastos":
+        registros = await TablaPar.getMValoresOtros();
+        console.log(registros);
+        fechas = await TablaPar.listarFechas("m_tablagasto");
+        break;
+    }
+    
+    //console.log(tasas)
+
+    res.render(`cotizacion/${vista}`, { layout: false, 
+      tipoMon, 
+      tipoPen, 
+      regiones, 
+      fechas, 
+      tasas, 
+      filtros, 
+      periodos, 
+      selectedDate: null,
+      registros 
+    }); // sin layout
+  } catch (err) {
+    console.error("Error cargando módulo:", err);
+    res.status(500).send("Error al cargar el módulo");
+  }
+};
 
 //#region cotizador Estudio
 exports.EstudioCot = async (req, res) => {
@@ -183,54 +257,6 @@ exports.listarTasas = async (req, res) => {
   }
 };
 
-exports.cargarModulo = async (req, res) => {
-  try {
-    let fechas;
-    const nombre = req.params.nombre.toLowerCase();
-    console.log("nombre", nombre);
-    // Mapeo del nombre de la pestaña con su vista parcial
-    const modulos = {
-      "limite tasas estudio": "limitesE",
-      "limite tasas oficial": "limitesI",
-      "limite tasas mejoras": "limitesM",
-      "tasas rentabilidad": "rentabilidad"
-      // agrega más si hay otros
-    };
-
-    const vista = modulos[nombre];
-    if (!vista) return res.status(404).send("Módulo no encontrado");
-
-    const paramtetros = await TablaPar.getParametros();
-    const tipoMon = paramtetros.filter(x => x.idpar === 10);
-    const tipoPen = paramtetros.filter(x => x.idpar === 33);
-    const regiones = await TablaPar.getRegiones();
-    
-    const tasas = await TablaPar.listarTasas();
-    const filtros = await TablaPar.listarFiltros();
-
-    switch (vista){
-      case "limitesE":
-        fechas = await TablaPar.listarFechas("c_tasastopecalc");
-        break;
-      case "limitesI":
-        fechas = await TablaPar.listarFechas("c_tasastopecalc");
-        break;
-      case "limitesM":
-        fechas = await TablaPar.listarFechas("c_tasastopecalc");
-        break;
-      case "rentabilidad":
-        fechas = await TablaPar.listarFechas("c_tablatasainversiones");
-        break;
-    }
-    //console.log(tasas)
-
-    res.render(`cotizacion/tasas/${vista}`, { layout: false, tipoMon, tipoPen, regiones, fechas, tasas, filtros, selectedDate: null }); // sin layout
-  } catch (err) {
-    console.error("Error cargando módulo:", err);
-    res.status(500).send("Error al cargar el módulo");
-  }
-};
-
 exports.LimiteIni = async (req, res) => {
   try {
     const fechas = await TablaPar.listarFechas();
@@ -374,6 +400,7 @@ exports.prestaciones = async (req, res) => {
   }
 }
 
+//Rentabilidad
 exports.rentabilidad = async (req, res) => {
   // renderiza EJS con años y monedas (trae monedas desde tu modelo de parametros)
   // const monedas = await /* tu consulta de monedas, por ejemplo */ require('../models/TablaPar').getMonedas();
@@ -405,7 +432,212 @@ exports.guardarentabilidad = async (req, res) => {
   }
 };
 
+//ventas promedio
+exports.obtenervalorvtapromedio = async (req, res) => {
+  try {
+    const { v_periodo, id_moneda, id_prestacion } = req.query;
 
+    const valor = await TablaPar.obtenerValorVtaProm({
+      v_periodo,
+      id_moneda,
+      id_prestacion
+    });
+
+    res.json(valor || {});
+  } catch (error) {
+    console.error('Error al obtener valor:', error);
+    res.status(500).json({ error: 'Error al obtener valor' });
+  }
+};
+
+exports.guardarvtapromedio = async (req, res) => {
+  try {
+    const { v_periodo, id_moneda, id_prestacion, n_valor } = req.body;
+
+    await TablaPar.guardarRegistrosVtaProm({
+      v_periodo,
+      id_moneda,
+      id_prestacion,
+      n_valor
+    });
+    return res.json({ success: true, message: 'Valor registrado correctamente.' });
+
+  } catch (error) {
+    console.error('Error al guardar venta promedio:', error);
+    res.status(500).json({ error: 'Error al guardar valor' });
+  }
+};
+
+//curva tasas
+exports.listPeriodosCurva = async (req, res) => {
+  try {
+    const rows = await TablaPar.getListaPeriodoCurva();
+    // normalizar a yyyy-mm-dd
+    const periodos = rows.map(r => {
+      const d = new Date(r.periodo);
+      return { periodo: d.toISOString().slice(0, 10) };
+    });
+    res.json(periodos);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json([]);
+  }
+};
+
+exports.filtrarByFechaCurva = async (req, res) => {
+  try {
+    const fecha = req.query.fecha;
+    if (!fecha) return res.status(400).json([]);
+    const rows = await TablaPar.getPivotByFechaCurva(fecha);
+    res.json(rows);
+  } catch (err) {
+    console.error('Error filtrarByFecha', err);
+    res.status(500).json([]);
+  }
+};
+
+exports.uploadExcelCurva = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: "No se subió ningún archivo" });
+    }
+    const filePath = path.join(process.cwd(), 'uploads', req.file.filename);
+    const workbook = XLSX.readFile(filePath);
+    const sheetName = workbook.SheetNames[0];
+    const sheet = workbook.Sheets[sheetName];
+    const data = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+    console.log("data", data[0]?.[2])
+    // 🔹 Leer la fecha de vigencia en la celda C1
+    const fechaVigenciaRaw = data[0]?.[2];
+    let fechaVigenciaE;
+    console.log("fechaVigenciaRaw", fechaVigenciaRaw)
+    if (typeof fechaVigenciaRaw === 'number') {
+      fechaVigenciaE = excelDateToJSDate(fechaVigenciaRaw);
+    } else if (typeof fechaVigenciaRaw === 'string') {
+      fechaVigenciaE = new Date(fechaVigenciaRaw);
+    }
+    console.log("fechaVigenciaE", fechaVigenciaE)
+    if (!fechaVigenciaE) {
+      throw new Error("No se encontró la fecha de vigencia (celda C1)");
+    }
+
+    const fechaFormateada = fechaVigenciaE.toISOString().split('T')[0];
+    console.log('Fecha vigencia formateada:', fechaFormateada);
+
+    // Convertir fecha Excel: "1/10/2025"
+    const partes = fechaFormateada.split("/");
+    const fechaVigencia = new Date(
+      parseInt(partes[2], 10),
+      parseInt(partes[1], 10) - 1,
+      parseInt(partes[0], 10)
+    );
+
+    const fechaHoy = new Date();
+    const fechaISO = fechaHoy.toISOString().slice(0, 10);
+
+    // 🔹 Parsear las filas de datos (desde la fila 4)
+    const registros = [];
+    for (let i = 3; i < data.length; i++) {
+      const fila = data[i];
+      if (!fila || fila.length < 4) continue;
+
+      const mes = parseInt(fila[0]);
+      if (isNaN(mes)) continue;
+
+      const valores = [
+        { idmoneda: 1, valor: parseFloat((fila[1] + "").replace("%", "")) * 100 },
+        { idmoneda: 2, valor: parseFloat((fila[2] + "").replace("%", "")) * 100 },
+        { idmoneda: 4, valor: parseFloat((fila[3] + "").replace("%", "")) * 100 },
+      ];
+
+      for (const v of valores) {
+        if (!isNaN(v.valor)) {
+          registros.push({
+            mes,
+            idmoneda: v.idmoneda,
+            n_valor: v.valor,
+            activo: 1,
+            f_creacion: fechaISO,
+          });
+        }
+      }
+    }
+
+    if (registros.length === 0) {
+      throw new Error("No se encontraron datos válidos en el archivo Excel");
+    }
+
+    // 🔹 Guardar en base de datos usando tu modelo
+    const result = await TablaPar.insertRegistrosCurva(registros, {
+      fecha: fechaISO,
+      reemplazar: true,
+    });
+
+    fs.unlinkSync(filePath);
+
+    res.json({
+      ok: true,
+      message: `Se cargaron ${registros.length} registros correctamente`,
+      result,
+    });
+  } catch (error) {
+    console.error("Error al procesar Excel:", error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+function excelDateToJSDate(serial) {
+  // Excel cuenta desde 1900-01-01 (día 1)
+  const utc_days = Math.floor(serial - 25569);
+  const date = new Date(utc_days * 86400 * 1000);
+  return date;
+}
+
+
+//#endregion
+
+//#region Mantenedor Valores 
+exports.listarValores = async (req, res) => {
+  try {
+    const valores = await TablaPar.getMValores();
+    res.render("cotizacion/valores", { valores });
+  } catch (error) {
+    console.error("Error en listarTasas:", error);
+    res.status(500).send("Error al obtener tasas");
+  }
+};
+
+exports.obtenerPorPeriodoYMonedaGastos = async (req, res) => {
+  try {
+    const { fecha, idmoneda } = req.query;
+    const data = await TablaPar.listarPorPeriodoYMoneda(fecha, idmoneda);
+    res.json({ ok: true, data });
+  } catch (error) {
+    console.error('Error al obtener gasto:', error);
+    res.status(500).json({ ok: false, error: 'Error obteniendo datos' });
+  }
+};
+
+exports.guardarGastos = async (req, res) => {
+  try {
+    const result = await TablaPar.guardarRegistroG(req.body);
+    res.json(result);
+  } catch (error) {
+    console.error('Error al guardar gasto:', error);
+    res.status(500).json({ ok: false, error: 'Error al guardar' });
+  }
+};
+
+exports.guardarGastosb = async (req, res) => {
+  try {
+    const result = await TablaPar.guardarRegistroGb(req.body);
+    res.json(result);
+  } catch (error) {
+    console.error('Error al guardar gasto:', error);
+    res.status(500).json({ ok: false, error: 'Error al guardar' });
+  }
+};
 //#endregion
 
 //#region Cotizador Masivo

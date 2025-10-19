@@ -75,11 +75,16 @@ function initRentabilidad(root) {
 
   // Render dinámico de inputs
   function renderInputsNuevo() {
-    
+
     //console.log('selectedIndex:', filtroFecha.selectedIndex);
     //console.log('text:', filtroFecha.options[filtroFecha.selectedIndex].text);
     //console.log('value:', filtroFecha.value);
 
+    const opciones = filtroFecha.querySelectorAll('option');
+    if (opciones.length === 0) {
+      Swal.fire('⚠️', 'No hay periodos registrados para generar el siguiente.', 'Alerta');
+      return;
+    }
     const fechaOpt = filtroFecha.value
     const hoy = new Date();
     const fechahoy = hoy.toISOString().split('T')[0];
@@ -89,6 +94,17 @@ function initRentabilidad(root) {
       return;
     }
 
+    // Evita duplicados
+    const existe = Array.from(opciones).some(opt => opt.value === fechahoy);
+    if (!existe) {
+      const nuevaOption = document.createElement('option');
+      nuevaOption.value = fechahoy;
+      nuevaOption.textContent = fechahoy;
+
+      // Insertar al inicio para mantener orden descendente
+      filtroFecha.insertBefore(nuevaOption, opciones[0]);
+    }
+    filtroFecha.value = fechahoy;
     ini = 1;
     container.innerHTML = '';
     ///agregarInput(1, ''); // crear uno por defecto
@@ -98,6 +114,7 @@ function initRentabilidad(root) {
     btnAdd.textContent = 'Agregar año';
     btnAdd.addEventListener('click', () => agregarInput('', ''));
     container.appendChild(btnAdd);
+    Swal.fire('🗓️', `Nuevo periodo generado desde el : ${fechahoy}`, 'info');
     return;
   }
 

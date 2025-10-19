@@ -24,8 +24,9 @@ router.get("/descarga", cotizadorController.DescargaXML); // render EJS
 router.get("/resultado", cotizadorController.ResultadosXML); // render EJS
 router.get('/parametros', cotizadorController.Paramtetros); // render EJS
 router.get("/tasas", cotizadorController.listarTasas); // render EJS
-router.get("/tasas/limites", cotizadorController.LimiteIni); // render EJS
-router.get('/tasas/inversiones', cotizadorController.rentabilidad); // render EJS
+router.get("/valores", cotizadorController.listarValores); // render EJS
+// router.get("/tasas/limites", cotizadorController.LimiteIni); // render EJS
+// router.get('/tasas/inversiones', cotizadorController.rentabilidad); // render EJS
 //---------------Apis-----------------------------//
 
 //cotizador
@@ -64,4 +65,15 @@ router.get('/api/monedas', cotizadorController.monedas);
 router.get('/api/prestaciones', cotizadorController.prestaciones);
 router.get('/api/filtrarRentabilidad', cotizadorController.filtrarRentabiliad);
 router.post('/api/guardarRentabilidad', cotizadorController.guardarentabilidad);
+router.get('/api/valorpromedio', cotizadorController.obtenervalorvtapromedio);
+router.post('/api/guardarpromedio', cotizadorController.guardarvtapromedio);
+router.get('/api/periodoscurva', cotizadorController.listPeriodosCurva);
+router.get('/api/filtrarcurva', cotizadorController.filtrarByFechaCurva); // ?fecha=YYYY-MM-DD
+router.post('/api/uploadcurva', upload.single('archivoExcel'), cotizadorController.uploadExcelCurva); // multer inside controller or middleware
+
+//valores
+router.get('/api/filtrargastos', cotizadorController.obtenerPorPeriodoYMonedaGastos);
+router.post('/api/guardargastos', cotizadorController.guardarGastos);
+router.post('/api/guardargastosb', cotizadorController.guardarGastosb);
+
 module.exports = router;

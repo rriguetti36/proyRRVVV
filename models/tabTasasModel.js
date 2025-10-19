@@ -131,7 +131,7 @@ class TasasInd {
     const result = await pool.request().query(`
         SELECT DISTINCT convert(date,CONVERT(varchar(10), f_creacion, 23)) f_creacion
         FROM ` + tabla +
-        ` ORDER BY convert(date,CONVERT(varchar(10), f_creacion, 23)) DESC
+      ` ORDER BY convert(date,CONVERT(varchar(10), f_creacion, 23)) DESC
     `);
     return result.recordset;
   }
@@ -411,170 +411,264 @@ class TasasInd {
       throw error;
     }
   }
+
+  static async listaPeriodosVtaProm() {
+    const pool = await poolPromise;
+    const result = await pool.request().query(`
+      SELECT DISTINCT v_periodo FROM c_tablatasaventapromedio ORDER BY v_periodo DESC
+    `);
+    return result.recordset;
+  }
+
+  static async obtenerValorVtaProm({ v_periodo, id_moneda, id_prestacion }) {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('vperiodo', sql.Date, v_periodo)
+      .input('idmoneda', sql.Int, id_moneda)
+      .input('idprestacion', sql.NVarChar, id_prestacion)
+      .query(`
+        SELECT n_valor 
+        FROM c_tablatasaventapromedio
+        WHERE v_periodo = @vperiodo 
+          AND idmoneda = @idmoneda 
+          AND idprestacion = @idprestacion
+      `);
+    return result.recordset[0];
+  }
+
+  static async guardarRegistrosVtaProm(reg) {
+    const pool = await poolPromise;
+    const transaction = new sql.Transaction(pool);
+
+    try {
+      await transaction.begin();
+      console.log(reg)
+
+      const { v_periodo, id_moneda, id_prestacion, n_valor } = reg;
+
+      // Verificar si ya existe el registro (para hacer update o insert)
+      const existe = await new sql.Request(transaction)
+        .input('vperiodo', sql.Date, v_periodo)
+        .input('idmoneda', sql.Int, id_moneda)
+        .input('idprestacion', sql.NVarChar, id_prestacion)
+        .query(`
+                  SELECT COUNT(*) AS existe
+                  FROM c_tablatasaventapromedio
+                  WHERE v_periodo = @vperiodo 
+                  AND idmoneda = @idmoneda 
+                  AND idprestacion = @idprestacion
+                `);
+
+      if (existe.recordset[0].existe > 0) {
+        // 🔸 Actualiza si ya existe
+        await new sql.Request(transaction)
+          .input('vperiodo', sql.Date, v_periodo)
+          .input('idmoneda', sql.Int, id_moneda)
+          .input('idprestacion', sql.NVarChar, id_prestacion)
+          .input('nvalor', sql.Decimal(18, 3), n_valor)
+          .query(`
+                    UPDATE c_tablatasaventapromedio
+                    SET n_valor = @nvalor
+                    WHERE v_periodo = @vperiodo 
+                    AND idmoneda = @idmoneda 
+                    AND idprestacion = @idprestacion
+                  `);
+      } else {
+        // 🔹 Inserta si no existe
+        await new sql.Request(transaction)
+          .input('vperiodo', sql.Date, v_periodo)
+          .input('idmoneda', sql.Int, id_moneda)
+          .input('idprestacion', sql.NVarChar, id_prestacion)
+          .input('nvalor', sql.Decimal(18, 3), n_valor)
+          .query(`
+                    INSERT INTO c_tablatasaventapromedio (v_periodo, idmoneda, idprestacion, n_valor)
+                    VALUES (@vperiodo, @idmoneda, @idprestacion, @nvalor)
+                  `);
+      }
+
+
+      await transaction.commit();
+      return { success: true };
+
+    } catch (error) {
+      console.error('Error al guardar tasas de inversión:', error);
+      await transaction.rollback();
+      throw error;
+    }
+  }
+
+  static async getListaPeriodoCurva() {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .query(`SELECT DISTINCT CONVERT(date, f_creacion) AS periodo FROM c_tablacurvacuponcero ORDER BY 1 DESC`);
+    return result.recordset;
+  }
+
+  static async getPivotByFechaCurva(fecha) {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('fecha', sql.Date, fecha)
+      .query(`
+        SELECT 
+          mes,
+          MAX(CASE WHEN idmoneda=1 THEN n_valor ELSE 0 END) AS Solesi,
+          MAX(CASE WHEN idmoneda=2 THEN n_valor ELSE 0 END) AS Solesa,
+          MAX(CASE WHEN idmoneda=3 THEN n_valor ELSE 0 END) AS Dolaresi,
+          MAX(CASE WHEN idmoneda=4 THEN n_valor ELSE 0 END) AS Dolaresa
+        FROM c_tablacurvacuponcero
+        WHERE CONVERT(date, f_creacion) = @fecha
+        GROUP BY mes
+        ORDER BY mes
+      `);
+    return result.recordset;
+  }
+
+  static async insertRegistrosCurva(registros, options = {}) {
+    const pool = await poolPromise;
+    const transaction = pool.transaction();
+    try {
+      await transaction.begin();
+
+      //Deshabilita las fechas anteriores
+      await transaction.request()
+        .query(`UPDATE c_tablacurvacuponcero SET activo=0`);
+
+      //Elimina si la fecha registada es la misma
+      const fecha = options.fecha;
+      if (options.reemplazar) {
+        await transaction.request()
+          .input('fecha', sql.Date, fecha)
+          .query(`DELETE FROM c_tablacurvacuponcero WHERE CONVERT(date, f_creacion) = @fecha`);
+      }
+
+      // Insert bulk: mejor usar TVP o múltiples inserts; aquí iteramos con request por simplicidad
+      for (const r of registros) {
+        await transaction.request()
+          .input('mes', sql.Int, r.mes)
+          .input('idmoneda', sql.Int, r.idmoneda)
+          .input('n_valor', sql.Decimal(18, 6), r.n_valor)
+          .input('activo', sql.Bit, r.activo)
+          .input('fecha', sql.Date, r.f_creacion)
+          .query(`
+            INSERT INTO c_tablacurvacuponcero (mes, idmoneda, n_valor, activo, f_creacion)
+            VALUES (@mes, @idmoneda, @n_valor, @activo, @fecha)
+          `);
+      }
+
+      await transaction.commit();
+      return { ok: true };
+    } catch (error) {
+      console.error('Error al guardar tasas de inversión:', error);
+      await transaction.rollback();
+      throw error;
+    }
+  }
+
+  //Valores
+  static async getMValores() {
+    try {
+      const pool = await poolPromise;
+      const result = await pool.request().query("SELECT id, v_nombre, script_path FROM m_valores where i_estado=1 ORDER BY id");
+      return result.recordset;
+    } catch (err) {
+      console.error("Error en TasasModel.getAll:", err);
+      throw err;
+    }
+  }
+
+  static async listarPorPeriodoYMoneda(f_creacion, id_moneda) {
+    const pool = await poolPromise;
+    const res = await pool.request()
+      .input('fecha', sql.Date, f_creacion)
+      .input('idmoneda', sql.Int, id_moneda)
+      .query(`
+        SELECT * FROM m_tablagasto
+        WHERE CONVERT(date, f_creacion) = @fecha AND id_moneda = @idmoneda
+      `);
+    return res.recordset[0];
+  }
+
+  static async guardarRegistroG(data) {
+    const pool = await poolPromise;
+    const { id_moneda, f_creacion, n_gastoadm, n_gastoemi, n_gastoctrsup, n_endeudamiento, n_imprenta } = data;
+
+    // Verificar si ya existe un registro
+    const check = await pool.request()
+      .input('fecha', sql.Date, f_creacion)
+      .input('idmoneda', sql.Int, id_moneda)
+      .query(`SELECT id FROM m_tablagasto WHERE CONVERT(date, f_creacion) = @fecha AND id_moneda = @idmoneda`);
+
+    if (check.recordset.length) {
+      // Actualiza
+      const id = check.recordset[0].id;
+      await pool.request()
+        .input('id', sql.Int, id)
+        .input('n_gastoadm', sql.Decimal(18, 2), n_gastoadm)
+        .input('n_gastoemi', sql.Decimal(18, 2), n_gastoemi)
+        .input('n_gastoctrsup', sql.Decimal(5, 2), n_gastoctrsup)
+        .input('n_endeudamiento', sql.Decimal(5, 2), n_endeudamiento)
+        .input('n_imprenta', sql.Decimal(5, 2), n_imprenta)
+        .query(`
+          UPDATE m_tablagasto SET
+          n_gastoadm=@n_gastoadm,
+          n_gastoemi=@n_gastoemi,
+          n_gastoctrsup=@n_gastoctrsup,
+          n_endeudamiento=@n_endeudamiento,
+          n_imprenta=@n_imprenta
+          WHERE id=@id
+        `);
+      return { ok: true, message: 'Registro actualizado correctamente' };
+    } else {
+      // Inserta nuevo
+      await pool.request()
+        .input('id_moneda', sql.Int, id_moneda)
+        .input('f_creacion', sql.Date, f_creacion)
+        .input('n_gastoadm', sql.Decimal(18, 2), n_gastoadm)
+        .input('n_gastoemi', sql.Decimal(18, 2), n_gastoemi)
+        .input('n_gastoctrsup', sql.Decimal(5, 2), n_gastoctrsup)
+        .input('n_endeudamiento', sql.Decimal(5, 2), n_endeudamiento)
+        .input('n_imprenta', sql.Decimal(5, 2), n_imprenta)
+        .input('i_activo', sql.Int, 1)
+        .query(`
+          INSERT INTO m_tablagasto (id_moneda, f_creacion, n_gastoadm, n_gastoemi, n_gastoctrsup, n_endeudamiento, n_imprenta, i_activo)
+          VALUES (@id_moneda, @f_creacion, @n_gastoadm, @n_gastoemi, @n_gastoctrsup, @n_endeudamiento, @n_imprenta, @i_activo)
+        `);
+      return { ok: true, message: 'Registro guardado correctamente' };
+    }
+  }
+
+  static async getMValoresOtros() {
+    try {
+      const pool = await poolPromise;
+      const result = await pool.request().query("SELECT id_tipren, n_prccomsup, n_prcfaclab FROM m_tablagasto_b");
+      return result.recordset;
+    } catch (err) {
+      console.error("Error en TasasModel.getAll:", err);
+      throw err;
+    }
+  }
+
+  static async guardarRegistroGb(data) {
+    const pool = await poolPromise;
+    const { n_comsupi, n_comsupd, n_faclabi, n_faclabd } = data;
+    
+    // Actualizar Inmediatas (id_tipren = 1)
+    await pool.request().query`
+      UPDATE m_tablagasto_b
+      SET n_prccomsup = ${n_comsupi}, n_prcfaclab = ${n_faclabi}
+      WHERE id_tipren = 1
+    `;
+
+    // Actualizar Diferidas (id_tipren = 2)
+    await pool.request().query`
+      UPDATE m_tablagasto_b
+      SET n_prccomsup = ${n_comsupd}, n_prcfaclab = ${n_faclabd}
+      WHERE id_tipren = 2
+    `;
+
+    return { ok: true, message: 'Registro guardado correctamente' };
+  }
 }
+
 module.exports = TasasInd;
 
-//configuraion MYSQL
-/* const db = require('../config/db');  // Configuración de la base de datos
-
-class TasasInd {
-  static async getTasaTasaIPC() {
-    console.log("entra a consultar")
-    const query = 'select * from c_tablatasaipc';
-    try {
-      const [results] = await db.query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getTasaMercado() {
-    const query = 'select * from c_tablatasamercado';
-    try {
-      const [results] = await db.query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getTasaVentaPromedio() {
-    const query = 'select * from c_tablatasaventapromedio';
-    try {
-      const [results] = await db.query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getTasaInversiones() {
-    const query = 'select * from c_tablatasainversiones';
-    try {
-      const [results] = await db.query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getTasaReInversiones() {
-    const query = 'select * from c_tablatasareinversiones';
-    try {
-      const [results] = await db.query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getTasaCurvaCuponCero() {
-    const query = 'select * from c_tablacurvacuponcero';
-    try {
-      const [results] = await db.query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getParametros() {
-    const query = 'select * from m_parametros_val';
-    try {
-      const [results] = await db.query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getRegionCIC() {
-    const query = 'select * from c_regioncic';
-    try {
-      const [results] = await db.query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getTopesTasas() {
-    const query = 'select * from c_tasastopecalc';
-    try {
-      const [results] = await db.query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getMatrisConfig() {
-    const query = 'select * from m_configuracionmatriz';
-    try {
-      const [results] = await db.query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getGastosSepelio() {
-    const query = 'select * from c_tablasasepelio';
-    try {
-      const [results] = await db.query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getGastosAdm() {
-    const query = 'select * from c_tablasagastos';
-    try {
-      const [results] = await db.query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  //   static async getById(id) {
-  //     try {
-  //       const [results] = await db.query("SELECT * FROM productos WHERE id = ?", [id]);
-  //       return results[0];
-  //     } catch (err) {
-  //       throw err;
-  //     }
-  //   }
-
-  //   static async create(producto) {
-  //     try {
-  //       const [results] = await db.query("INSERT INTO productos SET ?", producto);
-  //       return results;
-  //     } catch (err) {
-  //       throw err;
-  //     }
-  //   }
-
-  //   static async update(id, producto) {
-  //     try {
-  //       const [results] = await db.query("UPDATE productos SET ? WHERE id = ?", [producto, id]);
-  //       return results;
-  //     } catch (err) {
-  //       throw err;
-  //     }
-  //   }
-
-  //   static async delete(id) {
-  //     try {
-  //       const [results] = await db.query("DELETE FROM productos WHERE id = ?", [id]);
-  //       return results;
-  //     } catch (err) {
-  //       throw err;
-  //     }
-  //   }
-}
-
-module.exports = TasasInd;
- */

@@ -1,0 +1,44 @@
+<main class="container mt-4">
+    <div class="row">
+        <div class="row mb-3 align-items-end">
+            <div class="col-md-6">
+                <label class="form-label">Subir Archivo Excel</label>
+                <input type="file" id="archivoExcel" name="archivoExcel" accept=".xls,.xlsx" class="form-control" />
+            </div>
+            <div class="col-md-2">
+                <button id="btnUpload" class="btn btn-sm btn-primary w-100">
+                    <i class="bi bi-upload"></i> Cargar
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Columna izquierda: Upload + Periodos -->
+        <div class="col-lg-4">
+            <label class="form-label">Periodos registrados</label>
+            <select id="selPeriodos" class="form-select w-100 mb-2" size="8" style="height:300px;">
+                <!-- Se carga con JS -->
+            </select>
+        </div>
+
+        <!-- Columna derecha: Tabla con datos por mes y monedas -->
+        <div class="col-lg-8">
+            <div id="tablaContenedor" class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                <table class="table table-bordered table-hover align-middle text-center" id="tablaCurva">
+                    <thead>
+                        <tr>
+                            <th>Mes</th>
+                            <th>S/. Index (%)</th>
+                            <th>S/. Ajus (%)</th>
+                            <th>$. (%)</th>
+                            <th>$. Ajus (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyCurva">
+                        <!-- cargado por JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>

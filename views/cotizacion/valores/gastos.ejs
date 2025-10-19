@@ -1,0 +1,100 @@
+<main class="container mt-4">
+    <label class="fs-5 fw-bold">Gastos</label>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label>Moneda</label>
+            <select id="selMonedaGasto" class="form-select">
+                <% tipoMon.forEach(m=> { %>
+                    <option value="<%= m.v_cod %>">
+                        <%= m.v_nombre %>
+                    </option>
+                    <% }) %>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>Periodo</label>
+            <select id="selPeriodoGasto" class="form-select">
+                <% fechas.forEach(f=> { %>
+                    <option value="<%= f.f_creacion ? f.f_creacion.toISOString().split('T')[0] : '' %>">
+                        <%= f.f_creacion ? f.f_creacion.toISOString().split('T')[0] : '' %>
+                    </option>
+                    <% }) %>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-2">
+            <label>Gasto Adm.</label>
+            <input type="number" step="0.01" class="form-control" id="n_gastoadm">
+        </div>
+        <div class="col-md-2">
+            <label>Gasto Emisión</label>
+            <input type="number" step="0.01" class="form-control" id="n_gastoemi">
+        </div>
+        <div class="col-md-2">
+            <label>Ctrl. Superv.</label>
+            <input type="number" step="0.01" class="form-control" id="n_gastoctrsup">
+        </div>
+        <div class="col-md-2">
+            <label>Endeudamiento</label>
+            <input type="number" step="0.01" class="form-control" id="n_endeudamiento">
+        </div>
+        <div class="col-md-2">
+            <label>Imprenta</label>
+            <input type="number" step="0.01" class="form-control" id="n_imprenta">
+        </div>
+
+        <div class="col-md-12 text-end">
+            <button id="btnGuardarGasto" class="btn btn-primary mt-2">Guardar</button>
+        </div>
+    </div>
+    <hr>
+    <label class="fs-5 fw-bold">Otros Gastos</label>
+    <div class="row mb-3 mt-3">
+        <div class="col-md-2"></div>
+        <div class="col-md-2 text-center">
+            <label>Inmediatas</label>
+        </div>
+        <div class="col-md-2 text-center">
+            <label>Diferidas</label>
+        </div>
+    </div>
+
+    <% const lista=Array.isArray(registros) ? registros : []; const inmediata=lista.find(r=> r.id_tipren === 1);
+        const diferida = lista.find(r => r.id_tipren === 2);
+        %>
+
+        <!-- Comisión Supervisor -->
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <label>% Comisión Sup.</label>
+            </div>
+            <div class="col-md-2">
+                <input type="number" step="0.01" class="form-control" id="n_comsupi"
+                    value="<%= inmediata ? inmediata.n_prccomsup : '' %>">
+            </div>
+            <div class="col-md-2">
+                <input type="number" step="0.01" class="form-control" id="n_comsupd"
+                    value="<%= diferida ? diferida.n_prccomsup : '' %>">
+            </div>
+        </div>
+
+        <!-- Factor Laboratorio -->
+        <div class="row mb-3">
+            <div class="col-md-2">
+                <label>% Factor Lab.</label>
+            </div>
+            <div class="col-md-2">
+                <input type="number" step="0.01" class="form-control" id="n_faclabi"
+                    value="<%= inmediata ? inmediata.n_prcfaclab : '' %>">
+            </div>
+            <div class="col-md-2">
+                <input type="number" step="0.01" class="form-control" id="n_faclabd"
+                    value="<%= diferida ? diferida.n_prcfaclab : '' %>">
+            </div>
+            <div class="col-md-12 text-end">
+                <button id="btnGuardarGastob" class="btn btn-primary mt-2">Guardar</button>
+            </div>
+        </div>
+
+</main>

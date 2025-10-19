@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const moduleScripts = {
     limites: '/js/limitesIni.js',
-    rentabilidad: '/js/rentabilidad.js'
+    rentabilidad: '/js/rentabilidad.js',
+    promedio: '/js/promedio.js',
+    curva: '/js/curva.js'
   };
 
   tabs.forEach(tab => {
