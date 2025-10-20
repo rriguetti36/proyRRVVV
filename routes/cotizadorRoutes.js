@@ -75,5 +75,10 @@ router.post('/api/uploadcurva', upload.single('archivoExcel'), cotizadorControll
 router.get('/api/filtrargastos', cotizadorController.obtenerPorPeriodoYMonedaGastos);
 router.post('/api/guardargastos', cotizadorController.guardarGastos);
 router.post('/api/guardargastosb', cotizadorController.guardarGastosb);
-
+router.get('/api/obtenerperiodosipc', cotizadorController.obtenerPorPeriodoIPC);
+router.post('/api/guardaripc', cotizadorController.guardarIPC);
+router.get('/api/obtenerperiodostc', cotizadorController.obtenerPorFechaTC);
+router.post('/api/guardartc', cotizadorController.guardarTC);   
+router.get('/api/obtenerperiodostcm', cotizadorController.obtenerPorFechaTCM);
+router.post('/api/guardartcm', cotizadorController.guardarTCM);  
 module.exports = router;

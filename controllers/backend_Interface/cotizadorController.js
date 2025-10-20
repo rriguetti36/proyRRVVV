@@ -39,6 +39,8 @@ exports.cargarModulo = async (req, res) => {
 
     const paramtetros = await TablaPar.getParametros();
     const tipoMon = paramtetros.filter(x => x.idpar === 10);
+    const tipoMonOri = paramtetros.filter(x => x.idpar === 11).sort((a, b) => b.v_cod - a.v_cod);
+    const tipSBS = paramtetros.filter(x => x.idpar === 22);
     const tipoPen = paramtetros.filter(x => x.idpar === 33);
     const regiones = await TablaPar.getRegiones();
 
@@ -64,23 +66,35 @@ exports.cargarModulo = async (req, res) => {
         break;
       case "valores/gastos":
         registros = await TablaPar.getMValoresOtros();
-        console.log(registros);
         fechas = await TablaPar.listarFechas("m_tablagasto");
         break;
+      case "valores/ipc":
+        fechas = await TablaPar.listarPeriodosIPC();
+        break;
+      case "valores/tipocambio":
+        fechas = await TablaPar.listarPeriodosTC();
+        break;
+      case "valores/tipocambiom":
+        fechas = await TablaPar.listarPeriodosTCM();
+        break;
     }
-    
+    //console.log(registros);
+    //console.log(fechas);
     //console.log(tasas)
 
-    res.render(`cotizacion/${vista}`, { layout: false, 
-      tipoMon, 
-      tipoPen, 
-      regiones, 
-      fechas, 
-      tasas, 
-      filtros, 
-      periodos, 
+    res.render(`cotizacion/${vista}`, {
+      layout: false,
+      tipoMon,
+      tipoPen,
+      regiones,
+      fechas,
+      tasas,
+      filtros,
+      periodos,
       selectedDate: null,
-      registros 
+      registros,
+      tipoMonOri,
+      tipSBS
     }); // sin layout
   } catch (err) {
     console.error("Error cargando módulo:", err);
@@ -598,6 +612,7 @@ function excelDateToJSDate(serial) {
 //#endregion
 
 //#region Mantenedor Valores 
+//gastos
 exports.listarValores = async (req, res) => {
   try {
     const valores = await TablaPar.getMValores();
@@ -638,6 +653,84 @@ exports.guardarGastosb = async (req, res) => {
     res.status(500).json({ ok: false, error: 'Error al guardar' });
   }
 };
+
+//IPC
+exports.obtenerPorPeriodoIPC = async (req, res) => {
+  try {
+    const { periodo } = req.query;
+    const data = await TablaPar.obtenerPorPeriodoIPC(periodo);
+    res.json(data || {});
+  } catch (error) {
+    console.error('Error al obtener periodo:', error);
+    res.status(500).json({ error: 'Error interno' });
+  }
+};
+
+exports.guardarIPC = async (req, res) => {
+  try {
+    const { periodo, valor, porcent } = req.body;
+    const result = await TablaPar.guardarOActualizarIPC(periodo, valor, porcent);
+    res.json(result);
+  } catch (error) {
+    console.error('Error al guardar:', error);
+    res.status(500).json({ error: 'Error interno' });
+  }
+};
+
+//Tipo Cambio
+exports.obtenerPorFechaTC = async (req, res) => {
+  try {
+    const { fecha, id_moneda } = req.query;
+    const data = await TablaPar.obtenerPorFechaTC(fecha, id_moneda ? parseInt(id_moneda) : null);
+    res.json(data || {});
+  } catch (err) {
+    console.error('Error obtenerPorFecha controller:', err);
+    res.status(500).json({ error: 'Error interno' });
+  }
+};
+
+exports.guardarTC = async (req, res) => {
+  try {
+    const { fecha, n_valor, id_moneda } = req.body;
+    const result = await TablaPar.guardarOActualizarTC({ fecha, id_moneda: id_moneda || 1, n_valor });
+    return res.json(result);
+  } catch (err) {
+    console.error('Error guardar controller:', err);
+    res.status(500).json({ message: 'error al guardar' });
+  }
+};
+
+//Tipo Cambio Mensual
+exports.obtenerPorFechaTCM = async (req, res) => {
+  try {
+    const { fecha, id_moneda, id_tipcam } = req.query;
+
+    const data = await TablaPar.obtenerPorFechaTCM(fecha, id_moneda ? parseInt(id_moneda) : null, id_tipcam);
+    res.json(data || {});
+  } catch (err) {
+    console.error('Error obtenerPorFecha controller:', err);
+    res.status(500).json({ error: 'Error interno' });
+  }
+};
+
+exports.guardarTCM = async (req, res) => {
+  try {
+    const { fecha, id_moneda, n_valor, id_tipcam } = req.body;
+    console.log(fecha);
+    console.log(id_moneda);
+    console.log(n_valor);
+    console.log(id_tipcam);
+    const result = await TablaPar.guardarOActualizarTCM({ fecha, id_moneda, n_valor, id_tipcam });
+    return res.json(result);
+  } catch (err) {
+    console.error('Error guardar controller:', err);
+    res.status(500).json({ message: 'error al guardar' });
+  }
+};
+
+
+
+
 //#endregion
 
 //#region Cotizador Masivo

@@ -1,0 +1,52 @@
+<main class="container mt-4">
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label>Fechas</label>
+            <select id="selectFechas" class="form-control">
+                <% if (fechas && fechas.length) { %>
+                    <% fechas.forEach(f=> { %>
+                        <option value="<%= f.f_creacion ? f.f_creacion.toISOString().split('T')[0] : '' %>">
+                            <%= f.f_creacion ? f.f_creacion.toISOString().split('T')[0] : '' %>
+                        </option>
+                        <% }) %>
+                            <% } %>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label>Tipo de Valor</label>
+            <select id="selTipoSbs" class="form-control">
+                <% tipSBS.forEach(m=> { %>
+                    <option value="<%= m.v_cod %>">
+                        <%= m.v_nombre %>
+                    </option>
+                    <% }) %>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <label>Monedas</label>
+            <select id="selMoneda" class="form-control">
+                <% tipoMonOri.forEach(m=> { %>
+                    <option value="<%= m.v_cod %>">
+                        <%= m.v_nombre %>
+                    </option>
+                    <% }) %>
+            </select>
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+            <button id="btnAgregar" class="btn btn-secondary">Agregar tipo cambio</button>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label class="form-label">Valor</label>
+            <input id="n_valor" type="number" step="0.000001" class="form-control">
+        </div>
+    </div>
+    <div class="text-end mb-3">
+
+        <button id="btnGuardar" class="btn btn-primary">Guardar</button>
+    </div>
+</main>

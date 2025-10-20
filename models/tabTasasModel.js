@@ -576,6 +576,7 @@ class TasasInd {
     }
   }
 
+  //Gastos
   static async listarPorPeriodoYMoneda(f_creacion, id_moneda) {
     const pool = await poolPromise;
     const res = await pool.request()
@@ -651,7 +652,7 @@ class TasasInd {
   static async guardarRegistroGb(data) {
     const pool = await poolPromise;
     const { n_comsupi, n_comsupd, n_faclabi, n_faclabd } = data;
-    
+
     // Actualizar Inmediatas (id_tipren = 1)
     await pool.request().query`
       UPDATE m_tablagasto_b
@@ -668,6 +669,220 @@ class TasasInd {
 
     return { ok: true, message: 'Registro guardado correctamente' };
   }
+
+  //IPC
+  static async listarPeriodosIPC() {
+    try {
+      const pool = await poolPromise;
+      const result = await pool.request()
+        .query(`SELECT id, d_periodo f_creacion, n_valor, n_porcent 
+                FROM c_tablatasaipc 
+                ORDER BY d_periodo DESC`);
+      return result.recordset;
+    } catch (err) {
+      console.error('Error en listarPeriodos:', err);
+      throw err;
+    }
+  }
+
+  static async obtenerPorPeriodoIPC(periodo) {
+    try {
+      const pool = await poolPromise;
+      const result = await pool.request()
+        .input('periodo', sql.Date, periodo)
+        .query(`SELECT id, d_periodo, n_valor, n_porcent 
+                FROM c_tablatasaipc 
+                WHERE d_periodo = @periodo`);
+      return result.recordset[0];
+    } catch (err) {
+      console.error('Error en obtenerPorPeriodo:', err);
+      throw err;
+    }
+  }
+
+  static async guardarOActualizarIPC(periodo, valor, porcent) {
+    try {
+      const pool = await poolPromise;
+
+      // Verificar si existe el periodo
+      const existe = await pool.request()
+        .input('periodo', sql.Date, periodo)
+        .query(`SELECT COUNT(*) AS existe FROM c_tablatasaipc WHERE d_periodo = @periodo`);
+
+      const yaExiste = existe.recordset[0].existe > 0;
+
+      if (yaExiste) {
+        await pool.request()
+          .input('valor', sql.Numeric(18, 3), valor)
+          .input('porcent', sql.Numeric(18, 3), porcent)
+          .input('periodo', sql.Date, periodo)
+          .query(`UPDATE c_tablatasaipc 
+                  SET n_valor = @valor, n_porcent = @porcent 
+                  WHERE d_periodo = @periodo`);
+        return { ok: true, message: 'Registro actualizado correctamente' };
+      } else {
+        await pool.request()
+          .input('periodo', sql.Date, periodo)
+          .input('valor', sql.Numeric(18, 3), valor)
+          .input('porcent', sql.Numeric(18, 3), porcent)
+          .query(`INSERT INTO c_tablatasaipc (d_periodo, n_valor, n_porcent) 
+                  VALUES (@periodo, @valor, @porcent)`);
+        return { ok: true, message: 'Registro guardado correctamente' };
+      }
+    } catch (err) {
+      console.error('Error en guardarOActualizar:', err);
+      throw err;
+    }
+  }
+
+  //Tipo Cambio
+  static async listarPeriodosTC() {
+    try {
+      const pool = await poolPromise;
+      const res = await pool.request()
+        .query(`SELECT distinct f_creacion
+                FROM m_tablamoneda
+                ORDER BY f_creacion DESC`);
+      return res.recordset;
+    } catch (err) {
+      console.error('Error listar TipoCambio:', err);
+      throw err;
+    }
+  }
+
+  static async obtenerPorFechaTC(fecha, id_moneda = null) {
+    try {
+      const pool = await poolPromise;
+      const req = pool.request().input('fecha', sql.Date, fecha);
+      if (id_moneda != null) req.input('id_moneda', sql.Int, id_moneda);
+      const q = id_moneda == null
+        ? `SELECT distinct id, id_moneda, f_creacion, n_valor FROM m_tablamoneda WHERE CONVERT(date,f_creacion) = @fecha`
+        : `SELECT distinct id, id_moneda, f_creacion, n_valor FROM m_tablamoneda WHERE CONVERT(date,f_creacion) = @fecha AND id_moneda = @id_moneda`;
+      const res = await req.query(q);
+      return res.recordset[0] || null;
+    } catch (err) {
+      console.error('Error obtenerPorFecha:', err);
+      throw err;
+    }
+  }
+
+  static async guardarOActualizarTC({ fecha, id_moneda = 1, n_valor }) {
+    try {
+      const pool = await poolPromise;
+
+      // verificar existencia
+      const existeRes = await pool.request()
+        .input('fecha', sql.Date, fecha)
+        .input('id_moneda', sql.Int, id_moneda)
+        .query(`SELECT COUNT(*) AS cnt FROM m_tablamoneda WHERE CONVERT(date,f_creacion) = @fecha AND id_moneda = @id_moneda`);
+
+      const existe = existeRes.recordset[0].cnt > 0;
+
+      if (existe) {
+        await pool.request()
+          .input('fecha', sql.Date, fecha)
+          .input('id_moneda', sql.Int, id_moneda)
+          .input('n_valor', sql.Numeric(18, 6), n_valor)
+          .query(`UPDATE m_tablamoneda
+                  SET n_valor = @n_valor
+                  WHERE CONVERT(date,f_creacion) = @fecha AND id_moneda = @id_moneda`);
+        return { ok: true, message: 'Registro actualizado correctamente' };
+      } else {
+        await pool.request()
+          .input('fecha', sql.Date, fecha)
+          .input('id_moneda', sql.Int, id_moneda)
+          .input('n_valor', sql.Numeric(18, 6), n_valor)
+          .query(`INSERT INTO m_tablamoneda (id_moneda, f_creacion, n_valor)
+                  VALUES (@id_moneda, @fecha, @n_valor)`);
+        return { ok: true, message: 'Registro guardado correctamente' };
+      }
+    } catch (err) {
+      console.error('Error guardarOActualizar TipoCambio:', err);
+      throw err;
+    }
+  }
+
+  //Tipo Cambio Mensual
+  static async listarPeriodosTCM() {
+    try {
+      const pool = await poolPromise;
+      const res = await pool.request()
+        .query(`SELECT distinct f_creacion
+                FROM m_tablamoneda_sbs
+                ORDER BY f_creacion DESC`);
+      return res.recordset;
+    } catch (err) {
+      console.error('Error listar TipoCambio:', err);
+      throw err;
+    }
+  }
+
+  static async obtenerPorFechaTCM(fecha, id_moneda = null, tipo) {
+    try {
+      const pool = await poolPromise;
+      const res = await pool.request()
+        .input('fecha', sql.Date, fecha)
+        .input('tipo', sql.VarChar, tipo)
+        .input('id_moneda', sql.Int, id_moneda)
+        .query(`SELECT n_valor FROM m_tablamoneda_sbs 
+              WHERE CONVERT(date,f_creacion) = @fecha 
+              AND id_tipcam = @tipo
+              AND id_moneda = @id_moneda`);
+      return res.recordset[0] || null;
+    } catch (err) {
+      console.error('Error obtenerPorFecha:', err);
+      throw err;
+    }
+  }
+
+  static async guardarOActualizarTCM({ fecha, id_moneda, n_valor, id_tipcam }) {
+    try {
+      // console.log(fecha);
+      // console.log(id_moneda);
+      // console.log(n_valor);
+      // console.log(id_tipcam);
+      const pool = await poolPromise;
+
+      // verificar existencia
+      const existeRes = await pool.request()
+        .input('fecha', sql.Date, fecha)
+        .input('tipo', sql.VarChar, id_tipcam)
+        .input('id_moneda', sql.Int, id_moneda)
+        .query(`SELECT COUNT(*) AS cnt FROM m_tablamoneda_sbs 
+                WHERE CONVERT(date,f_creacion) = @fecha 
+                AND id_tipcam = @tipo
+                AND id_moneda = @id_moneda`);
+
+      const existe = existeRes.recordset[0].cnt > 0;
+
+      if (existe) {
+        await pool.request()
+          .input('fecha', sql.Date, fecha)
+          .input('tipo', sql.VarChar, id_tipcam)
+          .input('id_moneda', sql.Int, id_moneda)
+          .input('n_valor', sql.Numeric(18, 6), n_valor)
+          .query(`UPDATE m_tablamoneda_sbs
+                  SET n_valor = @n_valor
+                  WHERE CONVERT(date,f_creacion) = @fecha 
+                  AND id_tipcam = @tipo 
+                  AND id_moneda = @id_moneda`);
+        return { ok: true, message: 'Registro actualizado correctamente' };
+      } else {
+        await pool.request()
+          .input('fecha', sql.Date, fecha)
+          .input('tipo', sql.VarChar, id_tipcam)
+          .input('id_moneda', sql.Int, id_moneda)
+          .input('n_valor', sql.Numeric(18, 6), n_valor)
+          .query(`INSERT INTO m_tablamoneda_sbs (id_moneda, id_tipcam, f_creacion, n_valor)
+                  VALUES (@id_moneda, @tipo, @fecha, @n_valor)`);
+        return { ok: true, message: 'Registro guardado correctamente' };
+      }
+    } catch (err) {
+      console.error('Error guardarOActualizar TipoCambio:', err);
+      throw err;
+    }
+  }
+
 }
 
 module.exports = TasasInd;
