@@ -15,6 +15,7 @@ class TasasInd {
   }
 
   // Métodos específicos que llaman al genérico
+  //#region Parametros Calculo
   static async getTasaTasaIPC() {
     return this.getTabla("c_tablatasaipc");
   }
@@ -112,9 +113,8 @@ class TasasInd {
       throw err;
     }
   }
-
-  //tasas 
-
+  //#endregion
+  //#region Parametros tasas 
   static async getMtasas() {
     try {
       const pool = await poolPromise;
@@ -563,8 +563,8 @@ class TasasInd {
       throw error;
     }
   }
-
-  //Valores
+  //#endregion
+  //#region Parametros Valores
   static async getMValores() {
     try {
       const pool = await poolPromise;
@@ -883,6 +883,69 @@ class TasasInd {
     }
   }
 
+  //Gastos de sepelio
+  static async listarPeriodosGS() {
+    try {
+      const pool = await poolPromise;
+      const res = await pool.request()
+        .query(`SELECT distinct d_periodo f_creacion
+                FROM c_tablasasepelio
+                ORDER BY d_periodo DESC`);
+      return res.recordset;
+    } catch (err) {
+      console.error('Error listar Gastos sepelio:', err);
+      throw err;
+    }
+  }
+
+  static async obtenerPorFechaGS(fecha) {
+    try {
+      const pool = await poolPromise;
+      const res = await pool.request()
+        .input('fecha', sql.Date, fecha)
+        .query(`SELECT n_valor FROM c_tablasasepelio 
+              WHERE CONVERT(date,d_periodo) = @fecha`);
+      return res.recordset[0] || null;
+    } catch (err) {
+      console.error('Error obtenerPorFecha:', err);
+      throw err;
+    }
+  }
+
+  static async guardarOActualizarGS({ fecha, n_valor }) {
+    try {
+      const pool = await poolPromise;
+
+      // verificar existencia
+      const existeRes = await pool.request()
+        .input('fecha', sql.Date, fecha)
+        .query(`SELECT COUNT(*) AS cnt FROM c_tablasasepelio 
+            WHERE CONVERT(date,d_periodo) = @fecha`);
+
+      const existe = existeRes.recordset[0].cnt > 0;
+
+      if (existe) {
+        await pool.request()
+          .input('fecha', sql.Date, fecha)
+          .input('n_valor', sql.Numeric(18, 5), n_valor)
+          .query(`UPDATE c_tablasasepelio
+                  SET n_valor = @n_valor
+                  WHERE CONVERT(date,d_periodo) = @fecha`);
+        return { ok: true, message: 'Registro actualizado correctamente' };
+      } else {
+        await pool.request()
+          .input('fecha', sql.Date, fecha)
+          .input('n_valor', sql.Numeric(18, 5), n_valor)
+          .query(`INSERT INTO c_tablasasepelio (d_periodo, n_valor)
+                  VALUES (@fecha, @n_valor)`);
+        return { ok: true, message: 'Registro guardado correctamente' };
+      }
+    } catch (err) {
+      console.error('Error guardarOActualizar TipoCambio:', err);
+      throw err;
+    }
+  }
+  //#endregion
 }
 
 module.exports = TasasInd;

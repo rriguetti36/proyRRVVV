@@ -1,0 +1,81 @@
+<main class="container-fluid py-4">
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            📂 Gestión de Cotizaciones y Pólizas
+        </div>
+
+        <div class="card-body">
+            <!-- Tabs -->
+            <ul class="nav nav-tabs" id="polizasTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="cotizaciones-tab" data-bs-toggle="tab"
+                        data-bs-target="#cotizaciones" type="button" role="tab">Cotizaciones</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="polizas-tab" data-bs-toggle="tab" data-bs-target="#polizas"
+                        type="button" role="tab">Pólizas</button>
+                </li>
+            </ul>
+
+            <div class="tab-content p-3 border border-top-0 rounded-bottom bg-light" id="polizasTabContent">
+                <!-- COTIZACIONES -->
+                <div class="tab-pane fade show active" id="cotizaciones" role="tabpanel">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <input type="text" id="buscarCot" class="form-control" placeholder="Buscar por DNI...">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary w-100" id="btnBuscarCot">Buscar</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover align-middle" id="tablaCotizaciones">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>N° Cotización</th>
+                                    <th>N° CUSPP</th>
+                                    <th>Afiliado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- PÓLIZAS -->
+                <div class="tab-pane fade" id="polizas" role="tabpanel">
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <input type="text" id="buscarPol" class="form-control" placeholder="Buscar por DNI...">
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary w-100" id="btnBuscarPol">Buscar</button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover align-middle" id="tablaPolizas">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th>N° Póliza</th>
+                                    <th>N° CUSPP</th>
+                                    <th>Afiliado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/prepolizas.js"></script>

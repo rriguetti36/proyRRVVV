@@ -1,3 +1,4 @@
+const authController = require('../controllers/backend_Interface/authController');
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
@@ -20,5 +21,9 @@ router.post('/token', (req, res) => {
 
   res.json({ token });
 });
+
+router.get('/login', authController.loginView);
+router.post('/login', authController.login);
+router.get('/logout', authController.logout);
 
 module.exports = router;

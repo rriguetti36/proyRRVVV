@@ -659,400 +659,58 @@ class cotizacion {
       throw err;
     }
   }
+
+  static async ConfiguracionMatrizCF() {
+    try {
+      const pool = await poolPromise;
+      const res = await pool.request().query(`
+        select a.id, c.nombre, b.v_nombre, a.n_mtodesde, a.n_mtohasta, 
+        n_jubleg, n_jubant, n_invtot, n_invpar, n_sobrev, a.estado
+        from m_configuracionmatriz a 
+        join m_parametros_val b on a.n_cod=b.idpar and a.v_cod=b.v_cod
+        join m_parametros c on b.idpar=c.id
+      `);
+      return res.recordset;
+    } catch (err) {
+      console.error('Error en listar configuracion matriz:', err);
+      throw err;
+    }
+  }
+
+  static async actualizarCampoMatrizCF(id, campo, valor) {
+    try {
+      const pool = await poolPromise;
+      await pool.request()
+        .input('id', sql.Int, id)
+        .input('valor', sql.Int, valor)
+        .query(`UPDATE m_configuracionmatriz SET ${campo} = @valor WHERE id = @id`);
+      return { success: true };
+    } catch (err) {
+      console.error('Error en actualizarCampo:', err);
+      throw err;
+    }
+  }
+
+  static async actualizarMontosMatrizCF(id, desde, hasta) {
+    try {
+      const pool = await poolPromise;
+      await pool.request()
+        .input('id', sql.Int, id)
+        .input('desde', sql.Decimal(18, 2), desde)
+        .input('hasta', sql.Decimal(18, 2), hasta)
+        .query(`
+        UPDATE m_configuracionmatriz 
+        SET n_mtodesde = @desde, n_mtohasta = @hasta 
+        WHERE id = @id
+      `);
+      return { success: true };
+    } catch (err) {
+      console.error('Error en actualizarCampo:', err);
+      throw err;
+    }
+  }
 }
-
-
-
 
 module.exports = cotizacion;
 
 
-//configuraion MYSQL
-/* const db = require('../config/db');  // Configuración de la base de datos
-class cotizacion {
-  static async creacotizacion(data) {
-    try {
-      const { numoperacion, fechacarga, fechaenvio, fechacierre, fechacal, estado, idcia } = data;
-
-      const fechaCargaDB = fechacarga && fechacarga.trim() !== '' ? fechacarga : null;
-      const fechaEnvioDB = fechaenvio && fechaenvio.trim() !== '' ? fechaenvio : null;
-      const fechaCierreDB = fechacierre && fechacierre.trim() !== '' ? fechacierre : null;
-      const fechaCalDB = fechacal && fechacal.trim() !== '' ? fechacal : null;
-
-      // console.log("numoperacion",numoperacion);
-      // console.log("fechacarga",fechacarga);
-      // console.log("fechaenvio",fechaenvio);
-      // console.log("fechacierre",fechacierre);
-      // console.log("fechacal",fechacal);
-      // console.log("estado",estado);
-      // console.log("idcia",idcia);
-      const [result] = await db.execute(
-        'INSERT INTO c_cotizaciones (numoperacion, fechacarga, fechaenvio, fechacierre, fechacal, estado, idcia) VALUES (?, ?, ?, ?, ?, ?, ?)',
-        [numoperacion, fechaCargaDB, fechaEnvioDB, fechaCierreDB, fechaCalDB, estado, idcia]
-      );
-      return { id: result.insertId, ...data };
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getTablaCotizacion(estado) {
-    //console.log("entra a consultar")
-    const query = 'select * from c_cotizaciones where estado=?';
-    try {
-      const [results] = await db.query(query, [estado]);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getTablaSolicitudesMELER() {
-    //console.log("entra a consultar")
-    const query = `SELECT a.id_estado, a.id, a.v_descripcion, b.fec_envio, b.fec_cierre, min(b.num_operacion) inisol, max(b.num_operacion) finsol
-                    FROM c_solicitudes_meler a join c_solicitudes_meler_det b ON a.id=b.id_archivo 
-                    where id_estado>=1 
-                    group by a.id, a.v_descripcion, b.fec_envio, b.fec_cierre order by id desc`;
-    try {
-      const [results] = await db.query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async insertaSolicitudesMeler(data) {
-    //console.log(data);
-    const conn = await db.getConnection();
-    try {
-      await conn.beginTransaction();
-
-      // 1. Insertar en c_solicitudes_meler
-      const [res] = await conn.execute(
-        'INSERT INTO c_solicitudes_meler (idtipo, v_descripcion, fec_carga, idusuario, id_estado) VALUES (?,?,?,?,?)',
-        [data.tipoArchivo, data.nombreArchivo, data.fechaCarga, data.idusuario, data.estado]
-      );
-      const idArchivo = res.insertId;
-
-      // 2. Preparar los valores para insertar en batch
-      const detalles = data.solicitudes.map(p => [idArchivo, parseInt(p.numeroop), p.feccierre, p.fecenvio, p.iderror, p.descrierror]);
-
-      await conn.query(
-        'INSERT INTO c_solicitudes_meler_det (id_archivo, num_operacion, fec_envio, fec_cierre, id_error, v_descrierror) VALUES ?',
-        [detalles]
-      );
-
-      await conn.commit();
-      console.log('Solicitud guadadas en Matriz de errores.');
-      return idArchivo;
-    } catch (err) {
-      await conn.rollback();
-      console.error('Error al guardar:', err);
-    } finally {
-      conn.release(); // ¡libera siempre la conexión!
-    }
-
-  }
-
-  static async validaExisteOperacion(numeroOp) {
-    //console.log("entra a consultar")
-    const query = 'select count(*) valor from c_solicitudes_meler_det where num_operacion=?';
-    try {
-      const [results] = await db.query(query, [numeroOp]);
-      return Number(results[0].valor);
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async insertaCotizacionesCalc(data) {
-    //console.log(data);
-    const conn = await db.getConnection();
-    try {
-      await conn.beginTransaction();
-
-      //0.- Obtiene el numero de cotizacion
-      const anioActual = new Date().getFullYear();
-
-      const query = 'select n_numcot from m_numeradores where n_aperiodo=?';
-      const [results] = await db.query(query, [anioActual]);
-      let numerofinal = Number(results[0].n_numcot);
-      for (const c of data.cabecera) {
-
-        const numeroConCeros = String(numerofinal).padStart(6, '0');
-        const nuevoNumCotFin = `${anioActual}${numeroConCeros}`;
-
-        // 1. Insertar en cabecera
-        const [result] = await conn.query(`
-          INSERT INTO c_cotizacion (num_cot, num_operacion, fec_suscripcion, fec_envio, fec_cierre, fec_devenge, id_afp, id_prestacion, 
-            id_tipobenef, id_estciv, ind_clientecia, num_cuspp, id_sucursal, num_aniojubila, num_cargas, id_agente, num_docagente, id_moneda, val_tcfondo, mto_capitalfon, 
-            mto_cicfon, mto_bonofon,mto_priuni, mto_cic, mto_bono, val_tasart, mto_apoadi, ind_cober, id_tipocot, id_estadocot, num_mensual, id_tipofon, id_region, fec_devsol) 
-          VALUES (?, ?, ?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?)`,
-          [nuevoNumCotFin, parseInt(c.num_operacion), c.fec_suscripcion, c.fec_envio, c.fec_cierre, c.fec_devenge, c.id_afp, c.id_prestacion, c.id_tipobenef, c.id_estciv, c.ind_clientecia,
-            c.num_cuspp, c.id_sucursal, c.num_aniojubila, c.num_cargas, c.id_agente, c.num_docagente, c.id_moneda, c.val_tcfondo, c.mto_capitalfon, c.mto_cicfon, c.mto_bonofon, c.mto_priuni,
-            c.mto_cic, c.mto_bono, c.val_tasart, c.mto_apoadi, c.ind_cober, c.id_tipocot, c.id_estadocot, c.num_mensual, c.id_tipofon, c.id_region, c.fec_devsol]);
-
-        const idCotizacion = result.insertId || result.recordset?.[0]?.id; // MySQL o SQL Server
-        //console.log("idCotizacion", idCotizacion)
-        // 2. Insertar detalles
-        const detalles = data.detalle.filter(d => d.num_operacion === c.num_operacion);
-
-        for (const d of detalles) {
-          await conn.query(`
-              INSERT INTO c_cotizaciondetalle (id_cot, num_cot, id_correlativo, num_operacion, fec_calcot, id_moneda, val_tcmon, mto_priuni, mto_capital,mto_bono, 
-              val_agecom, val_agecomreal, mto_agecom, id_tipren, num_mesdif, id_modalidad, num_mesgar, num_mesesc, val_rentaesc, val_tasartafp, 
-              val_rentart, mto_factorella, val_facorella, mto_sepelio, val_tasatce, val_tasavta, val_tasatir, val_tasagar, mto_priuni_CIA, mto_pension, 
-              mto_pensiongar, mto_priAFP, mto_pensionRT, mto_reservamat, val_rentapentmp, mto_sumpenben, mto_penanual,mto_reservamatpen, mto_reservamatgs, mto_perdida, 
-              val_perdida, ind_cober, ind_dercre, ind_dergra, id_estado, fec_acepta, id_rechazo, mto_resmatsepeliorv, val_ajusteipc, mto_parcap, 
-              ind_calsobdiferida, val_reajustetri, val_reajustemen, des_error, ind_sisco, ind_pasofiltro) 
-              VALUES (?, ?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?)`,
-            [idCotizacion, nuevoNumCotFin, d.id_correlativo, d.num_operacion, d.fec_calcot, d.id_moneda, d.val_tcmon, d.mto_priuni, d.mto_capital,
-              d.mto_bono, d.val_agecom, d.val_agecomreal, d.mto_agecom, d.id_tipren, d.num_mesdif, d.id_modalidad, d.num_mesgar, d.num_mesesc, d.val_rentaesc,
-              d.val_tasartafp, d.val_rentart, d.mto_factorella, d.val_facorella, d.mto_sepelio, d.val_tasatce, d.val_tasavta, d.val_tasatir, d.val_tasagar,
-              d.mto_priuni_CIA, d.mto_pension, d.mto_pensiongar, d.mto_priAFP, d.mto_pensionRT, d.mto_reservamat, d.val_rentapentmp, d.mto_sumpenben, d.mto_penanual,
-              d.mto_reservamatpen, d.mto_reservamatgs, d.mto_perdida, d.val_perdida, d.ind_cober, d.ind_dercre, d.ind_dergra, d.id_estado, d.fec_acepta, d.id_rechazo,
-              d.mto_resmatsepeliorv, d.val_ajusteipc, d.mto_parcap, d.ind_calsobdiferida, d.val_reajustetri, d.val_reajustemen, d.des_error, d.ind_sisco, d.ind_pasofiltro]);
-        }
-
-        // 3. Insertar beneficiarios
-        const beneficiarios = data.beneficiario.filter(b => b.num_operacion === c.num_operacion);
-
-        for (const b of beneficiarios) {
-          await conn.query(`
-              INSERT INTO c_cotizacionbeneficiario (id_cot, num_cot, id_orden, num_operacion, id_parentesco, id_grupofam, id_sexo, id_invalido, 
-                fec_invalido, id_causainv, id_derpen, ind_dercre, id_tipodociden, num_dociden, des_nombre, des_nombresegundo, des_apepaterno, 
-                des_apematerno, fec_nacimiento, fec_fallecimiento, fec_nachijomayor, val_pension, val_pensionleg, val_pensionrep, mto_pension, 
-                mto_pensiongar, ind_estsob, ind_estudiante) 
-              VALUES (?, ?, ?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?,?, ?)`,
-            [idCotizacion, nuevoNumCotFin, b.id_orden, b.num_operacion, b.id_parentesco, b.id_grupofam, b.id_sexo, b.id_invalido,
-              b.fec_invalido, b.id_causainv, b.id_derpen, b.ind_dercre, b.id_tipodociden, b.num_dociden, b.des_nombre, b.des_nombresegundo, b.des_apepaterno,
-              b.des_apematerno, b.fec_nacimiento, b.fec_fallecimiento, b.fec_nachijomayor, b.val_pension, b.val_pensionleg, b.val_pensionrep, b.mto_pension,
-              b.mto_pensiongar, b.ind_estsob, b.ind_estudiante]);
-        }
-
-        numerofinal++
-      }
-
-      await conn.query('UPDATE m_numeradores SET n_numcot = ? WHERE n_aperiodo = ?', [numerofinal, anioActual]);
-
-      await conn.commit();
-      console.log('Cotizaciones guardados correctamente.');
-    } catch (err) {
-      await conn.rollback();
-      console.error('Error al guardar:', err);
-    } finally {
-      conn.release(); // ¡libera siempre la conexión!
-    }
-
-  }
-
-  static async getCotizacionesCalculadasCarga23(id) {
-    //console.log("consulta getCotizacionesCalculadasCarga23")
-    const query = `SELECT 
-                  d.num_operacion AS operacion, 
-                  c.num_cuspp AS CUSPP, 
-                  tiporenta.v_codsbs AS modalidad, 
-                  monedacot.v_codsbs AS moneda, 
-                  d.num_mesdif AS anosRT, 
-                  d.val_rentart AS porcentajeRVD, 
-                  d.num_mesgar AS periodoGarantizado, 
-                  d.ind_dercre AS derechoCrecer, 
-                  d.ind_dergra AS gratificacion, 
-                  case when d.id_rechazo = 0 then 'S' else 'N' end siCotizaNoCotiza,
-                  d.num_cot AS nroCotizacion, 
-                  round(d.mto_pension,2) AS penref, 
-                  round(d.mto_pensionRT,2) AS penafp, 
-                  round(d.mto_sumpenben,2) AS pencia, 
-                  round(d.mto_priAFP,2) AS primaUnicaAFPEESS, 
-                  round(d.mto_priuni,2) AS primaUnicaEESS, 
-                  round(d.val_tasavta,2) AS tasavta
-              FROM c_cotizacion c
-              JOIN c_cotizaciondetalle d
-              ON c.id_cot = d.id_cot
-              JOIN m_parametros_val as afp 
-              ON afp.v_cod = c.id_afp 
-              AND afp.idpar = 1
-              JOIN m_parametros_val as monedacot 
-              ON monedacot.v_cod = d.id_moneda 
-              AND monedacot.idpar = 10
-              JOIN m_parametros_val as tiporenta 
-              ON tiporenta.v_cod = d.id_tipren 
-              AND tiporenta.idpar = 13
-              JOIN c_solicitudes_meler_det sm 
-              ON c.num_operacion=sm.num_operacion
-              WHERE sm.id_archivo = ?
-              ORDER BY d.num_operacion ASC`;
-    try {
-      const [results] = await db.query(query, [id]);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async insertaSolicitudesRespuesta(data) {
-    //console.log("📥 datos solicitud", data);
-
-    const conn = await db.getConnection();
-    try {
-      await conn.beginTransaction();
-
-      // 1. Insertar en tabla cabecera (c_solicitudes_meler)
-      const [res] = await conn.execute(
-        `INSERT INTO c_solicitudes_meler 
-        (idtipo, v_descripcion, fec_carga, idusuario, id_estado) 
-       VALUES (?, ?, ?, ?, ?)`,
-        [data.tipoArchivo, data.nombreArchivo, data.fechaCarga, data.idusuario, data.estado]
-      );
-
-      const idArchivo = res.insertId;
-      console.log(data.respuestas)
-      // 2. Insertar en la tabla de respuestas (c_solicitudes_meler_res)
-      if (data.respuestas && Array.isArray(data.respuestas) && data.respuestas.length > 0) {
-        const valores = data.respuestas.map(r => [
-          idArchivo,
-          r.nroOperacion,
-          r.CUSPP,
-          r.decisionAfiliado,
-          r.modalidad,
-          r.moneda,
-          r.pd,
-          r.pg,
-          r.porRVD,
-          r.dercre,
-          r.grati,
-          r.tipo,
-          r.codigo,
-          r.atiende,
-          r.gana,
-          r.cotiza,
-          r.nroCotizacion,
-          r.tasaAFP,
-          r.pensionAFP,
-          r.tasaAseg,
-          r.pensionAseg
-        ]);
-
-        await conn.query(
-          `INSERT INTO c_solicitudes_meler_res (
-          id_archivo,
-          num_operacion,
-          num_cussp,
-          var_desicion,
-          var_modalidad,
-          var_moneda,
-          num_anosRT,
-          num_periodoGarantizado,
-          num_porcentajeRVD,
-          var_derechoCrecer,
-          var_gratificacion,
-          var_tipo,
-          var_codigo,
-          var_atiende,
-          var_gana,
-          var_cotiza,
-          var_cotizacion,
-          num_tasaafp,
-          num_pensionafp,
-          num_tasaaseg,
-          num_pesnionaseg
-        ) VALUES ?`,
-          [valores]
-        );
-      }
-
-      await conn.commit();
-      console.log("✅ Solicitud y respuestas guardadas con éxito");
-      return idArchivo;
-
-    } catch (err) {
-      await conn.rollback();
-      console.error("❌ Error al guardar:", err);
-      throw err;
-    } finally {
-      conn.release(); // liberar conexión
-    }
-  }
-
-  static async getTablaSolicitudRespuesta(id) {
-    //console.log("entra a consultar")
-    try {
-      const query = `
-          select num_operacion nroOperacion,
-          num_cussp CUSPP,
-          var_desicion decisionAfiliado,
-          var_modalidad modalidad,
-          var_moneda moneda,
-          num_anosRT pd,
-          num_periodoGarantizado pg,
-          num_porcentajeRVD porRVD,
-          var_derechoCrecer dercre,
-          var_gratificacion grati,
-          var_tipo tipo,
-          var_codigo codigo,
-          var_atiende atiende,
-          var_gana gana,
-          var_cotiza cotiza,
-          var_cotizacion nroCotizacion,
-          num_tasaafp tasaAFP,
-          num_pensionafp pensionAFP,
-          num_tasaaseg tasaAseg,
-          num_pesnionaseg pensionAseg
-          from c_solicitudes_meler_res 
-          where id_archivo=?`;
-
-      // const params = [];
-
-      // if (id) {
-      //   query += " AND id_archivo = ?";
-      //   params.push(id);
-      // }
-
-      // if (codcia) {
-      //   query += " AND var_codigo = ?";
-      //   params.push(codcia);
-      // }
-
-      // if (gana) {
-      //   query += " AND var_gana = ?";
-      //   params.push(gana);
-      // }
-      const [results] = await db.query(query, [id]);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async getCotizacionind(id) {
-    //console.log("entra a consultar")
-    const query = 'select id_tipren, id_moneda, num_mesdif, num_mesgar, mto_pension from c_cotizaciondetalle where num_operacion=?';
-    try {
-      const [results] = await db.query(query, [id]);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-  static async insertRegistraAcepta(ope, cor, fecha) {
-    try {
-
-      const fechaAcepta = fecha && fecha.trim() !== '' ? fecha : null;
-
-      const query = `update c_cotizaciondetalle set 
-                      fec_acepta=?, 
-                      id_estado=3 
-                      where num_operacion=? and id_correlativo=?`
-
-      const [result] = await db.execute(query, [fechaAcepta, ope, cor]
-      );
-      return result.affectedRows > 0;
-    } catch (err) {
-      throw err;
-    }
-  }
-
-}
-
- */

@@ -13,11 +13,13 @@
   "type": "commonjs",
   "description": "",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.18.2",
     "fast-xml-parser": "^5.2.5",
     "html-pdf-node": "^1.0.8",
     "iconv-lite": "^0.7.0",

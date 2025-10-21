@@ -1,0 +1,84 @@
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            📂 Configuración Matriz del Calculo de Cotizaciones
+        </div>
+        <div class="card-body">
+            <table id="tablaMatriz" class="table table-bordered table-sm text-center align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Tabla</th>
+                        <th>Tabla Param</th>
+                        <th>Monto Desde</th>
+                        <th>Monto Hasta</th>
+                        <th>Jub. Leg</th>
+                        <th>Jub. Ant</th>
+                        <th>Inv. Tot</th>
+                        <th>Inv. Par</th>
+                        <th>Sobrev.</th>
+                        <th>Desactivar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% registros.forEach(item=> { %>
+                        <tr data-id="<%= item.id %>">
+                            <td>
+                                <%= item.nombre %>
+                            </td>
+                            <td>
+                                <%= item.v_nombre %>
+                            </td>
+                            <td>
+                                <%= item.n_mtodesde %>
+                            </td>
+                            <td>
+                                <%= item.n_mtohasta %>
+                            </td>
+
+                            <% ['n_jubleg','n_jubant','n_invtot','n_invpar','n_sobrev'].forEach(campo=> { %>
+                                <td>
+                                    <input type="checkbox" class="chkCampo" data-campo="<%= campo %>" <%=item[campo]===1
+                                        ? 'checked' : '' %> >
+                                </td>
+                                <% }) %>
+
+                                    <td>
+                                        <input type="checkbox" class="chkDesactivar">
+                                    </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal edición -->
+<div class="modal fade" id="modalMontos" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Montos</h5>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editId">
+                <div class="mb-3">
+                    <label>Monto Desde</label>
+                    <input type="number" id="editDesde" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label>Monto Hasta</label>
+                    <input type="number" id="editHasta" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button class="btn btn-primary" id="btnGuardarMontos">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/cfmatriz.js"></script>

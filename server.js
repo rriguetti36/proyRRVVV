@@ -9,6 +9,7 @@ const rutinaRoutes = require('./routes/rutinaRoutes');
 const listasRoutes = require('./routes/ListasRoutes');
 const authRoutes = require('./routes/authRoutes');
 const cotizadorRoutes = require('./routes/cotizadorRoutes');
+const emisionRoutes = require('./routes/emisionRoutes');
 const layouts = require('express-ejs-layouts');
 const requestLogger = require("./middleware/requestLogger");
 const cors = require("cors");
@@ -51,17 +52,34 @@ console.log = function (...args) {
 };
 
 // RUTAS
-app.use('/', listasRoutes);
+//app.use('/', listasRoutes);
+//app.use('/auth', authRoutes);
+
+
+
+const session = require('express-session');
+app.use(session({
+  secret: 'clave-secreta-123',
+  resave: false,
+  saveUninitialized: false
+}));
+// Middleware global: pasa datos del usuario logueado a todas las vistas
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  console.log("user", res.locals.user);
+  next();
+});
 app.use('/auth', authRoutes);
 app.use('/rutinarv', rutinaRoutes);
 app.use("/cotizador", cotizadorRoutes);
+app.use("/emision", emisionRoutes);
 
-
-// Ruta base
-/* app.get('/', (req, res) => {
-  res.send('¡Hola desde Express!, con Socket.IO activo 🚀');
+// ejemplo ruta protegida
+app.get('/dashboard', (req, res) => {
+  if (!req.session.user) return res.redirect('/login');
+  res.render('dashboard', { layout: 'layouts/layoutCT', user: req.session.user });
 });
- */
+
 // Escuchar conexiones de clientes
 io.on("connection", (socket) => {
   console.log("🔌 Cliente conectado");

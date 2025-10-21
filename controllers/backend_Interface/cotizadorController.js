@@ -77,6 +77,9 @@ exports.cargarModulo = async (req, res) => {
       case "valores/tipocambiom":
         fechas = await TablaPar.listarPeriodosTCM();
         break;
+      case "valores/sepelio":
+        fechas = await TablaPar.listarPeriodosGS();
+        break;
     }
     //console.log(registros);
     //console.log(fechas);
@@ -728,9 +731,65 @@ exports.guardarTCM = async (req, res) => {
   }
 };
 
+//Gastos de sepelio
+exports.obtenerPorFechaGS = async (req, res) => {
+  try {
+    const { fecha } = req.query;
 
+    const data = await TablaPar.obtenerPorFechaGS(fecha);
+    res.json(data || {});
+  } catch (err) {
+    console.error('Error obtenerPorFecha controller:', err);
+    res.status(500).json({ error: 'Error interno' });
+  }
+};
 
+exports.guardarGS = async (req, res) => {
+  try {
+    const { fecha, n_valor } = req.body;
+    console.log(fecha);
+    console.log(n_valor);
+    const result = await TablaPar.guardarOActualizarGS({ fecha, n_valor });
+    return res.json(result);
+  } catch (err) {
+    console.error('Error guardar controller:', err);
+    res.status(500).json({ message: 'error al guardar' });
+  }
+};
 
+//#endregion
+
+//#region Filtros Configuracion
+exports.MatrizConfig = async (req, res) => {
+  try {
+    const registros = await TablaCot.ConfiguracionMatrizCF();
+    res.render('cotizacion/cfmatriz', { registros });
+  } catch (err) {
+    res.status(500).send('Error al cargar vista configuración matriz');
+  }
+}
+
+exports.MatrizActualiza = async (req, res) => {
+  try {
+    const { id, campo, valor } = req.body;
+    const resultado = await TablaCot.actualizarCampoMatrizCF(id, campo, valor);
+    res.json(resultado);
+  } catch (err) {
+    console.error('Error en actualizarCampo controller:', err);
+    res.status(500).json({ success: false, message: 'Error al actualizar campo' });
+  }
+}
+
+exports.MAtrizActualizarMontos = async (req, res) => {
+  try {
+    const { id, desde, hasta } = req.body;
+    const resultado = await TablaCot.actualizarMontosMatrizCF(id, desde, hasta);
+    res.json(resultado);
+  } catch (err) {
+    console.error('Error actualizarMontos:', err);
+    res.status(500).json({ success: false, message: 'Error al actualizar campo' });
+  }
+};
 //#endregion
 
 //#region Cotizador Masivo

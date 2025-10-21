@@ -25,6 +25,7 @@ router.get("/resultado", cotizadorController.ResultadosXML); // render EJS
 router.get('/parametros', cotizadorController.Paramtetros); // render EJS
 router.get("/tasas", cotizadorController.listarTasas); // render EJS
 router.get("/valores", cotizadorController.listarValores); // render EJS
+router.get('/cfmatriz', cotizadorController.MatrizConfig);
 // router.get("/tasas/limites", cotizadorController.LimiteIni); // render EJS
 // router.get('/tasas/inversiones', cotizadorController.rentabilidad); // render EJS
 //---------------Apis-----------------------------//
@@ -81,4 +82,11 @@ router.get('/api/obtenerperiodostc', cotizadorController.obtenerPorFechaTC);
 router.post('/api/guardartc', cotizadorController.guardarTC);   
 router.get('/api/obtenerperiodostcm', cotizadorController.obtenerPorFechaTCM);
 router.post('/api/guardartcm', cotizadorController.guardarTCM);  
+router.get('/api/obtenerperiodosgs', cotizadorController.obtenerPorFechaGS);
+router.post('/api/guardargs', cotizadorController.guardarGS);  
+
+//Configuracion Matriz Filtros
+router.post('/api/actualizarcfm', cotizadorController.MatrizActualiza);
+router.post('/api/actualizarmontoscfm', cotizadorController.MAtrizActualizarMontos);
+
 module.exports = router;

@@ -1,0 +1,346 @@
+<main class="container-fluid py-4">
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+
+            <div class="row mb-3">
+                <div class="col-md-2">
+                    <label>Nro Poliza</label>
+                    <input type="text" class="form-control" id="n_gastoadm">
+                </div>
+                <div class="col-md-2">
+                    <label>Fecha Emisión</label>
+                    <input type="date" class="form-control" id="n_gastoemi">
+                </div>
+                <div class="col-md-2">
+                    <label>CUSPP</label>
+                    <input type="text" class="form-control" id="n_gastoctrsup">
+                </div>
+                <div class="col-md-2">
+                    <label>Nro Cotizacion</label>
+                    <input type="text" class="form-control" id="n_endeudamiento">
+                </div>
+                <div class="col-md-2">
+                    <label>Nro Operación</label>
+                    <input type="text" class="form-control" id="n_imprenta">
+                </div>
+                <div class="col-md-2">
+                    <label>Ingreso SPP</label>
+                    <input type="date" class="form-control" id="n_imprenta">
+                </div>
+            </div>
+        </div>
+
+        <div class="card-body">
+            <!-- Tabs -->
+            <ul class="nav nav-tabs" id="polizasTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="afiliado-tab" data-bs-toggle="tab" data-bs-target="#afiliado"
+                        type="button" role="tab">Datos de Afiliado</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="domicilio-tab" data-bs-toggle="tab" data-bs-target="#domicilio"
+                        type="button" role="tab">Domicilio</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="poliza-tab" data-bs-toggle="tab" data-bs-target="#poliza" type="button"
+                        role="tab">Datos de la Poliza</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pagos-tab" data-bs-toggle="tab" data-bs-target="#pagos" type="button"
+                        role="tab">Formas de Pago Pension</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="beneficiarios-tab" data-bs-toggle="tab" data-bs-target="#beneficiarios"
+                        type="button" role="tab">Beneficiarios</button>
+                </li>
+            </ul>
+
+            <div class="tab-content p-3 border border-top-0 rounded-bottom bg-light" id="polizasTabContent">
+                <!-- AFILIADO -->
+                <div class="tab-pane fade show active" id="afiliado" role="tabpanel">
+                    <div class="row mb-3">
+                        <div class="form-group col-md-3">
+                            <label>Tipo de Documento</label>
+                            <select class="form-control" required>
+                                <option value="">Seleccione</option>
+                                <option>DNI</option>
+                                <option>Carné Extranjería</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Documento</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Género</label>
+                            <select class="form-control" required>
+                                <option>MASCULINO</option>
+                                <option>FEMENINO</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Nacionalidad</label>
+                            <select class="form-control" required>
+                                <option>PERUANA</option>
+                                <option>EXTRANJERA</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-md-3">
+                            <label>Apellido Paterno</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Apellido Materno</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Primer Nombre</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Segundo Nombre</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-md-3">
+                            <label>Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Fecha de Fallecimiento</label>
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DOMICILIO -->
+                <div class="tab-pane fade" id="domicilio" role="tabpanel">
+
+                    <div class="row mb-3">
+                        <div class="form-group col-md-6">
+                            <label>Dirección Expediente</label>
+                            <input type="text" class="form-control" placeholder="Escribe una dirección...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Ubigeo Expediente</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control">
+                                <button class="btn btn-info d-flex align-items-center" type="button">
+                                    <i class="fas fa-plus me-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-md-6">
+                            <label>Dirección Correspondencia</label>
+                            <input type="text" class="form-control" placeholder="Escribe una dirección...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Ubigeo Correspondencia</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control">
+                                <button class="btn btn-info d-flex align-items-center" type="button">
+                                    <i class="fas fa-plus me-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-md-4">
+                            <label>Correo Electrónico</label>
+                            <input type="email" class="form-control" placeholder="Escribe un email..." required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Correo Electrónico 2</label>
+                            <input type="email" class="form-control" placeholder="Escribe un email..." required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Correo Electrónico 3</label>
+                            <input type="email" class="form-control" placeholder="Escribe un email..." required>
+                        </div>
+
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-md-4">
+                            <label>Teléfono</label>
+                            <input type="text" class="form-control" placeholder="Escribe un numero...">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Teléfono 2</label>
+                            <input type="text" class="form-control" placeholder="Escribe un numero...">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Teléfono 3</label>
+                            <input type="text" class="form-control" placeholder="Escribe un numero...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- POLIZA -->
+                <div class="tab-pane fade" id="poliza" role="tabpanel">
+                    <div class="row mb-3">
+                        <div class="form-group col-md-3">
+                            <label>Tipo Pensión</label>
+                            <select class="form-control">
+                                <option>SOBREVIVENCIA</option>
+                                <option>INVALIDEZ</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Fec Invalidez</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Causa Invalidez</label>
+                            <select class="form-control">
+                                <option>Sin información</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Tipo Vejez</label>
+                            <select class="form-control">
+                                <option>SIN INFORMACION</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-md-3">
+                            <label>AFP</label>
+                            <select class="form-control">
+                                <option>SOBREVIVENCIA</option>
+                                <option>INVALIDEZ</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Est. Civil</label>
+                            <select class="form-control">
+                                <option>SOBREVIVENCIA</option>
+                                <option>INVALIDEZ</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Ins. Salud</label>
+                            <select class="form-control">
+                                <option>SOBREVIVENCIA</option>
+                                <option>INVALIDEZ</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Representante</label>
+                            <input type="date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-md-3">
+                            <label>Fec. aceptación</label>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Marcar :</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="autoPropio" name="autoPropio"
+                                    value="1">
+                                <label class="form-check-label" for="autoPropio">Protección de Datos</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="autoPropio" name="autoPropio"
+                                    value="1">
+                                <label class="form-check-label" for="autoPropio">Boleta de Pago</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- PAGOS -->
+                <div class="tab-pane fade" id="pagos" role="tabpanel">
+                    <div class="row mb-3">
+                        <div class="form-group col-md-3">
+                            <label>Vía Pago</label>
+                            <select class="form-control">
+                                <option>SIN INFORMACION</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Sucursal</label>
+                            <select class="form-control">
+                                <option>SIN INFORMACION</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Banco</label>
+                            <select class="form-control">
+                                <option>Seleccionar</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Tipo Cuenta</label>
+                            <select class="form-control">
+                                <option>Seleccionar</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-md-3">
+                            <label>Número Cuenta</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label>Número CCI</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BENEFICIARIOS -->
+                <div class="tab-pane fade" id="beneficiarios" role="tabpanel">
+                    <div class="table-responsive" style="max-height: 350px; overflow-y: auto;">
+                        <table class="table table-bordered table-hover align-middle text-center"
+                            id="tablaBeneficiarios">
+                            <thead class="table-light sticky-header">
+                                <tr>
+                                    <th>N° Orden</th>
+                                    <th>Parentesco</th>
+                                    <th>Tipo Doc.</th>
+                                    <th>Nro Doc.</th>
+
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Aquí se insertarán dinámicamente los beneficiarios -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <ul class="nav nav-tabs" id="benefTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="benef-tab" data-bs-toggle="tab"
+                                data-bs-target="#benef" type="button" role="tab">Datos de Beneficiario</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="domicilioben-tab" data-bs-toggle="tab" data-bs-target="#domicilioben"
+                                type="button" role="tab">Datos Domicilio</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content p-3 border border-top-0 rounded-bottom bg-light" id="benefTabContent">
+                        <div class="tab-pane fade show active" id="benef" role="tabpanel">
+
+                        </div>
+                        <div class="tab-pane fade" id="domicilioben" role="tabpanel">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/js/prepolizas.js"></script>
