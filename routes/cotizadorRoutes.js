@@ -41,6 +41,8 @@ router.get("/api/regiones", cotizadorController.getRegion);
 router.get("/api/provincias/:idRegion", cotizadorController.getProvincia);
 router.get("/api/distritos/:idProvincia", cotizadorController.getDistrito);
 router.get("/api/distrito-info/:idDistrito", cotizadorController.getDistritoInfo);
+router.get('/api/distritos-search', cotizadorController.searchDistritos);
+
 
 //cotizador Estudio
 router.post("/api/guardar", cotizadorController.guardar);

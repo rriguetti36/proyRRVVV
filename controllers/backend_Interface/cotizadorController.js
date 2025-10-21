@@ -1077,6 +1077,29 @@ exports.getDistritoInfo = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 }
+// searchDistritos: recibe ?q=texto y devuelve { id, text }
+exports.searchDistritos = async (req, res) => {
+  try {
+    const q = (req.query.q || '').trim();
+    if (!q) {
+      // devuelve vacio para no cargar todo
+      return res.json([]);
+    }
+    const info = await TablaPar.getDistritoBusca(q);
+    // Select2 espera { results: [ {id, text}, ... ] }
+    res.json({
+      results: info.map(d => ({
+        id: d.id,
+        text: d.v_nombre
+      }))
+    });
+    //res.json(info);
+  } catch (err) {
+    console.error('Error searchDistritos:', err);
+    res.status(500).json({ error: 'Error al buscar distritos' });
+  }
+};
+
 
 async function insertSolicitudesResp(resultados, nombrearch) {
   try {

@@ -103,6 +103,19 @@ class TasasInd {
     return result.recordset[0];
   }
 
+  static async getDistritoBusca(q) {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('q', sql.VarChar(200), `%${q}%`)
+      .query(`
+        SELECT TOP 50 id AS id, v_nombre
+        FROM c_distrito
+        WHERE v_nombre LIKE @q
+        ORDER BY v_nombre
+      `);
+    return result.recordset;
+  }
+
   static async getMatrizConfig() {
     try {
       const pool = await poolPromise;
