@@ -4,29 +4,36 @@
         <div class="card-header bg-primary text-white">
 
             <div class="row mb-3">
+                <input type="hidden" id="idcot" value="<%= datacot.cabafiliado.id_cot %>">
                 <div class="col-md-2">
                     <label>Nro Poliza</label>
-                    <input type="text" class="form-control" id="n_gastoadm">
+                    <input type="text" class="form-control" id="numpol" value="<%= datacot.cabafiliado.num_pol %>"
+                        disabled>
                 </div>
                 <div class="col-md-2">
                     <label>Fecha Emisión</label>
-                    <input type="date" class="form-control" id="n_gastoemi">
+                    <input type="date" class="form-control" id="fecemi" value="<%= datacot.cabafiliado.fec_emision %>"
+                        disabled>
                 </div>
                 <div class="col-md-2">
                     <label>CUSPP</label>
-                    <input type="text" class="form-control" id="n_gastoctrsup">
+                    <input type="text" class="form-control" id="cussp" value="<%= datacot.cabafiliado.num_cuspp %>"
+                        disabled>
                 </div>
                 <div class="col-md-2">
                     <label>Nro Cotizacion</label>
-                    <input type="text" class="form-control" id="n_endeudamiento">
+                    <input type="text" class="form-control" id="numcot" value="<%= datacot.cabafiliado.num_cot %>"
+                        disabled>
                 </div>
                 <div class="col-md-2">
                     <label>Nro Operación</label>
-                    <input type="text" class="form-control" id="n_imprenta">
+                    <input type="text" class="form-control" id="numope" value="<%= datacot.cabafiliado.num_operacion %>"
+                        disabled>
                 </div>
                 <div class="col-md-2">
                     <label>Ingreso SPP</label>
-                    <input type="date" class="form-control" id="n_imprenta">
+                    <input type="date" class="form-control" id="fecspp"
+                        value="<%= datacot.cabafiliado.fec_ingresospp %>">
                 </div>
             </div>
         </div>
@@ -62,57 +69,73 @@
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>Tipo de Documento</label>
-                            <select class="form-control" required>
-                                <option value="">Seleccione</option>
-                                <option>DNI</option>
-                                <option>Carné Extranjería</option>
+                            <select class="form-control" disabled>
+                                <% tipodoc.forEach(function(doc) { %>
+                                    <option value="<%= doc.v_cod %>" <%=doc.v_cod==datacot.cabafiliado.id_tipodociden
+                                        ? 'selected' : '' %>>
+                                        <%= doc.v_nombre %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Documento</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" value="<%= datacot.cabafiliado.num_dociden %>"
+                                disabled>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Género</label>
-                            <select class="form-control" required>
-                                <option>MASCULINO</option>
-                                <option>FEMENINO</option>
+                            <select class="form-control" disabled>
+                                <% tiposex.forEach(function(doc) { %>
+                                    <option value="<%= doc.v_cod %>" <%=doc.v_cod==datacot.cabafiliado.id_sexo
+                                        ? 'selected' : '' %>>
+                                        <%= doc.v_nombre %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Nacionalidad</label>
                             <select class="form-control" required>
-                                <option>PERUANA</option>
-                                <option>EXTRANJERA</option>
+                                <option value="1">PERUANA</option>
+                                <option value="2">EXTRANJERA</option>
                             </select>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>Apellido Paterno</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" value="<%= datacot.cabafiliado.des_apepaterno %>"
+                                required>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Apellido Materno</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" value="<%= datacot.cabafiliado.des_apematerno %>"
+                                required>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Primer Nombre</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" value="<%= datacot.cabafiliado.des_nombre %>"
+                                required>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Segundo Nombre</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control"
+                                value="<%= datacot.cabafiliado.des_nombresegundo %>">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>Fecha de Nacimiento</label>
-                            <input type="date" class="form-control" required>
+                            <input type="date" class="form-control"
+                                value="<%= datacot.cabafiliado.fec_nacimiento ? datacot.cabafiliado.fec_nacimiento.toString().substring(0, 10) : '' %>"
+                                required>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Fecha de Fallecimiento</label>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control"
+                                value="<%= datacot.cabafiliado.fec_fallecimiento ? datacot.cabafiliado.fec_fallecimiento.toString().substring(0, 10) : '' %>"
+                                required>
                         </div>
                     </div>
                 </div>
@@ -127,10 +150,12 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Ubigeo Expediente</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control">
-                                <button class="btn btn-info d-flex align-items-center" type="button">
-                                    <i class="fas fa-plus me-1"></i>
+                            <div class="input-group mb-2">
+                                <input type="text" id="txtUbigeoExp" class="form-control"
+                                    placeholder="Ubigeo correspondencia..." readonly>
+                                <button type="button" class="btn btn-outline-info btnUbigeo" data-bs-toggle="modal"
+                                    data-bs-target="#modalUbigeo" data-targetinput="txtUbigeoExp">
+                                    <i class="fas fa-map-marker-alt"></i>
                                 </button>
                             </div>
                         </div>
@@ -142,10 +167,12 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label>Ubigeo Correspondencia</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control">
-                                <button class="btn btn-info d-flex align-items-center" type="button">
-                                    <i class="fas fa-plus me-1"></i>
+                            <div class="input-group mb-2">
+                                <input type="text" id="txtUbigeoCor" class="form-control"
+                                    placeholder="Ubigeo correspondencia..." readonly>
+                                <button type="button" class="btn btn-outline-info btnUbigeo" data-bs-toggle="modal"
+                                    data-bs-target="#modalUbigeo" data-targetinput="txtUbigeoCor">
+                                    <i class="fas fa-map-marker-alt"></i>
                                 </button>
                             </div>
                         </div>
@@ -186,53 +213,81 @@
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>Tipo Pensión</label>
-                            <select class="form-control">
-                                <option>SOBREVIVENCIA</option>
-                                <option>INVALIDEZ</option>
+                            <select class="form-control" disabled>
+                                <% tipoPen.forEach(function(doc) { %>
+                                    <option value="<%= doc.v_cod %>" <%=doc.v_cod==datacot.cabafiliado.id_prestacion
+                                        ? 'selected' : '' %>>
+                                        <%= doc.v_nombre %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Fec Invalidez</label>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control"
+                                value="<%= datacot.cabafiliado.fec_invalido ? datacot.cabafiliado.fec_invalido.toString().substring(0, 10) : '' %>"
+                                disabled>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Causa Invalidez</label>
-                            <select class="form-control">
-                                <option>Sin información</option>
+                            <select class="form-control" disabled>
+                                <option>Sin Información</option>
+                                <% tipoEnf.forEach(function(doc) { %>
+                                    <option value="<%= doc.v_cod %>">
+                                        <%= doc.v_nombre %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Tipo Vejez</label>
-                            <select class="form-control">
-                                <option>SIN INFORMACION</option>
+                            <select class="form-control" disabled>
+                                <option>Sin Información</option>
+                                <% tipoVej.forEach(function(doc) { %>
+                                    <option value="<%= doc.v_cod %>" <%=doc.v_cod==datacot.cabafiliado.id_tipobenef
+                                        ? 'selected' : '' %>>
+                                        <%= doc.v_nombre %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>AFP</label>
-                            <select class="form-control">
-                                <option>SOBREVIVENCIA</option>
-                                <option>INVALIDEZ</option>
+                            <select class="form-control" disabled>
+                                <% tipoAfp.forEach(function(doc) { %>
+                                    <option value="<%= doc.v_cod %>" <%=doc.v_cod==datacot.cabafiliado.id_afp
+                                        ? 'selected' : '' %>>
+                                        <%= doc.v_nombre %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Est. Civil</label>
                             <select class="form-control">
-                                <option>SOBREVIVENCIA</option>
-                                <option>INVALIDEZ</option>
+                                <% tipoCiv.forEach(function(doc) { %>
+                                    <option value="<%= doc.v_cod %>" <%=doc.v_cod==datacot.cabafiliado.id_estciv
+                                        ? 'selected' : '' %>>
+                                        <%= doc.v_nombre %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Ins. Salud</label>
                             <select class="form-control">
-                                <option>SOBREVIVENCIA</option>
-                                <option>INVALIDEZ</option>
+                                <% tipoEss.forEach(function(doc) { %>
+                                    <option value="<%= doc.v_cod %>">
+                                        <%= doc.v_nombre %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Representante</label>
-                            <input type="date" class="form-control">
+                            <input type="text" class="form-control">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -263,25 +318,41 @@
                         <div class="form-group col-md-3">
                             <label>Vía Pago</label>
                             <select class="form-control">
-                                <option>SIN INFORMACION</option>
+                                <% tipoPag.forEach(function(doc) { %>
+                                    <option value="<%= doc.v_cod %>">
+                                        <%= doc.v_nombre %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Sucursal</label>
                             <select class="form-control">
-                                <option>SIN INFORMACION</option>
+                                <% tipoAfp.forEach(function(doc) { %>
+                                    <option value="<%= doc.v_cod %>">
+                                        <%= doc.v_nombre %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Banco</label>
                             <select class="form-control">
-                                <option>Seleccionar</option>
+                                <% tipoBco.forEach(function(doc) { %>
+                                    <option value="<%= doc.v_cod %>">
+                                        <%= doc.v_nombre %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Tipo Cuenta</label>
                             <select class="form-control">
-                                <option>Seleccionar</option>
+                                <% tipocta.forEach(function(doc) { %>
+                                    <option value="<%= doc.v_cod %>">
+                                        <%= doc.v_nombre %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                     </div>
@@ -299,24 +370,56 @@
 
                 <!-- BENEFICIARIOS -->
                 <div class="tab-pane fade" id="beneficiarios" role="tabpanel">
-                    <div class="table-responsive" style="max-height: 350px; overflow-y: auto;">
+                    <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
                         <table class="table table-bordered table-hover align-middle text-center"
                             id="tablaBeneficiarios">
                             <thead class="table-light sticky-header">
                                 <tr>
                                     <th>N° Orden</th>
                                     <th>Parentesco</th>
+                                    <th>Nombres</th>
                                     <th>Tipo Doc.</th>
                                     <th>Nro Doc.</th>
-
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- Aquí se insertarán dinámicamente los beneficiarios -->
+                               <!--  <% if (datacot.detbeneficiarios && datacot.detbeneficiarios.length> 0) { %>
+                                    <% datacot.detbeneficiarios.forEach(function(b, index) { %>
+                                        <tr>
+                                            <td>
+                                                <%= b.id_orden %>
+                                            </td>
+                                            <td>
+                                                <%= b.desparentesco %>
+                                            </td>
+                                            <td>
+                                                <%= b.nombres %>
+                                            </td>
+                                            <td>
+                                                <%= b.destipodoc %>
+                                            </td>
+                                            <td>
+                                                <%= b.numdoc %>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary editar-beneficiario"
+                                                    data-id="<%= b.id_orden %>">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                            <% } else { %>
+                                                <tr>
+                                                    <td colspan="5" class="text-muted">No hay beneficiarios registrados
+                                                    </td>
+                                                </tr>
+                                                <% } %> -->
                             </tbody>
                         </table>
                     </div>
+                    <br>
                     <ul class="nav nav-tabs" id="benefTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="benef-tab" data-bs-toggle="tab" data-bs-target="#benef"
@@ -333,137 +436,160 @@
                             <div class="row mb-3">
                                 <div class="form-group col-md-3">
                                     <label>Tipo Ident.</label>
-                                    <select class="form-control">
-                                        <option>Seleccionar</option>
+                                    <select class="form-control" id="tipodocben">
+                                        <% tipodoc.forEach(function(doc) { %>
+                                            <option value="<%= doc.v_cod %>">
+                                                <%= doc.v_nombre %>
+                                            </option>
+                                            <% }) %>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>N° Ident.</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" id="numeroidenben">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Primer Nombre</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" id="nombreben">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Segundo Nombre</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" id="nombresegben">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-md-3">
                                     <label>Ap. Paterno</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" id="apepatben">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Ap. Materno</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" id="apematben">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Grupo Familiar</label>
-                                    <select class="form-control">
-                                        <option>MASCULINO</option>
-                                        <option>FEMENINO</option>
+                                    <select class="form-control" id="grupofamben" disabled>
+                                        <% tipoGru.forEach(function(doc) { %>
+                                            <option value="<%= doc.v_cod %>">
+                                                <%= doc.v_nombre %>
+                                            </option>
+                                            <% }) %>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Género</label>
-                                    <select class="form-control">
-                                        <option>MASCULINO</option>
-                                        <option>FEMENINO</option>
+                                    <select class="form-control" id="sexoben" disabled>
+                                        <% tiposex.forEach(function(doc) { %>
+                                            <option value="<%= doc.v_cod %>">
+                                                <%= doc.v_nombre %>
+                                            </option>
+                                            <% }) %>
                                     </select>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-md-3">
                                     <label>Fec. Nac.</label>
-                                    <input type="date" class="form-control">
+                                    <input type="date" class="form-control" id="nacimientoben" disabled>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Fec. Fall.</label>
-                                    <input type="date" class="form-control">
+                                    <input type="date" class="form-control" id="fallecimientoben">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Sit. Invalidez</label>
-                                    <select class="form-control">
-                                        <option>MASCULINO</option>
-                                        <option>FEMENINO</option>
+                                    <select class="form-control" id="invalidezben" disabled>
+                                        <% tipoInv.forEach(function(doc) { %>
+                                            <option value="<%= doc.v_cod %>">
+                                                <%= doc.v_nombre %>
+                                            </option>
+                                            <% }) %>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Causa Invalidez</label>
-                                    <select class="form-control">
-                                        <option>Sin información</option>
+                                    <select class="form-control" id="causainvalidezben">
+                                        <option>Sin Información</option>
+                                        <% tipoEnf.forEach(function(doc) { %>
+                                            <option value="<%= doc.v_cod %>">
+                                                <%= doc.v_nombre %>
+                                            </option>
+                                            <% }) %>
                                     </select>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-md-3">
                                     <label>Fec. Invalidez</label>
-                                    <input type="date" class="form-control">
+                                    <input type="date" class="form-control" id="fechainvalidezben">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Parentesco</label>
-                                    <select class="form-control">
-                                        <option>Sin información</option>
+                                    <select class="form-control" id="parentescoben" disabled>
+                                        <% tipoPar.forEach(function(doc) { %>
+                                            <option value="<%= doc.v_cod %>">
+                                                <%= doc.v_nombre %>
+                                            </option>
+                                            <% }) %>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Derecho a Pensión</label>
-                                    <select class="form-control">
-                                        <option>Sin información</option>
+                                    <select class="form-control" id="derpenben" disabled>
+                                        <option value="1">Si</option>
+                                        <option value="2">No</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Beneficio Estudiante :</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="autoPropio"
-                                            name="autoPropio" value="1">
-                                        <label class="form-check-label" for="autoPropio">Estudiante</label>
+                                        <input class="form-check-input" type="checkbox" id="estudiantesi"
+                                            name="estudiantesi" value="1">
+                                        <label class="form-check-label" for="estudiantesi">Estudiante</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-md-3">
                                     <label>% Pensión</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" id="prcpenben" disabled>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Pensión</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" id="montopenben" disabled>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Marcar :</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="autoPropio"
-                                            name="autoPropio" value="1">
-                                        <label class="form-check-label" for="autoPropio">Protección de Datos</label>
+                                        <input class="form-check-input" type="checkbox" id="protecdatosben"
+                                            name="protecdatosben" value="1">
+                                        <label class="form-check-label" for="protecdatosben">Protección de Datos</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="autoPropio"
-                                            name="autoPropio" value="1">
-                                        <label class="form-check-label" for="autoPropio">Boleta de Pago</label>
+                                        <input class="form-check-input" type="checkbox" id="boletapagben"
+                                            name="boletapagben" value="1">
+                                        <label class="form-check-label" for="boletapagben">Boleta de Pago</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label>Marcar en caso de Exclusiones :</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="autoPropio"
-                                            name="autoPropio" value="1">
-                                        <label class="form-check-label" for="autoPropio">Por Fallecimiento</label>
+                                        <input class="form-check-input" type="checkbox" id="excluyefall"
+                                            name="excluyefall" value="1">
+                                        <label class="form-check-label" for="excluyefall">Por Fallecimiento</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="autoPropio"
-                                            name="autoPropio" value="1">
-                                        <label class="form-check-label" for="autoPropio">Por Mayoria de edad</label>
+                                        <input class="form-check-input" type="checkbox" id="excluyemayor"
+                                            name="excluyemayor" value="1">
+                                        <label class="form-check-label" for="excluyemayor">Por Mayoria de edad</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt-4">
                                 <button type="reset" class="btn btn-secondary"><i class="fas fa-times"></i>
                                     Cancelar/Limpiar</button>
-                                <button type="submit" class="btn btn-primary ml-2"><i class="fas fa-save"></i>
-                                    Guardar</button>
+                                <button type="submit" id="btnActualizarBen" class="btn btn-primary ml-2"><i class="fas fa-save"></i>
+                                    Actualizar Datos</button>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="domicilioben" role="tabpanel">
@@ -476,11 +602,11 @@
                                 <div class="form-group col-md-6">
                                     <label>Ubigeo Expediente</label>
                                     <div class="input-group mb-2">
-                                        <input type="text" id="txtUbigeoExp" class="form-control"
+                                        <input type="text" id="txtUbigeoExpBen" class="form-control"
                                             placeholder="Ubigeo expediente..." readonly>
                                         <button type="button" class="btn btn-outline-info btnUbigeo"
                                             data-bs-toggle="modal" data-bs-target="#modalUbigeo"
-                                            data-targetinput="txtUbigeoExp">
+                                            data-targetinput="txtUbigeoExpBen">
                                             <i class="fas fa-map-marker-alt"></i>
                                         </button>
                                     </div>
@@ -495,11 +621,11 @@
                                 <div class="form-group col-md-6">
                                     <label>Ubigeo Correspondencia</label>
                                     <div class="input-group mb-2">
-                                        <input type="text" id="txtUbigeoCor" class="form-control"
+                                        <input type="text" id="txtUbigeoCorBen" class="form-control"
                                             placeholder="Ubigeo correspondencia..." readonly>
                                         <button type="button" class="btn btn-outline-info btnUbigeo"
                                             data-bs-toggle="modal" data-bs-target="#modalUbigeo"
-                                            data-targetinput="txtUbigeoCor">
+                                            data-targetinput="txtUbigeoCorBen">
                                             <i class="fas fa-map-marker-alt"></i>
                                         </button>
                                     </div>
@@ -537,7 +663,10 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="col-md-12 text-end">
+                <button id="btnGuardarPrepoliza" class="btn btn-primary mt-2">Crear Pre Poliza</button>
+                <button id="btnCancelar" class="btn btn-primary mt-2">Salir</button>
+            </div>
             </div>
         </div>
     </div>

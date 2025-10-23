@@ -1,11 +1,5 @@
 let inputUbigeoTarget = null;
 
-// Detecta qué botón abrió el modal
-// $('#modalUbigeo').on('show.bs.modal', function (e) {
-//   const button = e.relatedTarget;
-//   inputUbigeoTarget = $(button).data('target-input'); // por ejemplo "#txtUbigeoExp"
-// });
-
 // Al hacer clic en cualquier botón que abre el modal
 $(document).on('click', '.btnUbigeo', function () {
     inputUbigeoTarget = $(this).data('targetinput'); // guarda el id del input destino
@@ -209,4 +203,174 @@ $(document).ready(function () {
         const modal = bootstrap.Modal.getInstance(document.getElementById('modalUbigeo'));
         if (modal) modal.dispose(); // elimina instancia vieja
     });
+});
+
+let beneficiarios = [];
+let idordenEditado = null;
+document.addEventListener("DOMContentLoaded", async function () {
+    // Detectar clic en el botón editar
+    const id = document.getElementById("idcot").value;
+
+    // 1️⃣ Traer todos los beneficiarios del backend al cargar la página
+    try {
+        const response = await fetch(`/emision/api/getbeneficiario/${id}`);
+        if (!response.ok) throw new Error("No se pudo obtener los beneficiarios");
+        beneficiarios = await response.json();
+
+        pintarTabla(beneficiarios);
+    } catch (error) {
+        console.error("Error cargando beneficiarios:", error);
+    }
+
+    document.querySelector("#tablaBeneficiarios").addEventListener("click", async function (e) {
+        if (e.target.closest(".editar-beneficiario")) {
+            const idord = e.target.closest(".editar-beneficiario").dataset.id;
+            idordenEditado = parseInt(idord);
+
+            const ben = beneficiarios.find(b => b.id_orden === idordenEditado);
+            if (!ben) return alert("No se encontró el beneficiario seleccionado");
+
+            // 👉 Cargar datos al formulario
+            document.getElementById("nombreben").value = ben.des_nombre || '';
+            document.getElementById("nombresegben").value = ben.des_nombresegundo || '';
+            document.getElementById("apepatben").value = ben.des_apepaterno || '';
+            document.getElementById("apematben").value = ben.des_apematerno || '';
+            document.getElementById("grupofamben").value = ben.id_grupofam || '';
+            document.getElementById("sexoben").value = ben.id_sexo || '';
+            document.getElementById("invalidezben").value = ben.id_invalido || '';
+            document.getElementById("parentescoben").value = ben.id_parentesco || '';
+            document.getElementById("prcpenben").value = ben.val_pension || 0;
+            document.getElementById("montopenben").value = ben.mto_pension || 0;
+            document.getElementById("estudiantesi").checked = !!ben.ind_estudiante;
+
+            document.getElementById("nacimientoben").value = ben.fec_nacimiento
+                ? ben.fec_nacimiento.split('T')[0]
+                : '';
+            document.getElementById("fallecimientoben").value = ben.fec_fallecimiento
+                ? ben.fec_fallecimiento.split('T')[0]
+                : '';
+        }
+    });
+
+    // document.querySelectorAll(".editar-beneficiario").forEach(btn => {
+    //     btn.addEventListener("click", async function () {
+    //         const id = document.getElementById("idcot").value;
+    //         const idord = this.dataset.id;
+    //         idordenEditado = parseInt(idord);
+
+    //         try {
+    //             // const response = await fetch(`/emision/api/getbeneficiario/${id}/${idord}`);
+    //             // if (!response.ok) throw new Error("No se pudo obtener el beneficiarios");
+
+    //             // const data = await response.json();
+    //             // beneficiarios = Array.isArray(data) ? data : [data];
+    //             // const ben = beneficiarios[0] || {};
+
+    //             const ben = beneficiarios.find(b => b.id_orden === idordenEditado);
+    //             if (!ben) return alert("No se encontró el beneficiario seleccionado");
+
+    //             // 👉 Cargar los datos en tus inputs del formulario
+    //             document.getElementById("nombreben").value = ben.des_nombre || '';
+    //             document.getElementById("nombresegben").value = ben.des_nombresegundo || '';
+    //             document.getElementById("apepatben").value = ben.des_apepaterno || '';
+    //             document.getElementById("apematben").value = ben.des_apematerno || '';
+    //             document.getElementById("grupofamben").value = ben.id_grupofam || '';
+    //             document.getElementById("sexoben").value = ben.id_sexo || '';
+    //             document.getElementById("invalidezben").value = ben.id_invalido || '';
+    //             document.getElementById("parentescoben").value = ben.id_parentesco || '';
+    //             document.getElementById("prcpenben").value = ben.val_pension || 0;
+    //             document.getElementById("montopenben").value = ben.mto_pension || 0;
+    //             document.getElementById("estudiantesi").checked = !!ben.ind_estudiante;
+
+    //             document.getElementById("nacimientoben").value = ben.fec_nacimiento
+    //                 ? ben.fec_nacimiento.split('T')[0]
+    //                 : '';
+    //             document.getElementById("fallecimientoben").value = ben.fec_fallecimiento
+    //                 ? ben.fec_fallecimiento.split('T')[0]
+    //                 : '';
+    //         } catch (error) {
+    //             console.error(error);
+    //             alert("Error al cargar los datos del beneficiario");
+    //         }
+    //     });
+    // });
+
+    // 2️⃣ Acción del botón Actualizar
+    document.getElementById("btnActualizarBen").addEventListener("click", () => {
+        // Obtener valores actuales desde los inputs
+        if (!idordenEditado) {
+            alert("Primero seleccione un beneficiario para editar");
+            return;
+        }
+        const idOrden = idordenEditado;
+
+        // Buscar el beneficiario dentro del array
+        const index = beneficiarios.findIndex(b => b.id_orden === idOrden);
+
+        const inputTipoDoc = document.getElementById("tipodocben");
+        const inputNumDoc = document.getElementById("numeroidenben");
+        const selectCauInv = document.getElementById("causainvalidezben");
+        const inputFecInv = document.getElementById("fechainvalidezben");
+        const inputFecFal = document.getElementById("fallecimientoben");
+
+        const inputEstudiante = document.getElementById("estudiantesi");
+        const inputProtecDatos = document.getElementById("protecdatosben");
+        const inputBoletaPagos = document.getElementById("boletapagben");
+
+        const inputExclusionFal = document.getElementById("excluyefall");
+        const inputExclusionMay = document.getElementById("excluyemayor");
+
+        if (index !== -1) {
+            // Actualizar los valores modificados desde los inputs
+            beneficiarios[index] = {
+                ...beneficiarios[index],
+                id_tipodociden: inputTipoDoc?.value,
+                num_dociden: inputNumDoc?.value,
+                id_causainv: selectCauInv?.value,
+                fec_invalido: inputFecInv?.value,
+                fec_fallecimiento: inputFecFal?.value
+                // agrega más campos según tu formulario
+            };
+        }
+        // Crear nuevo array actualizado
+        // const dataBen = beneficiario.map(b => ({
+        //     ...b,
+        //     id_tipodociden: inputTipoDoc?.value || b.id_tipodociden,
+        //     num_dociden: inputNumDoc?.value || b.num_dociden,
+        //     id_causainv: selectCauInv?.value || b.id_causainv,
+        //     fec_invalido: inputFecInv?.value || b.fec_invalido,
+        //     fec_fallecimiento: inputFecFal?.value || b.fec_fallecimiento,
+        //     ind_estudiante: inputEstudiante?.checked ? 1 : 0
+        // }));
+
+        console.log("✅ Nuevo array actualizado:", beneficiarios);
+
+        // Volver a pintar la tabla con los cambios
+        pintarTabla(beneficiarios);
+    });
+
+    // 3️⃣ Función para mostrar la tabla
+    function pintarTabla(lista) {
+        const tbody = document.querySelector("#tablaBeneficiarios tbody");
+        tbody.innerHTML = "";
+
+        lista.forEach((b, i) => {
+            const fila = `
+                <tr>
+                    <td>${b.id_orden}</td>
+                    <td>${b.desparentesco || ""}</td>
+                    <td>${b.nombres || ""}</td>
+                    <td>${b.destipodoc || ""}</td>
+                    <td>${b.num_dociden || ""}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary editar-beneficiario"
+                            data-id="${b.id_orden}">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                    </td>
+                </tr>
+            `;
+            tbody.insertAdjacentHTML("beforeend", fila);
+        });
+    }
 });

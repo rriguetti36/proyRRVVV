@@ -11,12 +11,70 @@ const tablasTasasInd = require('../../models/tabTasasModel');
 const rutinaAjusteRenta = require('../../servicios/ajustesRenta');
 
 exports.PrePolizas = async (req, res) => {
-    res.render('emision/prepolizas', { title: 'Gestión de Cotizaciones y Pólizas' });
+
+    res.render('emision/prepolizas', {
+        title: 'Gestión de Cotizaciones y Pólizas'
+    });
 };
 
 exports.PrcPrePoliza = async (req, res) => {
-    res.render('emision/prcprepolizas', { title: 'Gestión de Cotizaciones y Pólizas' });
+    const id_cot = req.params.id_cot;
+    const paramtetros = await TablaPar.getParametros();
+    const tipoAfp = paramtetros.filter(x => x.idpar === 1);
+    const tipoCiv = paramtetros.filter(x => x.idpar === 4);
+    const tipoPar = paramtetros.filter(x => x.idpar === 6);
+    const tiposex = paramtetros.filter(x => x.idpar === 7);
+    const tipoInv = paramtetros.filter(x => x.idpar === 8);
+    const tipoVej = paramtetros.filter(x => x.idpar === 9);
+    const tipodoc = paramtetros.filter(x => x.idpar === 15);
+    const tipoBco = paramtetros.filter(x => x.idpar === 16);
+    const tipoEss = paramtetros.filter(x => x.idpar === 18);
+    const tipocta = paramtetros.filter(x => x.idpar === 23);
+    const tipoPag = paramtetros.filter(x => x.idpar === 29);
+    const tipoEnf = paramtetros.filter(x => x.idpar === 30);
+    const tipoPen = paramtetros.filter(x => x.idpar === 12);
+    const tipoGru = paramtetros.filter(x => x.idpar === 17);
+    const datacot = await TablaEmi.getCotizacionCompleta(id_cot);
+
+    console.log("datacot", datacot)
+    res.render('emision/prcprepolizas', {
+        tipoAfp, tipoCiv, tiposex, tipoInv, tipodoc, tipoBco, tipoEss, tipocta,
+        tipoPag, tipoEnf, tipoVej, tipoPen, tipoGru, tipoPar, datacot, title: 'Gestión de Cotizaciones y Pólizas'
+    });
 };
+
+// 👉 Todos los beneficiarios de una cotización
+exports.getBeneficiariosPorCotizacion = async (req, res) => {
+  try {
+    const { id_cot } = req.params;
+    const data = await TablaEmi.getBeneficiarioById(id_cot); // sin id_orden
+
+    res.json(data);
+  } catch (error) {
+    console.error("Error al obtener beneficiarios:", error);
+    res.status(500).json({ message: "Error al obtener beneficiarios", error });
+  }
+};
+
+// 👉 Beneficiario específico
+exports.getBeneficiarioById = async (req, res) => {
+  try {
+    const { id_cot, id_orden } = req.params;
+    const data = await TablaEmi.getBeneficiarioById(id_cot, id_orden);
+
+    if (!data) {
+      return res.status(404).json({ message: "Beneficiario no encontrado" });
+    }
+
+    res.json(data);
+  } catch (error) {
+    console.error("Error al obtener beneficiario:", error);
+    res.status(500).json({ message: "Error al obtener beneficiario", error });
+  }
+};
+
+
+
 
 exports.listCotizaciones = async (req, res) => {
     try {
@@ -31,12 +89,12 @@ exports.listCotizaciones = async (req, res) => {
 
 exports.listPolizas = async (req, res) => {
     try {
-      const dni = req.query.dni || '';
-      const polizas = await TablaEmi.getPolizas(dni);
-      res.json(polizas);
+        const dni = req.query.dni || '';
+        const polizas = await TablaEmi.getPolizas(dni);
+        res.json(polizas);
     } catch (err) {
-      console.error('Error en listPolizas:', err);
-      res.status(500).json({ error: 'Error al obtener pólizas' });
+        console.error('Error en listPolizas:', err);
+        res.status(500).json({ error: 'Error al obtener pólizas' });
     }
 }
 
