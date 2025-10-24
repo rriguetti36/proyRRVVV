@@ -57,7 +57,7 @@ class emision {
     }
   }
 
-  static async getCotizacionCompleta(id_cot) {
+  static async getCotizacionAfibyId(id_cot) {
     try {
       const pool = await poolPromise;
 
@@ -79,7 +79,7 @@ class emision {
           a.id_prestacion,
           a.id_estciv,
           CONVERT(varchar(10), b.fec_acepta, 23) AS fec_acepta,
-          a.id_moneda,
+          a.id_moneda AS id_monfondo,
           a.val_tcfondo,
           a.mto_capitalfon,
           a.mto_cicfon,
@@ -109,9 +109,7 @@ class emision {
           b.val_tasagar,
           b.val_rentapentmp,
           b.val_perdida,
-          a.mto_priuni,
           b.mto_priuni_CIA,
-          b.mto_pension,
           b.mto_pension,
           b.mto_pensiongar,
           b.mto_priAFP,
@@ -126,7 +124,6 @@ class emision {
           c.id_invalido,
           CONVERT(varchar(10), c.fec_invalido, 23) AS fec_invalido,
           c.id_causainv,
-          c.ind_dercre,
           c.id_tipodociden,
           c.num_dociden,
           c.des_nombre,
@@ -136,10 +133,10 @@ class emision {
           CONVERT(varchar(10), c.fec_nacimiento, 23) AS fec_nacimiento,
           CONVERT(varchar(10), c.fec_fallecimiento, 23) AS fec_fallecimiento,
           c.fec_nachijomayor,
-          c.mto_pension,
+          c.mto_pension AS mto_pensionben,
           c.val_pension,
           c.val_pensionleg,
-          c.mto_pensiongar,
+          c.mto_pensiongar AS mto_pensiongarben,
           c.ind_estudiante, 
           null fec_emi, 
           null num_pol, 
@@ -149,23 +146,7 @@ class emision {
           join c_cotizacionbeneficiario c on a.id_cot=c.id_cot
           where a.id_cot=@id_cot and b.id_estado=4 and c.id_orden=1`);
 
-      const detbeneficiarios = await pool.request()
-        .input('id_cot', id_cot)
-        .query(`select a.id_cot, c.id_orden,c.id_parentesco,c.id_grupofam,c.id_sexo,c.id_invalido,c.fec_invalido,
-                c.id_causainv,c.ind_dercre,c.id_tipodociden,c.num_dociden,c.des_nombre,c.des_nombresegundo,c.des_apepaterno,c.des_apematerno,c.fec_nacimiento,
-                c.fec_fallecimiento,c.fec_nachijomayor,c.mto_pension,c.val_pension,c.val_pensionleg,c.mto_pensiongar,c.ind_estudiante,
-                mpa.v_nombre as desparentesco, mtd.v_nombre as destipodoc, 
-                c.des_nombre + ' ' + c.des_nombresegundo + ' ' + c.des_apepaterno + ' ' + c.des_apematerno nombres
-                from c_cotizacion a 
-                join c_cotizacionbeneficiario c on a.id_cot=c.id_cot
-                join m_parametros_val mpa on c.id_parentesco=mpa.v_cod and mpa.idpar=6
-                join m_parametros_val mtd on c.id_tipodociden=mtd.v_cod and mtd.idpar=15
-                where a.id_cot=@id_cot and c.id_orden<>1`);
-
-      return {
-        cabafiliado: cabafiliado.recordset[0],
-        detbeneficiarios: detbeneficiarios.recordset
-      };
+      return cabafiliado.recordset[0];
     } catch (error) {
       console.error('Error al obtener datos de cotización:', error);
       throw error;
@@ -179,7 +160,6 @@ class emision {
 
       let query = `
       SELECT 
-        a.id_cot, 
         c.id_orden, 
         c.id_parentesco, 
         c.id_grupofam, 
@@ -232,7 +212,6 @@ class emision {
       throw error;
     }
   }
-
 
   static async GuardaPoliza(polizaData, versionData, beneficiarios) {
     const pool = await poolPromise;

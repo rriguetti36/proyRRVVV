@@ -34,7 +34,7 @@ exports.PrcPrePoliza = async (req, res) => {
     const tipoEnf = paramtetros.filter(x => x.idpar === 30);
     const tipoPen = paramtetros.filter(x => x.idpar === 12);
     const tipoGru = paramtetros.filter(x => x.idpar === 17);
-    const datacot = await TablaEmi.getCotizacionCompleta(id_cot);
+    const datacot = await TablaEmi.getCotizacionAfibyId(id_cot);
 
     console.log("datacot", datacot)
     res.render('emision/prcprepolizas', {
@@ -43,12 +43,22 @@ exports.PrcPrePoliza = async (req, res) => {
     });
 };
 
+exports.getCotizacionAfibyId = async (req, res) => {
+  try {
+    const { id_cot } = req.params;
+    const data = await TablaEmi.getCotizacionAfibyId(id_cot); // sin id_orden
+    res.json(data);
+  } catch (error) {
+    console.error("Error al obtener beneficiarios:", error);
+    res.status(500).json({ message: "Error al obtener beneficiarios", error });
+  }
+};
+
 // 👉 Todos los beneficiarios de una cotización
 exports.getBeneficiariosPorCotizacion = async (req, res) => {
   try {
     const { id_cot } = req.params;
     const data = await TablaEmi.getBeneficiarioById(id_cot); // sin id_orden
-
     res.json(data);
   } catch (error) {
     console.error("Error al obtener beneficiarios:", error);

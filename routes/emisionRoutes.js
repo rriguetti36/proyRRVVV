@@ -10,6 +10,7 @@ router.get("/prcprepoliza/:id_cot", emisionController.PrcPrePoliza); // render E
 //apis
 router.get('/api/cotizaciones', emisionController.listCotizaciones);
 router.get('/api/polizas', emisionController.listPolizas);
+router.get("/api/getcotizacionafi/:id_cot", emisionController.getCotizacionAfibyId);
 router.get("/api/getbeneficiario/:id_cot", emisionController.getBeneficiariosPorCotizacion); // Obtener todos los beneficiarios de una cotización
 router.get("/api/getbeneficiario/:id_cot/:id_orden", emisionController.getBeneficiarioById); // Obtener beneficiario específico (por id_orden)
 

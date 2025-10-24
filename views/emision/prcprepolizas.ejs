@@ -4,36 +4,30 @@
         <div class="card-header bg-primary text-white">
 
             <div class="row mb-3">
-                <input type="hidden" id="idcot" value="<%= datacot.cabafiliado.id_cot %>">
+                <input type="hidden" id="idcot" value="<%= datacot.id_cot %>">
                 <div class="col-md-2">
                     <label>Nro Poliza</label>
-                    <input type="text" class="form-control" id="numpol" value="<%= datacot.cabafiliado.num_pol %>"
-                        disabled>
+                    <input type="text" class="form-control" id="numpol" value="<%= datacot.num_pol %>" disabled>
                 </div>
                 <div class="col-md-2">
                     <label>Fecha Emisión</label>
-                    <input type="date" class="form-control" id="fecemi" value="<%= datacot.cabafiliado.fec_emision %>"
-                        disabled>
+                    <input type="date" class="form-control" id="fecemi" value="<%= datacot.fec_emision %>" disabled>
                 </div>
                 <div class="col-md-2">
                     <label>CUSPP</label>
-                    <input type="text" class="form-control" id="cussp" value="<%= datacot.cabafiliado.num_cuspp %>"
-                        disabled>
+                    <input type="text" class="form-control" id="cussp" value="<%= datacot.num_cuspp %>" disabled>
                 </div>
                 <div class="col-md-2">
                     <label>Nro Cotizacion</label>
-                    <input type="text" class="form-control" id="numcot" value="<%= datacot.cabafiliado.num_cot %>"
-                        disabled>
+                    <input type="text" class="form-control" id="numcot" value="<%= datacot.num_cot %>" disabled>
                 </div>
                 <div class="col-md-2">
                     <label>Nro Operación</label>
-                    <input type="text" class="form-control" id="numope" value="<%= datacot.cabafiliado.num_operacion %>"
-                        disabled>
+                    <input type="text" class="form-control" id="numope" value="<%= datacot.num_operacion %>" disabled>
                 </div>
                 <div class="col-md-2">
                     <label>Ingreso SPP</label>
-                    <input type="date" class="form-control" id="fecspp"
-                        value="<%= datacot.cabafiliado.fec_ingresospp %>">
+                    <input type="date" class="form-control" id="fecspp" value="<%= datacot.fec_ingresospp %>">
                 </div>
             </div>
         </div>
@@ -69,10 +63,9 @@
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>Tipo de Documento</label>
-                            <select class="form-control" disabled>
+                            <select class="form-control" id="tipodocafi" disabled>
                                 <% tipodoc.forEach(function(doc) { %>
-                                    <option value="<%= doc.v_cod %>" <%=doc.v_cod==datacot.cabafiliado.id_tipodociden
-                                        ? 'selected' : '' %>>
+                                    <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
                                     </option>
                                     <% }) %>
@@ -80,15 +73,13 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Documento</label>
-                            <input type="text" class="form-control" value="<%= datacot.cabafiliado.num_dociden %>"
-                                disabled>
+                            <input type="text" class="form-control" id="Documentoafi" disabled>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Género</label>
-                            <select class="form-control" disabled>
+                            <select class="form-control" id="tiposexafi" disabled>
                                 <% tiposex.forEach(function(doc) { %>
-                                    <option value="<%= doc.v_cod %>" <%=doc.v_cod==datacot.cabafiliado.id_sexo
-                                        ? 'selected' : '' %>>
+                                    <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
                                     </option>
                                     <% }) %>
@@ -96,7 +87,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Nacionalidad</label>
-                            <select class="form-control" required>
+                            <select class="form-control" id="Nacionalidadfi" required>
                                 <option value="1">PERUANA</option>
                                 <option value="2">EXTRANJERA</option>
                             </select>
@@ -105,37 +96,29 @@
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>Apellido Paterno</label>
-                            <input type="text" class="form-control" value="<%= datacot.cabafiliado.des_apepaterno %>"
-                                required>
+                            <input type="text" class="form-control" id="apepatafi" required>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Apellido Materno</label>
-                            <input type="text" class="form-control" value="<%= datacot.cabafiliado.des_apematerno %>"
-                                required>
+                            <input type="text" class="form-control" id="apematafi" required>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Primer Nombre</label>
-                            <input type="text" class="form-control" value="<%= datacot.cabafiliado.des_nombre %>"
-                                required>
+                            <input type="text" class="form-control" id="nombreafi" required>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Segundo Nombre</label>
-                            <input type="text" class="form-control"
-                                value="<%= datacot.cabafiliado.des_nombresegundo %>">
+                            <input type="text" class="form-control" id="nombresegafi">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>Fecha de Nacimiento</label>
-                            <input type="date" class="form-control"
-                                value="<%= datacot.cabafiliado.fec_nacimiento ? datacot.cabafiliado.fec_nacimiento.toString().substring(0, 10) : '' %>"
-                                required>
+                            <input type="date" class="form-control" id="fecnacafi" disabled>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Fecha de Fallecimiento</label>
-                            <input type="date" class="form-control"
-                                value="<%= datacot.cabafiliado.fec_fallecimiento ? datacot.cabafiliado.fec_fallecimiento.toString().substring(0, 10) : '' %>"
-                                required>
+                            <input type="date" class="form-control" id="fecfalafi" required>
                         </div>
                     </div>
                 </div>
@@ -146,15 +129,19 @@
                     <div class="row mb-3">
                         <div class="form-group col-md-6">
                             <label>Dirección Expediente</label>
-                            <input type="text" class="form-control" placeholder="Escribe una dirección...">
+                            <input type="text" id="direxpafi" class="form-control" placeholder="Escribe una dirección...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Ubigeo Expediente</label>
                             <div class="input-group mb-2">
+                                <input type="hidden" id="iddirexpafi">
                                 <input type="text" id="txtUbigeoExp" class="form-control"
                                     placeholder="Ubigeo correspondencia..." readonly>
-                                <button type="button" class="btn btn-outline-info btnUbigeo" data-bs-toggle="modal"
-                                    data-bs-target="#modalUbigeo" data-targetinput="txtUbigeoExp">
+                                <button type="button" class="btn btn-outline-info btnUbigeo" 
+                                    
+                                    data-bs-target="#modalUbigeo" 
+                                    data-targetinput="txtUbigeoExp"
+                                    data-targetid="iddirexpafi">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </button>
                             </div>
@@ -163,15 +150,19 @@
                     <div class="row mb-3">
                         <div class="form-group col-md-6">
                             <label>Dirección Correspondencia</label>
-                            <input type="text" class="form-control" placeholder="Escribe una dirección...">
+                            <input type="text" id="dircorafi" class="form-control" placeholder="Escribe una dirección...">
                         </div>
                         <div class="form-group col-md-6">
                             <label>Ubigeo Correspondencia</label>
                             <div class="input-group mb-2">
+                                <input type="hidden" id="iddircorafi">
                                 <input type="text" id="txtUbigeoCor" class="form-control"
                                     placeholder="Ubigeo correspondencia..." readonly>
-                                <button type="button" class="btn btn-outline-info btnUbigeo" data-bs-toggle="modal"
-                                    data-bs-target="#modalUbigeo" data-targetinput="txtUbigeoCor">
+                                <button type="button" class="btn btn-outline-info btnUbigeo" 
+                                    
+                                    data-bs-target="#modalUbigeo" 
+                                    data-targetinput="txtUbigeoCor"
+                                    data-targetid="iddircorafi">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </button>
                             </div>
@@ -180,30 +171,30 @@
                     <div class="row mb-3">
                         <div class="form-group col-md-4">
                             <label>Correo Electrónico</label>
-                            <input type="email" class="form-control" placeholder="Escribe un email..." required>
+                            <input type="email" id="correoafi1" class="form-control" placeholder="Escribe un email..." required>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Correo Electrónico 2</label>
-                            <input type="email" class="form-control" placeholder="Escribe un email..." required>
+                            <input type="email" id="correoafi2" class="form-control" placeholder="Escribe un email..." required>
                         </div>
                         <div class="form-group col-md-4">
                             <label>Correo Electrónico 3</label>
-                            <input type="email" class="form-control" placeholder="Escribe un email..." required>
+                            <input type="email" id="correoafi3" class="form-control" placeholder="Escribe un email..." required>
                         </div>
 
                     </div>
                     <div class="row mb-3">
                         <div class="form-group col-md-4">
                             <label>Teléfono</label>
-                            <input type="text" class="form-control" placeholder="Escribe un numero...">
+                            <input type="text" id="telefonoafi1" class="form-control" placeholder="Escribe un numero...">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Teléfono 2</label>
-                            <input type="text" class="form-control" placeholder="Escribe un numero...">
+                            <input type="text" id="telefonoafi2" class="form-control" placeholder="Escribe un numero...">
                         </div>
                         <div class="form-group col-md-4">
                             <label>Teléfono 3</label>
-                            <input type="text" class="form-control" placeholder="Escribe un numero...">
+                            <input type="text" id="telefonoafi3" class="form-control" placeholder="Escribe un numero...">
                         </div>
                     </div>
                 </div>
@@ -213,10 +204,9 @@
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>Tipo Pensión</label>
-                            <select class="form-control" disabled>
+                            <select class="form-control" id="tipopenafi" disabled>
                                 <% tipoPen.forEach(function(doc) { %>
-                                    <option value="<%= doc.v_cod %>" <%=doc.v_cod==datacot.cabafiliado.id_prestacion
-                                        ? 'selected' : '' %>>
+                                    <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
                                     </option>
                                     <% }) %>
@@ -224,13 +214,11 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Fec Invalidez</label>
-                            <input type="date" class="form-control"
-                                value="<%= datacot.cabafiliado.fec_invalido ? datacot.cabafiliado.fec_invalido.toString().substring(0, 10) : '' %>"
-                                disabled>
+                            <input type="date" id="fecinvafi" class="form-control">
                         </div>
                         <div class="form-group col-md-3">
                             <label>Causa Invalidez</label>
-                            <select class="form-control" disabled>
+                            <select class="form-control" id="cauinvafi" disabled>
                                 <option>Sin Información</option>
                                 <% tipoEnf.forEach(function(doc) { %>
                                     <option value="<%= doc.v_cod %>">
@@ -241,11 +229,10 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Tipo Vejez</label>
-                            <select class="form-control" disabled>
+                            <select class="form-control" id="tipovejafi" disabled>
                                 <option>Sin Información</option>
                                 <% tipoVej.forEach(function(doc) { %>
-                                    <option value="<%= doc.v_cod %>" <%=doc.v_cod==datacot.cabafiliado.id_tipobenef
-                                        ? 'selected' : '' %>>
+                                    <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
                                     </option>
                                     <% }) %>
@@ -255,10 +242,9 @@
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>AFP</label>
-                            <select class="form-control" disabled>
+                            <select class="form-control" id="tipoAfpafi" disabled>
                                 <% tipoAfp.forEach(function(doc) { %>
-                                    <option value="<%= doc.v_cod %>" <%=doc.v_cod==datacot.cabafiliado.id_afp
-                                        ? 'selected' : '' %>>
+                                    <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
                                     </option>
                                     <% }) %>
@@ -266,10 +252,9 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Est. Civil</label>
-                            <select class="form-control">
+                            <select class="form-control" id="tipoCivafi">
                                 <% tipoCiv.forEach(function(doc) { %>
-                                    <option value="<%= doc.v_cod %>" <%=doc.v_cod==datacot.cabafiliado.id_estciv
-                                        ? 'selected' : '' %>>
+                                    <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
                                     </option>
                                     <% }) %>
@@ -277,7 +262,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Ins. Salud</label>
-                            <select class="form-control">
+                            <select class="form-control" id="tipoEssafi">
                                 <% tipoEss.forEach(function(doc) { %>
                                     <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
@@ -287,25 +272,25 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Representante</label>
-                            <input type="text" class="form-control">
+                            <input type="text" id="Representanteafi" class="form-control">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>Fec. aceptación</label>
-                            <input type="date" class="form-control">
+                            <input type="date" id="fecaceptaafi" class="form-control">
                         </div>
                         <div class="form-group col-md-3">
                             <label>Marcar :</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="autoPropio" name="autoPropio"
+                                <input class="form-check-input" type="checkbox" id="protecdatafi" name="protecdatafi"
                                     value="1">
-                                <label class="form-check-label" for="autoPropio">Protección de Datos</label>
+                                <label class="form-check-label" for="protecdatafi">Protección de Datos</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="autoPropio" name="autoPropio"
+                                <input class="form-check-input" type="checkbox" id="boletapagafi" name="boletapagafi"
                                     value="1">
-                                <label class="form-check-label" for="autoPropio">Boleta de Pago</label>
+                                <label class="form-check-label" for="boletapagafi">Boleta de Pago</label>
                             </div>
                         </div>
                     </div>
@@ -317,7 +302,7 @@
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>Vía Pago</label>
-                            <select class="form-control">
+                            <select class="form-control" id="tipoPagafi">
                                 <% tipoPag.forEach(function(doc) { %>
                                     <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
@@ -327,7 +312,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Sucursal</label>
-                            <select class="form-control">
+                            <select class="form-control" id="tipoAfpafi">
                                 <% tipoAfp.forEach(function(doc) { %>
                                     <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
@@ -337,7 +322,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Banco</label>
-                            <select class="form-control">
+                            <select class="form-control" id="tipoBcoafi">
                                 <% tipoBco.forEach(function(doc) { %>
                                     <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
@@ -347,7 +332,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label>Tipo Cuenta</label>
-                            <select class="form-control">
+                            <select class="form-control" id="tipoctaafi">
                                 <% tipocta.forEach(function(doc) { %>
                                     <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
@@ -359,18 +344,18 @@
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>Número Cuenta</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" id="numeroctaafi" class="form-control" required>
                         </div>
                         <div class="form-group col-md-3">
                             <label>Número CCI</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" id="numerocciafi" class="form-control" required>
                         </div>
                     </div>
                 </div>
 
                 <!-- BENEFICIARIOS -->
                 <div class="tab-pane fade" id="beneficiarios" role="tabpanel">
-                    <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                    <div class="table-responsive" style="max-height: 200px; overflow-y: auto;">
                         <table class="table table-bordered table-hover align-middle text-center"
                             id="tablaBeneficiarios">
                             <thead class="table-light sticky-header">
@@ -384,38 +369,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               <!--  <% if (datacot.detbeneficiarios && datacot.detbeneficiarios.length> 0) { %>
-                                    <% datacot.detbeneficiarios.forEach(function(b, index) { %>
-                                        <tr>
-                                            <td>
-                                                <%= b.id_orden %>
-                                            </td>
-                                            <td>
-                                                <%= b.desparentesco %>
-                                            </td>
-                                            <td>
-                                                <%= b.nombres %>
-                                            </td>
-                                            <td>
-                                                <%= b.destipodoc %>
-                                            </td>
-                                            <td>
-                                                <%= b.numdoc %>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-sm btn-primary editar-beneficiario"
-                                                    data-id="<%= b.id_orden %>">
-                                                    <i class="bi bi-pencil-square"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <% }) %>
-                                            <% } else { %>
-                                                <tr>
-                                                    <td colspan="5" class="text-muted">No hay beneficiarios registrados
-                                                    </td>
-                                                </tr>
-                                                <% } %> -->
+
                             </tbody>
                         </table>
                     </div>
@@ -588,7 +542,8 @@
                             <div class="text-center mt-4">
                                 <button type="reset" class="btn btn-secondary"><i class="fas fa-times"></i>
                                     Cancelar/Limpiar</button>
-                                <button type="submit" id="btnActualizarBen" class="btn btn-primary ml-2"><i class="fas fa-save"></i>
+                                <button type="submit" id="btnActualizarBen" class="btn btn-primary ml-2"><i
+                                        class="fas fa-save"></i>
                                     Actualizar Datos</button>
                             </div>
                         </div>
@@ -602,11 +557,14 @@
                                 <div class="form-group col-md-6">
                                     <label>Ubigeo Expediente</label>
                                     <div class="input-group mb-2">
+                                        <input type="hidden" id="iddirexp">
                                         <input type="text" id="txtUbigeoExpBen" class="form-control"
                                             placeholder="Ubigeo expediente..." readonly>
                                         <button type="button" class="btn btn-outline-info btnUbigeo"
-                                            data-bs-toggle="modal" data-bs-target="#modalUbigeo"
-                                            data-targetinput="txtUbigeoExpBen">
+                                            
+                                            data-bs-target="#modalUbigeo"
+                                            data-targetinput="txtUbigeoExpBen" 
+                                            data-targetid="iddirexp">
                                             <i class="fas fa-map-marker-alt"></i>
                                         </button>
                                     </div>
@@ -621,11 +579,14 @@
                                 <div class="form-group col-md-6">
                                     <label>Ubigeo Correspondencia</label>
                                     <div class="input-group mb-2">
+                                        <input type="hidden" id="iddircor">
                                         <input type="text" id="txtUbigeoCorBen" class="form-control"
                                             placeholder="Ubigeo correspondencia..." readonly>
                                         <button type="button" class="btn btn-outline-info btnUbigeo"
-                                            data-bs-toggle="modal" data-bs-target="#modalUbigeo"
-                                            data-targetinput="txtUbigeoCorBen">
+                                            
+                                            data-bs-target="#modalUbigeo"
+                                            data-targetinput="txtUbigeoCorBen" 
+                                            data-targetid="iddircor">
                                             <i class="fas fa-map-marker-alt"></i>
                                         </button>
                                     </div>
@@ -634,39 +595,45 @@
                             <div class="row mb-3">
                                 <div class="form-group col-md-4">
                                     <label>Correo Electrónico</label>
-                                    <input type="email" class="form-control" placeholder="Escribe un email..." required>
+                                    <input type="email" id="correoben1" class="form-control"
+                                        placeholder="Escribe un email..." required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Correo Electrónico 2</label>
-                                    <input type="email" class="form-control" placeholder="Escribe un email..." required>
+                                    <input type="email" id="correoben2" class="form-control"
+                                        placeholder="Escribe un email..." required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Correo Electrónico 3</label>
-                                    <input type="email" class="form-control" placeholder="Escribe un email..." required>
+                                    <input type="email" id="correoben3" class="form-control"
+                                        placeholder="Escribe un email..." required>
                                 </div>
 
                             </div>
                             <div class="row mb-3">
                                 <div class="form-group col-md-4">
                                     <label>Teléfono</label>
-                                    <input type="text" class="form-control" placeholder="Escribe un numero...">
+                                    <input type="text" id="telefonoben1" class="form-control"
+                                        placeholder="Escribe un numero...">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Teléfono 2</label>
-                                    <input type="text" class="form-control" placeholder="Escribe un numero...">
+                                    <input type="text" id="telefonoben2" class="form-control"
+                                        placeholder="Escribe un numero...">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label>Teléfono 3</label>
-                                    <input type="text" class="form-control" placeholder="Escribe un numero...">
+                                    <input type="text" id="telefonoben3" class="form-control"
+                                        placeholder="Escribe un numero...">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12 text-end">
-                <button id="btnGuardarPrepoliza" class="btn btn-primary mt-2">Crear Pre Poliza</button>
-                <button id="btnCancelar" class="btn btn-primary mt-2">Salir</button>
-            </div>
+                    <button id="btnGuardarPrepoliza" class="btn btn-primary mt-2">Crear Pre Poliza</button>
+                    <button id="btnCancelar" class="btn btn-primary mt-2">Salir</button>
+                </div>
             </div>
         </div>
     </div>
