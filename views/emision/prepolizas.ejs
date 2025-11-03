@@ -21,15 +21,15 @@
             <div class="tab-content p-3 border border-top-0 rounded-bottom bg-light" id="polizasTabContent">
                 <!-- COTIZACIONES -->
                 <div class="tab-pane fade show active" id="cotizaciones" role="tabpanel">
-                    <div class="row mb-3">
+                    <div class="row g-3 align-items-end">
                         <div class="col-md-4">
                             <input type="text" id="buscarCot" class="form-control" placeholder="Buscar por DNI...">
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-primary w-100" id="btnBuscarCot">Buscar</button>
+                            <button class="btn btn-info btn-sm" id="btnBuscarCot">Buscar</button>
                         </div>
                     </div>
-
+                    <br>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover align-middle" id="tablaCotizaciones">
                             <thead class="table-dark">
@@ -48,15 +48,15 @@
 
                 <!-- PÓLIZAS -->
                 <div class="tab-pane fade" id="polizas" role="tabpanel">
-                    <div class="row mb-3">
+                    <div class="row g-3 align-items-end">
                         <div class="col-md-4">
                             <input type="text" id="buscarPol" class="form-control" placeholder="Buscar por DNI...">
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-primary w-100" id="btnBuscarPol">Buscar</button>
+                            <button class="btn btn-info btn-sm" id="btnBuscarPol">Buscar</button>
                         </div>
                     </div>
-
+                    <br>
                     <div class="table-responsive">
                         <table class="table table-striped table-hover align-middle" id="tablaPolizas">
                             <thead class="table-dark">
@@ -71,7 +71,13 @@
                             <tbody></tbody>
                         </table>
                     </div>
+                    <!-- Botones -->
+                    <div class="text-end">
+                        <a href="/emision/prcgenarchivo" class="btn btn-primary btn-sm">Generar Archivo</a>
+                        <a href="/emision/lisprimasrecepcionadas" class="btn btn-primary btn-sm">Primas Recepcionadas</a>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

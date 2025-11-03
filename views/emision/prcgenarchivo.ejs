@@ -1,0 +1,56 @@
+<main class="container-fluid py-4">
+    <div class="card">
+            <div class="card-header bg-primary text-white">
+                📂 Generación de Arhivos para SBS
+            </div>
+            <div class="card-body">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-3">
+                        <label class="form-label">Fecha Desde</label>
+                        <input type="date" class="form-control" value="29/10/2025">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Fecha Hasta</label>
+                        <input type="date" class="form-control" value="29/10/2025">
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-info btn-sm" id="btnBuscarCot">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                Resumen de Archivo de Confirmación
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label class="form-label">Numero Total de Pólizas</label>
+                        <input type="text" class="form-control" value="0" disabled>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Monto Total Primas</label>
+                        <input type="text" class="form-control" value="0" disabled>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Usuario Creación</label>
+                        <input type="text" class="form-control" value="0" disabled>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Fecha Creación</label>
+                        <input type="text" class="form-control" value="0" disabled>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Hora  Creación</label>
+                        <input type="text" class="form-control" value="0" disabled>
+                    </div>
+                </div>
+                <!-- Botones -->
+                    <div class="text-end">
+                        <a href="/emision/prepolizas" class="btn btn-primary btn-sm">Cancelar</a>
+                        <a href="/emision/lisprimasrecepcionadas" class="btn btn-primary btn-sm">Generar</a>
+                    </div>
+            </div>
+        </div>
+</main>

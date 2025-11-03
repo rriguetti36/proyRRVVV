@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <td>${row.afiliado}</td>
           <td>
             <div class="btn-group">
-              <button href="/emision/prcprepoliza" class="btn btn-sm btn-outline-primary">Pre-Poliza</button>
+              <a href="/emision/prcprepoliza/${row.id_cot}" class="btn btn-sm btn-outline-primary">
+  Pre-Poliza
+</a>
             </div>
           </td>
         </tr>`;
@@ -37,9 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
           <td>${row.afiliado}</td>
           <td>
             <div class="btn-group">
-              <button class="btn btn-sm btn-outline-primary">Pre-Poliza</button>
-              <button class="btn btn-sm btn-outline-secondary">Antecedentes</button>
-              <button class="btn btn-sm btn-outline-success">Emisión</button>
+              <a href="/emision/prcprepoliza/${row.id_cot}" class="btn btn-sm btn-outline-primary">Pre-Póliza</a>
+              <a href="/emision/prcprepoliza/${row.id_cot}" class="btn btn-sm btn-outline-secondary">Recepción AFP</a>
+              <a href="/emision/prcprepoliza/${row.id_cot}" class="btn btn-sm btn-outline-success">Emisión AFP</a>
             </div>
           </td>
         </tr>`;

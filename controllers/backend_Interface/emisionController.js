@@ -10,6 +10,7 @@ const TablaPar = require('../../models/tabTasasModel');
 const tablasTasasInd = require('../../models/tabTasasModel');
 const rutinaAjusteRenta = require('../../servicios/ajustesRenta');
 
+//Paginas
 exports.PrePolizas = async (req, res) => {
 
     res.render('emision/prepolizas', {
@@ -43,6 +44,60 @@ exports.PrcPrePoliza = async (req, res) => {
     });
 };
 
+exports.PrcPrePolizaEdit = async (req, res) => {
+    const id_cot = req.params.id_cot;
+    const paramtetros = await TablaPar.getParametros();
+    const tipoAfp = paramtetros.filter(x => x.idpar === 1);
+    const tipoCiv = paramtetros.filter(x => x.idpar === 4);
+    const tipoPar = paramtetros.filter(x => x.idpar === 6);
+    const tiposex = paramtetros.filter(x => x.idpar === 7);
+    const tipoInv = paramtetros.filter(x => x.idpar === 8);
+    const tipoVej = paramtetros.filter(x => x.idpar === 9);
+    const tipodoc = paramtetros.filter(x => x.idpar === 15);
+    const tipoBco = paramtetros.filter(x => x.idpar === 16);
+    const tipoEss = paramtetros.filter(x => x.idpar === 18);
+    const tipocta = paramtetros.filter(x => x.idpar === 23);
+    const tipoPag = paramtetros.filter(x => x.idpar === 29);
+    const tipoEnf = paramtetros.filter(x => x.idpar === 30);
+    const tipoPen = paramtetros.filter(x => x.idpar === 12);
+    const tipoGru = paramtetros.filter(x => x.idpar === 17);
+    const datacot = await TablaEmi.getCotizacionAfibyId(id_cot);
+
+    console.log("datacot", datacot)
+    res.render('emision/prcprepolizaedit', {
+        tipoAfp, tipoCiv, tiposex, tipoInv, tipodoc, tipoBco, tipoEss, tipocta,
+        tipoPag, tipoEnf, tipoVej, tipoPen, tipoGru, tipoPar, datacot, title: 'Gestión de Cotizaciones y Pólizas'
+    });
+};
+
+exports.prcantecedenteafp = async (req, res) => {
+
+    res.render('emision/prcantecedenteafp', {
+        title: 'Gestión de Cotizaciones y Pólizas'
+    });
+};
+
+exports.prcemision = async (req, res) => {
+
+    res.render('emision/prcemision', {
+        title: 'Gestión de Cotizaciones y Pólizas'
+    });
+};
+
+exports.PrcGeneraArchivo = async (req, res) => {
+    res.render('emision/prcgenarchivo', {
+        title: 'Gestión de Cotizaciones y Pólizas'
+    });
+};
+
+exports.ListaPrimasRecepcionadas = async (req, res) => {
+    res.render('emision/lisprimasrecepcionadas', {
+        title: 'Gestión de Cotizaciones y Pólizas'
+    });
+};
+
+
+// 👉 Consulta
 exports.getCotizacionAfibyId = async (req, res) => {
   try {
     const { id_cot } = req.params;
@@ -54,7 +109,6 @@ exports.getCotizacionAfibyId = async (req, res) => {
   }
 };
 
-// 👉 Todos los beneficiarios de una cotización
 exports.getBeneficiariosPorCotizacion = async (req, res) => {
   try {
     const { id_cot } = req.params;
@@ -66,7 +120,6 @@ exports.getBeneficiariosPorCotizacion = async (req, res) => {
   }
 };
 
-// 👉 Beneficiario específico
 exports.getBeneficiarioById = async (req, res) => {
   try {
     const { id_cot, id_orden } = req.params;
@@ -82,9 +135,6 @@ exports.getBeneficiarioById = async (req, res) => {
     res.status(500).json({ message: "Error al obtener beneficiario", error });
   }
 };
-
-
-
 
 exports.listCotizaciones = async (req, res) => {
     try {

@@ -5,7 +5,7 @@ class emision {
     try {
       const pool = await poolPromise;
       let query = `
-        SELECT a.num_cot, a.num_cuspp, 
+        SELECT a.id_cot, a.num_cot, a.num_cuspp, 
                (b.des_nombre + ' ' + b.des_nombresegundo + ' ' + b.des_apepaterno + ' ' + b.des_apematerno) AS afiliado,
                b.num_dociden
         FROM c_cotizacion a

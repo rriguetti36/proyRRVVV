@@ -1,0 +1,224 @@
+<main class="container-fluid py-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+
+            <div class="row mb-3">
+                <input type="hidden" id="idcot">
+                <div class="col-md-2">
+                    <label>Nro Póliza</label>
+                    <input type="text" class="form-control" id="numpol" disabled>
+                </div>
+                <div class="col-md-2">
+                    <label>Fecha Emisión</label>
+                    <input type="date" class="form-control" id="fecemi" disabled>
+                </div>
+                <div class="col-md-2">
+                    <label>CUSPP</label>
+                    <input type="text" class="form-control" id="cussp" disabled>
+                </div>
+                <div class="col-md-2">
+                    <label>Nro Cotización</label>
+                    <input type="text" class="form-control" id="numcot" disabled>
+                </div>
+                <div class="col-md-4">
+                    <label>Titular</label>
+                    <input type="text" class="form-control" id="numope" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <!-- Tabs -->
+            <ul class="nav nav-tabs mb-3" id="aseguradTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="antecedentes-tab" data-bs-toggle="tab"
+                        data-bs-target="#antecedentes" type="button" role="tab">Antecedentes de Solicitud AFP</button>
+                </li>
+                <li class="nav-item">
+                    <button class="nav-link active" id="primerpago-tab" data-bs-toggle="tab"
+                        data-bs-target="#primerpago" type="button" role="tab">Pagos Devengados</button>
+                </li>
+            </ul>
+            <div class="tab-content p-3 border border-top-0 rounded-bottom bg-light" id="antecedentesTabContent">
+                <div class="tab-pane fade show active" id="antecedentes" role="tabpanel">
+                    <div class="row">
+                        <!-- Columna Izquierda -->
+                        <div class="col-md-6">
+                            <div class="row g-3">
+
+                                <!-- Tipo de Pensión -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Tipo de Pensión</label>
+                                    <input type="text" class="form-control" value="INVALIDEZ TOTAL" disabled>
+                                </div>
+
+                                <!-- Tipo de Renta -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Tipo de Renta</label>
+                                    <input type="text" class="form-control" value="RENTA VITALICIA FAMILIAR DIFERIDA"
+                                        disabled>
+                                </div>
+
+                                <!-- Modalidad -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Modalidad</label>
+                                    <input type="text" class="form-control" value="GARANTIZADO" disabled>
+                                </div>
+
+                                <!-- Moneda -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Moneda</label>
+                                    <input type="text" class="form-control" value="SOLES AJUSTADOS" disabled>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Tipo de Cambio</label>
+                                    <input type="text" class="form-control" value="1.00" disabled>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Años Diferidos</label>
+                                    <input type="text" class="form-control" value="3" disabled>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Meses Garantizados</label>
+                                    <input type="text" class="form-control" value="180" disabled>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Meses Escalonados</label>
+                                    <input type="text" class="form-control" value="0" disabled>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Reajuste trim</label>
+                                    <input type="text" class="form-control" value="0.4692316" disabled>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">% Rta. Escalonada</label>
+                                    <input type="text" class="form-control" value="0.00" disabled>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Fecha Devengue</label>
+                                    <input type="text" class="form-control" value="29/05/2025" disabled>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Fecha Aceptación</label>
+                                    <input type="text" class="form-control" value="11/09/2025" disabled>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">Prima Cotizada (S/)</label>
+                                    <input type="text" class="form-control" value="589,287.79" disabled>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">Pensión Cotizada (S/)</label>
+                                    <input type="text" class="form-control" value="2,184.81" disabled>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Fecha Información</label>
+                                    <input type="text" class="form-control" value="16/09/2025" disabled>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">Prima Traspasada (S/)</label>
+                                    <input type="text" class="form-control" value="593,784.39" disabled>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label class="form-label">Factor Variación Rta.</label>
+                                    <input type="text" class="form-control" value="1.00763057" disabled>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Columna Derecha -->
+                        <div class="col-md-6 d-flex flex-column gap-3">
+                            <!-- CARD: Antecedentes Recepcionados -->
+                            <div class="card mb-4">
+                                <div class="card-header bg-primary text-white">Antecedentes Fechas de Recepción</div>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <label class="form-label">Tope Primer Pago</label>
+                                            <input type="text" class="form-control" value="29/05/2028" disabled>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="form-label">Traspaso Prima</label>
+                                            <input type="text" class="form-control" value="01/11/2025">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="form-label">Primer Pago</label>
+                                            <input type="text" class="form-control" value="29/05/2028">
+                                        </div>
+
+                                        <div class="col-md-4 d-flex align-items-end">
+                                            <button class="btn btn-primary w-100">Calcular</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CARD: Resultados del Cálculo -->
+                            <div class="card mb-4">
+                                <div class="card-header bg-primary text-white">Resultados del Cálculo</div>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="form-label">Fecha vigencia póliza</label>
+                                                <input type="text" class="form-control" placeholder="dd/mm/aaaa" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="form-label">Compañía<br>Pensión definitiva (S/)</label>
+                                                <input type="text" class="form-control" value="2,201.48" disabled>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="form-label">Compañía<br>Prima definitiva (S/)</label>
+                                                <input type="text" class="form-control" value="442,278.54" disabled>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="form-label">AFP<br>Pensión definitiva (S/)</label>
+                                                <input type="text" class="form-control" value="4,402.96" disabled>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="form-label">AFP<br>Prima definitiva (S/)</label>
+                                                <input type="text" class="form-control" value="151,505.85" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Buttons row -->
+                        <div class="text-end">
+                            <button class="btn btn-primary me-2">AFP</button>
+                            <button class="btn btn-primary me-2">Guardar</button>
+                            <button class="btn btn-primary me-2">Generar Archivos</button>
+                            <button class="btn btn-primary me-2">Envío de Póliza</button>
+                            <button class="btn btn-secondary">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade show active" id="primerpago" role="tabpanel">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+</main>
