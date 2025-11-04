@@ -50,6 +50,7 @@ exports.ProcesaSolicitud = async (req, res) => {
         if (!req.body) {
             return res.status(400).send('No se recibió cuerpo en la petición.');
         }
+        const usu = req.session.user.id;
         const fechaCarga = new Date().toISOString().split('T')[0];
         const rutaCot = process.env.RUTA_COTIZA;
 
@@ -58,7 +59,7 @@ exports.ProcesaSolicitud = async (req, res) => {
         const { solicitudes_meler } = await ValidaXML(req.body, fechaCarga, rutaCot);                                        //valida con el XSD
 
         console.log("🚀Valida si ya fue cargado el archivo...");
-        vallidaOk = await validarExistente(solicitudes_meler, fechaCarga);                                          //Valida si ya fueron cargadas
+        vallidaOk = await validarExistente(solicitudes_meler, fechaCarga, usu);                                          //Valida si ya fueron cargadas
         console.log("vallidaOk", vallidaOk.existe);
         //vallidaOk = false;
 
@@ -708,7 +709,7 @@ async function obtenerEdadJub(fechaNac) {
     return anio;
 }
 
-async function validarExistente(solicitudes_meler, fechacarga) {
+async function validarExistente(solicitudes_meler, fechacarga, usu) {
     let iderror = 0;
     let descrierror = "";
     let caeSol = false;
@@ -738,7 +739,7 @@ async function validarExistente(solicitudes_meler, fechacarga) {
     };
     //console.log(solicitudesMelerValid)
 
-    const resultado = await TablaCot.insertaSolicitudesMeler(solicitudesMelerValid);
+    const resultado = await TablaCot.insertaSolicitudesMeler(solicitudesMelerValid, usu);
     console.log("Resultado ID Archivo:", resultado);
     /* TablaCot.insertaSolicitudesMeler(solicitudesMelerValid).catch(() => {
         // Ya se manejó el error internamente

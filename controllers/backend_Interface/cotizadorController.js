@@ -134,7 +134,8 @@ exports.EstudioCot = async (req, res) => {
 
 exports.guardar = async (req, res) => {
   try {
-    const result = await EstudioModel.guardarEstudio(req.body, 1);
+    const usu = req.session.user.id;
+    const result = await EstudioModel.guardarEstudio(req.body, usu);
     res.json(result);
   } catch (error) {
     console.error("❌ Error en guardarEstudio:", error);

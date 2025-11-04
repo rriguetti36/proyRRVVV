@@ -42,16 +42,15 @@
                             <input type="text" name="apemat" class="form-control" value="<%= filtros.apemat || '' %>"
                                 placeholder="Apellido Materno">
                         </div>
-                        <div class="col-md-2 d-flex align-items-end">
+                        <div class="col-md-3 d-flex align-items-end">
                             <button class="btn btn-sm btn-primary mb-3">Buscar</button>
+                            <a href="/cotizador/estudio" class="btn btn-sm btn-primary mb-3">
+                                <i class="bi bi-plus-circle"></i> Nueva Cotización
+                            </a>
                         </div>
                     </form>
-                    <hr>
-                    <div class="mb-3 text-end">
-                        <a href="/cotizador/estudio" class="btn btn-sm btn-primary mb-3">
-                            <i class="bi bi-plus-circle"></i> Nueva Cotización
-                        </a>
-                    </div>
+
+
 
                     <!-- Tabla -->
                     <div class="table-responsive" style="max-height: 350px; overflow-y: auto;">
@@ -61,9 +60,9 @@
                                     <th>N° Estudio</th>
                                     <th>Tipo Doc</th>
                                     <th>N° Documento</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido Paterno</th>
-                                    <th>Apellido Materno</th>
+                                    <th>Afiliado</th>
+                                    <!-- <th>Apellido Paterno</th>
+                                    <th>Apellido Materno</th> -->
                                     <th>Fecha</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -88,21 +87,23 @@
                                                 <td>
                                                     <%= e.des_nombre %>
                                                 </td>
-                                                <td>
+                                                <!-- <td>
                                                     <%= e.des_apepaterno %>
                                                 </td>
                                                 <td>
                                                     <%= e.des_apematerno %>
-                                                </td>
+                                                </td> -->
                                                 <td>
                                                     <%= e.fec_creacion.toISOString().substring(0, 10) %>
                                                 </td>
                                                 <td>
                                                     <a href="/cotizador/editar/<%= e.id %>"
-                                                        class="btn btn-sm btn-warning">Editar</a>
+                                                        class="btn btn-sm btn-primary mb-3">
+                                                        <i class="bi bi-pencil-square"></i>
+                                                    </a>
                                                     <a href="/cotizador/api/pdf/<%= e.id %>" target="_blank"
-                                                        class="btn btn-sm btn-outline-danger">
-                                                        <i class="bi bi-file-earmark-pdf"></i> Ver PDF
+                                                        class="btn btn-sm btn-danger mb-3">
+                                                        <i class="bi bi-file-earmark-pdf"></i>
                                                     </a>
                                                     <!-- <button class="btn btn-sm btn-danger btnEliminar"
                                                         data-id="<%= e.id %>">Eliminar</button> -->

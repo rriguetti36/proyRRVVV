@@ -7,6 +7,7 @@ const cargasolController = require('../controllers/cargasolController');
 //const emisionController = require('../controllers/emisionController');
 //const reservasController = require('../controllers/reservasController');
 const validarCotizacion = require('../middleware/validarCotizacion');
+
 // Rutas de clientes
 
 router.post("/asignacionasesor", jwtAuth, cargasolController.AsignacionIntermediarios);

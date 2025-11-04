@@ -11,7 +11,8 @@ const authRoutes = require('./routes/authRoutes');
 const cotizadorRoutes = require('./routes/cotizadorRoutes');
 const emisionRoutes = require('./routes/emisionRoutes');
 const layouts = require('express-ejs-layouts');
-const requestLogger = require("./middleware/requestLogger");
+const requestLogger = require('./middleware/requestLogger');
+const auditUser = require('./middleware/auditUser');
 const cors = require("cors");
 const path = require("path");
 
@@ -51,12 +52,6 @@ console.log = function (...args) {
   originalLog.apply(console, args);
 };
 
-// RUTAS
-//app.use('/', listasRoutes);
-//app.use('/auth', authRoutes);
-
-
-
 const session = require('express-session');
 app.use(session({
   secret: 'clave-secreta-123',
@@ -70,6 +65,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/auth', authRoutes);
+//app.use(auditUser);
 app.use('/rutinarv', rutinaRoutes);
 app.use("/cotizador", cotizadorRoutes);
 app.use("/emision", emisionRoutes);
@@ -91,11 +87,6 @@ io.on("connection", (socket) => {
     console.log("❌ Cliente desconectado");
   });
 });
-
-//pagina vista inicial
-/* app.get("/", (req, res) => {
-  res.render("index", { titulo: "App EJS", mensaje: "Hola con CommonJS" });
-}); */
 
 // Iniciar el servidor
 server.listen(PORT, () => {

@@ -188,7 +188,7 @@ class cotizacion {
     }
   }
 
-  static async insertaSolicitudesMeler(data) {
+  static async insertaSolicitudesMeler(data, usu) {
     const pool = await poolPromise;
     const transaction = pool.transaction();
 
@@ -197,6 +197,10 @@ class cotizacion {
 
       // 1. Insertar en c_solicitudes_meler (OUTPUT para recuperar ID)
       const request1 = new sql.Request(transaction);
+      await request1
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+
       const res = await request1
         .input("idtipo", sql.Int, data.tipoArchivo)
         .input("v_descripcion", sql.VarChar(255), data.nombreArchivo)
@@ -204,9 +208,11 @@ class cotizacion {
         .input("idusuario", sql.Int, data.idusuario)
         .input("id_estado", sql.Int, data.estado)
         .query(`
+        DECLARE @tmp TABLE(id INT);
         INSERT INTO c_solicitudes_meler (idtipo, v_descripcion, fec_carga, idusuario, id_estado)
-        OUTPUT INSERTED.id
+        OUTPUT INSERTED.id INTO @tmp
         VALUES (@idtipo, @v_descripcion, @fec_carga, @idusuario, @id_estado)
+        SELECT id FROM @tmp;
       `);
 
       const idArchivo = res.recordset[0].id;
@@ -454,7 +460,7 @@ class cotizacion {
     }
   }
 
-  static async insertaSolicitudesRespuesta(data) {
+  static async insertaSolicitudesRespuesta(data, usu) {
     const pool = await poolPromise;
     const transaction = pool.transaction();
 
@@ -464,6 +470,10 @@ class cotizacion {
 
       // 1. Insertar cabecera en c_solicitudes_meler
       const request1 = new sql.Request(transaction);
+      await request1
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+
       const res = await request1
         .input("idtipo", sql.Int, data.tipoArchivo)
         .input("v_descripcion", sql.VarChar(255), data.nombreArchivo)
@@ -471,12 +481,14 @@ class cotizacion {
         .input("idusuario", sql.Int, data.idusuario)
         .input("id_estado", sql.Int, data.estado)
         .query(`
+        DECLARE @tmp TABLE(id INT);
         INSERT INTO c_solicitudes_meler (idtipo, v_descripcion, fec_carga, idusuario, id_estado)
-        OUTPUT INSERTED.id_archivo AS idArchivo
+        OUTPUT INSERTED.id INTO @tmp
         VALUES (@idtipo, @v_descripcion, @fec_carga, @idusuario, @id_estado)
+        SELECT id FROM @tmp;
       `);
 
-      const idArchivo = res.recordset[0].idArchivo;
+      const idArchivo = res.recordset[0].id;
       console.log("📥 Insertado cabecera id:", idArchivo);
 
       // 2. Insertar detalle en c_solicitudes_meler_res

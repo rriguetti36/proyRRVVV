@@ -209,6 +209,7 @@ document.getElementById("btnCalcular").addEventListener("click", async () => {
     const numeroDoc = document.getElementById("aseNumDoc").value;
     if(!numeroDoc){
         msjAdvertencia("Debe agregar un numero de documento");
+        loader.style.display = "none"; // 👈 Ocultar loader siempre
         return;
     }
 
