@@ -11,9 +11,12 @@ const validarCotizacion = require('../middleware/validarCotizacion');
 // Rutas de clientes
 
 router.post("/asignacionasesor", jwtAuth, cargasolController.AsignacionIntermediarios);
-router.post("/cargasol", jwtAuth,
-    express.text({ type: ['application/xml'] }),
-    cargasolController.ProcesaSolicitud);
+router.post("/cargasol", jwtAuth, express.json(), cargasolController.ProcesaSolicitud);
+
+// router.post("/cargasol", jwtAuth,
+//     express.text({ type: ['application/xml'] }),
+//     cargasolController.ProcesaSolicitud);
+
 router.post("/calcular", jwtAuth, validarCotizacion, rutinaController.calcular);
 router.post('/generar-xml', jwtAuth, rutinaController.generaXMLsalida);
 router.post("/calcularOfi_optim", rutinaController.calcularofi_hilo);

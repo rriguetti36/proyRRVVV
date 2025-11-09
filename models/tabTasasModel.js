@@ -210,6 +210,10 @@ class TasasInd {
     const pool = await poolPromise;
 
     await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+        
+    await pool.request()
       .query(`
           UPDATE c_tasastopecalc SET i_estado=0
         `);
@@ -245,6 +249,10 @@ class TasasInd {
   static async actualizarValores({ id, n_valtasini, n_valtirini, n_valperini, tipo }) {
     try {
       const pool = await poolPromise;
+
+      await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
 
       // 🔹 Mapear campos según el tipo de pestaña
       let campos = {};
@@ -371,6 +379,10 @@ class TasasInd {
     const pool = await poolPromise;
     const transaction = new sql.Transaction(pool);
 
+    await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+
     try {
       await transaction.begin();
 
@@ -452,6 +464,10 @@ class TasasInd {
   static async guardarRegistrosVtaProm(reg) {
     const pool = await poolPromise;
     const transaction = new sql.Transaction(pool);
+
+    await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
 
     try {
       await transaction.begin();
@@ -542,6 +558,10 @@ class TasasInd {
     try {
       await transaction.begin();
 
+      await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+
       //Deshabilita las fechas anteriores
       await transaction.request()
         .query(`UPDATE c_tablacurvacuponcero SET activo=0`);
@@ -606,6 +626,10 @@ class TasasInd {
     const pool = await poolPromise;
     const { id_moneda, f_creacion, n_gastoadm, n_gastoemi, n_gastoctrsup, n_endeudamiento, n_imprenta } = data;
 
+    await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+
     // Verificar si ya existe un registro
     const check = await pool.request()
       .input('fecha', sql.Date, f_creacion)
@@ -666,6 +690,10 @@ class TasasInd {
     const pool = await poolPromise;
     const { n_comsupi, n_comsupd, n_faclabi, n_faclabd } = data;
 
+    await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+
     // Actualizar Inmediatas (id_tipren = 1)
     await pool.request().query`
       UPDATE m_tablagasto_b
@@ -717,13 +745,16 @@ class TasasInd {
     try {
       const pool = await poolPromise;
 
+      await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+
       // Verificar si existe el periodo
       const existe = await pool.request()
         .input('periodo', sql.Date, periodo)
         .query(`SELECT COUNT(*) AS existe FROM c_tablatasaipc WHERE d_periodo = @periodo`);
 
       const yaExiste = existe.recordset[0].existe > 0;
-
       if (yaExiste) {
         await pool.request()
           .input('valor', sql.Numeric(18, 3), valor)
@@ -782,6 +813,10 @@ class TasasInd {
   static async guardarOActualizarTC({ fecha, id_moneda = 1, n_valor }) {
     try {
       const pool = await poolPromise;
+
+      await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
 
       // verificar existencia
       const existeRes = await pool.request()
@@ -850,11 +885,11 @@ class TasasInd {
 
   static async guardarOActualizarTCM({ fecha, id_moneda, n_valor, id_tipcam }) {
     try {
-      // console.log(fecha);
-      // console.log(id_moneda);
-      // console.log(n_valor);
-      // console.log(id_tipcam);
       const pool = await poolPromise;
+
+      await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
 
       // verificar existencia
       const existeRes = await pool.request()
@@ -928,6 +963,10 @@ class TasasInd {
   static async guardarOActualizarGS({ fecha, n_valor }) {
     try {
       const pool = await poolPromise;
+
+      await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
 
       // verificar existencia
       const existeRes = await pool.request()

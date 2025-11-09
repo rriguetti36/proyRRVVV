@@ -205,8 +205,8 @@
 
                         // Si el backend devuelve éxito → ahora llamamos a cargasol
                         if (resAsignacion.mensaje === "Archivo guardado correctamente") {
-                            const textareaValue = document.getElementById("xmlMinificado").value;
-
+                            /* const textareaValue = document.getElementById("xmlMinificado").value;
+                           
                             return fetch("http://localhost:3000/rutinarv/cargasol", {
                                 method: "POST",
                                 headers: {
@@ -214,7 +214,43 @@
                                     "Authorization": `Bearer ${token}`
                                 },
                                 body: textareaValue
-                            }).then(res => res.json());
+                            }).then(res => res.json()); */
+                            const fileInput = document.getElementById("archivoXML");
+                            const file = fileInput.files[0];
+                            const reader = new FileReader();
+
+                            reader.onload = async function (event) {
+                                const xmlText = event.target.result;
+                                const payload = {
+                                    nombreArchivo: file.name,
+                                    contenidoXML: xmlText
+                                };
+
+                                try {
+                                    const response = await fetch("http://localhost:3000/rutinarv/cargasol", { // 👈 aquí el await
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json",
+                                            "Authorization": `Bearer ${token}`
+                                        },
+                                        body: JSON.stringify(payload)
+                                    });
+
+                                    if (!response.ok) {
+                                        throw new Error(`Error HTTP ${response.status}`);
+                                    }
+
+                                    const data = await response.json();
+                                    console.log("Respuesta:", data);
+                                    agregarLog("✅ Archivo procesado correctamente.");
+                                    stopLoadingAnimation();
+                                } catch (error) {
+                                    console.error("Error en cargasol:", error);
+                                    agregarLog("❌ Error al procesar archivo XML: " + error.message);
+                                    stopLoadingAnimation();
+                                }
+                            };
+                            reader.readAsText(file);
                         }
                     });
             })

@@ -236,7 +236,8 @@ exports.Cabecera = async (req, res) => {
 
 exports.addCabecera = async (req, res) => {
   const { nombre } = req.body;
-  await TablaCot.insertCabeceraParam(nombre);
+  const usu = req.session.user.id;
+  await TablaCot.insertCabeceraParam(nombre, usu);
   const cabeceras = await TablaCot.getCabecerasParam();
   res.json({ ok: true, cabeceras });
 }
@@ -248,18 +249,21 @@ exports.getDetalles = async (req, res) => {
 }
 
 exports.addDetalle = async (req, res) => {
-  await TablaCot.insertDetalleParam(req.body);
+  const usu = req.session.user.id;
+  await TablaCot.insertDetalleParam(req.body, usu);
   res.json({ ok: true, mensaje: "Detalle agregado correctamente" });
 }
 
 exports.updateDetalle = async (req, res) => {
-  await TablaCot.updateDetalleParam(req.body);
+  const usu = req.session.user.id;
+  await TablaCot.updateDetalleParam(req.body, usu);
   res.json({ ok: true, mensaje: "Detalle actualizado correctamente" });
 }
 
 exports.deleteDetalle = async (req, res) => {
   const { id } = req.params;
-  await TablaCot.deleteDetalleParam(id);
+  const usu = req.session.user.id;
+  await TablaCot.deleteDetalleParam(id, usu);
   res.json({ ok: true, mensaje: "Detalle eliminado" });
 }
 //#endregion
@@ -809,7 +813,7 @@ exports.ResultadosXML = async (req, res) => {
 
 exports.CargaResultados = async (req, res) => {
   try {
-
+    const usu = req.session.user.id;
     const xmlContent = normalizeXmlToUtf8(req.body.xmlMinificado, false);
     const xmlPath = xmlContent; // XML en string (textarea o fileReader)
     const xsdPath = fs.readFileSync("./resource/xsd/descargaResultados22.xsd", "utf-8");
@@ -923,7 +927,7 @@ exports.CargaResultados = async (req, res) => {
     });
     //console.log("resultados", resultados);
 
-    const idArchivo = await insertSolicitudesResp(resultados, "desResultados_2024_04_23_09_47_59_am.xml");
+    const idArchivo = await insertSolicitudesResp(resultados, "desResultados_2024_04_23_09_47_59_am.xml", usu);
     // Renderizar tabla en la vista
     res.json({
       id: idArchivo,
@@ -1102,13 +1106,13 @@ exports.searchDistritos = async (req, res) => {
 };
 
 
-async function insertSolicitudesResp(resultados, nombrearch) {
+async function insertSolicitudesResp(resultados, nombrearch, usu) {
   try {
 
     const tipoArchivo = 2;
     const nombreArchivo = nombrearch;
     const fechaCarga = new Date().toISOString().split('T')[0];
-    const idusuario = 1;
+    const idusuario = usu;
     const estado = 1;
     const resultado = {
       tipoArchivo,
@@ -1119,7 +1123,7 @@ async function insertSolicitudesResp(resultados, nombrearch) {
       respuestas: [...resultados] // 👈 aquí lo convertimos en array
     }
 
-    const idarchivo = await TablaCot.insertaSolicitudesRespuesta(resultado) || 0;
+    const idarchivo = await TablaCot.insertaSolicitudesRespuesta(resultado, usu) || 0;
 
     return idarchivo;
   } catch (error) {
@@ -1135,16 +1139,36 @@ async function validaModalidad(idArch, operacion, modalidad, moneda, pd, pg, pen
     const cotizacionelegida = await TablaCot.getCotizacionind(parseFloat(operacion));
     let mensaje = "OK"; //;
 
-    const idmod = tabparametros.find(x => x.v_codsbs === modalidad)?.v_cod || "";
-    const idmon = tabparametros.find(x => x.v_codsbs === moneda)?.v_cod || "";
-    const mesdif = parseFloat(pd);
-    const mesgar = parseFloat(pg);
-    const pension = parseFloat(pen);
+    console.log("idArch", idArch)
+    console.log("operacion", operacion)
+    console.log("modalidad", modalidad)
+    console.log("moneda", moneda)
+    console.log("pd", pd)
+    console.log("pg", pg)
+    console.log("pen", pen)
 
-    const encontrado = cotizacionelegida.find(
-      x => x.id_tipren === idmod && x.id_moneda === idmon && x.num_mesdif === mesdif && x.num_mergar === mesgar
+    const idmod = Number(tabparametros.find(x => x.v_codsbs === modalidad)?.v_cod || 0);
+    const idmon = Number(tabparametros.find(x => x.v_codsbs === moneda)?.v_cod || 0);
+    const mesdif = Number(pd);
+    const mesgar = Number(pg);
+    const pension = pen;
+
+    console.log(typeof idmod, typeof idmon, typeof mesdif, typeof mesgar);
+
+    const encontrado = cotizacionelegida.find(x =>
+      x.id_tipren === idmod &&
+      x.id_moneda === idmon &&
+      x.num_mesdif === mesdif &&
+      x.num_mesgar === mesgar
     );
-    const pensionCalculada = encontrado ? encontrado.mto_pension : 0;
+    for (const x of cotizacionelegida) {
+      console.log(
+        `Comparando → id_tipren:${x.id_tipren} == ${idmod}, id_moneda:${x.id_moneda} == ${idmon}, mesdif:${x.num_mesdif} == ${mesdif}, mesgar:${x.num_mesgar} == ${mesgar}`
+      );
+    }
+    console.log("cotizacionelegida", cotizacionelegida)
+    console.log("encontrado", encontrado)
+    const pensionCalculada = encontrado.mto_sumpenben || 0; //encontrado ? encontrado.mto_pension : 0;
 
     console.log("pensionCalculada", pensionCalculada)
     if (pensionCalculada == 0) {

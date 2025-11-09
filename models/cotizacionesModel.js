@@ -70,7 +70,7 @@ class cotizacion {
     try {
       const pool = await poolPromise; // conexión activa
       const result = await pool.request().query(`
-      SELECT 
+      SELECT top 10
         a.id_estado, 
         a.id, 
         a.v_descripcion, 
@@ -116,7 +116,7 @@ class cotizacion {
       const result = await pool.request()
         .input("id", sql.Int, id)
         .query(`
-        SELECT id_tipren, id_moneda, num_mesdif, num_mesgar, mto_pension 
+        SELECT id_tipren, id_moneda, num_mesdif, num_mesgar, mto_sumpenben 
         FROM c_cotizaciondetalle 
         WHERE num_operacion = @id
       `);
@@ -249,10 +249,10 @@ class cotizacion {
     }
   }
 
-  static async insertaCotizacionesCalc(data) {
+  static async insertaCotizacionesCalc(data, idarchivo) {
     const pool = await poolPromise;
     const transaction = pool.transaction();
-
+    console.log("idarchivoenInsertCot",idarchivo);
     try {
       await transaction.begin();
 
@@ -279,6 +279,7 @@ class cotizacion {
         const cabReq = transaction.request();
         const resultCab = await cabReq
           .input('num_cot', sql.VarChar(10), nuevoNumCotFin)
+          .input('id_archivo', sql.Int, idarchivo)
           .input('num_operacion', sql.Int, c.num_operacion)
           .input('fec_suscripcion', sql.DateTime, c.fec_suscripcion)
           .input('fec_envio', sql.DateTime, c.fec_envio)
@@ -314,13 +315,13 @@ class cotizacion {
           .input('fec_devsol', sql.DateTime, c.fec_devsol)
           .query(`
           INSERT INTO c_cotizacion (
-            num_cot, num_operacion, fec_suscripcion, fec_envio, fec_cierre, fec_devenge, id_afp, id_prestacion, id_tipobenef, num_cuspp, id_sucursal,
+            num_cot, id_archivo, num_operacion, fec_suscripcion, fec_envio, fec_cierre, fec_devenge, id_afp, id_prestacion, id_tipobenef, num_cuspp, id_sucursal,
             num_aniojubila, num_cargas, id_agente, num_docagente, id_moneda, val_tcfondo, mto_capitalfon, mto_cicfon, mto_bonofon, mto_priuni, mto_cic,
             mto_bono, val_tasart, mto_apoadi, ind_cober, id_tipocot, id_estadocot, num_mensual, id_tipofon, id_region, fec_devsol
           )
           OUTPUT INSERTED.id_cot
           VALUES (
-            @num_cot, @num_operacion, @fec_suscripcion, @fec_envio, @fec_cierre, @fec_devenge, @id_afp, @id_prestacion, @id_tipobenef, @num_cuspp, @id_sucursal,
+            @num_cot, @id_archivo, @num_operacion, @fec_suscripcion, @fec_envio, @fec_cierre, @fec_devenge, @id_afp, @id_prestacion, @id_tipobenef, @num_cuspp, @id_sucursal,
             @num_aniojubila, @num_cargas, @id_agente, @num_docagente, @id_moneda, @val_tcfondo, @mto_capitalfon, @mto_cicfon, @mto_bonofon, @mto_priuni, @mto_cic, 
             @mto_bono, @val_tasart, @mto_apoadi, @ind_cober, @id_tipocot, @id_estadocot, @num_mensual, @id_tipofon, @id_region, @fec_devsol
           )
@@ -336,6 +337,7 @@ class cotizacion {
             .input('id_cot', sql.Int, idCotizacion)
             .input('num_cot', sql.VarChar(10), nuevoNumCotFin)
             .input('id_correlativo', sql.Int, d.id_correlativo)
+            .input('id_archivo', sql.Int, idarchivo)
             .input('num_operacion', sql.Int, d.num_operacion)
             .input('fec_calcot', sql.DateTime, d.fec_calcot)
             .input('id_moneda', sql.Int, d.id_moneda)
@@ -379,12 +381,12 @@ class cotizacion {
             // ⚠️ aquí seguirías con todos los campos uno por uno como arriba...
             .query(`
             INSERT INTO c_cotizaciondetalle (
-              id_cot,num_cot,id_correlativo,num_operacion,fec_calcot,id_moneda,val_tcmon,mto_priuni,mto_capital,mto_bono,val_agecom,val_agecomreal,mto_agecom,id_tipren,num_mesdif,
+              id_cot,num_cot,id_correlativo,id_archivo,num_operacion,fec_calcot,id_moneda,val_tcmon,mto_priuni,mto_capital,mto_bono,val_agecom,val_agecomreal,mto_agecom,id_tipren,num_mesdif,
               id_modalidad,num_mesgar,num_mesesc,val_rentaesc,val_tasartafp,val_rentart,mto_sepelio,val_tasatce,val_tasavta,val_tasatir,mto_pension,mto_pensiongar,
               mto_priAFP,mto_pensionRT,val_rentapentmp,mto_sumpenben,val_perdida,ind_cober,ind_dercre,ind_dergra,id_estado,id_rechazo,mto_parcap,des_error,
               ind_sisco,ind_pasofiltro
             )
-            VALUES (@id_cot,@num_cot,@id_correlativo,@num_operacion,@fec_calcot,@id_moneda,@val_tcmon,@mto_priuni,@mto_capital,@mto_bono,@val_agecom,@val_agecomreal,@mto_agecom,@id_tipren,@num_mesdif,
+            VALUES (@id_cot,@num_cot,@id_correlativo,@id_archivo,@num_operacion,@fec_calcot,@id_moneda,@val_tcmon,@mto_priuni,@mto_capital,@mto_bono,@val_agecom,@val_agecomreal,@mto_agecom,@id_tipren,@num_mesdif,
               @id_modalidad,@num_mesgar,@num_mesesc,@val_rentaesc,@val_tasartafp,@val_rentart,@mto_sepelio,@val_tasatce,@val_tasavta,@val_tasatir,@mto_pension,@mto_pensiongar,
               @mto_priAFP,@mto_pensionRT,@val_rentapentmp,@mto_sumpenben,@val_perdida,@ind_cober,@ind_dercre,@ind_dergra,@id_estado,@id_rechazo,@mto_parcap,@des_error,
               @ind_sisco,@ind_pasofiltro)
@@ -400,6 +402,7 @@ class cotizacion {
             .input('id_cot', sql.Int, idCotizacion)
             .input('num_cot', sql.VarChar(10), nuevoNumCotFin)
             .input('id_orden', sql.Int, b.id_orden)
+            .input('id_archivo', sql.Int, idarchivo)
             .input('num_operacion', sql.Int, b.num_operacion)
             .input('id_parentesco', sql.Int, b.id_parentesco)
             .input('id_grupofam', sql.Int, b.id_grupofam)
@@ -434,10 +437,10 @@ class cotizacion {
             // ⚠️ igual que arriba: ir agregando .input() por cada campo
             .query(`
             INSERT INTO c_cotizacionbeneficiario (
-              id_cot,num_cot,id_orden,num_operacion,id_parentesco,id_grupofam,id_sexo,id_invalido,id_derpen,id_tipodociden,num_dociden,des_nombre,des_nombresegundo,des_apepaterno,
+              id_cot,num_cot,id_orden,id_archivo,num_operacion,id_parentesco,id_grupofam,id_sexo,id_invalido,id_derpen,id_tipodociden,num_dociden,des_nombre,des_nombresegundo,des_apepaterno,
               des_apematerno,fec_nacimiento,fec_fallecimiento,fec_nachijomayor,val_pension,val_pensionleg,mto_pension,mto_pensiongar,ind_estsob,ind_estudiante
             )
-            VALUES (@id_cot,@num_cot,@id_orden,@num_operacion,@id_parentesco,@id_grupofam,@id_sexo,@id_invalido,@id_derpen,@id_tipodociden,@num_dociden,@des_nombre,@des_nombresegundo,@des_apepaterno,
+            VALUES (@id_cot,@num_cot,@id_orden,@id_archivo,@num_operacion,@id_parentesco,@id_grupofam,@id_sexo,@id_invalido,@id_derpen,@id_tipodociden,@num_dociden,@des_nombre,@des_nombresegundo,@des_apepaterno,
             @des_apematerno,@fec_nacimiento,@fec_fallecimiento,@fec_nachijomayor,@val_pension,@val_pensionleg,@mto_pension,@mto_pensiongar,@ind_estsob,@ind_estudiante)
           `);
         }
@@ -465,15 +468,15 @@ class cotizacion {
     const transaction = pool.transaction();
 
     try {
-      pool = await poolPromise;
       await transaction.begin();
+
+      const reqAudit = new sql.Request(transaction);
+        await reqAudit
+            .input('UserId', sql.Int, usu)
+            .query(`EXEC sp_set_audit_user_id @UserId`);
 
       // 1. Insertar cabecera en c_solicitudes_meler
       const request1 = new sql.Request(transaction);
-      await request1
-        .input('UserId', sql.Int, usu)
-        .query(`EXEC sp_set_audit_user_id @UserId`);
-
       const res = await request1
         .input("idtipo", sql.Int, data.tipoArchivo)
         .input("v_descripcion", sql.VarChar(255), data.nombreArchivo)
@@ -490,10 +493,13 @@ class cotizacion {
 
       const idArchivo = res.recordset[0].id;
       console.log("📥 Insertado cabecera id:", idArchivo);
+      //console.log("respuestas", data.respuestas)
 
       // 2. Insertar detalle en c_solicitudes_meler_res
       if (data.respuestas && Array.isArray(data.respuestas) && data.respuestas.length > 0) {
         for (const r of data.respuestas) {
+          const nroCotizacionStr = r.nroCotizacion != null ? String(r.nroCotizacion) : "";
+          const codigoStr = r.codigo != null ? String(r.codigo) : "";
           const request2 = new sql.Request(transaction);
           await request2
             .input("id_archivo", sql.Int, idArchivo)
@@ -508,11 +514,11 @@ class cotizacion {
             .input("var_derechoCrecer", sql.VarChar(10), r.dercre)
             .input("var_gratificacion", sql.VarChar(10), r.grati)
             .input("var_tipo", sql.VarChar(20), r.tipo)
-            .input("var_codigo", sql.VarChar(20), r.codigo)
+            .input("var_codigo", sql.VarChar(20), codigoStr)
             .input("var_atiende", sql.VarChar(20), r.atiende)
             .input("var_gana", sql.VarChar(20), r.gana)
             .input("var_cotiza", sql.VarChar(20), r.cotiza)
-            .input("var_cotizacion", sql.VarChar(20), r.nroCotizacion)
+            .input("var_cotizacion", sql.VarChar(20), nroCotizacionStr)
             .input("num_tasaafp", sql.Decimal(10, 4), r.tasaAFP)
             .input("num_pensionafp", sql.Decimal(18, 2), r.pensionAFP)
             .input("num_tasaaseg", sql.Decimal(10, 4), r.tasaAseg)
@@ -599,9 +605,14 @@ class cotizacion {
     }
   }
 
-  static async insertCabeceraParam(nombre) {
+  static async insertCabeceraParam(nombre, usu) {
     try {
       const pool = await poolPromise;
+
+      await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+
       await pool.request()
         .input('v_nombre', sql.NVarChar, nombre)
         .query(`INSERT INTO m_parametros (nombre) VALUES (@v_nombre)`);
@@ -622,9 +633,13 @@ class cotizacion {
     }
   }
 
-  static async insertDetalleParam(data) {
+  static async insertDetalleParam(data, usu) {
     try {
       const pool = await poolPromise;
+      await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+
       await pool.request()
         .input('idpar', sql.Int, data.idpar)
         .input('v_cod', sql.NVarChar, data.v_cod)
@@ -641,9 +656,13 @@ class cotizacion {
     }
   }
 
-  static async updateDetalleParam(data) {
+  static async updateDetalleParam(data, usu) {
     try {
       const pool = await poolPromise;
+      await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+
       await pool.request()
         .input('id', sql.Int, data.id)
         .input('v_cod', sql.NVarChar, data.v_cod)
@@ -662,9 +681,13 @@ class cotizacion {
     }
   }
 
-  static async deleteDetalleParam(id) {
+  static async deleteDetalleParam(id, usu) {
     try {
       const pool = await poolPromise;
+      await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+
       await pool.request().input('id', sql.Int, id)
         .query(`DELETE FROM m_parametros_val WHERE id=@id`);
     } catch (err) {
@@ -693,6 +716,10 @@ class cotizacion {
     try {
       const pool = await poolPromise;
       await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+
+      await pool.request()
         .input('id', sql.Int, id)
         .input('valor', sql.Int, valor)
         .query(`UPDATE m_configuracionmatriz SET ${campo} = @valor WHERE id = @id`);
@@ -706,6 +733,11 @@ class cotizacion {
   static async actualizarMontosMatrizCF(id, desde, hasta) {
     try {
       const pool = await poolPromise;
+
+      await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+        
       await pool.request()
         .input('id', sql.Int, id)
         .input('desde', sql.Decimal(18, 2), desde)

@@ -50,17 +50,22 @@ exports.ProcesaSolicitud = async (req, res) => {
         if (!req.body) {
             return res.status(400).send('No se recibió cuerpo en la petición.');
         }
+        const { nombreArchivo, contenidoXML } = req.body;
+        console.log(nombreArchivo);
+        console.log(contenidoXML);
+
         const usu = req.session.user.id;
         const fechaCarga = new Date().toISOString().split('T')[0];
         const rutaCot = process.env.RUTA_COTIZA;
 
         let vallidaOk = false
         console.log("🚀Inicia Validando del XML...");
-        const { solicitudes_meler } = await ValidaXML(req.body, fechaCarga, rutaCot);                                        //valida con el XSD
+        const { solicitudes_meler } = await ValidaXML(contenidoXML, fechaCarga, rutaCot);                                        //valida con el XSD
 
         console.log("🚀Valida si ya fue cargado el archivo...");
-        vallidaOk = await validarExistente(solicitudes_meler, fechaCarga, usu);                                          //Valida si ya fueron cargadas
+        vallidaOk = await validarExistente(solicitudes_meler, fechaCarga, usu, nombreArchivo);                                          //Valida si ya fueron cargadas
         console.log("vallidaOk", vallidaOk.existe);
+        console.log("idArchivo", vallidaOk.idArchivo)
         //vallidaOk = false;
 
         if (!vallidaOk.existe) {
@@ -69,7 +74,7 @@ exports.ProcesaSolicitud = async (req, res) => {
 
             // 🚀 Ejecutar
             console.log("🚀Setea los datos en las arrays...");
-            await CrearCotizacion(fechaCarga, rutaCot).then(({ c_cotizacion, c_detallecotizacion, c_beneficiario }) => {
+            await CrearCotizacion(fechaCarga, rutaCot, vallidaOk.idArchivo).then(({ c_cotizacion, c_detallecotizacion, c_beneficiario }) => {
 
                 const solicitudesMelerValidas = {
                     cabecera: c_cotizacion,
@@ -77,7 +82,7 @@ exports.ProcesaSolicitud = async (req, res) => {
                     beneficiario: c_beneficiario
                 }
                 console.log("🚀Guarda los resultados en las tablas...");
-                insertaCotizacionesCalculadas(solicitudesMelerValidas);
+                insertaCotizacionesCalculadas(solicitudesMelerValidas, vallidaOk.idArchivo);
                 // Aquí puedes trabajar con los arrays, exportarlos, guardarlos, etc.
                 // Por ejemplo, para ver el primero:
                 //console.log('\n🧾 Primer registro en c_cotizacion:\n', c_detallecotizacion[0]); 
@@ -98,16 +103,16 @@ exports.ProcesaSolicitud = async (req, res) => {
 };
 
 exports.Listados = async (req, res) => {
-  try {
-    const solicitudes = await TablaCot.getTablaSolicitudesMELER();
-    //console.log(solicitudes);
-    //const recientes = await SolicitudesMeler.getRecientes();
+    try {
+        const solicitudes = await TablaCot.getTablaSolicitudesMELER();
+        //console.log(solicitudes);
+        //const recientes = await SolicitudesMeler.getRecientes();
 
-    res.render("index", { layout: 'layouts/layoutCT', solicitudes });
-  } catch (err) {
-    console.error("Error al obtener solicitudes:", err);
-    res.status(500).send("Error en el servidor");
-  }
+        res.render("index", { layout: 'layouts/layoutCT', solicitudes });
+    } catch (err) {
+        console.error("Error al obtener solicitudes:", err);
+        res.status(500).send("Error en el servidor");
+    }
 };
 
 //1 paso valida el XML y compara con el XSD
@@ -346,7 +351,7 @@ async function SolicitudesCalc(fechaCarga, ruta) {
 }
 
 //3 paso procesa las solicitudes y las cotiza
-async function CrearCotizacion(fechaCarga, ruta) {
+async function CrearCotizacion(fechaCarga, ruta, idarchivo) {
     const tabparametros = await TablaPar.getParametros();
     const c_cotizacion = [];
     const c_detallecotizacion = [];
@@ -390,7 +395,7 @@ async function CrearCotizacion(fechaCarga, ruta) {
             // 📌 1. Datos para c_cotizacion
             const cotizacion = {
                 //num_cot: 0,
-                //id_archivo: 0,
+                id_archivo: idarchivo,
                 num_operacion: nroOperacion,
                 fec_suscripcion: solicitud.fechaSuscripcionIII,
                 fec_envio: solicitud.fechaEnvio,
@@ -407,7 +412,7 @@ async function CrearCotizacion(fechaCarga, ruta) {
                 //num_cargas: 0,
                 id_agente: 0,
                 num_docagente: await aisgnaIntermediario(nroOperacion, fechaCarga) || "",
-                id_moneda: tabparametros.find(x => x.v_codsbs === solicitud.fondo.moneda)?.v_cod || "",
+                id_moneda: 1, //tabparametros.find(x => x.v_codsbs === solicitud.fondo.moneda)?.v_cod || "",
                 val_tcfondo: parseFloat(solicitud.tipoCambio),
                 mto_capitalfon: parseFloat(solicitud.fondo.capitalPension),
                 mto_cicfon: parseFloat(solicitud.fondo.saldoCic),
@@ -439,10 +444,10 @@ async function CrearCotizacion(fechaCarga, ruta) {
                     //id_cot: 0,
                     //num_cot: 0,
                     id_correlativo: idcorrelativo,
-                    //id_archivo: 0,
+                    id_archivo: idarchivo,
                     num_operacion: nroOperacion,
                     fec_calcot: fechaCarga,
-                    id_moneda: tabparametros.find(x => x.v_codsbs === solicitud.fondo.moneda)?.v_cod || "",
+                    id_moneda: tabparametros.find(x => x.v_codsbs === producto.moneda)?.v_cod || "",
                     val_tcmon: 0,
                     mto_priuni: parseFloat(solicitud.fondo.capitalPension) || 0,
                     mto_capital: parseFloat(solicitud.fondo.saldoCic) || 0,
@@ -506,7 +511,7 @@ async function CrearCotizacion(fechaCarga, ruta) {
                 //id_cot: 0,
                 //num_cot: 0,
                 id_orden: 1,
-                //id_archivo: 0,
+                id_archivo: idarchivo,
                 num_operacion: nroOperacion,
                 id_parentesco: 1,
                 id_grupofam: 1,
@@ -709,10 +714,11 @@ async function obtenerEdadJub(fechaNac) {
     return anio;
 }
 
-async function validarExistente(solicitudes_meler, fechacarga, usu) {
+async function validarExistente(solicitudes_meler, fechacarga, usu, nombrearch = "") {
     let iderror = 0;
     let descrierror = "";
     let caeSol = false;
+    let nomArchivo = nombrearch; //"desSolicitudes_2024_03_25.xml";
     for (const solicitud of solicitudes_meler) {
 
         const valor = await TablaCot.validaExisteOperacion(solicitud.numeroop);
@@ -731,7 +737,7 @@ async function validarExistente(solicitudes_meler, fechacarga, usu) {
 
     const solicitudesMelerValid = {
         tipoArchivo: 1,
-        nombreArchivo: "desSolicitudes_2024_03_25.xml",
+        nombreArchivo: nomArchivo,
         fechaCarga: fechacarga,
         idusuario: 1,
         estado: caeSol ? 0 : 1,
@@ -745,11 +751,11 @@ async function validarExistente(solicitudes_meler, fechacarga, usu) {
         // Ya se manejó el error internamente
     });; */
     console.log("caeSol", caeSol)
-    return {existe: caeSol, idArchivo: resultado};
+    return { existe: caeSol, idArchivo: resultado };
 }
 
-async function insertaCotizacionesCalculadas(data) {
-    await TablaCot.insertaCotizacionesCalc(data);
+async function insertaCotizacionesCalculadas(data, idarchivo) {
+    await TablaCot.insertaCotizacionesCalc(data, idarchivo);
 }
 
 async function aisgnaIntermediario(operacion, fechaCarga) {
