@@ -167,6 +167,7 @@ exports.generaXMLsalida = async (req, res) => {
 
     //console.log("Body completo recibido:", req.body.id_archivo);
     //console.log("Tipo:", typeof req.body);
+    const usu = req.session.user.id;
     const fechacalculo = new Date().toISOString().slice(0, 10);
     const idarchivo = req.body.id_archivo;
     //console.log('ID del archivo recibido:', idarchivo);
@@ -192,8 +193,26 @@ exports.generaXMLsalida = async (req, res) => {
       });
     }
 
+    //2. insert el solicitudes Meler
+    const nombrearch = 'cargaCot_' + fechacalculo + '.xml';
+    const tipoArchivo = 3;
+    const nombreArchivo = nombrearch;
+    const fechaCarga = new Date().toISOString().split('T')[0];
+    const idusuario = usu;
+    const estado = 1;
+    const id_archivo_ori = idarchivo;
+    const resEnvio = {
+      tipoArchivo,
+      nombreArchivo,
+      fechaCarga,
+      idusuario,
+      estado,
+      id_archivo_ori // 👈 aquí lo convertimos en array
+    }
+    await tablasCotizacion.insertaSolicitudesEnvioMeler(resEnvio, usu) || 0;
+
     // 3. Enviar el archivo XML como descarga
-    res.download(rutaXML, 'cargaCot_' + fechacalculo + '.xml', (err) => {
+    res.download(rutaXML, nombrearch, (err) => {
       if (err) {
         console.error('❌ Error al descargar el archivo:', err);
         res.status(500).send('Error al descargar el archivo XML.');

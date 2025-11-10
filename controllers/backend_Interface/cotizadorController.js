@@ -803,7 +803,9 @@ exports.CargaXML = async (req, res) => {
 };
 
 exports.DescargaXML = async (req, res) => {
-  res.render("cotizacion/descarga", { layout: 'layouts/layoutCT' });
+  const fechacierre = await TablaCot.getfechascierre();
+  console.log(fechacierre);
+  res.render("cotizacion/descarga", { layout: 'layouts/layoutCT', fechacierre: fechacierre });
 };
 
 exports.ResultadosXML = async (req, res) => {
@@ -815,6 +817,7 @@ exports.CargaResultados = async (req, res) => {
   try {
     const usu = req.session.user.id;
     const xmlContent = normalizeXmlToUtf8(req.body.xmlMinificado, false);
+    const nomArchivo = req.body.nombreArchivo;
     const xmlPath = xmlContent; // XML en string (textarea o fileReader)
     const xsdPath = fs.readFileSync("./resource/xsd/descargaResultados22.xsd", "utf-8");
 
@@ -927,7 +930,7 @@ exports.CargaResultados = async (req, res) => {
     });
     //console.log("resultados", resultados);
 
-    const idArchivo = await insertSolicitudesResp(resultados, "desResultados_2024_04_23_09_47_59_am.xml", usu);
+    const idArchivo = await insertSolicitudesResp(resultados, nomArchivo, usu);
     // Renderizar tabla en la vista
     res.json({
       id: idArchivo,
@@ -945,6 +948,19 @@ exports.getSolicitudes = async (req, res) => {
     const solicitudesMeler = await TablaCot.getTablaSolicitudesMELER(); // 👈 OJO con los ()
     //console.log(solicitudesMeler); // ahora verás el array de objetos
 
+    res.json({ data: solicitudesMeler }); // DataTables lo consume
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.getSolicitudesBusqueda = async (req, res) => {
+  try {
+    const { fechaCierre } = req.query;
+    console.log("fechaCierre", fechaCierre);
+    const solicitudesMeler = await TablaCot.getTablaSolicitudesMELERBuscar(fechaCierre); // 👈 OJO con los ()
+    //console.log(solicitudesMeler); // ahora verás el array de objetos
     res.json({ data: solicitudesMeler }); // DataTables lo consume
   } catch (error) {
     console.error(error);
@@ -999,10 +1015,10 @@ exports.postValidacion = async (req, res) => {
 
 exports.postAceptaCotizacion = async (req, res) => {
   try {
-    const { ope, cor, fecha } = req.body;
-    const respuesta = await registraAceptacion(ope, cor, fecha);
+    const { op, pd, pg, fecha } = req.body;
+    const respuesta = await registraAceptacion(op, pd, pg, fecha);
     console.log("respuestaAceptacion", respuesta);
-    res.json({ mensaje: validacion }); // DataTables lo consume
+    res.json({ mensaje: respuesta }); // DataTables lo consume
 
   } catch (error) {
     console.error(error);
@@ -1188,12 +1204,12 @@ async function validaModalidad(idArch, operacion, modalidad, moneda, pd, pg, pen
   }
 }
 
-async function registraAceptacion(ope, cor, fecha) {
+async function registraAceptacion(op, pd, pg, fecha) {
   try {
     let mensaje = "OK"; //;
-    const actualizado = await Modelo.insertRegistraAcepta(ope, cor, fecha);
+    const actualizado = await TablaCot.insertRegistraAcepta(op, pd, pg, fecha);
     if (actualizado) {
-      mensaje = "OK"; //
+      mensaje = "Aceptacion registrada con Exito"; //
       return mensaje;
     } else {
       mensaje = "No se encontró ningún registro con esos parámetros"; //

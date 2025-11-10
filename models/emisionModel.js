@@ -12,6 +12,7 @@ class emision {
         JOIN c_cotizacionbeneficiario b ON a.id_cot = b.id_cot
         JOIN c_cotizaciondetalle c ON a.id_cot = c.id_cot
         WHERE b.id_orden = 1 AND c.id_estado = 4
+        order by a.id_cot desc
       `;
 
       if (dni && dni.trim() !== '') {

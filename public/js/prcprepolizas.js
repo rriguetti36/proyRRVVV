@@ -332,6 +332,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     document.getElementById("btnGuardarPrepoliza").addEventListener("click", () => {
 
+        poliza = [];
+        polizaver = [];
+        polizabeneficiario = [];
         const inputfecspp = document.getElementById("fecspp");
         const selectNacio = document.getElementById("Nacionalidadfi");
         const inputapepat = document.getElementById("apepatafi");
@@ -500,6 +503,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log("✅ Nuevo array poliza:", poliza);
         console.log("✅ Nuevo array polizaver:", polizaver);
         console.log("✅ Nuevo array polizabeneficiario:", polizabeneficiario);
+
+        const payload = {
+            poliza: poliza,
+            polizaver: polizaver, // tu array construido en el paso 2
+            polizabeneficiario: polizabeneficiario       // tu array construido en el paso 3
+        }
+        GuardarPrepoliza(payload);
     });
 
     // 3️⃣ Función para mostrar la tabla
@@ -569,6 +579,48 @@ document.addEventListener("DOMContentLoaded", async function () {
         return fecha.toISOString().split('T')[0];
     }
 
+    async function GuardarPrepoliza(datos) {
+        try {
+            // 2️⃣ Llamar al endpoint de cálculo
+            const calcRes = await fetch("/emision/api/grabarprepoliza", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(datos)
+            });
+
+            const calcData = await calcRes.json();
+
+            if (!calcRes.ok) {
+                throw new Error(calcData.error || "Error en Grabación");
+            }
+
+            console.log("✅ Respuesta backend:", calcData);
+
+            // 3️⃣ Mostrar éxito
+            Swal.fire({
+                title: "¡Éxito!",
+                text: "Cotización calculada correctamente",
+                icon: "success",
+                confirmButtonText: "Aceptar",
+                confirmButtonColor: "#3085d6"
+            });
+
+        } catch (err) {
+            console.error("❌ Error:", err.message);
+
+            Swal.fire({
+                title: "Error",
+                text: err.message,
+                icon: "error",
+                confirmButtonText: "Cerrar",
+                confirmButtonColor: "#d33"
+            });
+        } finally {
+            loader.style.display = "none"; // 👈 Ocultar loader siempre
+        }
+    }
 
 
 });

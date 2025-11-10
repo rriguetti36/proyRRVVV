@@ -70,7 +70,7 @@ class cotizacion {
     try {
       const pool = await poolPromise; // conexión activa
       const result = await pool.request().query(`
-      SELECT top 10
+      SELECT top 3
         a.id_estado, 
         a.id, 
         a.v_descripcion, 
@@ -93,6 +93,52 @@ class cotizacion {
       return result.recordset;
     } catch (err) {
       console.error("❌ Error en getTablaSolicitudesMELER:", err);
+      throw err;
+    }
+  }
+
+  static async getTablaSolicitudesMELERBuscar(fecha) {
+    try {
+      const pool = await poolPromise; // conexión activa
+      const result = await pool.request()
+        .input("fec_cierre", sql.Date, fecha)
+        .query(`
+      SELECT top 3
+        a.id_estado, 
+        a.id, 
+        a.v_descripcion, 
+        b.fec_envio, 
+        b.fec_cierre, 
+        MIN(b.num_operacion) AS inisol, 
+        MAX(b.num_operacion) AS finsol
+      FROM c_solicitudes_meler a 
+      JOIN c_solicitudes_meler_det b ON a.id = b.id_archivo
+      WHERE a.id_estado >= 1 and b.fec_cierre = @fec_cierre
+      GROUP BY 
+        a.id_estado, 
+        a.id, 
+        a.v_descripcion, 
+        b.fec_envio, 
+        b.fec_cierre
+      ORDER BY a.id DESC
+    `);
+
+      return result.recordset;
+    } catch (err) {
+      console.error("❌ Error en getTablaSolicitudesMELER:", err);
+      throw err;
+    }
+  }
+
+  static async getfechascierre() {
+    try {
+      const pool = await poolPromise;
+      const result = await pool.request().query(`
+      select DISTINCT CONVERT(VARCHAR(10), fec_cierre, 120) AS fecha_cierre 
+      from c_cotizacion ORDER BY fecha_cierre DESC
+    `);
+      return result.recordset;
+    } catch (err) {
       throw err;
     }
   }
@@ -166,20 +212,21 @@ class cotizacion {
     }
   }
 
-  static async insertRegistraAcepta(ope, cor, fecha) {
+  static async insertRegistraAcepta(op, pd, pg, fecha) {
     try {
       const pool = await poolPromise;
 
       const fechaAcepta = fecha && fecha.trim() !== "" ? fecha : null;
 
       const result = await pool.request()
+        .input("op", sql.Int, op)
+        .input("pd", sql.Int, pd)
+        .input("pg", sql.Int, pg)
         .input("fechaAcepta", sql.DateTime, fechaAcepta)
-        .input("ope", sql.Int, ope)
-        .input("cor", sql.Int, cor)
         .query(`
         UPDATE c_cotizaciondetalle 
-        SET fec_acepta = @fechaAcepta, id_estado = 3
-        WHERE num_operacion = @ope AND id_correlativo = @cor
+        SET fec_acepta = @fechaAcepta, id_estado = 4
+        WHERE num_operacion = @op AND num_mesdif = @pd AND num_mesgar = @pg
       `);
 
       return result.rowsAffected[0] > 0;
@@ -252,7 +299,7 @@ class cotizacion {
   static async insertaCotizacionesCalc(data, idarchivo) {
     const pool = await poolPromise;
     const transaction = pool.transaction();
-    console.log("idarchivoenInsertCot",idarchivo);
+    console.log("idarchivoenInsertCot", idarchivo);
     try {
       await transaction.begin();
 
@@ -471,9 +518,9 @@ class cotizacion {
       await transaction.begin();
 
       const reqAudit = new sql.Request(transaction);
-        await reqAudit
-            .input('UserId', sql.Int, usu)
-            .query(`EXEC sp_set_audit_user_id @UserId`);
+      await reqAudit
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
 
       // 1. Insertar cabecera en c_solicitudes_meler
       const request1 = new sql.Request(transaction);
@@ -590,6 +637,50 @@ class cotizacion {
       return result.recordset;
     } catch (err) {
       console.error("❌ Error en getTablaSolicitudRespuesta:", err);
+      throw err;
+    }
+  }
+
+  static async insertaSolicitudesEnvioMeler(data, usu) {
+    const pool = await poolPromise;
+    try {
+
+      // 1. Insertar en c_solicitudes_meler (OUTPUT para recuperar ID)
+
+      await pool.request()
+        .input('UserId', sql.Int, usu)
+        .query(`EXEC sp_set_audit_user_id @UserId`);
+
+      await pool.request()
+        .input("idtipo", sql.Int, data.tipoArchivo)
+        .input("v_descripcion", sql.VarChar(255), data.nombreArchivo)
+        .input("fec_carga", sql.DateTime, data.fechaCarga)
+        .input("idusuario", sql.Int, data.idusuario)
+        .input("id_estado", sql.Int, data.estado)
+        .input("id_archivo_ori", sql.Int, data.id_archivo_ori)
+        .query(`
+        INSERT INTO c_solicitudes_meler (idtipo, v_descripcion, fec_carga, idusuario, id_estado, id_archivo_ori)
+        VALUES (@idtipo, @v_descripcion, @fec_carga, @idusuario, @id_estado, @id_archivo_ori)
+      `);
+
+      await pool.request()
+        .input("id_archivo", sql.Int, data.id_archivo_ori)
+        .input("fechaAcepta", sql.DateTime, data.fechaCarga)
+        .query(`
+        UPDATE c_cotizaciondetalle 
+        SET id_estado = 3
+        WHERE id_archivo=@id_archivo
+      `);
+
+      await pool.request()
+        .input("id_archivo", sql.Int, data.id_archivo_ori)
+        .query(`
+        UPDATE c_solicitudes_meler SET id_estado = 3 WHERE id=@id_archivo
+      `);
+
+      console.log("Solicitud guardada en Matriz de errores.");
+    } catch (err) {
+      console.error("Error al guardar:", err);
       throw err;
     }
   }
@@ -737,7 +828,7 @@ class cotizacion {
       await pool.request()
         .input('UserId', sql.Int, usu)
         .query(`EXEC sp_set_audit_user_id @UserId`);
-        
+
       await pool.request()
         .input('id', sql.Int, id)
         .input('desde', sql.Decimal(18, 2), desde)

@@ -33,6 +33,7 @@ router.get('/cfmatriz', auth, cotizadorController.MatrizConfig);
 
 //cotizador
 router.get("/api/solicitudes", auth, cotizadorController.getSolicitudes);
+router.get("/api/solicitudesbuscar", auth, cotizadorController.getSolicitudesBusqueda);
 router.post("/api/cargaresultado", auth, cotizadorController.CargaResultados);
 router.post("/api/respuestas", auth, cotizadorController.getRespuestas);
 router.post("/api/validasol", auth, cotizadorController.postValidacion);
