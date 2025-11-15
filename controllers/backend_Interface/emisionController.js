@@ -98,7 +98,9 @@ exports.ListaPrimasRecepcionadas = async (req, res) => {
 
 exports.GrabarPrepoliza = async (req, res) => {
     try {
-        res.json({ ok: true, mensaje: "Gruardar." });
+        const datos = req.body;
+        await TablaEmi.insertaPoliza(datos);
+        res.json({ ok: true, mensaje: "Satisfactorio." });
     } catch (error) {
         console.error('Error procesando polizas:', error);
         res.status(500).json({ error: 'Error interno del servidor' });

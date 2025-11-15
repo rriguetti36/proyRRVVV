@@ -21,5 +21,21 @@ router.get("/api/getcotizacionafi/:id_cot", auth, emisionController.getCotizacio
 router.get("/api/getbeneficiario/:id_cot", auth, emisionController.getBeneficiariosPorCotizacion); // Obtener todos los beneficiarios de una cotización
 router.get("/api/getbeneficiario/:id_cot/:id_orden", auth, emisionController.getBeneficiarioById); // Obtener beneficiario específico (por id_orden)
 router.post("/api/grabarprepoliza", auth, validarEmision, emisionController.GrabarPrepoliza);
-
+/* router.post("/api/grabarprepoliza",
+    (req, res, next) => {
+        console.log("👉 Paso 1: llegada a la ruta");
+        next();
+    },
+    auth,
+    (req, res, next) => {
+        console.log("👉 Paso 2: pasó auth");
+        next();
+    },
+    validarEmision,
+    (req, res, next) => {
+        console.log("👉 Paso 3: pasó validarEmision");
+        next();
+    },
+    emisionController.GrabarPrepoliza
+); */
 module.exports = router;

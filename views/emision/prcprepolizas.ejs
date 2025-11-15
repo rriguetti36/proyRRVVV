@@ -40,12 +40,12 @@
                         type="button" role="tab">Datos de Afiliado</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="domicilio-tab" data-bs-toggle="tab" data-bs-target="#domicilio"
-                        type="button" role="tab">Domicilio</button>
-                </li>
-                <li class="nav-item" role="presentation">
                     <button class="nav-link" id="poliza-tab" data-bs-toggle="tab" data-bs-target="#poliza" type="button"
                         role="tab">Datos de la Poliza</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="domicilio-tab" data-bs-toggle="tab" data-bs-target="#domicilio"
+                        type="button" role="tab">Domicilio Afiliado</button>
                 </li>
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="pagos-tab" data-bs-toggle="tab" data-bs-target="#pagos" type="button"
@@ -123,82 +123,6 @@
                     </div>
                 </div>
 
-                <!-- DOMICILIO -->
-                <div class="tab-pane fade" id="domicilio" role="tabpanel">
-
-                    <div class="row mb-3">
-                        <div class="form-group col-md-6">
-                            <label>Dirección Expediente</label>
-                            <input type="text" id="direxpafi" class="form-control" placeholder="Escribe una dirección...">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Ubigeo Expediente</label>
-                            <div class="input-group mb-2">
-                                <input type="hidden" id="iddirexpafi">
-                                <input type="text" id="txtUbigeoExp" class="form-control"
-                                    placeholder="Ubigeo correspondencia..." readonly>
-                                <button type="button" class="btn btn-outline-info btnUbigeo" 
-                                    
-                                    data-bs-target="#modalUbigeo" 
-                                    data-targetinput="txtUbigeoExp"
-                                    data-targetid="iddirexpafi">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="form-group col-md-6">
-                            <label>Dirección Correspondencia</label>
-                            <input type="text" id="dircorafi" class="form-control" placeholder="Escribe una dirección...">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label>Ubigeo Correspondencia</label>
-                            <div class="input-group mb-2">
-                                <input type="hidden" id="iddircorafi">
-                                <input type="text" id="txtUbigeoCor" class="form-control"
-                                    placeholder="Ubigeo correspondencia..." readonly>
-                                <button type="button" class="btn btn-outline-info btnUbigeo" 
-                                    
-                                    data-bs-target="#modalUbigeo" 
-                                    data-targetinput="txtUbigeoCor"
-                                    data-targetid="iddircorafi">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="form-group col-md-4">
-                            <label>Correo Electrónico</label>
-                            <input type="email" id="correoafi1" class="form-control" placeholder="Escribe un email..." required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label>Correo Electrónico 2</label>
-                            <input type="email" id="correoafi2" class="form-control" placeholder="Escribe un email..." required>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label>Correo Electrónico 3</label>
-                            <input type="email" id="correoafi3" class="form-control" placeholder="Escribe un email..." required>
-                        </div>
-
-                    </div>
-                    <div class="row mb-3">
-                        <div class="form-group col-md-4">
-                            <label>Teléfono</label>
-                            <input type="text" id="telefonoafi1" class="form-control" placeholder="Escribe un numero...">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label>Teléfono 2</label>
-                            <input type="text" id="telefonoafi2" class="form-control" placeholder="Escribe un numero...">
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label>Teléfono 3</label>
-                            <input type="text" id="telefonoafi3" class="form-control" placeholder="Escribe un numero...">
-                        </div>
-                    </div>
-                </div>
-
                 <!-- POLIZA -->
                 <div class="tab-pane fade" id="poliza" role="tabpanel">
                     <div class="row mb-3">
@@ -253,6 +177,7 @@
                         <div class="form-group col-md-3">
                             <label>Est. Civil</label>
                             <select class="form-control" id="tipoCivafi">
+                                <option>Sin Información</option>
                                 <% tipoCiv.forEach(function(doc) { %>
                                     <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
@@ -263,6 +188,7 @@
                         <div class="form-group col-md-3">
                             <label>Ins. Salud</label>
                             <select class="form-control" id="tipoEssafi">
+                                <option>Sin Información</option>
                                 <% tipoEss.forEach(function(doc) { %>
                                     <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
@@ -297,12 +223,93 @@
 
                 </div>
 
+                <!-- DOMICILIO -->
+                <div class="tab-pane fade" id="domicilio" role="tabpanel">
+
+                    <div class="row mb-3">
+                        <div class="form-group col-md-6">
+                            <label>Dirección Expediente</label>
+                            <input type="text" id="direxpafi" class="form-control"
+                                placeholder="Escribe una dirección...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Ubigeo Expediente</label>
+                            <div class="input-group mb-2">
+                                <input type="hidden" id="iddirexpafi">
+                                <input type="text" id="txtUbigeoExp" class="form-control"
+                                    placeholder="Ubigeo correspondencia..." readonly>
+                                <button type="button" class="btn btn-outline-info btnUbigeo"
+                                    data-bs-target="#modalUbigeo" data-targetinput="txtUbigeoExp"
+                                    data-targetid="iddirexpafi">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-md-6">
+                            <label>Dirección Correspondencia</label>
+                            <input type="text" id="dircorafi" class="form-control"
+                                placeholder="Escribe una dirección...">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Ubigeo Correspondencia</label>
+                            <div class="input-group mb-2">
+                                <input type="hidden" id="iddircorafi">
+                                <input type="text" id="txtUbigeoCor" class="form-control"
+                                    placeholder="Ubigeo correspondencia..." readonly>
+                                <button type="button" class="btn btn-outline-info btnUbigeo"
+                                    data-bs-target="#modalUbigeo" data-targetinput="txtUbigeoCor"
+                                    data-targetid="iddircorafi">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-md-4">
+                            <label>Correo Electrónico</label>
+                            <input type="email" id="correoafi1" class="form-control" placeholder="Escribe un email..."
+                                required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Correo Electrónico 2</label>
+                            <input type="email" id="correoafi2" class="form-control" placeholder="Escribe un email..."
+                                required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Correo Electrónico 3</label>
+                            <input type="email" id="correoafi3" class="form-control" placeholder="Escribe un email..."
+                                required>
+                        </div>
+
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-md-4">
+                            <label>Teléfono</label>
+                            <input type="text" id="telefonoafi1" class="form-control"
+                                placeholder="Escribe un numero...">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Teléfono 2</label>
+                            <input type="text" id="telefonoafi2" class="form-control"
+                                placeholder="Escribe un numero...">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Teléfono 3</label>
+                            <input type="text" id="telefonoafi3" class="form-control"
+                                placeholder="Escribe un numero...">
+                        </div>
+                    </div>
+                </div>
+
                 <!-- PAGOS -->
                 <div class="tab-pane fade" id="pagos" role="tabpanel">
                     <div class="row mb-3">
                         <div class="form-group col-md-3">
                             <label>Vía Pago</label>
                             <select class="form-control" id="tipoPagafi">
+                                <option>Seleccionar</option>
                                 <% tipoPag.forEach(function(doc) { %>
                                     <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
@@ -311,8 +318,8 @@
                             </select>
                         </div>
                         <div class="form-group col-md-3">
-                            <label>Sucursal</label>
-                            <select class="form-control" id="tipoAfpafi">
+                            <label>Sucursal AFP de pagos</label>
+                            <select class="form-control" id="tipoSucafi" disabled>
                                 <% tipoAfp.forEach(function(doc) { %>
                                     <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
@@ -323,6 +330,7 @@
                         <div class="form-group col-md-3">
                             <label>Banco</label>
                             <select class="form-control" id="tipoBcoafi">
+                                <option>Seleccionar</option>
                                 <% tipoBco.forEach(function(doc) { %>
                                     <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
@@ -333,6 +341,7 @@
                         <div class="form-group col-md-3">
                             <label>Tipo Cuenta</label>
                             <select class="form-control" id="tipoctaafi">
+                                <option>Seleccionar</option>
                                 <% tipocta.forEach(function(doc) { %>
                                     <option value="<%= doc.v_cod %>">
                                         <%= doc.v_nombre %>
@@ -539,19 +548,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-center mt-4">
-                                <button type="reset" class="btn btn-secondary"><i class="fas fa-times"></i>
-                                    Cancelar/Limpiar</button>
-                                <button type="submit" id="btnActualizarBen" class="btn btn-primary ml-2"><i
-                                        class="fas fa-save"></i>
-                                    Actualizar Datos</button>
-                            </div>
+
                         </div>
                         <div class="tab-pane fade" id="domicilioben" role="tabpanel">
                             <div class="row mb-3">
                                 <div class="form-group col-md-6">
                                     <label>Dirección Expediente</label>
-                                    <input type="text" id="txtDireccionoExp" class="form-control"
+                                    <input type="text" id="txtDireccionoExpBen" class="form-control"
                                         placeholder="Escribe una dirección...">
                                 </div>
                                 <div class="form-group col-md-6">
@@ -561,9 +564,7 @@
                                         <input type="text" id="txtUbigeoExpBen" class="form-control"
                                             placeholder="Ubigeo expediente..." readonly>
                                         <button type="button" class="btn btn-outline-info btnUbigeo"
-                                            
-                                            data-bs-target="#modalUbigeo"
-                                            data-targetinput="txtUbigeoExpBen" 
+                                            data-bs-target="#modalUbigeo" data-targetinput="txtUbigeoExpBen"
                                             data-targetid="iddirexp">
                                             <i class="fas fa-map-marker-alt"></i>
                                         </button>
@@ -573,7 +574,7 @@
                             <div class="row mb-3">
                                 <div class="form-group col-md-6">
                                     <label>Dirección Correspondencia</label>
-                                    <input type="text" id="txtDireccionCor" class="form-control"
+                                    <input type="text" id="txtDireccionCorBen" class="form-control"
                                         placeholder="Escribe una dirección...">
                                 </div>
                                 <div class="form-group col-md-6">
@@ -583,9 +584,7 @@
                                         <input type="text" id="txtUbigeoCorBen" class="form-control"
                                             placeholder="Ubigeo correspondencia..." readonly>
                                         <button type="button" class="btn btn-outline-info btnUbigeo"
-                                            
-                                            data-bs-target="#modalUbigeo"
-                                            data-targetinput="txtUbigeoCorBen" 
+                                            data-bs-target="#modalUbigeo" data-targetinput="txtUbigeoCorBen"
                                             data-targetid="iddircor">
                                             <i class="fas fa-map-marker-alt"></i>
                                         </button>
@@ -627,6 +626,13 @@
                                         placeholder="Escribe un numero...">
                                 </div>
                             </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button type="reset" class="btn btn-secondary"><i class="fas fa-times"></i>
+                                Cancelar/Limpiar</button>
+                            <button type="submit" id="btnActualizarBen" class="btn btn-primary ml-2"><i
+                                    class="fas fa-save"></i>
+                                Actualizar Datos</button>
                         </div>
                     </div>
                 </div>

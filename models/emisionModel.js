@@ -138,7 +138,7 @@ class emision {
           c.val_pension,
           c.val_pensionleg,
           c.mto_pensiongar AS mto_pensiongarben,
-          c.ind_estudiante, 
+          case when a.fec_devsol < convert(date,'20130801') then 'N' else 'S' end ind_estudiante, 
           null fec_emi, 
           null num_pol, 
           null fec_ingresospp
@@ -214,44 +214,68 @@ class emision {
     }
   }
 
-  static async GuardaPoliza(polizaData, versionData, beneficiarios) {
+  static async insertaPoliza(datos) {
+    const { poliza, polizaver, polizabeneficiario } = datos;
+    const polizaData = poliza[0];
+    const polizaVerData = polizaver[0];
+    const beneficiariosData = polizabeneficiario;
+
+    console.log("polizaData", polizaData);
+    console.log("polizaVerData", polizaVerData);
+    console.log("beneficiarios", beneficiariosData);
+
     const pool = await poolPromise;
     const transaction = new sql.Transaction(pool);
-
     try {
       await transaction.begin();
 
+      // 0. Obtener numerador actual
+      const d = new Date();
+      const anioActual = new Date().getFullYear();
+      const numeradorRes = await transaction.request()
+        .input('anio', sql.Int, anioActual)
+        .query(`SELECT n_numpol FROM m_numeradores WHERE n_aperiodo = @anio`);
+
+      if (numeradorRes.recordset.length === 0) {
+        throw new Error(`No se encontró numerador para el periodo ${anioActual}`);
+      }
+
+      let numerosel = Number(numeradorRes.recordset[0].n_numpol) + 1;
+      const numeropol = String(numerosel).padStart(6, "0");
+      console.log("Insertando póliza...");
       /** INSERT principal en p_polizas **/
       const polizaRequest = new sql.Request(transaction);
       const polizaResult = await polizaRequest
-        .input('num_pol', sql.NVarChar(10), polizaData.num_pol)
+        .input('num_pol', sql.NVarChar(10), numeropol)
         .input('id_correlativo', sql.Int, polizaData.id_correlativo)
         .input('num_cot', sql.Int, polizaData.num_cot)
-        .input('id_trapagpen', sql.NVarChar(5), polizaData.id_trapagpen)
-        .input('fec_trapagpen', sql.Date, polizaData.fec_trapagpen)
+        .input('id_trapagpen', sql.NVarChar(5), 'N')
+        .input('fec_trapagpen', sql.Date, null)
         .input('id_afp', sql.Int, polizaData.id_afp)
         .input('id_tipobenef', sql.NVarChar(5), polizaData.id_tipobenef)
         .input('num_cuspp', sql.NVarChar(15), polizaData.num_cuspp)
         .input('fec_solicitud', sql.Date, polizaData.fec_solicitud)
-        .input('fec_ingreso', sql.Date, polizaData.fec_ingreso)
+        .input('fec_ingreso', sql.Date, d.toISOString().split('T')[0])
         .input('fec_vigencia', sql.Date, polizaData.fec_vigencia)
-        .input('fec_tgervigencia', sql.Date, polizaData.fec_tgervigencia)
+        .input('fec_tgervigencia', sql.Date, null)
         .input('fec_dev', sql.Date, polizaData.fec_dev)
         .input('num_annojub', sql.Int, polizaData.num_annojub)
-        .input('fec_emision', sql.Date, polizaData.fec_emision)
+        .input('fec_emision', sql.Date, null)
         .input('fec_iniciocia', sql.Date, polizaData.fec_iniciocia)
         .input('fec_efecto', sql.Date, polizaData.fec_efecto)
         .input('fec_calculo', sql.Date, polizaData.fec_calculo)
         .input('fec_ingresospp', sql.Date, polizaData.fec_ingresospp)
-        .input('id_tipoorigen', sql.Int, polizaData.id_tipoorigen)
+        .input('id_tipoorigen', null)
         .input('id_estado', sql.Int, polizaData.id_estado)
+        .input('fec_acepta', sql.Date, polizaData.fec_acepta)
+        .input('fec_devsol', sql.Date, polizaData.fec_devsol)
         .query(`
           INSERT INTO p_polizas (
             num_pol, id_correlativo, num_cot, id_trapagpen, fec_trapagpen,
             id_afp, id_tipobenef, num_cuspp, fec_solicitud, fec_ingreso,
             fec_vigencia, fec_tgervigencia, fec_dev, num_annojub,
             fec_emision, fec_iniciocia, fec_efecto, fec_calculo,
-            fec_ingresospp, id_tipoorigen, id_estado
+            fec_ingresospp, id_tipoorigen, id_estado, fec_acepta, fec_devsol
           )
           OUTPUT INSERTED.id_pol
           VALUES (
@@ -259,78 +283,125 @@ class emision {
             @id_afp, @id_tipobenef, @num_cuspp, @fec_solicitud, @fec_ingreso,
             @fec_vigencia, @fec_tgervigencia, @fec_dev, @num_annojub,
             @fec_emision, @fec_iniciocia, @fec_efecto, @fec_calculo,
-            @fec_ingresospp, @id_tipoorigen, @id_estado
+            @fec_ingresospp, @id_tipoorigen, @id_estado, @fec_acepta, @fec_devsol
           )
         `);
 
-      const id_pol = polizaResult.recordset[0].id_pol;
+      let id_pol = polizaResult.recordset[0].id_pol;
+
+      console.log("Insertando endoso...");
+      /** INSERT en p_endosos **/
+      let id_polend = 0;
+      try {
+        const endosoRequest = new sql.Request(transaction);
+        const endosoresult = await endosoRequest
+          .input("id_pol", sql.Int, id_pol)
+          .input("num_cantendosos", sql.Int, 0)
+          .input("fec_solicitud", sql.Date, d.toISOString().split('T')[0])
+          .input("fec_endoso", sql.Date, d.toISOString().split('T')[0])
+          //.input("id_causa", sql.Int, 0)
+          //.input("id_tipo", sql.Int, 0)
+          .input("mto_diferenciacal", sql.Int, 0)
+          .input("id_moneda", sql.Int, polizaVerData.id_moneda)
+          .input("mto_pensionori", sql.Decimal(15, 8), 0)
+          .input("mto_pensioncal", sql.Decimal(15, 8), 0)
+          .input("fec_efecto", sql.Date, polizaData.fec_dev)
+          //.input("fec_finefecto", sql.Date, null)
+          .input("prc_factor", sql.Decimal(18, 6), 0)
+          .input("des_observacion", sql.NVarChar(sql.MAX), 'Suscripción inicial de Poliza')
+          .input("id_estado", sql.Int, 1)
+          .query(`
+                INSERT INTO p_endosos (
+                    id_pol,num_cantendosos,fec_solicitud,fec_endoso,
+                    mto_diferenciacal,id_moneda,mto_pensionori,mto_pensioncal,fec_efecto,
+                    prc_factor,des_observacion,id_estado
+                )
+                OUTPUT INSERTED.id_end
+                VALUES (
+                    @id_pol,@num_cantendosos,@fec_solicitud,@fec_endoso,
+                    @mto_diferenciacal,@id_moneda,@mto_pensionori,@mto_pensioncal,@fec_efecto,
+                    @prc_factor,@des_observacion,@id_estado
+                );
+            `);
+
+        id_polend = endosoresult.recordset[0].id_end;
+
+      } catch (err) {
+        console.error("❌ ERROR INSERTANDO ENDOSO:", err);
+        throw err;
+      }
 
       /** INSERT en p_polizaversion **/
-      const versionRequest = new sql.Request(transaction);
-      const versionResult = await versionRequest
-        .input('id_pol', sql.Int, id_pol)
-        .input('id_end', sql.Int, versionData.id_end)
-        .input('fec_vigini', sql.Date, versionData.fec_vigini)
-        .input('fec_vigter', sql.Date, versionData.fec_vigter)
-        .input('id_prestacion', sql.Int, versionData.id_prestacion)
-        .input('id_estciv', sql.NVarChar(5), versionData.id_estciv)
-        .input('fec_acepta', sql.Date, versionData.fec_acepta)
-        .input('fec_devsol', sql.Date, versionData.fec_devsol)
-        .input('fec_pripago', sql.Date, versionData.fec_pripago)
-        .input('id_monfondo', sql.Int, versionData.id_monfondo)
-        .input('val_tcfondo', sql.Decimal(5, 3), versionData.val_tcfondo)
-        .input('mto_capitalfon', sql.Decimal(15, 8), versionData.mto_capitalfon)
-        .input('mto_cicfon', sql.Decimal(15, 8), versionData.mto_cicfon)
-        .input('mto_bonofon', sql.Decimal(15, 8), versionData.mto_bonofon)
-        .input('mto_apoadi', sql.Decimal(15, 8), versionData.mto_apoadi)
-        .input('mto_priuni', sql.Decimal(15, 8), versionData.mto_priuni)
-        .input('mto_cic', sql.Decimal(15, 8), versionData.mto_cic)
-        .input('mto_bono', sql.Decimal(15, 8), versionData.mto_bono)
-        .input('val_tasarptr', sql.Decimal(5, 3), versionData.val_tasarptr)
-        .input('ind_cober', sql.NVarChar(5), versionData.ind_cober)
-        .input('id_bensocial', sql.NVarChar(5), versionData.id_bensocial)
-        .input('id_moneda', sql.Int, versionData.id_moneda)
-        .input('val_tcmon', sql.Decimal(5, 3), versionData.val_tcmon)
-        .input('id_tipren', sql.Int, versionData.id_tipren)
-        .input('id_modalidad', sql.Int, versionData.id_modalidad)
-        .input('num_mesdif', sql.Int, versionData.num_mesdif)
-        .input('num_mesgar', sql.Int, versionData.num_mesgar)
-        .input('num_mesesc', sql.Int, versionData.num_mesesc)
-        .input('val_rentaesc', sql.Decimal(5, 3), versionData.val_rentaesc)
-        .input('id_dercre', sql.Int, versionData.id_dercre)
-        .input('id_dergra', sql.Int, versionData.id_dergra)
-        .input('val_rentaafp', sql.Decimal(5, 3), versionData.val_rentaafp)
-        .input('val_rentatmp', sql.Decimal(5, 3), versionData.val_rentatmp)
-        .input('mto_gassep', sql.Decimal(15, 8), versionData.mto_gassep)
-        .input('val_tasatce', sql.Decimal(5, 3), versionData.val_tasatce)
-        .input('val_tasavta', sql.Decimal(5, 3), versionData.val_tasavta)
-        .input('val_tasatir', sql.Decimal(5, 3), versionData.val_tasatir)
-        .input('val_taspergar', sql.Decimal(5, 3), versionData.val_taspergar)
-        .input('val_tasactorea', sql.Decimal(5, 3), versionData.val_tasactorea)
-        .input('val_tasainpergar', sql.Decimal(5, 3), versionData.val_tasainpergar)
-        .input('val_tasares', sql.Decimal(5, 3), versionData.val_tasares)
-        .input('val_prerentmp', sql.Decimal(5, 3), versionData.val_prerentmp)
-        .input('val_perdida', sql.Decimal(5, 3), versionData.val_perdida)
-        .input('mto_priunitot', sql.Decimal(15, 8), versionData.mto_priunitot)
-        .input('mto_priunieess', sql.Decimal(15, 8), versionData.mto_priunieess)
-        .input('mto_peninicial', sql.Decimal(15, 8), versionData.mto_peninicial)
-        .input('mto_pension', sql.Decimal(15, 8), versionData.mto_pension)
-        .input('mto_pensiongar', sql.Decimal(15, 8), versionData.mto_pensiongar)
-        .input('mto_priuniafpeess', sql.Decimal(15, 8), versionData.mto_priuniafpeess)
-        .input('mto_pensionafp', sql.Decimal(15, 8), versionData.mto_pensionafp)
-        .input('fec_iniciopagos', sql.Date, versionData.fec_iniciopagos)
-        .input('fec_finperiododif', sql.Date, versionData.fec_finperiododif)
-        .input('fec_finperiodogar', sql.Date, versionData.fec_finperiodogar)
-        .input('fec_finrentaesc', sql.Date, versionData.fec_finrentaesc)
-        .input('ind_recalculo', sql.NVarChar(2), versionData.ind_recalculo)
-        .input('mto_ajusteipc', sql.Decimal(15, 8), versionData.mto_ajusteipc)
-        .input('val_reajustetri', sql.Decimal(15, 8), versionData.val_reajustetri)
-        .input('val_reajustemen', sql.Decimal(15, 8), versionData.val_reajustemen)
-        .input('id_estver', sql.Int, versionData.id_estver)
-        .query(`
+      let id_polver = 0;
+      try {
+        console.log("Insertando versión...");
+        const versionRequest = new sql.Request(transaction);
+        const versionResult = await versionRequest
+          .input('id_pol', sql.Int, id_pol)
+          .input('id_end', sql.Int, id_polend)
+          .input('fec_vigini', sql.Date, polizaVerData.fec_vigini)
+          .input('fec_vigter', sql.Date, null)
+          .input('id_prestacion', sql.Int, polizaVerData.id_prestacion)
+          .input('id_estciv', sql.NVarChar(10), polizaVerData.id_estciv)
+          //.input('fec_acepta', sql.Date, polizaVerData.fec_acepta)
+          //.input('fec_devsol', sql.Date, polizaVerData.fec_devsol)
+          //.input('fec_pripago', sql.Date, null)
+          .input('id_monfondo', sql.Int, polizaVerData.id_monfondo)
+          .input('val_tcfondo', sql.Decimal(5, 3), polizaVerData.val_tcfondo)
+          .input('mto_capitalfon', sql.Decimal(15, 8), polizaVerData.mto_capitalfon)
+          .input('mto_cicfon', sql.Decimal(15, 8), polizaVerData.mto_cicfon)
+          .input('mto_bonofon', sql.Decimal(15, 8), polizaVerData.mto_bonofon)
+          .input('mto_apoadi', sql.Decimal(15, 8), polizaVerData.mto_apoadi)
+          .input('mto_priuni', sql.Decimal(15, 8), polizaVerData.mto_priuni)
+          .input('mto_cic', sql.Decimal(15, 8), polizaVerData.mto_cic)
+          .input('mto_bono', sql.Decimal(15, 8), polizaVerData.mto_bono)
+          .input('val_tasarptr', sql.Decimal(5, 3), polizaVerData.val_tasarptr)
+          .input('ind_cober', sql.NVarChar(5), polizaVerData.ind_cober)
+          .input('id_bensocial', sql.NVarChar(5), null)
+          .input('id_moneda', sql.Int, polizaVerData.id_moneda)
+          .input('val_tcmon', sql.Decimal(5, 3), polizaVerData.val_tcmon)
+          .input('id_tipren', sql.Int, polizaVerData.id_tipren)
+          .input('id_modalidad', sql.Int, polizaVerData.id_modalidad)
+          .input('num_mesdif', sql.Int, polizaVerData.num_mesdif)
+          .input('num_mesgar', sql.Int, polizaVerData.num_mesgar)
+          .input('num_mesesc', sql.Int, polizaVerData.num_mesesc)
+          .input('val_rentaesc', sql.Decimal(5, 3), polizaVerData.val_rentaesc)
+          .input('id_dercre', sql.NVarChar(2), polizaVerData.id_dercre)
+          .input('id_dergra', sql.NVarChar(2), polizaVerData.id_dergra)
+          .input('val_rentaafp', sql.Decimal(5, 3), polizaVerData.val_rentaafp)
+          .input('val_rentatmp', sql.Decimal(5, 3), polizaVerData.val_rentatmp)
+          .input('mto_gassep', sql.Decimal(15, 8), polizaVerData.mto_gassep)
+          .input('val_tasatce', sql.Decimal(5, 3), polizaVerData.val_tasatce)
+          .input('val_tasavta', sql.Decimal(5, 3), polizaVerData.val_tasavta)
+          .input('val_tasatir', sql.Decimal(5, 3), polizaVerData.val_tasatir)
+          .input('val_taspergar', sql.Decimal(5, 3), polizaVerData.val_taspergar)
+          .input('val_tasactorea', sql.Decimal(5, 3), 0)
+          .input('val_tasainpergar', sql.Decimal(5, 3), 0)
+          .input('val_tasares', sql.Decimal(5, 3), 0)
+          .input('val_prerentmp', sql.Decimal(5, 3), polizaVerData.val_prerentmp)
+          .input('val_perdida', sql.Decimal(5, 3), polizaVerData.val_perdida)
+          .input('mto_priunitot', sql.Decimal(15, 8), polizaVerData.mto_priunitot)
+          .input('mto_priunieess', sql.Decimal(15, 8), polizaVerData.mto_priunieess)
+          .input('mto_peninicial', sql.Decimal(15, 8), polizaVerData.mto_peninicial)
+          .input('mto_pension', sql.Decimal(15, 8), polizaVerData.mto_pension)
+          .input('mto_pensiongar', sql.Decimal(15, 8), polizaVerData.mto_pensiongar)
+          .input('mto_priuniafpeess', sql.Decimal(15, 8), polizaVerData.mto_priuniafpeess)
+          .input('mto_pensionafp', sql.Decimal(15, 8), polizaVerData.mto_pensionafp)
+          //.input('fec_iniciopagos', sql.Date, null)
+          .input('fec_finperiododif', sql.Date, polizaVerData.fec_finperiododif)
+          .input('fec_finperiodogar', sql.Date, polizaVerData.fec_finperiodogar || null)
+          //.input('fec_finperiodogar', sql.Date, polizaVerData.fec_finperiodogar.trim() !== '' ? polizaVerData.fec_finperiodogar : null)
+          .input('fec_finrentaesc', sql.Date, polizaVerData.fec_finrentaesc || null)
+          //.input('fec_finrentaesc', sql.Date, polizaVerData.fec_finrentaesc.trim() !== '' ? polizaVerData.fec_finrentaesc : null)
+          .input('ind_recalculo', sql.NVarChar(2), 'N')
+          .input('mto_ajusteipc', sql.Decimal(15, 8), polizaVerData.mto_ajusteipc)
+          .input('val_reajustetri', sql.Decimal(15, 8), polizaVerData.val_reajustetri)
+          .input('val_reajustemen', sql.Decimal(15, 8), polizaVerData.val_reajustemen)
+          .input('id_estver', sql.Int, polizaVerData.id_estver)
+          .query(`
           INSERT INTO p_polizaversion (
             id_pol, id_end, fec_vigini, fec_vigter, id_prestacion, id_estciv,
-            fec_acepta, fec_devsol, fec_pripago, id_monfondo, val_tcfondo,
+            id_monfondo, val_tcfondo,
             mto_capitalfon, mto_cicfon, mto_bonofon, mto_apoadi, mto_priuni,
             mto_cic, mto_bono, val_tasarptr, ind_cober, id_bensocial, id_moneda,
             val_tcmon, id_tipren, id_modalidad, num_mesdif, num_mesgar, num_mesesc,
@@ -339,13 +410,13 @@ class emision {
             val_tasactorea, val_tasainpergar, val_tasares, val_prerentmp,
             val_perdida, mto_priunitot, mto_priunieess, mto_peninicial,
             mto_pension, mto_pensiongar, mto_priuniafpeess, mto_pensionafp,
-            fec_iniciopagos, fec_finperiododif, fec_finperiodogar, fec_finrentaesc,
+            fec_finperiododif, fec_finperiodogar, fec_finrentaesc,
             ind_recalculo, mto_ajusteipc, val_reajustetri, val_reajustemen, id_estver
           )
           OUTPUT INSERTED.id_polver
           VALUES (
             @id_pol, @id_end, @fec_vigini, @fec_vigter, @id_prestacion, @id_estciv,
-            @fec_acepta, @fec_devsol, @fec_pripago, @id_monfondo, @val_tcfondo,
+            @id_monfondo, @val_tcfondo,
             @mto_capitalfon, @mto_cicfon, @mto_bonofon, @mto_apoadi, @mto_priuni,
             @mto_cic, @mto_bono, @val_tasarptr, @ind_cober, @id_bensocial, @id_moneda,
             @val_tcmon, @id_tipren, @id_modalidad, @num_mesdif, @num_mesgar, @num_mesesc,
@@ -354,73 +425,79 @@ class emision {
             @val_tasactorea, @val_tasainpergar, @val_tasares, @val_prerentmp,
             @val_perdida, @mto_priunitot, @mto_priunieess, @mto_peninicial,
             @mto_pension, @mto_pensiongar, @mto_priuniafpeess, @mto_pensionafp,
-            @fec_iniciopagos, @fec_finperiododif, @fec_finperiodogar, @fec_finrentaesc,
+            @fec_finperiododif, @fec_finperiodogar, @fec_finrentaesc,
             @ind_recalculo, @mto_ajusteipc, @val_reajustetri, @val_reajustemen, @id_estver
           )
         `);
 
-      const id_polver = versionResult.recordset[0].id_polver;
+        id_polver = versionResult.recordset[0].id_polver;
+      } catch (err) {
+        console.error("❌ ERROR SQL REAL:", err);
+        throw err; // <-- IMPORTANTE: relanza el error para salir del flujo
+      }
 
       /** INSERT en p_beneficiarios (varios registros) **/
-      for (const b of beneficiarios) {
-        const benRequest = new sql.Request(transaction);
-        await benRequest
-          .input('id_polver', sql.Int, id_polver)
-          .input('id_orden', sql.Int, b.id_orden)
-          .input('id_parentesco', sql.Int, b.id_parentesco)
-          .input('id_grupofam', sql.Int, b.id_grupofam)
-          .input('id_sexo', sql.Int, b.id_sexo)
-          .input('id_invalido', sql.Int, b.id_invalido)
-          .input('fec_invalido', sql.Date, b.fec_invalido)
-          .input('id_causainv', sql.Int, b.id_causainv)
-          .input('id_estado', sql.Int, b.id_estado)
-          .input('id_dercre', sql.NVarChar(2), b.id_dercre)
-          .input('id_tipodociden', sql.Int, b.id_tipodociden)
-          .input('num_dociden', sql.NVarChar(21), b.num_dociden)
-          .input('des_nombre', sql.NVarChar(50), b.des_nombre)
-          .input('des_nombresegundo', sql.NVarChar(50), b.des_nombresegundo)
-          .input('des_apepaterno', sql.NVarChar(50), b.des_apepaterno)
-          .input('des_apematerno', sql.NVarChar(50), b.des_apematerno)
-          .input('fec_nacimiento', sql.Date, b.fec_nacimiento)
-          .input('fec_fallecimiento', sql.Date, b.fec_fallecimiento)
-          .input('fec_nachijomayor', sql.Date, b.fec_nachijomayor)
-          .input('fec_ingresocia', sql.Date, b.fec_ingresocia)
-          .input('fec_iniciopagopen', sql.Date, b.fec_iniciopagopen)
-          .input('fec_terminapergar', sql.Date, b.fec_terminapergar)
-          .input('mto_pension', sql.Decimal(15, 8), b.mto_pension)
-          .input('val_pension', sql.Decimal(5, 3), b.val_pension)
-          .input('val_pensionleg', sql.Decimal(5, 3), b.val_pensionleg)
-          .input('mto_pensiongar', sql.Decimal(15, 8), b.mto_pensiongar)
-          .input('val_pensiongar', sql.Decimal(5, 3), b.val_pensiongar)
-          .input('id_derpago', sql.Int, b.id_derpago)
-          .input('des_telef1', sql.NVarChar(20), b.des_telef1)
-          .input('des_telef2', sql.NVarChar(20), b.des_telef2)
-          .input('des_telef3', sql.NVarChar(20), b.des_telef3)
-          .input('des_email1', sql.NVarChar(20), b.des_email1)
-          .input('des_email2', sql.NVarChar(20), b.des_email2)
-          .input('des_email3', sql.NVarChar(20), b.des_email3)
-          .input('id_benefestudios', sql.Int, b.id_benefestudios)
-          .input('fec_efectiva', sql.Date, b.fec_efectiva)
-          .input('des_dircorrespon', sql.NVarChar(50), b.des_dircorrespon)
-          .input('id_ubidircorrespon', sql.Int, b.id_ubidircorrespon)
-          .input('des_direxpediente', sql.NVarChar(50), b.des_direxpediente)
-          .input('id_direxpediente', sql.Int, b.id_direxpediente)
-          .input('id_protecdatos', sql.Int, b.id_protecdatos)
-          .input('id_genboleta', sql.Int, b.id_genboleta)
-          .input('id_nacionalidad', sql.Int, b.id_nacionalidad)
-          .input('id_viapago', sql.Int, b.id_viapago)
-          .input('id_tipocuenta', sql.Int, b.id_tipocuenta)
-          .input('id_banco', sql.Int, b.id_banco)
-          .input('num_cuenta', sql.Int, b.num_cuenta)
-          .input('num_cuentacci', sql.Int, b.num_cuentacci)
-          .input('ind_incluido', sql.Int, b.ind_incluido)
-          .input('ind_excluido', sql.Int, b.ind_excluido)
-          .input('id_instsalud', sql.Int, b.id_instsalud)
-          .input('id_modalidasalud', sql.Int, b.id_modalidasalud)
-          .input('mto_plansalud', sql.Decimal(15, 8), b.mto_plansalud)
-          .input('id_causasuspencion', sql.Int, b.id_causasuspencion)
-          .input('fec_suspencion', sql.Date, b.fec_suspencion)
-          .query(`
+      try {
+        console.log("Insertando beneficiarios...");
+        for (const b of beneficiariosData) {
+          const benRequest = new sql.Request(transaction);
+          await benRequest
+            .input('id_polver', sql.Int, id_polver)
+            .input('id_orden', sql.Int, b.id_orden)
+            .input('id_parentesco', sql.Int, b.id_parentesco)
+            .input('id_grupofam', sql.Int, b.id_grupofam)
+            .input('id_sexo', sql.Int, b.id_sexo)
+            .input('id_invalido', sql.Int, b.id_invalido)
+            .input('fec_invalido', sql.Date, b.fec_invalido)
+            //.input('id_causainv', sql.Int, b.id_causainv)
+            .input('id_estado', sql.Int, b.id_estado)
+            .input('id_dercre', sql.NVarChar(2), b.id_dercre)
+            .input('id_tipodociden', sql.Int, b.id_tipodociden)
+            .input('num_dociden', sql.NVarChar(21), b.num_dociden)
+            .input('des_nombre', sql.NVarChar(50), b.des_nombre)
+            .input('des_nombresegundo', sql.NVarChar(50), b.des_nombresegundo)
+            .input('des_apepaterno', sql.NVarChar(50), b.des_apepaterno)
+            .input('des_apematerno', sql.NVarChar(50), b.des_apematerno)
+            .input('fec_nacimiento', sql.Date, b.fec_nacimiento)
+            .input('fec_fallecimiento', sql.Date, b.fec_fallecimiento)
+            //.input('fec_nachijomayor', sql.Date, b.fec_nachijomayor)
+            .input('fec_ingresocia', sql.Date, b.fec_ingresocia)
+            .input('fec_iniciopagopen', sql.Date, b.fec_iniciopagopen)
+            .input('fec_terminapergar', sql.Date, b.fec_terminapergar)
+            .input('mto_pension', sql.Decimal(15, 8), b.mto_pension)
+            .input('val_pension', sql.Decimal(5, 3), b.val_pension)
+            .input('val_pensionleg', sql.Decimal(5, 3), b.val_pensionleg)
+            .input('mto_pensiongar', sql.Decimal(15, 8), b.mto_pensiongar)
+            .input('val_pensiongar', sql.Decimal(5, 3), b.val_pensiongar)
+            .input('id_derpago', sql.Int, b.id_derpago)
+            .input('des_telef1', sql.NVarChar(20), b.des_telef1)
+            .input('des_telef2', sql.NVarChar(20), b.des_telef2)
+            .input('des_telef3', sql.NVarChar(20), b.des_telef3)
+            .input('des_email1', sql.NVarChar(20), b.des_email1)
+            .input('des_email2', sql.NVarChar(20), b.des_email2)
+            .input('des_email3', sql.NVarChar(20), b.des_email3)
+            .input('id_benefestudios', sql.Int, b.id_benefestudios)
+            .input('fec_efectiva', sql.Date, b.fec_efectiva)
+            .input('des_dircorrespon', sql.NVarChar(50), b.des_dircorrespon)
+            .input('id_ubidircorrespon', sql.Int, b.id_ubidircorrespon)
+            .input('des_direxpediente', sql.NVarChar(50), b.des_direxpediente)
+            .input('id_direxpediente', sql.Int, b.id_direxpediente)
+            .input('id_protecdatos', sql.Int, b.id_protecdatos)
+            .input('id_genboleta', sql.Int, b.id_genboleta)
+            .input('id_nacionalidad', sql.Int, b.id_nacionalidad)
+            .input('id_viapago', sql.Int, b.id_viapago)
+            .input('id_tipocuenta', sql.Int, b.id_tipocuenta)
+            .input('id_banco', sql.Int, b.id_banco)
+            .input('num_cuenta', sql.Int, b.num_cuenta)
+            .input('num_cuentacci', sql.Int, b.num_cuentacci)
+            .input('ind_incluido', sql.Int, b.ind_incluido)
+            .input('ind_excluido', sql.Int, b.ind_excluido)
+            .input('id_instsalud', sql.Int, b.id_instsalud)
+            .input('id_modalidasalud', sql.Int, b.id_modalidasalud)
+            .input('mto_plansalud', sql.Decimal(15, 8), b.mto_plansalud)
+            .input('id_causasuspencion', sql.Int, b.id_causasuspencion)
+            .input('fec_suspencion', sql.Date, b.fec_suspencion)
+            .query(`
             INSERT INTO p_beneficiarios (
               id_polver, id_orden, id_parentesco, id_grupofam, id_sexo, id_invalido, fec_invalido,
               id_causainv, id_estado, id_dercre, id_tipodociden, num_dociden, des_nombre,
@@ -446,7 +523,17 @@ class emision {
               @id_instsalud, @id_modalidasalud, @mto_plansalud, @id_causasuspencion, @fec_suspencion
             )
           `);
+        }
+      } catch (err) {
+        console.error("❌ ERROR SQL REAL:", err);
+        throw err; // <-- IMPORTANTE: relanza el error para salir del flujo
       }
+
+      // 4. Actualizar numerador
+      await transaction.request()
+        .input('nuevoNum', sql.Int, numerosel)
+        .input('anio', sql.Int, anioActual)
+        .query(`UPDATE m_numeradores SET n_numpol = @nuevoNum WHERE n_aperiodo = @anio`);
 
       await transaction.commit();
       return { success: true, id_pol, id_polver };
@@ -454,12 +541,13 @@ class emision {
     } catch (error) {
       await transaction.rollback();
       console.error('Error al registrar póliza con versión y beneficiarios:', error);
+      console.log("SQL ERROR MESSAGE:", error.originalError?.message);
+      console.log("SQL ERROR STATE:", error.originalError?.state);
+      console.log("SQL ERROR NUMBER:", error.originalError?.number);
+      console.log("SQL ERROR LINE:", error.originalError?.lineNumber);
       throw error;
     }
   }
-
-
-
 };
 
 module.exports = emision;

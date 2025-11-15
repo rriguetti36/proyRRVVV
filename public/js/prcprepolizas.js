@@ -176,6 +176,20 @@ let ind_excluido = null;
 let ind_estudia = "N";
 document.addEventListener("DOMContentLoaded", async function () {
     // Detectar clic en el botón editar
+
+    const tipoPagafi = document.getElementById("tipoPagafi");
+    const tipoSucafi = document.getElementById("tipoSucafi");
+    const tipoBcoafi = document.getElementById("tipoBcoafi");
+    const tipoctaafi = document.getElementById("tipoctaafi");
+    const numeroctaafi = document.getElementById("numeroctaafi");
+    const numerocciafi = document.getElementById("numerocciafi");
+
+    tipoSucafi.disabled = true;
+    tipoBcoafi.disabled = true;
+    tipoctaafi.disabled = true;
+    numeroctaafi.disabled = true;
+    numerocciafi.disabled = true;
+
     const id = document.getElementById("idcot").value;
 
     // 1️⃣ Traer todos los beneficiarios del backend al cargar la página
@@ -189,8 +203,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const response = await fetch(`/emision/api/getbeneficiario/${id}`);
         if (!response.ok) throw new Error("No se pudo obtener los beneficiarios");
         beneficiarios = await response.json();
-
-        pintarTabla(beneficiarios);
+        cargaDataBen(beneficiarios);
     } catch (error) {
         console.error("Error cargando beneficiarios:", error);
     }
@@ -213,14 +226,16 @@ document.addEventListener("DOMContentLoaded", async function () {
     document.querySelector("#tablaBeneficiarios").addEventListener("click", async function (e) {
         if (e.target.closest(".editar-beneficiario")) {
             const idord = e.target.closest(".editar-beneficiario").dataset.id;
+            //const tipdoc = fila.querySelector(".tipdoc").textContent.trim();
+            //const numdoc = fila.querySelector(".numdoc").textContent.trim();
             idordenEditado = parseInt(idord);
 
             const ben = beneficiarios.find(b => b.id_orden === idordenEditado);
             if (!ben) return alert("No se encontró el beneficiario seleccionado");
 
             // 👉 Cargar datos al formulario
-            document.getElementById("tipodocben").value = "0";
-            document.getElementById("numeroidenben").value = "";
+            document.getElementById("tipodocben").value = ben.id_tipodociden;
+            document.getElementById("numeroidenben").value = ben.num_dociden;
             document.getElementById("nombreben").value = ben.des_nombre || '';
             document.getElementById("nombresegben").value = ben.des_nombresegundo || '';
             document.getElementById("apepatben").value = ben.des_apepaterno || '';
@@ -231,14 +246,32 @@ document.addEventListener("DOMContentLoaded", async function () {
             document.getElementById("parentescoben").value = ben.id_parentesco || '';
             document.getElementById("prcpenben").value = ben.val_pension || 0;
             document.getElementById("montopenben").value = ben.mto_pension || 0;
-            document.getElementById("estudiantesi").checked = !!ben.ind_estudiante;
-
+            //document.getElementById("estudiantesi").checked = !!ben.ind_estudiante;
+            document.getElementById("estudiantesi").checked = false;
+            if (cotizacionafi.ind_estudiante == 'S' && ben.id_parentesco == 6) {
+                document.getElementById("estudiantesi").checked = true;
+            }
             document.getElementById("nacimientoben").value = ben.fec_nacimiento
                 ? ben.fec_nacimiento.split('T')[0]
                 : '';
             document.getElementById("fallecimientoben").value = ben.fec_fallecimiento
                 ? ben.fec_fallecimiento.split('T')[0]
                 : '';
+            document.getElementById("txtDireccionoExpBen").value = ben.des_direxpediente || '';
+            document.getElementById("iddirexp").value = ben.id_direxpediente || '';
+            document.getElementById("txtUbigeoExpBen").value = ben.des_ubiexp || '';
+
+            document.getElementById("txtDireccionCorBen").value = ben.des_dircorrespon || '';
+            document.getElementById("iddircor").value = ben.id_ubidircorrespon || '';
+            document.getElementById("txtUbigeoCorBen").value = ben.des_ubicor || '';
+
+            document.getElementById("correoben1").value = ben.des_email1 || '';
+            document.getElementById("correoben2").value = ben.des_email2 || '';
+            document.getElementById("correoben3").value = ben.des_email3 || '';
+            document.getElementById("telefonoben1").value = ben.des_telef1 || '';
+            document.getElementById("telefonoben2").value = ben.des_telef2 || '';
+            document.getElementById("telefonoben3").value = ben.des_telef3 || '';
+
         }
     });
 
@@ -260,15 +293,19 @@ document.addEventListener("DOMContentLoaded", async function () {
         const selectCauInv = document.getElementById("causainvalidezben");
         const inputFecInv = document.getElementById("fechainvalidezben");
         const inputFecFal = document.getElementById("fallecimientoben");
+
         const inputEstudiante = document.getElementById("estudiantesi"); // hacer que este valor llege e 1 en el cotizador
+
         const inputProtecDatos = document.getElementById("protecdatosben");
         const inputBoletaPagos = document.getElementById("boletapagben");
         const inputExclusionFal = document.getElementById("excluyefall");
         const inputExclusionMay = document.getElementById("excluyemayor");
-        const inputDireccionoExp = document.getElementById("txtDireccionoExp");
-        const inputDireccionCor = document.getElementById("txtDireccionCor");
+        const inputDireccionExp = document.getElementById("txtDireccionoExpBen");
+        const inputDireccionCor = document.getElementById("txtDireccionCorBen");
         const inputidDirExp = document.getElementById("iddirexp");
         const inputidDirCor = document.getElementById("iddircor");
+        const inputTxtUbiExp = document.getElementById("txtUbigeoExpBen");
+        const inputTxtUbiCor = document.getElementById("txtUbigeoCorBen");
         const inputTel1 = document.getElementById("telefonoben1");
         const inputTel2 = document.getElementById("telefonoben2");
         const inputTel3 = document.getElementById("telefonoben3");
@@ -308,7 +345,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 id_ubidircorrespon: inputidDirCor?.value,
                 id_direxpediente: inputidDirExp?.value,
                 des_dircorrespon: inputDireccionCor?.value,
-                des_direxpediente: inputDireccionoExp?.value,
+                des_direxpediente: inputDireccionExp?.value,
                 des_telef1: inputTel1?.value,
                 des_telef2: inputTel2?.value,
                 des_telef3: inputTel3?.value,
@@ -319,7 +356,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                 id_estado: 1,
                 val_pensiongar: 0,
                 id_derpago: 0,
-                ind_dercre: 1
+                ind_dercre: 1,
+                des_ubiexp: inputTxtUbiExp.value,
+                des_ubicor: inputTxtUbiCor.value
                 // agrega más campos según tu formulario
             };
         }
@@ -327,7 +366,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.log("✅ Nuevo array actualizado:", beneficiarios);
 
         // Volver a pintar la tabla con los cambios
-        pintarTabla(beneficiarios);
+        cargaDataBen(beneficiarios);
+
+        Swal.fire("✅", "Dato Actulizado correctamente", "success");
     });
 
     document.getElementById("btnGuardarPrepoliza").addEventListener("click", () => {
@@ -360,7 +401,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const inputfecaceptaa = document.getElementById("fecaceptaafi");
         const chkprotecdat = document.getElementById("protecdatafi")
         const chkboletapag = document.getElementById("boletapagafi")
-
+        const inputPrestaion = document.getElementById("tipopenafi")
         const inputtipoPag = document.getElementById("tipoPagafi");
         const inputtipoAfp = document.getElementById("tipoAfpafi");
         const inputtipoBco = document.getElementById("tipoBcoafi");
@@ -381,6 +422,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             fec_devsol: cotizacionafi.fec_devsol,
             num_annojub: cotizacionafi.num_aniojubila,
             fec_calculo: cotizacionafi.fec_calcot,
+            fec_iniciocia : sumarMeses(cotizacionafi.fec_devenge, cotizacionafi.num_mesdif),
+            fec_efecto : sumarMeses(cotizacionafi.fec_devenge, cotizacionafi.num_mesdif),
             fec_ingresospp: inputfecspp?.value,
             id_tipoorigen: "",
             id_estado: 1,
@@ -391,7 +434,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         const polizaversiondata = {
             id_end: 0,
             fec_vigini: primerdia(cotizacionafi.fec_devenge),
-            id_prestacion: cotizacionafi.id_prestacion,
+            id_prestacion: inputPrestaion.value, //cotizacionafi.id_prestacion,
             id_estciv: inputtipoCiv?.value,
             id_monfondo: 1,
             val_tcfondo: cotizacionafi.val_tcfondo,
@@ -421,11 +464,11 @@ document.addEventListener("DOMContentLoaded", async function () {
             val_tasatce: cotizacionafi.val_tasatce,
             val_tasavta: cotizacionafi.val_tasavta,
             val_tasatir: cotizacionafi.val_tasatir,
-            val_taspergar: cotizacionafi.val_tasagar,
+            val_taspergar: 0,
             val_prerentmp: cotizacionafi.val_rentapentmp,
             val_perdida: cotizacionafi.val_perdida,
             mto_priunitot: cotizacionafi.mto_priuni,
-            mto_priunieess: cotizacionafi.mto_priuni_CIA,
+            mto_priunieess: cotizacionafi.mto_priuni_CIA || 0,
             mto_peninicial: cotizacionafi.mto_pension,
             mto_pension: cotizacionafi.mto_pension,
             mto_pensiongar: cotizacionafi.mto_pensiongar,
@@ -433,10 +476,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             mto_pensionafp: cotizacionafi.mto_pensionRT,
             fec_finperiododif: sumarMeses(cotizacionafi.fec_devenge, cotizacionafi.num_mesdif),
             fec_finperiodogar: sumarMeses(cotizacionafi.fec_devenge, cotizacionafi.num_mesgar),
-            fec_finrentaesc: cotizacionafi.num_mesesc > 0 ? sumarMeses(cotizacionafi.fec_devenge, cotizacionafi.num_mesesc) : 0,
-            mto_ajusteipc: cotizacionafi.val_ajusteipc,
-            val_reajustetri: cotizacionafi.val_reajustetri,
-            val_reajustemen: cotizacionafi.val_reajustemen,
+            fec_finrentaesc: cotizacionafi.num_mesesc > 0 ? sumarMeses(cotizacionafi.fec_devenge, cotizacionafi.num_mesesc) : '',
+            mto_ajusteipc: 1,
+            val_reajustetri: 0.49629316,
+            val_reajustemen: 0.16515813,
             id_estver: 1
         }
         polizaver.push(polizaversiondata);
@@ -450,7 +493,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             fec_invalido: cotizacionafi.fec_invalido,
             //id_causainv: cotizacionafi.,
             id_estado: cotizacionafi.id_prestacion = 5 ? 2 : 1,
-            id_dercre: 1,
+            id_dercre: "N",
             id_tipodociden: cotizacionafi.id_tipodociden,
             num_dociden: cotizacionafi.num_dociden,
             des_nombre: inputnombre?.value,
@@ -512,8 +555,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         GuardarPrepoliza(payload);
     });
 
+    tipoPagafi.addEventListener("change", async (e) => {
+        const viaPago = e.target.value;
+        actualizarCampos(viaPago);
+    });
+
     // 3️⃣ Función para mostrar la tabla
-    function pintarTabla(lista) {
+    function cargaDataBen(lista) {
         const tbody = document.querySelector("#tablaBeneficiarios tbody");
         tbody.innerHTML = "";
 
@@ -523,8 +571,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                     <td>${b.id_orden}</td>
                     <td>${b.desparentesco || ""}</td>
                     <td>${b.nombres || ""}</td>
-                    <td>${b.des_tipodoc || ""}</td>
-                    <td>${b.num_dociden || ""}</td>
+                    <td class="tipdoc">${b.des_tipodoc || ""}</td>
+                    <td class="numdoc">${b.num_dociden || ""}</td>
                     <td>
                         <button class="btn btn-sm btn-primary editar-beneficiario"
                             data-id="${b.id_orden}">
@@ -552,6 +600,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById("fecinvafi").value = data.fec_invalido;
         document.getElementById("tipovejafi").value = data.id_tipobenef;
         document.getElementById("tipoAfpafi").value = data.id_afp;
+        document.getElementById("tipoSucafi").value = data.id_afp;
+        //document.getElementById("estudiantesi").value = data.ind_estudiante;
     }
 
     function primerdia(fecha) {
@@ -601,7 +651,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             // 3️⃣ Mostrar éxito
             Swal.fire({
                 title: "¡Éxito!",
-                text: "Cotización calculada correctamente",
+                text: "Pre-Poliza Registrada correctamente",
                 icon: "success",
                 confirmButtonText: "Aceptar",
                 confirmButtonColor: "#3085d6"
@@ -622,7 +672,44 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
+    async function actualizarCampos(viaPago) {
+        // Primero habilitamos todos
+        [tipoBcoafi, tipoctaafi, numeroctaafi, numerocciafi].forEach(campo => campo.disabled = false);
 
+        // Luego deshabilitamos según la opción elegida
+        switch (viaPago) {
+            case '1': // DEPOSITO EN CUENTA
+                //tipoSucafi.disabled = true;
+                //tipoSucafi.selectedIndex = 0;
+                break;
+            case '2': // TRANSFERENCIA AFP
+                tipoBcoafi.disabled = true;
+                tipoBcoafi.selectedIndex = 0;
+                tipoctaafi.disabled = true;
+                tipoctaafi.selectedIndex = 0;
+                numeroctaafi.disabled = true;
+                numerocciafi.disabled = true;
+                break;
+            case '3': // VENTANILLA BANCO
+                //tipoSucafi.disabled = true;
+                //tipoSucafi.selectedIndex = 0;
+                tipoctaafi.disabled = true;
+                tipoctaafi.selectedIndex = 0;
+                numeroctaafi.disabled = true;
+                numerocciafi.disabled = true;
+                break;
+            case 'Seleccionar':
+                //tipoSucafi.disabled = true;
+                //tipoSucafi.selectedIndex = 0;
+                tipoBcoafi.disabled = true;
+                tipoBcoafi.selectedIndex = 0;
+                tipoctaafi.disabled = true;
+                tipoctaafi.selectedIndex = 0;
+                numeroctaafi.disabled = true;
+                numerocciafi.disabled = true;
+                break;
+        }
+    }
 });
 
 
